@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tema 13 — Anexo: Artículos LGSS en su literalidad</title>
+<style>
+:root{
+  --bg:#0f1419;
+  --bg-card:#1a2129;
+  --bg-card2:#1e2730;
+  --border:#2a3540;
+  --text:#e2e8ec;
+  --text-dim:#93a3af;
+  --green:#4ade80;
+  --green-dim:#1f3a2a;
+  --yellow:#facc15;
+  --yellow-dim:#3a3320;
+  --orange:#fb923c;
+  --orange-dim:#3a2a1a;
+  --red:#f87171;
+  --red-dim:#3a1f24;
+  --blue:#60a5fa;
+  --blue-dim:#1a2a3a;
+  --navy:#1e3a6e;
+  --purple:#c084fc;
+  --purple-dim:#2a1f3a;
+  --fucsia:#f472b6;
+  --azul-oscuro:#1e40af;
+  --cian-num:#22d3ee;
+  --lima-num:#a3e635;
+  --magenta-fecha:#e879f9;
+  --garnet:#c9184a;
+}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.65;margin:0;padding:0;}
+.wrap{max-width:900px;margin:0 auto;padding:24px 20px 80px;}
+.top-nav, .bottom-nav{display:flex;justify-content:space-between;gap:12px;margin:18px 0;flex-wrap:wrap;}
+.top-nav a, .bottom-nav a{color:var(--blue);text-decoration:none;font-size:0.92em;padding:6px 12px;border:1px solid var(--border);border-radius:6px;background:var(--bg-card);}
+.top-nav a:hover, .bottom-nav a:hover{background:var(--bg-card2);}
+
+.header-box{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:20px 22px;margin-bottom:18px;}
+.header-box h1{margin:0 0 8px;font-size:1.4em;color:#fff;}
+.header-box p{margin:6px 0;color:var(--text-dim);font-size:0.95em;}
+
+.disclaimer{background:var(--blue-dim);border:1px solid var(--blue);border-radius:10px;padding:16px 20px;margin-bottom:18px;font-size:0.9em;}
+.disclaimer h3{margin:0 0 8px;color:var(--blue);font-size:1em;}
+.disclaimer ul{margin:8px 0 0;padding-left:20px;}
+.disclaimer li{margin-bottom:6px;}
+
+.scope-box{background:var(--orange-dim);border:1px solid var(--orange);border-radius:10px;padding:16px 20px;margin-bottom:18px;font-size:0.88em;}
+.scope-box h3{margin:0 0 10px;color:var(--orange);font-size:1em;}
+.scope-box .exclu-group{margin-bottom:12px;}
+.scope-box .exclu-group b{color:#fff;}
+.scope-box .art-chip{display:inline-block;background:var(--bg-card2);border:1px solid var(--border);border-radius:4px;padding:1px 7px;margin:2px 3px 2px 0;font-family:monospace;font-size:0.92em;}
+
+.legend{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:22px;font-size:0.85em;}
+.legend h3{margin:0 0 10px;font-size:1em;color:#fff;}
+.legend-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;}
+@media (max-width:600px){.legend-grid{grid-template-columns:1fr;}}
+.legend-item{display:flex;align-items:center;gap:8px;}
+
+.titulo-head{margin:34px 0 6px;padding-bottom:8px;border-bottom:2px solid var(--purple);}
+.titulo-head h2{color:var(--purple);font-size:1.15em;margin:0;}
+.capitulo-head{margin:22px 0 4px;}
+.capitulo-head h3{color:var(--blue);font-size:1.02em;margin:0;padding-left:4px;border-left:3px solid var(--blue);padding-left:10px;}
+.seccion-head{margin:14px 0 4px 14px;}
+.seccion-head h4{color:var(--text-dim);font-size:0.92em;font-weight:600;margin:0;font-style:italic;}
+
+.articulo-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:14px 18px;margin:10px 0 10px 14px;}
+.art-card-head{display:flex;align-items:baseline;gap:10px;margin-bottom:8px;flex-wrap:wrap;}
+.return-link{margin-left:auto;color:var(--text-dim);text-decoration:none;font-size:0.8em;border:1px solid var(--border);border-radius:6px;padding:2px 9px;white-space:nowrap;}
+.return-link:hover{color:#fff;border-color:var(--blue);background:var(--bg-card2);}
+mark.ctx-match{background:var(--yellow-dim);color:var(--yellow);padding:0 2px;border-radius:3px;text-decoration:underline;text-decoration-color:var(--yellow);}
+.ctx-match-title{background:var(--yellow-dim);color:var(--yellow);padding:1px 6px;border-radius:4px;text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:2px;}
+.criterio-marca{background:var(--blue-dim);color:var(--blue);padding:1px 5px;border-radius:4px;font-weight:700;border-bottom:2px dashed var(--blue);}
+.art-titulo-texto{color:#fff;font-weight:600;font-size:0.95em;}
+.articulo-card p{margin:6px 0;font-size:0.93em;}
+
+.articulo{color:#fff;font-weight:700;background:var(--yellow);padding:1px 8px;border-radius:4px;font-size:0.9em;}
+.num-marca{color:var(--lima-num);font-weight:800;}
+.pct-marca{background:var(--cian-num);color:#0f1419;padding:1px 6px;border-radius:4px;font-weight:800;}
+.fecha-marca{background:var(--magenta-fecha);color:#0f1419;padding:1px 6px;border-radius:4px;font-weight:800;}
+.epigrafe-letra{color:var(--purple);font-weight:800;margin-right:2px;}
+.epigrafe-num{color:var(--orange);font-weight:800;margin-right:2px;}
+.ley-num{color:var(--garnet);font-weight:700;}
+.art-tag-inline{display:inline-block;background:#fff;color:#111;font-weight:700;padding:0 6px;border-radius:4px;font-size:0.88em;text-decoration:none;}
+a.art-tag-inline{cursor:pointer;}
+a.art-tag-inline:hover{background:var(--yellow);}
+
+footer.foot-note{margin-top:40px;padding-top:16px;border-top:1px solid var(--border);color:var(--text-dim);font-size:0.8em;text-align:center;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="top-nav">
+  <a href="../index.html">← Volver al índice</a>
+  <a href="T13_RecursosGenerales.html">← Volver al Tema 13</a>
+</div>
+
+<div class="header-box">
+  <h1>📖 Anexo — Artículos de la LGSS citados en el Tema 13</h1>
+  <p>Esta página reúne, <strong>en su literalidad</strong>, los artículos de la Ley General de la Seguridad Social (Real Decreto Legislativo 8/2015, de 30 de octubre) que el Tema 13 cita — ubicados dentro de su Título, Capítulo y Sección reales, para consultarlos rápidamente sin salir del tema y para entrenar el ojo con el lenguaje legal.</p>
+  <p>No es el temario completo de la LGSS: solo contiene los artículos que aparecen citados en el Tema 13.</p>
+</div>
+
+<div class="disclaimer">
+  <h3>ℹ️ Nota</h3>
+  <p style="margin:0;">Este material son apuntes personales de estudio de Antonio, elaborados a partir del curso de Destino Funcionario (Manuel Moreno), preparados para la oposición de Administrativo de la Seguridad Social 2026/2027. No es material oficial.</p>
+</div>
+
+<div class="scope-box">
+  <h3>⚠️ Aviso de alcance — artículos excluidos de este Anexo</h3>
+  <p style="margin-top:0;">El Tema 13 cita, además de la LGSS, un reglamento distinto que <strong>no forma parte de este Anexo</strong>:</p>
+
+  <div class="exclu-group">
+    <b>RD 696/2018, de 29 de junio, Reglamento General de la Gestión Financiera de la Seguridad Social:</b><br>
+    <span class="art-chip">A2</span><span class="art-chip">A6-A7</span><span class="art-chip">A9-A10</span><span class="art-chip">A11-A12</span><span class="art-chip">A14-A15</span><span class="art-chip">A16</span><span class="art-chip">A18-A20</span><span class="art-chip">A21-A23</span><span class="art-chip">A24</span>
+    <p style="margin:6px 0 0;">El propio tema ya distingue este bloque con su propio epígrafe ("5. Gestión de los recursos financieros (RD 696/2018)") y etiqueta cada artículo explícitamente como "RD 696/2018", así que no hay ambigüedad ni riesgo de confundirlos con la LGSS: se han dejado tal cual, sin enlazar a este Anexo.</p>
+  </div>
+
+  <div class="exclu-group">
+    <b>✅ Sin trampas de numeración compartida detectadas</b>
+    <p style="margin:6px 0 0;">A diferencia del Tema 2 (RIA, Ley 47/2015 REMAR, RD 2064/1995...), en este tema todas las citas de artículo vienen ya etiquetadas de origen por el propio material ("LGSS" o "RD 696/2018"), por lo que no ha hecho falta verificación de desambiguación artículo por artículo — se ha confirmado igualmente cada título contra el texto real de la LGSS antes de incluirlo.</p>
+  </div>
+</div>
+
+<div class="legend">
+  <h3>🎨 Leyenda de color</h3>
+  <div class="legend-grid">
+    <div class="legend-item"><span class="articulo">A1</span> Chip de artículo (referencia al número)</div>
+    <div class="legend-item"><span class="epigrafe-letra">a)</span> Letra de epígrafe (lila)</div>
+    <div class="legend-item"><span class="epigrafe-num">1.</span> Número de apartado (naranja)</div>
+    <div class="legend-item"><span class="pct-marca">50 por ciento</span> Porcentaje</div>
+    <div class="legend-item"><span class="num-marca">65</span> años — Cifra clave</div>
+    <div class="legend-item"><span class="ley-num">Ley 20/2007</span> Cita a otra ley/RD</div>
+    <div class="legend-item"><a class="art-tag-inline" href="#a1">art. 1</a> Referencia cruzada (enlaza si está en este Anexo)</div>
+    
+  </div>
+</div>
+
+<div class="titulo-head" id="tit-tituloi"><h2>Título I. Normas generales del sistema de la Seguridad Social</h2></div>
+<div class="capitulo-head"><h3>Capítulo VII. Régimen económico</h3></div>
+<div class="seccion-head"><h4>Sección 1.ª Patrimonio de la Seguridad Social</h4></div>
+<div class="articulo-card" id="a103">
+  <div class="art-card-head"><span class="articulo">A103</span><span class="art-titulo-texto">Patrimonio.</span><a class="return-link" href="T13_RecursosGenerales.html#s2" target="_blank" title="Volver al tema en este punto">↩ Tema 13</a></div>
+  <p><span class="epigrafe-num">1.</span><mark class="ctx-match">Las cuotas, bienes, derechos, acciones y recursos de cualquier otro género de la</mark> Seguridad Social <mark class="ctx-match">constituyen un patrimonio único afecto a sus fines, distinto del patrimonio del Estado.</mark> Asimismo, los inmuebles que forman parte del patrimonio de la Seguridad Social, además de estar afectos, con carácter prioritario, a los fines de la Seguridad Social, podrán ser destinados a fines de utilidad pública a través de su adscripción, en la forma prevista en el <a class="art-tag-inline" href="#a104">art. 104</a>, o de la cesión de su uso, en la forma prevista en el <a class="art-tag-inline" href="#a107">art. 107</a>.</p>
+<p><span class="epigrafe-num">2.</span>La regulación del patrimonio de la Seguridad Social se regirá por las disposiciones específicas contenidas en la presente ley, en sus normas de aplicación y desarrollo y, en lo no previsto en las mismas, por lo establecido en la <span class="ley-num">Ley 33/2003</span>, de 3 de noviembre, del Patrimonio de las Administraciones Públicas. Las referencias que en dicha Ley se efectúan a las Delegaciones de Economía y Hacienda, <mark class="ctx-match">a la Dirección General</mark> del Patrimonio del Estado y al Ministerio de <mark class="ctx-match">Hacienda y Función Pública</mark> se entenderán hechas, respectivamente, a las Direcciones Provinciales de la Tesorería General de la Seguridad Social, a la Dirección</p>
+<p>General de la Tesorería General de la Seguridad Social y al Ministerio de <mark class="ctx-match">Inclusión, Seguridad Social y</mark> Migraciones.</p>
+</div>
+<div class="articulo-card" id="a104">
+  <div class="art-card-head"><span class="articulo">A104</span><span class="art-titulo-texto">Titularidad, adscripción, administración y custodia.</span><a class="return-link" href="T13_RecursosGenerales.html#s2" target="_blank" title="Volver al tema en este punto">↩ Tema 13</a></div>
+  <p><span class="epigrafe-num">1.</span><mark class="ctx-match">La titularidad del patrimonio único</mark> de la Seguridad Social corresponde a la Tesorería General de la Seguridad Social. Dicha titularidad, así como la adscripción, administración y custodia del referido patrimonio, se regirá por lo establecido en esta ley y demás disposiciones reglamentarias.</p>
+<p><span class="epigrafe-num">2.</span>Los bienes inmuebles del patrimonio de la Seguridad Social podrán ser adscritos, <mark class="ctx-match">por el titular del Ministerio</mark> de Inclusión, Seguridad Social y Migraciones, <mark class="ctx-match">a órganos de la</mark> Administración General del Estado o sus Organismos públicos, o a otras administraciones públicas o a entidades de derecho público con personalidad jurídica propia o vinculadas o dependientes de las mismas. La adscripción no alterará <mark class="ctx-match">la titularidad del bien.</mark> Cuando la adscripción se realice a favor de un órgano de la Administración General del Estado o de un Organismo Público dependiente de ella, para que surta efecto deberá aceptarse en la forma prevista en la legislación patrimonial.</p>
+<p><span class="epigrafe-num">3.</span>Corresponde a las administraciones o entidades a las que figuren adscritos los bienes inmuebles las siguientes funciones, salvo que en el acuerdo de adscripción o traspaso se haya previsto otra cosa:</p>
+<p><span class="epigrafe-letra">a)</span>Realizar las reparaciones necesarias en orden a su conservación.</p>
+<p><span class="epigrafe-letra">b)</span>Efectuar las obras de mejora que estimen convenientes.</p>
+<p><span class="epigrafe-letra">c)</span>Ejercitar las acciones posesorias que, en defensa de dichos bienes, procedan en derecho.</p>
+<p><span class="epigrafe-letra">d)</span>Asumir, por subrogación, el pago de las obligaciones tributarias que afecten a dichos bienes.</p>
+<p><span class="epigrafe-num">4.</span>Los bienes inmuebles adscritos a otras administraciones o entidades de derecho público, salvo que otra cosa se establezca en el acuerdo de adscripción o traspaso, revertirán a la Tesorería General de la Seguridad Social en el caso de no uso o cambio de destino, conforme a lo dispuesto en la Ley del Patrimonio de las Administraciones Públicas, siendo a cargo de la administración o entidad a la que fueron adscritos los gastos derivados de su conservación y mantenimiento, así como la subrogación en el pago de las obligaciones tributarias que afecten a los mismos, hasta la finalización del ejercicio económico en el que se produzca dicha reversión. No obstante, no procederá la reversión cuando <mark class="ctx-match">el titular del Ministerio</mark> de <mark class="ctx-match">Inclusión, Seguridad Social y Migraciones</mark> autorice el cambio de uso o destino de los bienes adscritos o transferidos.</p>
+<p><span class="epigrafe-num">5.</span>Los certificados que se libren con relación a los inventarios y documentos oficiales que se conserven en la Administración de la Seguridad Social serán suficientes para su titulación e inscripción en los registros oficiales correspondientes.</p>
+</div>
+<div class="articulo-card" id="a105">
+  <div class="art-card-head"><span class="articulo">A105</span><span class="art-titulo-texto">Adquisición de bienes inmuebles.</span><a class="return-link" href="T13_RecursosGenerales.html#s3" target="_blank" title="Volver al tema en este punto">↩ Tema 13</a></div>
+  <p><span class="epigrafe-num">1.</span><mark class="ctx-match">La adquisición a título oneroso</mark> de bienes inmuebles de la Seguridad Social, para el cumplimiento de sus fines, <mark class="ctx-match">se efectuará por la</mark> Tesorería General de la Seguridad Social <mark class="ctx-match">mediante concurso público, salvo</mark> que, en atención a las peculiaridades de la necesidad a satisfacer o a la urgencia de la adquisición a efectuar, el Ministerio de Empleo y Seguridad Social autorice la adquisición directa.</p>
+<p><span class="epigrafe-num">2.</span>Corresponde al Director General del Instituto Nacional de Gestión Sanitaria autorizar los contratos de adquisición de bienes inmuebles que dicho Instituto precise para el cumplimiento de sus fines, previo informe de la Tesorería General de la Seguridad Social. Será necesaria la autorización del Ministro de Sanidad, Servicios Sociales e Igualdad, según la cuantía que se fije en la correspondiente Ley de Presupuestos Generales del Estado.</p>
+<p><span class="epigrafe-num">3.</span>Por el Ministerio de Empleo y Seguridad Social se determinará el procedimiento aplicable para la adquisición de los bienes afectos al cumplimiento de los fines de colaboración en la gestión de las mutuas colaboradoras con la Seguridad Social.</p>
+</div>
+<div class="articulo-card" id="a106">
+  <div class="art-card-head"><span class="articulo">A106</span><span class="art-titulo-texto">Enajenación de bienes inmuebles y de títulos valores.</span><a class="return-link" href="T13_RecursosGenerales.html#s3" target="_blank" title="Volver al tema en este punto">↩ Tema 13</a></div>
+  <p><span class="epigrafe-num">1.</span>La enajenación de los bienes inmuebles integrados en <mark class="ctx-match">el patrimonio de la</mark> Seguridad Social requerirá la oportuna autorización del Ministerio de Empleo y Seguridad Social cuando su valor, según tasación pericial, no exceda de las cuantías fijadas por la Ley del Patrimonio de las Administraciones Públicas, o del Gobierno en los restantes casos. La enajenación de los bienes señalados en el párrafo anterior se realizará mediante subasta pública, salvo cuando <mark class="ctx-match">el Consejo de Ministros, a propuesta</mark> del titular del Ministerio de Empleo y Seguridad Social, autorice la enajenación directa. Esta podrá ser autorizada por el titular del Ministerio de Empleo y Seguridad Social cuando se trate de bienes que no superen el valor fijado en la Ley del Patrimonio de las Administraciones Públicas.</p>
+<p><span class="epigrafe-num">2.</span>La enajenación de títulos valores, ya sean estos de renta variable o fija, se efectuará previa autorización en los términos establecidos en el apartado anterior. Por excepción, los <mark class="ctx-match">títulos admitidos a negociación en Mercados Oficiales se</mark> enajenarán necesariamente a través de los sistemas reconocidos en dichos mercados según la legislación vigente reguladora del mercado de valores, sin que se requiera autorización previa para su venta cuando esta venga exigida para atender <mark class="ctx-match">al pago de prestaciones</mark> reglamentariamente reconocidas y el importe bruto de la venta no exceda el montante fijado por la correspondiente Ley de Presupuestos Generales del Estado. De las enajenaciones de tales títulos se dará cuenta inmediata al Ministerio de Empleo y Seguridad Social.</p>
+</div>
+<div class="articulo-card" id="a107">
+  <div class="art-card-head"><span class="articulo">A107</span><span class="art-titulo-texto">Arrendamiento y cesión de bienes inmuebles.</span><a class="return-link" href="T13_RecursosGenerales.html#s3" target="_blank" title="Volver al tema en este punto">↩ Tema 13</a></div>
+  <p><span class="epigrafe-num">1.</span>Los arrendamientos de bienes inmuebles que deba efectuar la Seguridad Social se concertarán <mark class="ctx-match">mediante concurso público, salvo</mark> en aquellos casos en que, a juicio del Ministerio de Empleo y Seguridad Social, sea necesario o conveniente concertarlos de modo directo.</p>
+<p><span class="epigrafe-num">2.</span>Corresponde al Director General del Instituto Nacional de Gestión Sanitaria autorizar los contratos de arrendamiento de bienes inmuebles que dicho Instituto precise para el cumplimiento de sus fines. Será necesaria la autorización de la persona titular del Ministerio de Sanidad, Servicios Sociales e Igualdad cuando su importe supere la cuantía de renta anual establecida en la correspondiente Ley de Presupuestos Generales del Estado.</p>
+<p><span class="epigrafe-num">3.</span>Por el Ministerio de Empleo y Seguridad Social se determinará el procedimiento aplicable para el arrendamiento de los bienes afectos al cumplimiento de los fines de colaboración en la gestión de las mutuas colaboradoras con la Seguridad Social.</p>
+<p><span class="epigrafe-num">4.</span>Los bienes inmuebles del patrimonio de la Seguridad Social, que no resulten necesarios para el cumplimiento de sus fines, podrán ser cedidos gratuitamente en uso para fines de utilidad pública o de interés de la Seguridad Social <mark class="ctx-match">por el titular del Ministerio</mark> de Inclusión, Seguridad Social y Migraciones, <mark class="ctx-match">a propuesta de la</mark> Tesorería General de la Seguridad Social, <mark class="ctx-match">previa comunicación a la Dirección General de Patrimonio del Estado.</mark></p>
+</div>
+<div class="articulo-card" id="a108">
+  <div class="art-card-head"><span class="articulo">A108</span><span class="art-titulo-texto">Inembargabilidad.</span><a class="return-link" href="T13_RecursosGenerales.html#s2" target="_blank" title="Volver al tema en este punto">↩ Tema 13</a></div>
+  <p><mark class="ctx-match">Los bienes y derechos que integran el patrimonio de la</mark> Seguridad Social son inembargables. Ningún tribunal ni autoridad administrativa podrá dictar providencia de embargo ni despachar mandamiento de ejecución contra los bienes y derechos del patrimonio de la Seguridad Social, ni contra sus rentas, frutos o productos del mismo, siendo de aplicación, en su caso, lo dispuesto sobre esta materia en los artículos 23, 24 y 25 de la <span class="ley-num">Ley 47/2003</span>, de 26 de noviembre, General Presupuestaria.</p>
+</div>
+<div class="seccion-head"><h4>Sección 2.ª Recursos y sistemas financieros de la Seguridad Social</h4></div>
+<div class="articulo-card" id="a109">
+  <div class="art-card-head"><span class="articulo">A109</span><span class="art-titulo-texto">Recursos generales.</span><a class="return-link" href="T13_RecursosGenerales.html#s1" target="_blank" title="Volver al tema en este punto">↩ Tema 13</a></div>
+  <p><span class="epigrafe-num">1.</span>Los recursos para la financiación de la Seguridad Social estarán constituidos por:</p>
+<p><span class="epigrafe-letra">a)</span>Las aportaciones progresivas del Estado, que se consignarán con carácter permanente en sus Presupuestos Generales, y las que se acuerden para atenciones especiales o resulten precisas por exigencia de la coyuntura.</p>
+<p><span class="epigrafe-letra">b)</span>Las cuotas de las personas obligadas.</p>
+<p><span class="epigrafe-letra">c)</span>Las cantidades recaudadas en concepto de recargos, sanciones u otras de naturaleza análoga.</p>
+<p><span class="epigrafe-letra">d)</span>Los frutos, rentas o intereses y cualquier otro producto de sus recursos patrimoniales en los supuestos que estos se produzcan, sin perjuicio de las facultades de disposición patrimonial no onerosas previstas en la sección anterior del presente capítulo.</p>
+<p><span class="epigrafe-letra">e)</span>Cualesquiera otros ingresos, sin perjuicio de lo previsto en la disposición adicional décima.</p>
+<p><span class="epigrafe-num">2.</span>La acción protectora de la Seguridad Social, en su modalidad no contributiva y universal, se financiará mediante aportaciones del Estado <mark class="ctx-match">al Presupuesto de la</mark> Seguridad Social, sin perjuicio de lo establecido en el <span class="art-tag-inline">art. 10.3</span>, primer inciso, en relación con la letra c) del apartado 2 del mismo artículo, con excepción de las prestaciones y servicios de asistencia sanitaria de la Seguridad Social y servicios sociales cuya gestión se halle transferida a las comunidades autónomas, en cuyo caso, la financiación se efectuará de conformidad con el sistema de financiación autonómica vigente en cada momento. Las prestaciones contributivas, los gastos derivados de su gestión y los de funcionamiento de los servicios correspondientes a las funciones de afiliación, recaudación y gestión económico-financiera y patrimonial serán financiadas básicamente con los recursos a que se refieren las letras b), c), d) y e) del apartado anterior, así como, en su caso, por las aportaciones del Estado que se acuerden para atenciones específicas.</p>
+<p><span class="epigrafe-num">3.</span>A los efectos previstos en el apartado anterior, la naturaleza de las prestaciones de la Seguridad Social será la siguiente:</p>
+<p><span class="epigrafe-letra">a)</span>Tienen naturaleza contributiva: 1.ª Las prestaciones económicas de la Seguridad Social, con excepción de las señaladas en la letra b) siguiente. 2.ª La totalidad de las prestaciones derivadas de las contingencias de accidentes de trabajo y enfermedades profesionales.</p>
+<p><span class="epigrafe-letra">b)</span>Tienen naturaleza no contributiva: 1.ª Las prestaciones y servicios de asistencia sanitaria incluidos en la acción protectora de la Seguridad Social y los correspondientes a los servicios sociales, salvo que se deriven de accidentes de trabajo y enfermedades profesionales. 2.ª Las pensiones no contributivas por invalidez y jubilación. 3.ª El subsidio por maternidad regulado en los artículos 181 y 182 de esta ley. 4.ª Los complementos por mínimos de las pensiones de la Seguridad Social. 5.ª Las prestaciones familiares reguladas en el capítulo I del título VI. 6.ª El ingreso mínimo vital.</p>
+</div>
+<div class="articulo-card" id="a110">
+  <div class="art-card-head"><span class="articulo">A110</span><span class="art-titulo-texto">Sistema financiero.</span><a class="return-link" href="T13_RecursosGenerales.html#s1" target="_blank" title="Volver al tema en este punto">↩ Tema 13</a></div>
+  <p><span class="epigrafe-num">1.</span>El sistema financiero de todos los regímenes que integran el sistema de la Seguridad Social será el de reparto, para todas las contingencias y situaciones amparadas por cada uno de ellos, sin perjuicio de lo previsto en el apartado 3.</p>
+<p><span class="epigrafe-num">2.</span>En la Tesorería General de la Seguridad Social <mark class="ctx-match">se constituirá un fondo de</mark> estabilización único para todo el sistema de la Seguridad Social, que tendrá por finalidad atender las necesidades originadas por desviaciones entre ingresos y gastos.</p>
+<p><span class="epigrafe-num">3.</span>En materia de pensiones causadas por incapacidad permanente o muerte derivadas de accidente de trabajo o enfermedad profesional cuya responsabilidad corresponda asumir a las mutuas colaboradoras con la Seguridad Social o, en su caso, a las empresas declaradas responsables, se procederá a la capitalización del importe de dichas pensiones, debiendo las entidades señaladas constituir en la Tesorería General de la Seguridad Social, hasta el límite de su respectiva responsabilidad, los capitales coste correspondientes. Por capital coste se entenderá el valor actual de dichas prestaciones, que se determinará en función de las características de cada pensión y aplicando los criterios técnicos- actuariales más apropiados, de forma que los importes que se obtengan garanticen la cobertura de las prestaciones con el grado de aproximación más adecuado y a cuyo efecto el Ministerio de Empleo y Seguridad Social aprobará las tablas de mortalidad y la tasa de interés aplicables.</p>
+<p>Asimismo, el Ministerio de Empleo y Seguridad Social podrá establecer la obligación de las mutuas colaboradoras con la Seguridad Social de reasegurar los riesgos asumidos que se determinen, a través de un régimen de reaseguro proporcional obligatorio y no proporcional facultativo o mediante cualquier otro sistema de compensación de resultados.</p>
+<p><span class="epigrafe-num">4.</span>Las materias a que se refiere el presente artículo serán reguladas por los reglamentos a que alude el <span class="art-tag-inline">art. 5.2.a)</span>.</p>
+</div>
+<div class="articulo-card" id="a111">
+  <div class="art-card-head"><span class="articulo">A111</span><span class="art-titulo-texto">Inversiones.</span><a class="return-link" href="T13_RecursosGenerales.html#s1" target="_blank" title="Volver al tema en este punto">↩ Tema 13</a></div>
+  <p>Las reservas de estabilización que no hayan de destinarse de modo inmediato al cumplimiento de las obligaciones reglamentarias serán invertidas de forma que se coordinen las finalidades de carácter social con la obtención del grado de liquidez, rentabilidad y seguridad técnicamente preciso.</p>
+</div>
+<div class="seccion-head"><h4>Sección 4.ª Fondo de reserva de la Seguridad Social</h4></div>
+<div class="articulo-card" id="a117">
+  <div class="art-card-head"><span class="articulo">A117</span><span class="art-titulo-texto">Constitución del Fondo de Reserva de la Seguridad Social.</span><a class="return-link" href="T13_RecursosGenerales.html#s4" target="_blank" title="Volver al tema en este punto">↩ Tema 13</a></div>
+  <p>En la Tesorería General de la Seguridad Social <mark class="ctx-match">se constituirá un Fondo de Reserva</mark> de la Seguridad Social <mark class="ctx-match">con la finalidad de atender las necesidades financieras en materia de prestaciones</mark> contributivas del sistema de la Seguridad Social en la forma y condiciones previstos en esta ley.</p>
+</div>
+<div class="articulo-card" id="a118">
+  <div class="art-card-head"><span class="articulo">A118</span><span class="art-titulo-texto">Dotación del Fondo.</span><a class="return-link" href="T13_RecursosGenerales.html#s4" target="_blank" title="Volver al tema en este punto">↩ Tema 13</a></div>
+  <p><span class="epigrafe-num">1.</span>Los <mark class="ctx-match">excedentes de ingresos que financian las prestaciones de carácter</mark> contributivo y demás gastos necesarios para su gestión que, en su caso, resulten de la consignación presupuestaria de cada ejercicio o de la liquidación presupuestaria del mismo se destinarán, siempre que las posibilidades económicas y la situación financiera del sistema de Seguridad Social lo permitan, al Fondo de Reserva de la Seguridad Social.</p>
+<p><span class="epigrafe-num">2.</span>De conformidad con lo dispuesto en el <span class="art-tag-inline">art. 96.3</span>, el excedente que resulte después <mark class="ctx-match">de dotar la Reserva de Estabilización de Contingencias Comunes</mark> de las mutuas colaboradoras con la Seguridad Social se ingresará en el Fondo de Reserva de la Seguridad Social.</p>
+<p><span class="epigrafe-num">3.</span>El importe correspondiente al porcentaje del excedente que resulte <mark class="ctx-match">de la gestión de</mark> las contingencias profesionales al que se refiere el <span class="art-tag-inline">art. 96.1.d)</span> se ingresará por las mutuas colaboradoras con la Seguridad Social en el Fondo de Reserva de la Seguridad Social.</p>
+<p><span class="epigrafe-num">4.</span>Los ingresos obtenidos <mark class="ctx-match">de la cotización finalista</mark> fijada en el <a class="art-tag-inline" href="#a127">art. 127 bis</a>. 1 se ingresarán en el Fondo de Reserva de la Seguridad Social.</p>
+</div>
+<div class="articulo-card" id="a119">
+  <div class="art-card-head"><span class="articulo">A119</span><span class="art-titulo-texto">Determinación del excedente y de la cotización finalista.</span><a class="return-link" href="T13_RecursosGenerales.html#s4" target="_blank" title="Volver al tema en este punto">↩ Tema 13</a></div>
+  <p><span class="epigrafe-num">1.</span>El excedente al que se refiere el <a class="art-tag-inline" href="#a118">art. 118.1</a> será el correspondiente a <mark class="ctx-match">las operaciones que financian prestaciones</mark> de carácter contributivo y demás gastos para la gestión del sistema de la Seguridad Social y, en concreto, en lo referente a las prestaciones</p>
+<p>contributivas, conforme a la delimitación establecida en el <a class="art-tag-inline" href="#a109">art. 109.3.a)</a>, con exclusión del resultado obtenido por las mutuas colaboradoras con la Seguridad Social y del importe líquido recaudado en concepto de cotización finalista, referida en el <a class="art-tag-inline" href="#a118">art. 118.4</a>.</p>
+<p><span class="epigrafe-num">2.</span>El excedente por gastos relativos a prestaciones de naturaleza contributiva del sistema de la Seguridad Social en cada ejercicio económico será el constituido por la diferencia entre los ingresos y gastos derivados de los importes reconocidos netos por operaciones no financieras, correspondientes a las entidades gestoras y servicios comunes de la Seguridad Social, corregida con arreglo a <mark class="ctx-match">criterios de máxima prudencia,</mark> en la forma que reglamentariamente se establezca, respetando los principios y normas de contabilidad establecidos en el Plan General de Contabilidad Pública.</p>
+<p><span class="epigrafe-num">3.</span>La cotización finalista es la establecida en el <a class="art-tag-inline" href="#a127">art. 127 bis.1</a>.</p>
+</div>
+<div class="articulo-card" id="a120">
+  <div class="art-card-head"><span class="articulo">A120</span><span class="art-titulo-texto">Procedimiento para la dotación del Fondo.</span><a class="return-link" href="T13_RecursosGenerales.html#s4" target="_blank" title="Volver al tema en este punto">↩ Tema 13</a></div>
+  <p><span class="epigrafe-num">1.</span>Las dotaciones efectivas del Fondo de Reserva de la Seguridad Social, siempre que las posibilidades económicas y la situación financiera del sistema lo permitan, serán las acordadas, <mark class="ctx-match">al menos una vez en cada ejercicio económico, por el Consejo de Ministros, a propuesta conjunta de</mark> las personas titulares de los Ministerios de <mark class="ctx-match">Inclusión, Seguridad Social y</mark> Migraciones, de <mark class="ctx-match">Asuntos Económicos y Transformación Digital</mark> y de Hacienda y Función Pública.</p>
+<p><span class="epigrafe-num">2.</span>El importe que se recaude en concepto de cotización finalista establecida en el <a class="art-tag-inline" href="#a127">art. 127 bis.1</a> se integrará automáticamente en las dotaciones del Fondo de Reserva de la Seguridad Social.</p>
+<p><span class="epigrafe-num">3.</span>Los rendimientos de cualquier naturaleza que generen la cuenta del Fondo de Reserva y los activos financieros en que se hayan materializado las dotaciones del Fondo de Reserva se integrarán automáticamente en las dotaciones del Fondo.</p>
+</div>
+<div class="articulo-card" id="a121">
+  <div class="art-card-head"><span class="articulo">A121</span><span class="art-titulo-texto">Disposición de activos del Fondo.</span><a class="return-link" href="T13_RecursosGenerales.html#s4" target="_blank" title="Volver al tema en este punto">↩ Tema 13</a></div>
+  <p><span class="epigrafe-num">1.</span>La disposición de los activos del Fondo de Reserva de la Seguridad Social se destinará <mark class="ctx-match">con carácter exclusivo a la financiación de</mark> las pensiones de carácter contributivo para reforzar el equilibrio y sostenibilidad del sistema de Seguridad Social.</p>
+<p><span class="epigrafe-num">2.</span>La Ley de Presupuestos Generales del Estado establecerá para cada ejercicio económico, desde 2033, el desembolso anual a efectuar por el Fondo de Reserva de la Seguridad Social, que consistirá en el porcentaje del PIB que se determine cada año con el límite máximo que se establece seguidamente:</p>
+<p>Desembolsos máximos del Fondo de Reserva de la Seguridad Social por año en puntos porcentuales del Producto Interior Bruto</p>
+<p>2033 <span class="pct-marca">0,10%</span> 2034 <span class="pct-marca">0,12%</span> 2035 <span class="pct-marca">0,15%</span> 2036 <span class="pct-marca">0,17%</span> 2037 <span class="pct-marca">0,19%</span> 2038 <span class="pct-marca">0,22%</span> 2039 <span class="pct-marca">0,25%</span> 2040 <span class="pct-marca">0,28%</span> 2041 <span class="pct-marca">0,46%</span> 2042 <span class="pct-marca">0,50%</span> 2043 <span class="pct-marca">0,54%</span> 2044 <span class="pct-marca">0,77%</span> 2045 <span class="pct-marca">0,82%</span> 2046 <span class="pct-marca">0,87%</span> 2047 <span class="pct-marca">0,91%</span> 2048 <span class="pct-marca">0,86%</span> 2049 <span class="pct-marca">0,84%</span> 2050 <span class="pct-marca">0,82%</span> 2051 <span class="pct-marca">0,53%</span> 2052 <span class="pct-marca">0,51%</span> 2053 <span class="pct-marca">0,50%</span></p>
+</div>
+<div class="articulo-card" id="a122">
+  <div class="art-card-head"><span class="articulo">A122</span><span class="art-titulo-texto">Gestión financiera del Fondo.</span><a class="return-link" href="T13_RecursosGenerales.html#s4" target="_blank" title="Volver al tema en este punto">↩ Tema 13</a></div>
+  <p>Los valores en que se materialice el Fondo de Reserva serán títulos emitidos por personas jurídicas públicas. Reglamentariamente se determinarán los valores que han de constituir la cartera del Fondo de Reserva, grados de liquidez de la misma, supuestos de enajenación de los activos financieros que lo integran y demás actos de gestión financiera del Fondo de Reserva.</p>
+</div>
+<div class="articulo-card" id="a123">
+  <div class="art-card-head"><span class="articulo">A123</span><span class="art-titulo-texto">Comité de Gestión del Fondo de Reserva de la Seguridad Social.</span><a class="return-link" href="T13_RecursosGenerales.html#s4" target="_blank" title="Volver al tema en este punto">↩ Tema 13</a></div>
+  <p><span class="epigrafe-num">1.</span>Al Comité de Gestión del Fondo de Reserva de la Seguridad Social le corresponde el superior asesoramiento, control y ordenación de la gestión económica del Fondo de Reserva.</p>
+<p><span class="epigrafe-num">2.</span>Dicho comité estará presidido por el Secretario de Estado de la Seguridad Social y se compondrá, además, de:</p>
+<p><span class="epigrafe-letra">a)</span>Un vicepresidente primero, que será el Secretario de Estado de Economía y Apoyo a la Empresa.</p>
+<p><span class="epigrafe-letra">b)</span>Un vicepresidente segundo, que será el Secretario de Estado de Presupuestos y Gastos.</p>
+<p><span class="epigrafe-letra">c)</span>El Director General de la Tesorería General de la Seguridad Social.</p>
+<p><span class="epigrafe-letra">d)</span>El Director General del Tesoro.</p>
+<p><span class="epigrafe-letra">e)</span>El Interventor General de la Seguridad Social.</p>
+<p><span class="epigrafe-letra">f)</span>El Subdirector General de Ordenación de Pagos y Gestión del Fondo de Reserva de la Tesorería General de la Seguridad Social, que ejercerá las funciones de secretario de la comisión, sin voz ni voto.</p>
+<p><span class="epigrafe-num">3.</span>Las funciones de este comité serán las de formular propuestas de ordenación, asesoramiento, selección de valores que han de constituir la cartera del fondo, enajenación de activos financieros que lo integren y demás actuaciones que los mercados financieros aconsejen y el control superior de la gestión del Fondo de Reserva de la Seguridad Social, así como elaborar el informe a presentar <mark class="ctx-match">a las Cortes Generales</mark> sobre la evolución de dicho Fondo.</p>
+</div>
+<div class="articulo-card" id="a124">
+  <div class="art-card-head"><span class="articulo">A124</span><span class="art-titulo-texto">Comisión Asesora de Inversiones del Fondo de Reserva de la Seguridad</span><a class="return-link" href="T13_RecursosGenerales.html#s4" target="_blank" title="Volver al tema en este punto">↩ Tema 13</a></div>
+  <p>Social.</p>
+<p><span class="epigrafe-num">1.</span>La Comisión Asesora de Inversiones del Fondo de Reserva de la Seguridad Social tendrá como función asesorar al Comité de Gestión del Fondo de Reserva de la Seguridad Social en orden a la selección de los valores que han de constituir la cartera del Fondo, formulación de propuestas de adquisición de activos y de enajenación de los mismos y demás actuaciones financieras del Fondo.</p>
+<p><span class="epigrafe-num">2.</span>Esta comisión estará presidida por el Secretario de Estado de Economía y Apoyo a la Empresa y estará compuesta, además, por:</p>
+<p><span class="epigrafe-letra">a)</span>El Director General de la Tesorería General de la Seguridad Social.</p>
+<p><span class="epigrafe-letra">b)</span>El Director General del Tesoro.</p>
+<p><span class="epigrafe-letra">c)</span>El Director General de Política Económica.</p>
+<p><span class="epigrafe-letra">d)</span>El Interventor General de la Seguridad Social.</p>
+<p><span class="epigrafe-letra">e)</span>El Subdirector General de Ordenación de Pagos y Gestión del Fondo de Reserva de la Tesorería General de la Seguridad Social, que ejercerá las funciones de secretario de la comisión, con voz pero sin voto.</p>
+</div>
+<div class="articulo-card" id="a125">
+  <div class="art-card-head"><span class="articulo">A125</span><span class="art-titulo-texto">Comisión de Seguimiento del Fondo de Reserva de la Seguridad Social.</span><a class="return-link" href="T13_RecursosGenerales.html#s4" target="_blank" title="Volver al tema en este punto">↩ Tema 13</a></div>
+  <p><span class="epigrafe-num">1.</span>El conocimiento de la evolución del Fondo de Reserva de la Seguridad Social corresponderá a la Comisión de Seguimiento del Fondo de Reserva de la Seguridad Social.</p>
+<p><span class="epigrafe-num">2.</span>Esta Comisión de Seguimiento estará presidida por el Secretario de Estado de la Seguridad Social o persona que el mismo designe y se compondrá, además, de:</p>
+<p><span class="epigrafe-letra">a)</span>Tres representantes del Ministerio de Empleo y Seguridad Social, designados por el Secretario de Estado de la Seguridad Social.</p>
+<p><span class="epigrafe-letra">b)</span>Un representante del Ministerio de Economía y Competitividad.</p>
+<p><span class="epigrafe-letra">c)</span>Un representante del Ministerio de Hacienda y Administraciones Públicas.</p>
+<p><span class="epigrafe-letra">d)</span>Cuatro representantes de las distintas organizaciones sindicales de mayor implantación.</p>
+<p><span class="epigrafe-letra">e)</span>Cuatro representantes de las organizaciones empresariales de mayor implantación.</p>
+<p><span class="epigrafe-letra">f)</span>El Subdirector General de Ordenación de Pagos y Gestión del Fondo de Reserva de la Tesorería General de la Seguridad Social actuará como secretario de la comisión, sin voz ni voto.</p>
+<p><span class="epigrafe-num">3.</span>La Comisión de Seguimiento conocerá semestralmente de la evolución y composición del Fondo de Reserva de la Seguridad Social, para lo cual el Comité de Gestión, la Comisión Asesora de Inversiones y la Tesorería General de la Seguridad Social facilitarán información sobre tales extremos con carácter previo a las reuniones que mantenga dicha comisión.</p>
+</div>
+<div class="articulo-card" id="a126">
+  <div class="art-card-head"><span class="articulo">A126</span><span class="art-titulo-texto">Carácter de las operaciones de gestión e imputación presupuestaria.</span><a class="return-link" href="T13_RecursosGenerales.html#s4" target="_blank" title="Volver al tema en este punto">↩ Tema 13</a></div>
+  <p>Las materializaciones, inversiones, reinversiones, desinversiones y demás operaciones de adquisición, disposición y gestión de los activos financieros del Fondo de Reserva de la Seguridad Social correspondientes a cada ejercicio tendrán <mark class="ctx-match">carácter extrapresupuestario y se</mark> imputarán definitivamente, <mark class="ctx-match">al último día hábil del</mark> mismo, <mark class="ctx-match">al presupuesto de la</mark> Tesorería General de la Seguridad Social, conforme a la situación patrimonial del Fondo en dicha fecha, a cuyo efecto serán objeto de adecuación los créditos presupuestarios.</p>
+</div>
+<div class="articulo-card" id="a127">
+  <div class="art-card-head"><span class="articulo">A127</span><span class="art-titulo-texto">Informe anual.</span><a class="return-link" href="T13_RecursosGenerales.html#s4" target="_blank" title="Volver al tema en este punto">↩ Tema 13</a></div>
+  <p>El Gobierno presentará <mark class="ctx-match">a las Cortes Generales</mark> un informe anual sobre la evolución y composición del Fondo de Reserva de la Seguridad Social. Dicho informe será remitido por el Gobierno a las Cortes Generales a través de su Oficina Presupuestaria que lo pondrá a disposición de los Diputados, Senadores y las Comisiones parlamentarias.</p>
+</div>
+<div class="seccion-head"><h4>Sección 5.ª Mecanismo de Equidad Intergeneracional</h4></div>
+<div class="articulo-card" id="a127bis">
+  <div class="art-card-head"><span class="articulo">A127 bis</span><span class="art-titulo-texto">Mecanismo de Equidad Intergeneracional.</span><a class="return-link" href="T13_RecursosGenerales.html#s4" target="_blank" title="Volver al tema en este punto">↩ Tema 13</a></div>
+  <p><span class="epigrafe-num">1.</span>Con el fin de preser<mark class="ctx-match">var el equilibrio entr</mark>e generaciones y fortalecer la sostenibilidad del sistema de la Seguridad Social a largo plazo, se establece un Mecanismo de Equidad Intergeneracional consistente en una cotización finalista aplicable en todos los regímenes y en todos los supuestos en los que se cotice por la contingencia de jubilación, que no será computable a efectos de prestaciones y que nutrirá el Fondo de Reserva de la Seguridad Social. La cotización será de 1,2 puntos porcentuales. En el supuesto de trabajadores por cuenta ajena un punto porcentual corresponderá a la empresa y 0,2 puntos porcentuales al trabajador. En el caso de que se modifique la estructura de distribución de la cotización entre empresa y trabajador por contingencias comunes esta cotización finalista se ajustará a la nueva estructura.</p>
+<p><span class="epigrafe-num">2.</span>La cotización adicional finalista que nutrirá el Fondo de Reserva de la Seguridad Social no podrá ser objeto de bonificación, reducción, exención o deducción alguna. De igual forma no podrá ser objeto de disminución por la aplicación de coeficientes u otra fórmula que disminuya la cotización ni por cualquier otras variables que puedan resultar de aplicación respecto de las aportaciones empresariales o de los trabajadores, en función de las condiciones de cotización aplicables a los mismos por su inclusión en cualesquiera de los regímenes y sistemas especiales de la Seguridad Social, o en función de las situaciones de alta o asimilada al alta que determine la obligación de ingreso de cuotas, así como del sujeto responsable del ingreso de las mismas, salvo lo previsto para los trabajadores de los grupos segundo y tercero del <span class="art-tag-inline">art. 10</span> de la <span class="ley-num">Ley 47/2015</span>, de 21 de octubre, reguladora de la protección social de las personas trabajadoras del sector marítimo-pesquero.</p>
+</div>
+<footer class="foot-note">
+  Destino Funcionario · Tema 13 · Anexo de artículos LGSS en su literalidad · Preparado por Antonio para la oposición de Administrativo de la Seguridad Social 2026/2027 · No es material oficial.
+</footer>
+
+<div class="bottom-nav">
+  <a href="../index.html">← Volver al índice</a>
+  <a href="T13_RecursosGenerales.html">← Volver al Tema 13</a>
+</div>
+
+</div>
+</body>
+</html>
