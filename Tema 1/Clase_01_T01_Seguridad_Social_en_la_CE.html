@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T1 - La Seguridad Social en la Constitución</title>
+<style>
+  :root{
+    --bg:#0f1419;
+    --bg-card:#1a2129;
+    --bg-card2:#1e2730;
+    --border:#2a3540;
+    --text:#e2e8ec;
+    --text-dim:#93a3af;
+    --green:#4ade80;
+    --green-dim:#1f3a2a;
+    --yellow:#facc15;
+    --yellow-dim:#3a3320;
+    --orange:#fb923c;
+    --orange-dim:#3a2a1a;
+    --red:#f87171;
+    --red-dim:#3a1f24;
+    --blue:#60a5fa;
+    --blue-dim:#1a2a3a;
+    --purple:#c084fc;
+    --purple-dim:#2a1f3a;
+  }
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    line-height:1.6;
+    margin:0;
+    padding:0;
+  }
+  .container{max-width:900px;margin:0 auto;padding:24px 18px 80px;}
+  header{
+    text-align:center;
+    padding:28px 16px;
+    background:linear-gradient(135deg,#153a2a,#0f1419);
+    border-bottom:3px solid var(--green);
+    margin-bottom:28px;
+  }
+  header .tag{
+    display:inline-block;
+    background:var(--green);
+    color:#0f1419;
+    font-weight:700;
+    padding:4px 14px;
+    border-radius:20px;
+    font-size:0.85em;
+    margin-bottom:10px;
+    letter-spacing:0.5px;
+  }
+  header h1{margin:6px 0 4px;font-size:1.6em;color:#fff;}
+  header p{color:var(--text-dim);margin:0;font-size:0.9em;}
+
+  h2{
+    color:var(--green);
+    border-bottom:2px solid var(--border);
+    padding-bottom:8px;
+    margin-top:44px;
+    font-size:1.3em;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  h2 .num{
+    background:var(--green);
+    color:#0f1419;
+    width:30px;height:30px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:0.7em;font-weight:800;
+    flex-shrink:0;
+  }
+  h3{color:#fff;font-size:1.08em;margin-top:26px;border-left:4px solid var(--blue);padding-left:10px;}
+
+  .card{
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:16px 18px;
+    margin:14px 0;
+  }
+
+  /* memoriza 100% */
+  .memoriza{
+    background:var(--red-dim);
+    border:2px solid var(--red);
+    border-radius:10px;
+    padding:16px 18px;
+    margin:16px 0;
+    position:relative;
+  }
+  .memoriza::before{
+    content:"🔴 MEMORIZAR 100%";
+    display:block;
+    color:var(--red);
+    font-weight:800;
+    font-size:0.78em;
+    letter-spacing:1px;
+    margin-bottom:8px;
+  }
+
+  /* trampa de examen */
+  .trampa{
+    background:var(--orange-dim);
+    border:2px solid var(--orange);
+    border-radius:10px;
+    padding:14px 18px;
+    margin:16px 0;
+  }
+  .trampa::before{
+    content:"⚠️ TRAMPA DE EXAMEN";
+    display:block;
+    color:var(--orange);
+    font-weight:800;
+    font-size:0.78em;
+    letter-spacing:1px;
+    margin-bottom:8px;
+  }
+
+  /* mnemotecnia */
+  .mnemo{
+    background:var(--purple-dim);
+    border:2px solid var(--purple);
+    border-radius:10px;
+    padding:14px 18px;
+    margin:16px 0;
+  }
+  .mnemo::before{
+    content:"🧠 MNEMOTECNIA";
+    display:block;
+    color:var(--purple);
+    font-weight:800;
+    font-size:0.78em;
+    letter-spacing:1px;
+    margin-bottom:8px;
+  }
+
+  /* dato clave */
+  .dato{
+    background:var(--blue-dim);
+    border-left:4px solid var(--blue);
+    border-radius:6px;
+    padding:12px 16px;
+    margin:14px 0;
+    font-size:0.95em;
+  }
+  .dato strong{color:var(--blue);}
+
+  /* conexion */
+  .conexion{
+    background:var(--green-dim);
+    border:1px dashed var(--green);
+    border-radius:8px;
+    padding:12px 16px;
+    margin:14px 0;
+    font-size:0.92em;
+  }
+  .conexion .titulo{color:var(--green);font-weight:700;font-size:0.85em;margin-bottom:6px;}
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:14px 0;
+    font-size:0.9em;
+    background:var(--bg-card2);
+    border-radius:8px;
+    overflow:hidden;
+  }
+  th{
+    background:#233039;
+    color:var(--green);
+    text-align:left;
+    padding:10px 12px;
+    font-size:0.85em;
+    text-transform:uppercase;
+    letter-spacing:0.4px;
+  }
+  td{
+    padding:9px 12px;
+    border-top:1px solid var(--border);
+  }
+  tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+
+  .badge{
+    display:inline-block;
+    padding:2px 10px;
+    border-radius:20px;
+    font-size:0.78em;
+    font-weight:700;
+  }
+  .b-green{background:var(--green-dim);color:var(--green);border:1px solid var(--green);}
+  .b-yellow{background:var(--yellow-dim);color:var(--yellow);border:1px solid var(--yellow);}
+  .b-orange{background:var(--orange-dim);color:var(--orange);border:1px solid var(--orange);}
+  .b-red{background:var(--red-dim);color:var(--red);border:1px solid var(--red);}
+  .b-blue{background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue);}
+
+  ul{padding-left:22px;}
+  li{margin:5px 0;}
+  .articulo{
+    color:#fff;
+    font-weight:700;
+    background:#233039;
+    padding:1px 8px;
+    border-radius:4px;
+    font-size:0.9em;
+  }
+
+  /* Fichas unificadas de nivel (extensión+gestión+financiación+prestaciones) */
+  .nivel-ficha{
+    border-radius:12px;
+    padding:16px 18px;
+    margin:16px 0;
+    border:1px solid var(--border);
+  }
+  .nivel-ficha.basico{background:var(--blue-dim);border-color:var(--blue);}
+  .nivel-ficha.profesional{background:var(--green-dim);border-color:var(--green);}
+  .nivel-ficha.complementario{background:var(--purple-dim);border-color:var(--purple);}
+
+  .nf-head{
+    font-weight:800;
+    font-size:1.08em;
+    margin-bottom:10px;
+    color:#fff;
+  }
+  .nf-head span{font-weight:600;font-size:0.75em;color:var(--text-dim);}
+
+  .nf-table{
+    background:rgba(0,0,0,0.15);
+    border-radius:8px;
+    margin:0 0 12px;
+    overflow:hidden;
+    display:block;
+    width:100%;
+  }
+  .nf-row{
+    display:flex;
+    flex-wrap:wrap;
+    padding:8px 10px;
+    font-size:0.87em;
+    border-top:1px solid rgba(255,255,255,0.06);
+  }
+  .nf-row:first-child{border-top:none;}
+  .nf-row:nth-child(even){background:rgba(255,255,255,0.03);}
+  .nf-label{
+    font-weight:700;
+    color:var(--text-dim);
+    flex:0 0 100px;
+    font-size:0.78em;
+    text-transform:uppercase;
+    letter-spacing:0.3px;
+    padding-right:8px;
+  }
+  .nf-value{flex:1 1 180px;}
+
+  .nf-prest{font-size:0.88em;}
+  .nf-prest ul{margin:6px 0 0;padding-left:20px;}
+  .nf-prest li{margin:4px 0;}
+
+  /* Mini test */
+  .quiz-box{
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:16px;
+    margin:16px 0;
+  }
+  .quiz-q{font-weight:600;margin-bottom:10px;color:#fff;}
+  .quiz-opt{
+    display:block;
+    width:100%;
+    text-align:left;
+    background:var(--bg-card2);
+    border:1px solid var(--border);
+    color:var(--text);
+    padding:10px 14px;
+    border-radius:8px;
+    margin:6px 0;
+    cursor:pointer;
+    font-size:0.92em;
+    transition:all 0.15s;
+  }
+  .quiz-opt:hover{border-color:var(--blue);}
+  .quiz-opt.correct{background:var(--green-dim);border-color:var(--green);color:var(--green);font-weight:700;}
+  .quiz-opt.incorrect{background:var(--red-dim);border-color:var(--red);color:var(--red);}
+  .quiz-feedback{margin-top:10px;font-size:0.88em;padding:8px 12px;border-radius:6px;display:none;}
+  .quiz-feedback.show{display:block;}
+  .quiz-feedback.ok{background:var(--green-dim);color:var(--green);}
+  .quiz-feedback.bad{background:var(--red-dim);color:var(--red);}
+
+  /* MAPA MENTAL */
+  .mindmap{
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:20px 16px;
+    margin:20px 0 30px;
+  }
+  .mm-root{
+    text-align:center;
+    background:linear-gradient(135deg,#153a2a,#1e2730);
+    border:2px solid var(--green);
+    border-radius:10px;
+    padding:12px;
+    font-weight:800;
+    color:#fff;
+    margin-bottom:18px;
+    font-size:1.05em;
+  }
+  .mm-root span{display:block;font-size:0.72em;font-weight:600;color:var(--text-dim);margin-top:2px;}
+
+  .mm-branch{
+    border-left:3px solid var(--border);
+    margin-left:14px;
+    padding-left:16px;
+    margin-bottom:18px;
+  }
+  .mm-branch-title{
+    display:inline-block;
+    font-weight:800;
+    padding:5px 12px;
+    border-radius:6px;
+    font-size:0.88em;
+    margin-bottom:10px;
+  }
+  .mm-a41{background:var(--red-dim);color:var(--red);border:1px solid var(--red);}
+  .mm-arts{background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue);}
+  .mm-lgss{background:var(--orange-dim);color:var(--orange);border:1px solid var(--orange);}
+
+  .mm-niveles{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:8px;
+    margin:8px 0;
+  }
+  @media(min-width:600px){.mm-niveles{grid-template-columns:1fr 1fr 1fr;}}
+  .mm-nivel{
+    border-radius:8px;
+    padding:10px 12px;
+    font-size:0.82em;
+    border:1px solid var(--border);
+  }
+  .mm-nivel b{display:block;margin-bottom:4px;font-size:0.95em;}
+  .mm-nivel.b{background:var(--blue-dim);border-color:var(--blue);}
+  .mm-nivel.b b{color:var(--blue);}
+  .mm-nivel.g{background:var(--green-dim);border-color:var(--green);}
+  .mm-nivel.g b{color:var(--green);}
+  .mm-nivel.p{background:var(--purple-dim);border-color:var(--purple);}
+  .mm-nivel.p b{color:var(--purple);}
+
+  .mm-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;}
+  .mm-tag{
+    background:var(--bg-card2);
+    border:1px solid var(--border);
+    border-radius:6px;
+    padding:4px 9px;
+    font-size:0.78em;
+    color:var(--text);
+    white-space:nowrap;
+  }
+  .mm-tag b{color:#fff;}
+  .mm-tag.hot{border-color:var(--red);color:var(--red);}
+  .mm-tag.hot b{color:var(--red);}
+
+  .mm-titulos{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:6px;
+    margin-top:8px;
+  }
+  @media(min-width:600px){.mm-titulos{grid-template-columns:1fr 1fr;}}
+  .mm-titulo-item{
+    background:var(--bg-card2);
+    border:1px solid var(--border);
+    border-radius:6px;
+    padding:7px 10px;
+    font-size:0.8em;
+    display:flex;
+    gap:8px;
+    align-items:baseline;
+  }
+  .mm-titulo-item .rn{
+    color:var(--orange);
+    font-weight:800;
+    flex-shrink:0;
+    min-width:22px;
+  }
+  .mm-titulo-item.hl{border-color:var(--green);background:var(--green-dim);}
+  .mm-titulo-item.hl .rn{color:var(--green);}
+
+  /* Voz del profesor (clase en audio) */
+  .voz-profe{
+    background:linear-gradient(135deg,rgba(96,165,250,0.08),rgba(26,33,41,0.4));
+    border:1px solid var(--blue);
+    border-left:4px solid var(--blue);
+    border-radius:8px;
+    padding:14px 18px;
+    margin:16px 0;
+    font-size:0.92em;
+  }
+  .voz-profe::before{
+    content:"🎙️ EN LA CLASE, EL PROFESOR EXPLICA...";
+    display:block;
+    color:var(--blue);
+    font-weight:800;
+    font-size:0.72em;
+    letter-spacing:0.6px;
+    margin-bottom:8px;
+  }
+
+  .examen-real{
+    background:var(--bg-card2);
+    border:1px dashed var(--text-dim);
+    border-radius:8px;
+    padding:14px 18px;
+    margin:16px 0;
+    font-size:0.9em;
+  }
+  .examen-real::before{
+    content:"📝 EJEMPLO TIPO EXAMEN";
+    display:block;
+    color:#fff;
+    font-weight:800;
+    font-size:0.72em;
+    letter-spacing:0.6px;
+    margin-bottom:8px;
+  }
+
+  .mm-nota{
+    font-size:0.78em;
+    color:var(--text-dim);
+    margin-top:6px;
+    font-style:italic;
+  }
+
+  .progress-bar{
+    background:var(--bg-card2);
+    border-radius:20px;
+    height:8px;
+    overflow:hidden;
+    margin:10px 0 30px;
+  }
+  .progress-fill{background:var(--green);height:100%;border-radius:20px;}
+
+  .toc{
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:16px 20px;
+    margin-bottom:20px;
+  }
+  .toc a{color:var(--blue);text-decoration:none;display:block;padding:4px 0;font-size:0.92em;}
+  .toc a:hover{text-decoration:underline;}
+
+  footer{
+    text-align:center;
+    color:var(--text-dim);
+    font-size:0.8em;
+    margin-top:50px;
+    padding-top:20px;
+    border-top:1px solid var(--border);
+  }
+  /* Outline colapsable — repaso en un vistazo */
+  .outline details{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:12px 16px;margin-bottom:10px;transition:all 0.25s ease;}
+  .outline details[open]{border-color:var(--green);box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+  .outline summary{font-weight:700;cursor:pointer;color:var(--text);}
+  .outline summary::marker{color:var(--green);}
+  .outline details[open]>summary{color:var(--green);margin-bottom:10px;}
+  .outline .sub{margin-left:18px;margin-top:8px;}
+  .outline .sub details{background:var(--bg-card2);}
+  .outline ul{list-style-type:square;padding-left:20px;color:var(--text-dim);margin:6px 0 0;}
+  .outline li{margin:5px 0;font-size:0.92em;}
+  .outline strong.grupo{display:block;color:var(--blue);font-size:0.85em;margin:10px 0 2px;}
+
+  /* Flashcards Anki */
+  .anki-block{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:20px;margin:0 auto;max-width:480px;text-align:center;}
+  #deckSelect{width:100%;padding:8px 10px;margin-bottom:10px;background:var(--bg-card2);color:var(--text);border:1px solid var(--border);border-radius:8px;font-size:0.9em;}
+  #progress{font-size:0.85em;color:var(--text-dim);margin-bottom:10px;}
+  .flip-card{margin:0 auto;width:100%;max-width:440px;height:150px;perspective:1000px;cursor:pointer;}
+  .flip-card-inner{width:100%;height:100%;position:relative;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);transform-style:preserve-3d;}
+  .flip-card.flipped .flip-card-inner{transform:rotateY(180deg);}
+  .flip-card-front,.flip-card-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:14px;padding:22px;display:flex;justify-content:center;align-items:center;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,0.25);font-size:19px;}
+  .flip-card-front{background:var(--bg-card2);border:2px dashed var(--blue);color:var(--text);font-weight:600;}
+  .flip-card-back{background:var(--green);color:#0f1419;transform:rotateY(180deg);font-weight:700;line-height:1.5;}
+  #done{padding:20px;font-size:18px;font-weight:700;color:var(--green);}
+  .art-link{color:inherit;border-bottom:1px dotted var(--green);text-decoration:none;cursor:pointer;}
+  .art-link:hover{background:rgba(46,204,135,.12);border-bottom-style:solid;}
+
+  .click-reveal{
+    cursor:pointer; border-bottom:2px dotted var(--green); border-radius:3px; padding:0 2px;
+    transition:background .15s;
+  }
+  .click-reveal:hover{background:rgba(46,204,135,.10);}
+  .click-reveal.active{background:rgba(46,204,135,.18); border-bottom-style:solid;}
+  .popup-emergente{
+    display:none; margin-top:8px; padding:12px 16px; background:var(--bg-card2);
+    border-left:3px solid var(--green); border-radius:0 8px 8px 0; font-size:.86em;
+    font-style:italic; color:var(--text-dim,#9ab); line-height:1.5;
+  }
+  .popup-emergente.show{display:block; animation:popIn .25s ease;}
+  @keyframes popIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+<div class="container">
+<a href="../index.html" style="display:inline-block;margin-bottom:20px;padding:8px 16px;background:#232937;border:1px solid #2c3341;border-radius:8px;color:#2ecc87;text-decoration:none;font-size:0.85rem;font-weight:600;">← Volver al índice</a>
+
+  <header>
+    <span class="tag">T1 · Parte Específica Seg-Soc</span>
+    <h1>La Seguridad Social en la Constitución</h1>
+    <p>Dificultad 1/5 · Peso 1,47% de la parte específica · Distinguido</p>
+  </header>
+
+  <div class="toc">
+    <a href="#mapa">🗺️ Mapa mental del tema</a>
+    <a href="#bloque1">📘 1. Artículos y niveles de la Seguridad Social (A41)</a>
+    <a href="#bloque2">📗 2. Otros artículos de la CE relacionados con la SS</a>
+    <a href="#bloque3">📙 3. El texto refundido de la LGSS (RDL 8/2015)</a>
+    <a href="#bloque4">📕 4. Prestaciones familiares: contributivas vs N/C</a>
+    <a href="#quiz">✅ Mini-test</a>
+  </div>
+
+  <div class="dato">
+    <strong>Contexto del tema:</strong> Este tema se solapa con lo que ya estudiaste de Constitución en la parte común. El foco aquí es identificar TODO lo que la CE dice sobre Seguridad Social. En 2024 cayeron 3 preguntas y en 2025, 2 preguntas — nunca ha caído en el supuesto práctico.
+  </div>
+
+  <table>
+    <tr><th>Examen</th><th>Preguntas 1ª parte</th><th>Supuesto práctico</th></tr>
+    <tr><td>2024</td><td>3</td><td>—</td></tr>
+    <tr><td>2025</td><td>2</td><td>—</td></tr>
+  </table>
+
+  <!-- MAPA MENTAL -->
+  <h2 id="mapa"><span class="num">🗺️</span>Mapa mental del tema</h2>
+  <p style="font-size:0.88em;color:var(--text-dim);margin-top:-6px;">Vista de conjunto antes de entrar en el detalle. Todo el tema gira en torno a un único artículo (A41) y una única norma (LGSS).</p>
+
+  <div class="mindmap">
+
+    <div class="mm-root">
+      CONSTITUCIÓN ESPAÑOLA (1978)
+      <span>Ampara al ciudadano en materia de Seguridad Social</span>
+    </div>
+
+    <!-- Rama A41 -->
+    <div class="mm-branch">
+      <span class="mm-branch-title mm-a41">🔴 A41 CE — Eje central (memorizar 100%)</span>
+      <div class="mm-nota">"Poderes públicos · todos los ciudadanos · situaciones de necesidad · especialmente desempleo · asistencia complementaria libre"</div>
+      <div class="mm-niveles">
+        <div class="mm-nivel b">
+          <b>🔵 Básico</b>
+          Todos los ciudadanos · Gestión pública · Financia PGE
+        </div>
+        <div class="mm-nivel g">
+          <b>🟢 Profesional</b>
+          Trabajadores · Gestión pública+MUTUAS · Financia cuotas SS
+        </div>
+        <div class="mm-nivel p">
+          <b>🟣 Complementario</b>
+          Voluntario · Gestión pública/privada · Financia partícipes
+        </div>
+      </div>
+    </div>
+
+    <!-- Rama otros artículos -->
+    <div class="mm-branch">
+      <span class="mm-branch-title mm-arts">🔵 Otros artículos CE relacionados</span>
+      <div class="mm-tags">
+        <span class="mm-tag"><b>A25</b> reclusos→SS</span>
+        <span class="mm-tag"><b>A39</b> familia/infancia</span>
+        <span class="mm-tag"><b>A40</b> renta/pleno empleo</span>
+        <span class="mm-tag hot"><b>A41</b> Seg. Social</span>
+        <span class="mm-tag"><b>A42</b> emigrantes</span>
+        <span class="mm-tag"><b>A43</b> salud</span>
+        <span class="mm-tag"><b>A49</b> discapacidad</span>
+        <span class="mm-tag"><b>A50</b> tercera edad (PAPA/VOCS)</span>
+        <span class="mm-tag"><b>A129</b> participación (Tít. VII) — juez de Viena/Danubio</span>
+        <span class="mm-tag"><b>A148.20-21</b> CCAA</span>
+        <span class="mm-tag hot"><b>A149.17</b> Estado</span>
+      </div>
+    </div>
+
+    <!-- Rama LGSS -->
+    <div class="mm-branch">
+      <span class="mm-branch-title mm-lgss">🟠 LGSS — RD Legislativo 8/2015</span>
+      <div class="mm-nota">373 artículos · 61 disp. adicionales + 45 transitorias + 8 finales</div>
+      <div class="mm-titulos">
+        <div class="mm-titulo-item"><span class="rn">I</span> Normas generales del sistema</div>
+        <div class="mm-titulo-item hl"><span class="rn">II</span> Régimen General (RG) — prestaciones</div>
+        <div class="mm-titulo-item"><span class="rn">III</span> Protección por desempleo</div>
+        <div class="mm-titulo-item"><span class="rn">IV</span> RETA (autónomos) + SETA</div>
+        <div class="mm-titulo-item"><span class="rn">V</span> Protección por cese de actividad</div>
+        <div class="mm-titulo-item"><span class="rn">VI</span> Prestaciones no contributivas</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="conexion">
+    <div class="titulo">🧭 Cómo usar este mapa</div>
+    Primero fija el <strong>A41</strong> con sus 3 niveles — es el árbol genealógico de todo lo demás. Después, el resto de artículos CE son "menciones sueltas" a la SS desde otros derechos (familia, salud, discapacidad...). Por último, la <strong>LGSS</strong> es donde ese mandato constitucional se desarrolla en detalle: el Título II concentra casi todas las prestaciones que estudiarás en los próximos temas.
+  </div>
+
+  <!-- BLOQUE 1 -->
+  <h2 id="bloque1"><span class="num">1</span>Artículos y niveles de la Seguridad Social</h2>
+
+  <div class="mnemo">
+    🚀 <strong>Fichero numérico — gancho para el número del artículo:</strong><br>
+    La palabra <strong>COHETE</strong> codifica el 41: <strong>C</strong> = 4, <strong>T</strong> = 1 → <strong>41</strong>.<br>
+    Imagina un cohete despegando para representar la Seguridad Social — así, cuando pienses "artículo sobre Seguridad Social", el cohete te devuelve directamente el número 41.
+  </div>
+
+  <div class="memoriza">
+    <strong>Artículo 41 CE</strong> (el más importante de todo el tema):<br><br>
+    "Los <strong>poderes públicos</strong> mantendrán un régimen público de Seguridad Social para <strong>todos los ciudadanos</strong>, que garantice la asistencia y prestaciones sociales suficientes <strong>ante situaciones de necesidad</strong>, especialmente en caso de <strong>desempleo</strong>. La asistencia y prestaciones complementarias <strong>serán libres</strong>."
+  </div>
+
+  <p>De este único artículo se extraen los <strong>tres niveles de protección</strong> del sistema: básico, profesional y complementario.</p>
+
+  <div class="mnemo">
+    Localiza cada nivel dentro del propio texto del A41:<br>
+    <ul>
+      <li><span class="badge b-blue">Básico</span> → "para todos los ciudadanos (...) ante situaciones de necesidad"</li>
+      <li><span class="badge b-green">Profesional</span> → "especialmente en caso de desempleo"</li>
+      <li><span class="badge b-purple">Complementario</span> → "la asistencia y prestaciones complementarias serán libres"</li>
+    </ul>
+  </div>
+
+  <div class="examen-real">
+    <strong>Pregunta tipo:</strong> "¿Quién mantendrá un régimen público de Seguridad Social de acuerdo al artículo 41 de la Constitución Española?"<br>
+    Respuesta correcta: <strong>los poderes públicos</strong>.<br>
+    <span style="color:var(--text-dim);">Distractores habituales: Gobierno, Consejo de Ministros, Seguridad Social (como sujeto), el Estado a secas. Si no dominas la literalidad exacta, cualquiera de estos "suena" plausible.</span>
+  </div>
+
+  <div class="voz-profe">
+    Otra variante de trampa: te dan el párrafo entero del A41 pero cambiado — por ejemplo "régimen <em>privado</em>" en vez de "público", o sustituyendo una palabra clave. La única defensa es haber leído el artículo tantas veces que cualquier desviación "te chirríe" al leerla, sin tener que razonarlo.
+  </div>
+
+  <div class="dato">
+    <strong>Concepto clave — "hecho causante":</strong> es el suceso concreto que activa el derecho a una prestación (nace un hijo, falleces, enfermas, pierdes el empleo...). Este término reaparece en prácticamente todos los temas de prestaciones — cada prestación que estudies tendrá su propio hecho causante, requisitos, cuantía y tramitación.
+  </div>
+
+  <div class="voz-profe">
+    <strong>Otra categorización distinta, transversal a todo lo anterior — Pensión vs. Prestación</strong> (según la duración del pago, no según el nivel ni la modalidad):
+    <ul>
+      <li><strong>Pensión</strong> → carácter <strong>vitalicio</strong>. Se cobra mes a mes hasta que se extinga (normalmente por fallecimiento del pensionista, o por incumplir un requisito como perder la residencia legal en España).</li>
+      <li><strong>Prestación</strong> → carácter <strong>temporal</strong>. Puede ser un pago único (a tanto alzado) o un pago periódico limitado en el tiempo, pero con fecha de fin.</li>
+    </ul>
+    Ojo: la LGSS no es muy homogénea usando estos términos — el Título VI se llama "Prestaciones no contributivas" pero dentro incluye tanto pensiones (jubilación N/C, incapacidad N/C) como prestaciones propiamente dichas. El profesor avisa que esta clasificación es poco preguntable porque no está regulada explícitamente en la ley — es más bien cultura general para entender el vocabulario, no una lista para memorizar.
+  </div>
+
+  <div class="trampa">
+    No asumas que "no contributiva" significa "solo para quien no trabaja". Un trabajador también puede acceder a una prestación no contributiva si no cumple los requisitos de la contributiva (p. ej. no ha cotizado lo suficiente) — siempre que cumpla, eso sí, los requisitos propios de la modalidad no contributiva (p. ej. la jubilación N/C exige 10 años de residencia legal en España, precisamente para evitar que cualquiera venga a jubilarse aquí sin haber cotizado).
+  </div>
+
+  <h3>Quién gestiona y quién recauda</h3>
+  <div class="card">
+    <p style="font-size:0.9em;">Dentro de la gestión pública del nivel profesional (y en general del sistema), el Ministerio se apoya en dos pilares:</p>
+    <ul style="font-size:0.9em;">
+      <li><strong>INSS</strong> (Instituto Nacional de la Seguridad Social) → <strong>entidad gestora</strong>: paga y gestiona las prestaciones (nacimiento y cuidado del menor, jubilación, incapacidad temporal, incapacidad permanente...)</li>
+      <li><strong>TGSS</strong> (Tesorería General de la Seguridad Social) → <strong>entidad recaudadora</strong>: recauda los recursos económicos del sistema (principalmente cuotas, pero también otras muchas fuentes listadas en el Reglamento General de Recaudación)</li>
+    </ul>
+  </div>
+
+  <div class="voz-profe">
+    Las <strong>MUTUAS colaboradoras de la SS</strong> (también llamadas Mutuas de AT y EP) cubren, por participación en el nivel profesional, principalmente las <strong>contingencias profesionales</strong> (accidente de trabajo y enfermedad profesional). Si el accidente ocurre en tu centro de trabajo, es AT; si ocurre por la calle un sábado, no lo es. Si la mutua cubre esa contingencia, es ella quien paga la prestación (p. ej. incapacidad temporal derivada de AT); si la cubre el INSS directamente, paga el INSS.
+  </div>
+
+  <h3>La matriz original: niveles × aspectos</h3>
+  <p style="font-size:0.88em;color:var(--text-dim);margin-top:-6px;">Así es como lo construye el profesor: primero fija los 3 niveles, y luego los recorre 4 veces — una por cada aspecto (extensión, gestión, financiación, prestaciones). Esta es la vista transversal, útil para preguntas tipo "¿cómo se financian los tres niveles?".</p>
+
+  <table>
+    <tr><th>Aspecto</th><th>🔵 Básico</th><th>🟢 Profesional</th><th>🟣 Complementario</th></tr>
+    <tr>
+      <td><strong>Extensión</strong></td>
+      <td>Todos los ciudadanos</td>
+      <td>Solo población trabajadora</td>
+      <td>Voluntario</td>
+    </tr>
+    <tr>
+      <td><strong>Gestión</strong></td>
+      <td>Exclusivamente pública</td>
+      <td>Pública + MUTUAS</td>
+      <td>Pública o privada</td>
+    </tr>
+    <tr>
+      <td><strong>Financiación</strong></td>
+      <td>PGE (salvo Asist. Sanitaria/CCAA)</td>
+      <td>Cuotas SS (trabajadores+empleadores)</td>
+      <td>Aportación de partícipes</td>
+    </tr>
+    <tr>
+      <td><strong>Prestaciones</strong> (resumen)</td>
+      <td>Asist. sanitaria, pensiones N/C, IMV, desempleo asistencial</td>
+      <td>AT/EP, IT/IP contributiva, jubilación contributiva, desempleo</td>
+      <td>Mejoras voluntarias, planes de pensiones</td>
+    </tr>
+  </table>
+
+  <div class="conexion">
+    <div class="titulo">🧭 Dos vistas, un mismo contenido</div>
+    Esta matriz es el <strong>marco teórico original</strong> (eje aspecto → eje nivel). Las fichas de abajo son la <strong>misma información reorganizada</strong> (eje nivel → eje aspecto), pensada para memorizar cada nivel de un solo vistazo. Domina ambas: el examen puede preguntar "de forma vertical" (todo sobre un nivel) o "de forma horizontal" (un mismo aspecto comparado entre los tres niveles).
+  </div>
+
+  <h3>Los tres niveles — ficha unificada</h3>
+  <p style="font-size:0.88em;color:var(--text-dim);margin-top:-6px;">Misma información que la matriz de arriba, reagrupada por nivel para estudiar cada uno de una sola vez.</p>
+
+  <div class="nivel-ficha basico">
+    <div class="nf-head">🔵 Nivel Básico <span>(Asistencial)</span></div>
+    <div class="nf-table">
+      <div class="nf-row"><div class="nf-label">Extensión</div><div class="nf-value"><strong>Todos los ciudadanos</strong> (cualquier persona) ante situaciones de necesidad</div></div>
+      <div class="nf-row"><div class="nf-label">Gestión</div><div class="nf-value"><strong>Exclusivamente pública</strong></div></div>
+      <div class="nf-row"><div class="nf-label">Financiación</div><div class="nf-value"><strong>PGE</strong>. Excepción: Asistencia Sanitaria y Servicios Sociales transferidos a CCAA → financiación autonómica</div></div>
+    </div>
+    <div class="nf-prest">
+      <strong>Prestaciones incluidas:</strong>
+      <ul>
+        <li>Asistencia sanitaria y servicios sociales (salvo AT/EP)</li>
+        <li><strong>Pensiones no contributivas por incapacidad y jubilación</strong> <span class="badge b-red">↗ énfasis del profesor</span></li>
+        <li>Ingreso Mínimo Vital (IMV)</li>
+        <li>Desempleo asistencial (subsidios)</li>
+        <li>Subsidio especial NYCM — contributivo para alta/afiliación, <strong>N/C a efectos de financiación</strong></li>
+        <li>Complementos a mínimos de las pensiones de la SS</li>
+        <li><strong>Prestaciones familiares no contributivas</strong> <span class="badge b-red">↗ énfasis del profesor</span> (💶 <strong>económicas</strong>): asignación por hijo a cargo, pago único por nacimiento/adopción (familias numerosas, monoparentales, discapacidad), prestación por parto/adopción múltiple</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="voz-profe">
+    Detalle de requisitos de las 3 prestaciones familiares N/C (te sonarán en el tema de nacimiento y cuidado del menor, aquí solo para tenerlas ubicadas):
+    <ul>
+      <li><strong>Asignación económica por hijo/menor a cargo</strong>: menor de 18 años con discapacidad ≥33%, o mayor de edad con discapacidad ≥65%</li>
+      <li><strong>Pago único por nacimiento/adopción</strong>: familias numerosas, monoparentales, o madres/padres con discapacidad ≥65%</li>
+      <li><strong>Parto/adopción múltiple</strong>: 2 o más nacidos/adoptados a la vez — cuantía en múltiplos del SMI (4× si son 2, 8× si son 3, 12× si son 4 o más)</li>
+    </ul>
+  </div>
+
+  <div class="nivel-ficha profesional">
+    <div class="nf-head">🟢 Nivel Profesional <span>(Contributivo)</span></div>
+    <div class="nf-table">
+      <div class="nf-row"><div class="nf-label">Extensión</div><div class="nf-value"><strong>Solo población trabajadora</strong></div></div>
+      <div class="nf-row"><div class="nf-label">Gestión</div><div class="nf-value"><strong>Pública</strong>, con participación de entidades colaboradoras (<strong>MUTUAS</strong>)</div></div>
+      <div class="nf-row"><div class="nf-label">Financiación</div><div class="nf-value">Principalmente <strong>cuotas a la SS</strong> (trabajadores y empleadores)</div></div>
+    </div>
+    <div class="nf-prest">
+      <strong>Prestaciones incluidas:</strong>
+      <ul>
+        <li>Derivadas de contingencias profesionales (AT/EP)</li>
+        <li>Incapacidad Temporal (IT) e Incapacidad Permanente (IP) contributiva</li>
+        <li>Jubilación en su modalidad contributiva</li>
+        <li>Desempleo (prestación contributiva)</li>
+        <li>Nacimiento y cuidado de menor (salvo subsidio especial), corresponsabilidad cuidado del lactante, riesgo durante embarazo y lactancia natural</li>
+        <li>Cuidado de menores con cáncer u otra enfermedad grave</li>
+        <li>Prestaciones de muerte y supervivencia</li>
+        <li>Prestaciones familiares contributivas (🚫💶 <strong>NO económicas</strong>): reducciones de jornada y excedencias protegidas por cuidado de hijos o familiares</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="nivel-ficha complementario">
+    <div class="nf-head">🟣 Nivel Complementario <span>(Voluntario)</span></div>
+    <div class="nf-table">
+      <div class="nf-row"><div class="nf-label">Extensión</div><div class="nf-value"><strong>Carácter voluntario</strong>, componente adicional (<a class="art-link" href="T01_Anexo_Articulos_LGSS.html#a238" target="_blank">A238 y ss. LGSS</a>)</div></div>
+      <div class="nf-row"><div class="nf-label">Gestión</div><div class="nf-value">Puede ser <strong>pública o privada</strong></div></div>
+      <div class="nf-row"><div class="nf-label">Financiación</div><div class="nf-value">Mediante <strong>aportación exclusiva de los partícipes</strong></div></div>
+    </div>
+    <div class="nf-prest">
+      <strong>Prestaciones incluidas:</strong>
+      <ul>
+        <li>Mejoras voluntarias de la acción protectora de la SS (<a class="art-link" href="T01_Anexo_Articulos_LGSS.html#a43" target="_blank">A43</a> y <a class="art-link" href="T01_Anexo_Articulos_LGSS.html#a238" target="_blank">A238-A241 LGSS</a>)</li>
+        <li>Prestaciones complementarias externas al sistema, gestión privada (Planes y Fondos de Pensiones)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="voz-profe">
+    ¿Cómo se materializan las mejoras voluntarias? Dos mecanismos (<a class="art-link" href="T01_Anexo_Articulos_LGSS.html#a239" target="_blank">A239</a> y <a class="art-link" href="T01_Anexo_Articulos_LGSS.html#a241" target="_blank">A241 LGSS</a>):
+    <ul>
+      <li><strong>Mejora directa de la prestación</strong> (<a class="art-link" href="T01_Anexo_Articulos_LGSS.html#a239" target="_blank">A239</a>): la empresa mejora la prestación a su cargo exclusivo (el trabajador no aporta nada), salvo que el Ministerio autorice excepcionalmente una aportación del trabajador — siempre de forma voluntaria. Ejemplo: ampliar semanas de nacimiento/cuidado de menor, o subir la IT al 100% (como ocurre con los funcionarios).</li>
+      <li><strong>Tipos de cotización adicionales</strong> (<a class="art-link" href="T01_Anexo_Articulos_LGSS.html#a241" target="_blank">A241</a>): el Ministerio aprueba cotizaciones extra para regularizar o revalorizar pensiones. Ejemplo real: la cotización adicional de solidaridad del A19 bis LGSS, sobre las rentas más altas.</li>
+    </ul>
+  </div>
+
+  <div class="trampa">
+    La Seguridad Social <strong>no puede ser objeto de negociación colectiva</strong> — un convenio no puede regular la prestación estándar (jubilación, IT, etc.), eso es competencia exclusiva de la LGSS. Lo único que un convenio puede hacer es <strong>mejorar voluntariamente</strong> esas prestaciones ya reguladas.
+  </div>
+
+  <div class="trampa">
+    Ojo con el subsidio especial por Nacimiento y Cuidado de Menor (NYCM, arts. 181-182 LGSS): es <strong>contributivo a efectos de exigir alta y afiliación</strong>, pero <strong>no contributivo (N/C) a efectos de financiación</strong>. Por eso aparece dentro del nivel básico y no del profesional.
+  </div>
+
+  <div class="mnemo">
+    Prestaciones familiares — dos formas de decir lo mismo:<br>
+    <ul>
+      <li>💶 <strong>N/C = Prestación familiar ECONÓMICA</strong> (ayuda monetaria directa) → nivel básico</li>
+      <li>🚫💶 <strong>Contributiva = Prestación familiar NO económica</strong> (cotización adicional, reducción de jornada o excedencia) → nivel profesional</li>
+    </ul>
+  </div>
+
+  <!-- BLOQUE 2 -->
+  <h2 id="bloque2"><span class="num">2</span>Otros artículos de la CE relacionados con la SS</h2>
+
+  <div class="card">
+    <p><span class="articulo">A25</span> Trabajo remunerado para los reclusos.</p>
+    <p style="font-size:0.9em;color:var(--text-dim);">Nadie puede ser condenado por acciones que en su momento no eran delito/falta/infracción. Las penas privativas de libertad se orientan a la reeducación y reinserción, sin trabajos forzados. El condenado conserva sus derechos fundamentales salvo los limitados por el fallo, la pena o la ley penitenciaria.</p>
+    <p><strong>En todo caso, tendrá derecho a un trabajo remunerado y a los beneficios de la Seguridad Social</strong>, así como al acceso a la cultura y al desarrollo integral de su personalidad.</p>
+  </div>
+  <div class="dato"><strong>Curiosidad:</strong> los reclusos son el único colectivo que la CE menciona específicamente con derecho a la SS.</div>
+
+  <div class="card">
+    <p><span class="articulo">A39</span> Protección a la familia y a la infancia.</p>
+    <ul style="font-size:0.9em;">
+      <li>Los poderes públicos aseguran protección social, económica y jurídica de la familia.</li>
+      <li>Protección integral de los hijos, iguales ante la ley independientemente de su filiación; y de las madres, cualquiera que sea su estado civil. Se posibilita la investigación de la paternidad.</li>
+      <li>Los padres deben asistir a los hijos habidos dentro o fuera del matrimonio, durante su minoría de edad y en los demás casos que legalmente proceda.</li>
+      <li>Los niños gozan de la protección de los acuerdos internacionales que velan por sus derechos.</li>
+    </ul>
+  </div>
+
+  <div class="mnemo">
+    <strong>SEJ</strong> = protección <strong>S</strong>ocial, <strong>E</strong>conómica y <strong>J</strong>urídica de la familia (A39). Si te ponen "protección laboral, económica y jurídica" o cualquier otra combinación, es trampa — solo social/económica/jurídica es literal.
+  </div>
+
+  <div class="voz-profe">
+    Truco posicional para descartar opciones sin saber el número exacto del artículo: el A39 (familia) va <strong>antes</strong> que el A40 (renta). Si dudas entre dos artículos y sabes cuál trata un tema que "viene antes" en el texto, puedes usar ese orden para eliminar opciones — no es infalible, pero ayuda quando no recuerdas el número exacto.
+  </div>
+
+  <div class="card">
+    <p><span class="articulo">A40</span> Redistribución de la renta.</p>
+    <p style="font-size:0.9em;">Los poderes públicos promoverán condiciones favorables para el progreso social y económico y una distribución de la renta más equitativa, en el marco de la estabilidad económica, orientando de manera especial hacia el <strong>pleno empleo</strong>.</p>
+  </div>
+
+  <div class="mnemo">
+    Torre de control — Artículo 40 CE, apartado 2: los poderes públicos...<br>
+    <ul>
+      <li>Fomentarán la <strong>formación y readaptación profesionales</strong></li>
+      <li><strong>Velarán</strong> por la seguridad e higiene en el trabajo</li>
+      <li><strong>Garantizarán</strong> el descanso mediante: limitación de jornada + vacaciones periódicas retribuidas + promoción de centros adecuados</li>
+    </ul>
+  </div>
+
+  <div class="memoriza">
+    <span class="articulo">A41</span> Seguridad Social — el mismo texto ya visto arriba. <strong>Memorizar 100%.</strong>
+  </div>
+
+  <div class="dato">
+    <strong>Matiz importante:</strong> el A41 (Seguridad Social) <strong>NO es un derecho fundamental ni una libertad pública</strong> — esos se regulan en la Sección 1ª del Capítulo II (arts. 15-29 CE). El A41 está en el capítulo de "Principios rectores de la política social y económica" (arts. 39-52 CE). Esto explica por qué la LGSS pudo aprobarse como <strong>Real Decreto Legislativo</strong> (delegación vía A82 CE): si fuera un derecho fundamental, requeriría Ley Orgánica y no podría delegarse en el Gobierno.
+  </div>
+
+  <div class="card">
+    <p><span class="articulo">A42</span> Emigrantes.</p>
+    <p style="font-size:0.9em;">El <strong>Estado</strong> velará especialmente por la salvaguardia de los <strong>derechos económicos y sociales</strong> de los trabajadores españoles en el extranjero y orientará su política hacia su <strong>retorno</strong>.</p>
+  </div>
+
+  <div class="mnemo">
+    <strong>"E</strong>migrantes → <strong>E</strong>stado" — ambos empiezan por "e", útil para no confundirlo con "poderes públicos" (que es el sujeto en casi todos los demás artículos de este bloque). También recuerda que termina en "retorno" — no "empleo" ni "prestaciones", que es donde suelen mezclar las opciones.
+  </div>
+
+  <div class="card">
+    <p><span class="articulo">A43</span> Protección a la salud.</p>
+    <p style="font-size:0.9em;">Se reconoce el derecho a la protección de la salud. Compete a los poderes públicos organizar y tutelar la <strong>salud pública</strong> mediante medidas preventivas y las prestaciones y servicios necesarios (la ley fija derechos y deberes). Los poderes públicos fomentarán la educación sanitaria, física y el deporte, y facilitarán la adecuada utilización del ocio.</p>
+  </div>
+
+  <div class="trampa">
+    El texto dice "salud <strong>pública</strong>" a secas — no "pública y privada". Es un distractor típico añadir "privada" donde no está, precisamente porque en la vida real conviven ambos sistemas y resulta tentador asumir que la CE también los menciona a los dos.
+  </div>
+
+  <div class="card">
+    <p><span class="articulo">A49</span> Atención a las personas con discapacidad.</p>
+    <p style="font-size:0.9em;">Ejercen sus derechos en condiciones de <strong>libertad e igualdad reales y efectivas</strong>. Los poderes públicos impulsarán políticas que garanticen la <strong>plena autonomía personal</strong> y la <strong>inclusión social</strong>, en entornos universalmente accesibles, atendiendo particularmente a mujeres y menores con discapacidad.</p>
+    <span class="badge b-yellow">Novedad: reforma 14/feb/2024</span>
+  </div>
+
+  <div class="card">
+    <p><span class="articulo">A50</span> Tercera edad.</p>
+    <p style="font-size:0.9em;">Los poderes públicos garantizarán, mediante pensiones <strong>adecuadas y periódicamente actualizadas</strong>, la suficiencia económica durante la tercera edad, y promoverán su bienestar mediante servicios sociales que atiendan salud, vivienda, cultura y ocio.</p>
+  </div>
+
+  <div class="mnemo">
+    <strong>PAPA</strong> = Pensiones <strong>A</strong>decuadas y <strong>P</strong>eriódicamente <strong>A</strong>ctualizadas (A50)<br>
+    <strong>VOCS</strong> = <strong>V</strong>ivienda, <strong>O</strong>cio, <strong>C</strong>ultura, <strong>S</strong>alud (servicios sociales A50)
+  </div>
+
+  <div class="card">
+    <p><span class="articulo">A129</span> Participación en la empresa y en los organismos públicos.</p>
+    <p style="font-size:0.9em;">La ley establecerá formas de participación de los interesados en la Seguridad Social y en la actividad de organismos públicos que afecten a la calidad de vida o al bienestar general. Los poderes públicos fomentarán las sociedades cooperativas y el acceso de los trabajadores a la propiedad de los medios de producción.</p>
+  </div>
+
+  <div class="mnemo">
+    <span class="badge" style="background:#333;color:#fff;font-size:0.7em;padding:2px 8px;border-radius:10px;">mnemotecnia propia</span>
+    <p style="margin:8px 0;">
+      En Viena <span class="click-reveal" data-target="pop-129-1">(129), un ⚖️ <strong>juez</strong></span> hace de árbitro en el "Gran Concurso del Bienestar". Miles de personas con camisetas de la <strong>Seguridad Social</strong> solo pueden entrar si escogen una figura geométrica (círculo, cuadrado, triángulo...) que representa su <strong>FORMA de PARTICIPACIÓN</strong>. Dentro, un <strong>organismo público</strong> reparte yogures bífidus, sillas de ruedas, parques y sonrisas para mejorar la <strong>calidad de vida</strong> de todos.
+      <span class="popup-emergente" id="pop-129-1">129.1: La ley establecerá las formas de participación de los interesados en la Seguridad Social y en la actividad de los organismos públicos cuya función afecte directamente a la calidad de la vida o al bienestar general.</span>
+    </p>
+    <p style="margin:8px 0;">
+      <span class="click-reveal" data-target="pop-129-2">📺 Un <strong>papá rojo</strong></span> (los poderes públicos) aparece en televisión <strong>promoviendo</strong> con entusiasmo que en una <strong>EMPRESA</strong> todos elijan entre círculo, cuadrado, triángulo y estrella (las <strong>diversas formas de participación</strong>). Después, con una <strong>ley llena de dientes</strong>, ayuda a fundar una gran <strong>sociedad cooperativa</strong>. Finalmente entrega a los obreros una llave gigante y la escritura de la fábrica para que sean <strong>propietarios de las máquinas</strong> de producir yogures.
+      <span class="popup-emergente" id="pop-129-2">129.2: Los poderes públicos promoverán eficazmente las diversas formas de participación en la empresa y fomentarán, mediante una legislación adecuada, las sociedades cooperativas. También establecerán los medios que faciliten el acceso de los trabajadores a la propiedad de los medios de producción.</span>
+    </p>
+    <p style="font-size:0.8em;color:var(--text-dim,#9ab);margin:6px 0 0;">👆 Toca al juez o al papá rojo para ver el apartado literal del artículo.</p>
+  </div>
+
+  <div class="trampa">
+    El A129 pertenece al <strong>Título VII (Economía y Hacienda)</strong>, no al Título I de derechos fundamentales. Pocos temarios lo incluyen — si aparece en examen, muchos opositores fallarán por desconocerlo.
+  </div>
+
+  <h3>Competencias sobre Seguridad Social</h3>
+  <table>
+    <tr><th>Artículo</th><th>Sujeto</th><th>Competencia</th></tr>
+    <tr><td><span class="articulo">A148.20</span></td><td>CCAA</td><td>Asistencia social</td></tr>
+    <tr><td><span class="articulo">A148.21</span></td><td>CCAA</td><td>Sanidad e higiene</td></tr>
+    <tr><td><span class="articulo">A149.16</span></td><td>Estado</td><td>Sanidad exterior; bases y coordinación general de sanidad; legislación sobre productos farmacéuticos</td></tr>
+    <tr><td><span class="articulo">A149.17</span></td><td>Estado</td><td><strong>Legislación básica y régimen económico de la SS</strong>, sin perjuicio de la ejecución de servicios por las CCAA</td></tr>
+  </table>
+
+  <div class="trampa">
+    No confundas: la <strong>legislación y el régimen económico</strong> de la SS son competencia del <strong>Estado</strong> (A149.17), mientras que la <strong>asistencia social</strong> es competencia de las <strong>CCAA</strong> (A148.20). Es un clásico distractor de examen.
+  </div>
+
+  <div class="voz-profe">
+    El profesor tiene su propio sistema de colores para diferenciar rápidamente competencias del A148/A149 (rosa = se parece a una competencia estatal por tratarse de actividad "de interés general"; verde = comparte ámbito con otra competencia ya vista, como cultura/investigación/medio ambiente; naranja = matiz claro tipo "mar" vs "río"). Es un sistema propio, complementario al truco "vale corre + Murcia" que ya tienes en el documento aparte sobre competencias Estado/CCAA — ambos coinciden en el fondo, cambia solo la forma de memorizarlo.
+  </div>
+
+  <div class="quiz-box">
+    <p class="quiz-q">🎯 Torre de control: Según el A40 CE, los poderes públicos, de manera especial...</p>
+    <button class="quiz-opt" onclick="checkAnswer(this,false,'q1')">a) Se coordinarán para un reparto competencial justo entre el Estado y las CCAA</button>
+    <button class="quiz-opt" onclick="checkAnswer(this,false,'q1')">b) Atenderán los problemas específicos de salud, vivienda, cultura y ocio</button>
+    <button class="quiz-opt" onclick="checkAnswer(this,false,'q1')">c) Garantizarán la asistencia ante situaciones de necesidad, especialmente en desempleo</button>
+    <button class="quiz-opt" onclick="checkAnswer(this,true,'q1')">d) Realizarán una política orientada al pleno empleo</button>
+    <div class="quiz-feedback" id="fb-q1"></div>
+  </div>
+
+  <!-- BLOQUE 3 -->
+  <h2 id="bloque3"><span class="num">3</span>El texto refundido de la LGSS</h2>
+
+  <div class="conexion">
+    <div class="titulo">🔗 Conexión con T14 Parte Común — Tipos de leyes (A82.2 CE)</div>
+    La LGSS es un <strong>Real Decreto Legislativo</strong> (ley delegada). Recuerda la diferencia:
+    <ul>
+      <li><strong>Leyes de bases:</strong> su objeto es formar textos articulados. Delimitan con precisión el <strong>O</strong>bjeto, el <strong>A</strong>lcance y los <strong>P</strong>rincipios y <strong>C</strong>riterios (mnemo: <strong>PACO</strong>).</li>
+      <li><strong>Leyes ordinarias:</strong> se usan para refundir varios textos legales en uno. La autorización especifica si se limita a formular un texto único o si incluye regularizar, aclarar y armonizar los textos refundidos.</li>
+    </ul>
+  </div>
+
+  <div class="dato">
+    <strong>Norma actual:</strong> <span class="articulo">RD Legislativo 8/2015</span>, de 30 de octubre, por el que se aprueba el texto refundido de la Ley General de la Seguridad Social. Delegación dada por la Ley 20/2014, de 29 de octubre. Sustituyó al RDL 1/1994 (que solo tenía 3 títulos).
+  </div>
+
+  <table>
+    <tr><th>Dato</th><th>Cifra</th></tr>
+    <tr><td>Títulos</td><td>6</td></tr>
+    <tr><td>Artículos</td><td>373</td></tr>
+    <tr><td>Disposiciones adicionales</td><td>61</td></tr>
+    <tr><td>Disposiciones transitorias</td><td>45</td></tr>
+    <tr><td>Disposiciones finales</td><td>8</td></tr>
+  </table>
+
+  <div class="mnemo">
+    <span class="badge" style="background:#333;color:#fff;font-size:0.7em;padding:2px 8px;border-radius:10px;">mnemotecnia propia · fichero numérico</span>
+    <p style="margin:8px 0;">Imagina una <strong>SETA 🍄</strong> (61 → adicionales) gigante que crece pegada a una <strong>COL 🥬</strong> (45 → transitorias); de repente cae un <strong>HACHA 🪓</strong> (8 → finales) y las parte a las dos de un solo tajo.</p>
+    <p style="font-size:0.85em;color:var(--text-dim,#9ab);margin:0;">
+      El orden de la cadena (seta → col → hacha) es el mismo orden en que aparecen realmente en la ley: adicionales → transitorias → finales.
+    </p>
+  </div>
+
+  <div class="voz-profe">
+    Mnemotecnia alternativa del profesor: <strong>"Renault 8, 45 y 61"</strong> — el modelo de coche Renault 8 como gancho visual para recordar 8 (finales), 45 (transitorias) y 61 (adicionales). Estos números son "vivos": pueden cambiar con actualizaciones normativas, así que conviene revisarlos cerca de la fecha de tu convocatoria en vez de memorizarlos con mucha antelación.
+  </div>
+
+  <h3>Estructura de la LGSS (6 títulos)</h3>
+  <table>
+    <tr><th>Título</th><th>Contenido</th></tr>
+    <tr><td>I</td><td>Normas generales del sistema de la Seguridad Social</td></tr>
+    <tr><td><strong>II</strong></td><td><strong>Régimen General (RG)</strong></td></tr>
+    <tr><td>III</td><td>Protección por desempleo</td></tr>
+    <tr><td>IV</td><td>Régimen Especial de Trabajadores Autónomos (RETA) — incluye el Sistema Especial SETA</td></tr>
+    <tr><td>V</td><td>Protección por cese de actividad</td></tr>
+    <tr><td>VI</td><td>Prestaciones no contributivas</td></tr>
+  </table>
+
+  <div class="trampa">
+    Las prestaciones se legislan principalmente en el <strong>Título II</strong> (sin perjuicio de referencias específicas al RETA en el Título IV). El desempleo (Título III) y el cese de actividad de autónomos (Título V) tienen <strong>títulos propios independientes</strong> — no están dentro del Título II. Es un error común mezclarlos.
+  </div>
+
+  <div class="quiz-box">
+    <p class="quiz-q">🎯 ¿En qué Título de la LGSS se regula la protección por desempleo?</p>
+    <button class="quiz-opt" onclick="checkAnswer(this,false,'q2')">a) Título V</button>
+    <button class="quiz-opt" onclick="checkAnswer(this,false,'q2')">b) Título VI</button>
+    <button class="quiz-opt" onclick="checkAnswer(this,true,'q2')">c) Título III</button>
+    <button class="quiz-opt" onclick="checkAnswer(this,false,'q2')">d) Título IV</button>
+    <div class="quiz-feedback" id="fb-q2"></div>
+  </div>
+
+  <h3>Capítulos del Título II — Régimen General</h3>
+  <div class="card">
+    <p style="font-size:0.9em;">
+      I. Campo de aplicación · II. Inscripción de empresas, afiliación, cotización y recaudación · III. Aspectos comunes de la acción protectora · IV. Normas generales en materia de prestaciones ·
+      <strong style="color:var(--green);">V. Incapacidad temporal · VI. Nacimiento y cuidado de menor · VII. Corresponsabilidad en el cuidado del lactante · VIII. Riesgo durante el embarazo · IX. Riesgo durante la lactancia natural · X. Cuidado de menores afectados por cáncer u otra enfermedad grave · XI. Incapacidad permanente contributiva · XII. Lesiones permanentes no incapacitantes · XIII. Jubilación en su modalidad contributiva · XIV. Muerte y supervivencia · XV. Protección a la familia</strong>
+      · XVI. Disposiciones comunes del Régimen General · XVII. Disposiciones aplicables a determinados trabajadores del RG · <strong style="color:var(--yellow);">XVIII. Sistemas Especiales para Empleados de Hogar y Trabajadores por Cuenta Ajena Agrarios</strong> · XIX. Gestión · XX. Régimen Financiero · XXI. Aplicación de las normas generales del sistema
+    </p>
+  </div>
+
+  <div class="mnemo">
+    <strong>Capítulo 18 = mayoría de edad</strong> → Sistemas Especiales para Empleados de Hogar y Trabajadores por Cuenta Ajena Agrarios. Verás estos Sistemas Especiales con detalle en el siguiente tema.
+  </div>
+
+  <div class="dato">
+    <strong>No confundir SEA con SETA:</strong> el <strong>SEA</strong> (Sistema Especial Agrario, dentro del Régimen General, Título II) es para trabajadores agrarios por <strong>cuenta ajena</strong>. El <strong>SETA</strong> (dentro del RETA, Título IV) es para trabajadores agrarios por <strong>cuenta propia</strong>. Ambos "suenan" parecido pero pertenecen a títulos distintos de la LGSS.
+  </div>
+
+  <!-- BLOQUE 4 -->
+  <h2 id="bloque4"><span class="num">4</span>Prestaciones familiares: contributivas vs N/C</h2>
+
+  <table>
+    <tr><th></th><th>Contributiva (No económica)</th><th>No contributiva / N/C (Económica)</th></tr>
+    <tr><td>Se regula en</td><td>LGSS Título II – Régimen General</td><td>LGSS Título VI – Prestaciones no contributivas</td></tr>
+    <tr><td>Naturaleza</td><td>Beneficio en cotización, reducción de jornada o excedencia</td><td>Ayuda monetaria directa</td></tr>
+    <tr><td>Acceso</td><td>Solo trabajadores que cumplan requisitos</td><td>Cualquier ciudadano</td></tr>
+  </table>
+
+  <h3>Contributiva (<a class="art-link" href="T01_Anexo_Articulos_LGSS.html#a235" target="_blank">A235-A237 LGSS</a>)</h3>
+  <ul>
+    <li><a class="articulo art-link" href="T01_Anexo_Articulos_LGSS.html#a235" target="_blank">A235</a> Periodos de cotización asimilados por parto → Protección de la familia</li>
+    <li><a class="articulo art-link" href="T01_Anexo_Articulos_LGSS.html#a236" target="_blank">A236</a> Beneficios por cuidado de hijos o menores → Protección de la familia</li>
+    <li><a class="articulo art-link" href="T01_Anexo_Articulos_LGSS.html#a237" target="_blank">A237</a> Prestaciones familiares en su modalidad contributiva:
+      <ul>
+        <li><strong>Excedencia</strong> cotizada al 100% × 2 casos: hasta 3 años desde el nacimiento; hasta 3 primeros años por cuidado de otro familiar hasta 2º grado de consanguinidad o afinidad.</li>
+        <li><strong>Reducción de jornada</strong> cotizada al 100% × 4 casos: 3 primeros años hijo menor de 12; 3 primeros años familiar hasta 2º grado; periodo de lactancia; casos de cáncer/enfermedad grave.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3>No contributiva / N/C (<a class="art-link" href="T01_Anexo_Articulos_LGSS.html#a352" target="_blank">A352-A372 LGSS</a>)</h3>
+  <ul>
+    <li><strong>Prestaciones N/C</strong>:
+      <ul>
+        <li><a class="articulo art-link" href="T01_Anexo_Articulos_LGSS.html#a352" target="_blank">A352-A356</a> Asignación económica por hijo o menor acogido a cargo mayor</li>
+        <li><a class="articulo art-link" href="T01_Anexo_Articulos_LGSS.html#a357" target="_blank">A357-A358</a> Pago único por Nacimiento/Adopción en familias numerosas, monoparentales, y madres/padres con discapacidad</li>
+        <li><a class="articulo art-link" href="T01_Anexo_Articulos_LGSS.html#a359" target="_blank">A359-A360</a> Prestación por Parto/Adopción múltiple</li>
+      </ul>
+    </li>
+    <li><strong>Pensiones N/C</strong>:
+      <ul>
+        <li><a class="articulo art-link" href="T01_Anexo_Articulos_LGSS.html#a363" target="_blank">A363-A368</a> Incapacidad N/C</li>
+        <li><a class="articulo art-link" href="T01_Anexo_Articulos_LGSS.html#a369" target="_blank">A369-A372</a> Jubilación N/C</li>
+      </ul>
+    </li>
+  </ul>
+
+  <div class="trampa">
+    No caigas en el nombre: "contributiva" se asocia intuitivamente con "dinero cotizado = pago económico", pero es justo al revés. <strong>Contributiva = NO económica</strong> (beneficio de cotización/jornada) y <strong>No contributiva (N/C) = SÍ económica</strong> (ayuda monetaria).
+  </div>
+
+  <!-- QUIZ FINAL -->
+  <h2 id="quiz"><span class="num">✓</span>Mini-test de repaso</h2>
+  <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+
+  <div class="quiz-box">
+    <p class="quiz-q">1. El nivel profesional de la Seguridad Social se financia principalmente mediante:</p>
+    <button class="quiz-opt" onclick="checkAnswer(this,false,'q3')">a) Presupuestos Generales del Estado</button>
+    <button class="quiz-opt" onclick="checkAnswer(this,true,'q3')">b) Cuotas a la SS de trabajadores y empleadores</button>
+    <button class="quiz-opt" onclick="checkAnswer(this,false,'q3')">c) Aportaciones voluntarias de partícipes</button>
+    <div class="quiz-feedback" id="fb-q3"></div>
+  </div>
+
+  <div class="quiz-box">
+    <p class="quiz-q">2. ¿Qué artículo de la CE es el más importante en materia de Seguridad Social?</p>
+    <button class="quiz-opt" onclick="checkAnswer(this,false,'q4')">a) Artículo 39</button>
+    <button class="quiz-opt" onclick="checkAnswer(this,true,'q4')">b) Artículo 41</button>
+    <button class="quiz-opt" onclick="checkAnswer(this,false,'q4')">c) Artículo 50</button>
+    <div class="quiz-feedback" id="fb-q4"></div>
+  </div>
+
+  <div class="quiz-box">
+    <p class="quiz-q">3. La competencia sobre "legislación básica y régimen económico de la SS" corresponde a:</p>
+    <button class="quiz-opt" onclick="checkAnswer(this,false,'q5')">a) Las CCAA en exclusiva</button>
+    <button class="quiz-opt" onclick="checkAnswer(this,true,'q5')">b) El Estado (A149.17), sin perjuicio de ejecución por CCAA</button>
+    <button class="quiz-opt" onclick="checkAnswer(this,false,'q5')">c) Los ayuntamientos</button>
+    <div class="quiz-feedback" id="fb-q5"></div>
+  </div>
+
+  <div class="quiz-box">
+    <p class="quiz-q">4. El subsidio especial por Nacimiento y Cuidado de Menor (NYCM) es:</p>
+    <button class="quiz-opt" onclick="checkAnswer(this,false,'q6')">a) Contributivo a todos los efectos</button>
+    <button class="quiz-opt" onclick="checkAnswer(this,true,'q6')">b) Contributivo para alta/afiliación pero N/C para financiación</button>
+    <button class="quiz-opt" onclick="checkAnswer(this,false,'q6')">c) No contributivo a todos los efectos</button>
+    <div class="quiz-feedback" id="fb-q6"></div>
+  </div>
+
+  <div class="quiz-box">
+    <p class="quiz-q">5. La actual LGSS fue aprobada por:</p>
+    <button class="quiz-opt" onclick="checkAnswer(this,false,'q7')">a) Ley Orgánica 8/2015</button>
+    <button class="quiz-opt" onclick="checkAnswer(this,true,'q7')">b) RD Legislativo 8/2015, de 30 de octubre</button>
+    <button class="quiz-opt" onclick="checkAnswer(this,false,'q7')">c) RD Legislativo 1/1994</button>
+    <div class="quiz-feedback" id="fb-q7"></div>
+  </div>
+
+  <footer>
+    Destino Funcionario · T01 · Seguridad Social en la CE · Última actualización de la fuente: 08/ene/2026
+  </footer>
+
+  <!-- ========================= -->
+  <!-- REPASO EN UN VISTAZO (OUTLINE) -->
+  <!-- ========================= -->
+  <h2><span class="num">🗺️</span>Repaso en un vistazo</h2>
+  <div class="outline">
+
+    <details>
+      <summary>1. La Seguridad Social en la Constitución Española</summary>
+      <div class="sub">
+        <details>
+          <summary>1.1. Artículo 41 CE — Núcleo esencial</summary>
+          <ul>
+            <li>Régimen público de Seguridad Social para todos los ciudadanos.</li>
+            <li>Garantía de asistencia y prestaciones suficientes ante situaciones de necesidad.</li>
+            <li>Especial protección en caso de desempleo.</li>
+            <li>Prestaciones complementarias libres.</li>
+          </ul>
+        </details>
+        <details>
+          <summary>1.2. Los tres niveles de protección</summary>
+          <div class="sub">
+            <details>
+              <summary>Nivel básico</summary>
+              <ul>
+                <li>Universal: para todos los ciudadanos.</li>
+                <li>Gestión exclusivamente pública.</li>
+                <li>Financiación vía PGE (salvo asistencia sanitaria y servicios sociales transferidos a CCAA).</li>
+              </ul>
+              <strong class="grupo">Prestaciones:</strong>
+              <ul>
+                <li>Asistencia sanitaria y servicios sociales (salvo AT/EP).</li>
+                <li>Pensiones no contributivas (incapacidad y jubilación).</li>
+                <li>Subsidio especial por nacimiento y cuidado de menor (N/C).</li>
+                <li>Complementos a mínimos.</li>
+                <li>Prestaciones familiares N/C.</li>
+                <li>IMV.</li>
+                <li>Desempleo asistencial.</li>
+              </ul>
+            </details>
+            <details>
+              <summary>Nivel profesional</summary>
+              <ul>
+                <li>Destinado a trabajadores.</li>
+                <li>Gestión pública + mutuas colaboradoras.</li>
+                <li>Financiación por cotizaciones.</li>
+              </ul>
+              <strong class="grupo">Prestaciones:</strong>
+              <ul>
+                <li>AT/EP.</li>
+                <li>IT.</li>
+                <li>IP contributiva.</li>
+                <li>Jubilación contributiva.</li>
+                <li>Nacimiento y cuidado de menor (excepto subsidio especial).</li>
+                <li>Riesgo embarazo/lactancia.</li>
+                <li>Cuidado de menores con cáncer/enfermedad grave.</li>
+                <li>Muerte y supervivencia.</li>
+                <li>Desempleo.</li>
+                <li>Prestaciones familiares contributivas (reducciones y excedencias).</li>
+              </ul>
+            </details>
+            <details>
+              <summary>Nivel complementario</summary>
+              <ul>
+                <li>Voluntario.</li>
+                <li>Gestión pública o privada.</li>
+                <li>Financiación por aportaciones de los partícipes.</li>
+              </ul>
+              <strong class="grupo">Prestaciones:</strong>
+              <ul>
+                <li>Mejoras voluntarias de la acción protectora (<a class="art-link" href="T01_Anexo_Articulos_LGSS.html#a238" target="_blank">A238-A241 LGSS</a>).</li>
+                <li>Planes y fondos de pensiones.</li>
+              </ul>
+            </details>
+          </div>
+        </details>
+      </div>
+    </details>
+
+    <details>
+      <summary>2. Otros artículos constitucionales relacionados con la Seguridad Social</summary>
+      <div class="sub">
+        <details>
+          <summary>2.1. Artículo 25 — Trabajo remunerado para reclusos</summary>
+          <ul>
+            <li>Derecho a trabajo remunerado.</li>
+            <li>Derecho a beneficios de la Seguridad Social.</li>
+          </ul>
+        </details>
+        <details>
+          <summary>2.2. Artículo 39 — Protección a la familia e infancia</summary>
+          <ul>
+            <li>Protección social, económica y jurídica de la familia.</li>
+            <li>Protección integral de hijos y madres.</li>
+            <li>Igualdad de filiación.</li>
+          </ul>
+        </details>
+        <details>
+          <summary>2.3. Artículo 40 — Redistribución de la renta</summary>
+          <ul>
+            <li>Progreso social y económico.</li>
+            <li>Política orientada al pleno empleo.</li>
+            <li>Formación y readaptación profesional.</li>
+            <li>Seguridad e higiene en el trabajo.</li>
+            <li>Descanso, jornada, vacaciones.</li>
+          </ul>
+        </details>
+        <details>
+          <summary>2.4. Artículo 41 — Seguridad Social</summary>
+          <ul>
+            <li>Régimen público universal.</li>
+            <li>Prestaciones suficientes.</li>
+            <li>Especial atención al desempleo.</li>
+            <li>Prestaciones complementarias libres.</li>
+          </ul>
+        </details>
+        <details>
+          <summary>2.5. Artículo 42 — Emigrantes</summary>
+          <ul>
+            <li>Protección de derechos económicos y sociales de trabajadores españoles en el extranjero.</li>
+            <li>Política orientada al retorno.</li>
+          </ul>
+        </details>
+        <details>
+          <summary>2.6. Artículo 43 — Protección a la salud</summary>
+          <ul>
+            <li>Derecho a la salud.</li>
+            <li>Organización y tutela de la salud pública.</li>
+            <li>Educación sanitaria y física.</li>
+          </ul>
+        </details>
+        <details>
+          <summary>2.7. Artículo 49 — Personas con discapacidad</summary>
+          <ul>
+            <li>Igualdad real y efectiva.</li>
+            <li>Protección especial por ley.</li>
+            <li>Autonomía personal e inclusión social.</li>
+            <li>Atención específica a mujeres y menores con discapacidad.</li>
+          </ul>
+        </details>
+        <details>
+          <summary>2.8. Artículo 50 — Tercera edad</summary>
+          <ul>
+            <li>Pensiones adecuadas y actualizadas (PAPA).</li>
+            <li>Servicios sociales específicos (VOCS: vivienda, ocio, cultura, salud).</li>
+          </ul>
+        </details>
+        <details>
+          <summary>2.9. Artículo 129 — Participación</summary>
+          <ul>
+            <li>Participación en Seguridad Social y organismos públicos.</li>
+            <li>Fomento de cooperativas y acceso a medios de producción.</li>
+          </ul>
+        </details>
+        <details>
+          <summary>2.10. Artículos 148-149 — Competencias</summary>
+          <ul>
+            <li><strong>CCAA (A148):</strong> Asistencia social · Sanidad e higiene.</li>
+            <li><strong>Estado (A149):</strong> Sanidad exterior · Bases y coordinación general de la sanidad · Legislación básica y régimen económico de la Seguridad Social.</li>
+          </ul>
+        </details>
+      </div>
+    </details>
+
+    <details>
+      <summary>3. Texto refundido de la LGSS (RD Legislativo 8/2015)</summary>
+      <div class="sub">
+        <details>
+          <summary>3.1. Naturaleza</summary>
+          <ul>
+            <li>Real Decreto Legislativo (ley delegada).</li>
+            <li>Aprobado el 30 de octubre de 2015.</li>
+            <li>Sustituye al RD Legislativo 1/1994.</li>
+          </ul>
+        </details>
+        <details>
+          <summary>3.2. Estructura</summary>
+          <ul>
+            <li>6 títulos</li>
+            <li>373 artículos</li>
+            <li>61 DA + 45 DT + 8 DF</li>
+          </ul>
+        </details>
+        <details>
+          <summary>3.3. Distribución de materias</summary>
+          <ul>
+            <li>Título II → Régimen General (prestaciones contributivas).</li>
+            <li>Título III → Desempleo.</li>
+            <li>Título IV → RETA.</li>
+            <li>Título V → Cese de actividad.</li>
+            <li>Título VI → Prestaciones no contributivas.</li>
+          </ul>
+        </details>
+        <details>
+          <summary>3.4. Prestaciones familiares</summary>
+          <strong class="grupo">Contributivas (no económicas):</strong>
+          <ul>
+            <li><a class="art-link" href="T01_Anexo_Articulos_LGSS.html#a235" target="_blank">A235</a>: Cotización asimilada por parto.</li>
+            <li><a class="art-link" href="T01_Anexo_Articulos_LGSS.html#a236" target="_blank">A236</a>: Beneficios por cuidado de hijos/menores.</li>
+            <li><a class="art-link" href="T01_Anexo_Articulos_LGSS.html#a237" target="_blank">A237</a>: Prestaciones familiares contributivas (reducciones y excedencias).</li>
+          </ul>
+          <strong class="grupo">No contributivas (económicas):</strong>
+          <ul>
+            <li><a class="art-link" href="T01_Anexo_Articulos_LGSS.html#a352" target="_blank">A352-A356</a>: Asignación económica por hijo o menor acogido.</li>
+            <li><a class="art-link" href="T01_Anexo_Articulos_LGSS.html#a357" target="_blank">A357-A358</a>: Pago único por nacimiento/adopción.</li>
+            <li><a class="art-link" href="T01_Anexo_Articulos_LGSS.html#a359" target="_blank">A359-A360</a>: Prestación por parto/adopción múltiple.</li>
+          </ul>
+          <strong class="grupo">Pensiones N/C:</strong>
+          <ul>
+            <li><a class="art-link" href="T01_Anexo_Articulos_LGSS.html#a363" target="_blank">A363-A368</a>: Incapacidad N/C.</li>
+            <li><a class="art-link" href="T01_Anexo_Articulos_LGSS.html#a369" target="_blank">A369-A372</a>: Jubilación N/C.</li>
+          </ul>
+        </details>
+      </div>
+    </details>
+
+    <details>
+      <summary>4. Síntesis final del Tema 1</summary>
+      <ul>
+        <li>El artículo 41 CE es el eje del sistema.</li>
+        <li>La SS se estructura en tres niveles: básico, profesional y complementario.</li>
+        <li>La CE contiene numerosos artículos que refuerzan la protección social.</li>
+        <li>La LGSS es el marco jurídico completo del sistema.</li>
+        <li>Diferenciar prestaciones contributivas vs no contributivas es esencial.</li>
+      </ul>
+    </details>
+
+  </div>
+
+  <div style="text-align:center;margin:20px 0;">
+    <a href="T01_Anexo_Articulos_LGSS.html" style="display:inline-block;padding:10px 22px;background:var(--bg-card2);border:1px solid var(--green);border-radius:8px;color:var(--green);text-decoration:none;font-size:.9rem;font-weight:700;">📖 Anexo — Ver en su literalidad los artículos de la LGSS citados en este tema</a>
+  </div>
+
+  <!-- ========================= -->
+  <!-- BLOQUE ANKI T01 -->
+  <!-- ========================= -->
+  <h2><span class="num">🗂️</span>Repaso rápido (flashcards)</h2>
+  <div class="anki-block">
+    <select id="deckSelect"></select>
+    <div id="progress"></div>
+    <div class="flip-card" id="card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front" id="front"></div>
+        <div class="flip-card-back" id="back"></div>
+      </div>
+    </div>
+    <div id="done" style="display:none;">🎉 ¡Mazo completado! Te sabes todas las tarjetas.</div>
+    <div style="display:flex;gap:12px;justify-content:center;margin-top:16px;">
+      <button id="flip" style="padding:10px 24px;font-size:15px;font-weight:700;border-radius:8px;background:var(--blue);color:#0f1419;border:none;cursor:pointer;">Voltear</button>
+      <button id="dontknow" style="display:none;padding:10px 24px;font-size:15px;font-weight:700;border-radius:8px;background:var(--red);color:#fff;border:none;cursor:pointer;">✗ No lo sé</button>
+      <button id="know" style="display:none;padding:10px 24px;font-size:15px;font-weight:700;border-radius:8px;background:var(--green);color:#0f1419;border:none;cursor:pointer;">✓ Lo sé</button>
+    </div>
+  </div>
+
+  <script>
+// MAZO A — Fundamentos constitucionales: A41 CE y los tres niveles (Tema 1)
+// Núcleo del A41, extensión/gestión/financiación de cada nivel, INSS/TGSS/mutuas,
+// pensión vs prestación. 22 tarjetas.
+
+const cardsFundamentos = [
+  // --- Bloque 1.1: Artículo 41 CE ---
+  { id: 1, front: "¿Quiénes mantendrán el régimen público de Seguridad Social según el A41 CE?", back: "Los poderes públicos." },
+  { id: 2, front: "Según el A41 CE, ¿en qué situación hay especial protección?", back: "En caso de desempleo." },
+  { id: 3, front: "Según el A41 CE, ¿cómo son las prestaciones complementarias?", back: "Libres." },
+  { id: 4, front: "¿En qué capítulo de la CE está el A41 (Seguridad Social)?", back: "En 'Principios rectores de la política social y económica' (arts. 39-52), no en los derechos fundamentales." },
+  { id: 5, front: "¿Por qué pudo aprobarse la LGSS como Real Decreto Legislativo?", back: "Porque el A41 no es un derecho fundamental; si lo fuera, exigiría Ley Orgánica." },
+
+  // --- Bloque 1.2: Los tres niveles de protección ---
+  { id: 6, front: "¿Cuál es la extensión del nivel básico?", back: "Todos los ciudadanos." },
+  { id: 7, front: "¿Cómo se financia el nivel básico (regla general)?", back: "Con los Presupuestos Generales del Estado (PGE)." },
+  { id: 8, front: "¿Qué excepción de financiación tiene el nivel básico?", back: "Asistencia sanitaria y servicios sociales transferidos a las CCAA." },
+  { id: 9, front: "¿Quién gestiona el nivel básico?", back: "Exclusivamente la gestión pública." },
+  { id: 10, front: "¿Cómo se financia el nivel profesional?", back: "Mediante cuotas de trabajadores y empleadores." },
+  { id: 11, front: "¿Quién gestiona el nivel profesional, además del sector público?", back: "Las mutuas colaboradoras." },
+  { id: 12, front: "¿Qué contingencias cubren principalmente las mutuas?", back: "Las contingencias profesionales (AT y EP)." },
+  { id: 13, front: "¿Cómo se financia el nivel complementario?", back: "Con aportaciones de los partícipes." },
+  { id: 14, front: "¿Es obligatorio o voluntario el nivel complementario?", back: "Voluntario." },
+
+  // --- Bloque: quién gestiona y quién recauda ---
+  { id: 15, front: "¿Qué entidad gestiona y paga las prestaciones (entidad gestora)?", back: "El INSS." },
+  { id: 16, front: "¿Qué entidad recauda los recursos económicos del sistema?", back: "La TGSS." },
+  { id: 17, front: "¿Qué diferencia una pensión de una prestación?", back: "La pensión es vitalicia; la prestación es temporal (pago único o periódico con fin)." },
+  { id: 18, front: "¿Es correcto decir que 'no contributivo' es solo para quien no trabaja?", back: "No, un trabajador también puede acceder si no cumple los requisitos de la modalidad contributiva." },
+
+  // --- Bloque: mejoras voluntarias (nivel complementario) ---
+  { id: 19, front: "¿Puede un convenio colectivo regular la prestación estándar de jubilación?", back: "No, solo puede mejorarla voluntariamente; regularla es competencia exclusiva de la LGSS." },
+  { id: 20, front: "¿Es el subsidio especial NYCM contributivo o no contributivo?", back: "Contributivo para alta/afiliación, pero no contributivo (N/C) a efectos de financiación." },
+  { id: 21, front: "¿Qué mecanismo de mejora regula el A239 LGSS?", back: "La mejora directa de la prestación, a cargo exclusivo de la empresa." },
+  { id: 22, front: "¿Qué mecanismo de mejora regula el A241 LGSS?", back: "Tipos de cotización adicionales aprobados por el Ministerio." }
+];
+
+// Registro en el motor genérico (anki_engine.js) — no tocar el contenido de arriba
+window.ankiDecks = window.ankiDecks || [];
+window.ankiDecks.push({ name: "A · Fundamentos constitucionales (A41 y los 3 niveles)", cards: cardsFundamentos });
+
+</script>
+  <script>
+// MAZO B — Otros artículos de la CE, competencias y trampas de examen (Tema 1)
+// A25, A39, A40, A42, A43, A49, A50, A129, A148-A149 + distractores típicos. 21 tarjetas.
+
+const cardsTrampas = [
+  // --- Bloque 2: Otros artículos constitucionales ---
+  { id: 1, front: "¿Qué colectivo menciona la CE específicamente con derecho a la SS, además del general?", back: "Los reclusos (A25)." },
+  { id: 2, front: "Según el A25, ¿a qué tiene derecho el recluso en todo caso?", back: "A un trabajo remunerado y a los beneficios de la SS." },
+  { id: 3, front: "¿Qué tres tipos de protección de la familia asegura el A39 CE (mnemotecnia SEJ)?", back: "Social, Económica y Jurídica." },
+  { id: 4, front: "TRAMPA: ¿protege el A39 CE la familia de forma laboral, económica y jurídica?", back: "No, es social, económica y jurídica (SEJ), no laboral." },
+  { id: 5, front: "¿Hacia qué política orienta especialmente el A40 CE a los poderes públicos?", back: "Hacia el pleno empleo." },
+  { id: 6, front: "Según el A40.2 CE, ¿qué fomentarán los poderes públicos?", back: "La formación y readaptación profesionales." },
+  { id: 7, front: "Según el A40.2 CE, ¿por qué velarán los poderes públicos?", back: "Por la seguridad e higiene en el trabajo." },
+  { id: 8, front: "¿Quién vela por los derechos de los emigrantes españoles según el A42 CE?", back: "El Estado." },
+  { id: 9, front: "¿Hacia qué orienta el Estado su política con los emigrantes (A42)?", back: "Hacia su retorno." },
+  { id: 10, front: "TRAMPA: ¿protege el A43 CE la salud pública y privada?", back: "No, el texto dice solo 'salud pública'." },
+  { id: 11, front: "¿Qué reforma reciente afecta al A49 CE (discapacidad)?", back: "La reforma del 14/feb/2024." },
+  { id: 12, front: "Mnemotecnia: ¿qué significa PAPA en el A50 CE?", back: "Pensiones Adecuadas y Periódicamente Actualizadas." },
+  { id: 13, front: "Mnemotecnia: ¿qué significa VOCS en el A50 CE?", back: "Vivienda, Ocio, Cultura, Salud (servicios sociales)." },
+  { id: 14, front: "¿En qué título de la CE está el A129 (participación)?", back: "En el Título VII (Economía y Hacienda), no en el de derechos fundamentales." },
+  { id: 15, front: "¿Qué fomenta el A129 CE además de la participación?", back: "Las sociedades cooperativas y el acceso a los medios de producción." },
+
+  // --- Bloque: competencias Estado / CCAA ---
+  { id: 16, front: "¿Qué competencia da el A148.20 CE a las CCAA?", back: "La asistencia social." },
+  { id: 17, front: "¿Qué competencia da el A148.21 CE a las CCAA?", back: "Sanidad e higiene." },
+  { id: 18, front: "¿Qué competencia da el A149.16 CE al Estado?", back: "Sanidad exterior y bases y coordinación general de la sanidad." },
+  { id: 19, front: "¿Qué competencia da el A149.17 CE al Estado?", back: "La legislación básica y el régimen económico de la SS." },
+  { id: 20, front: "TRAMPA: ¿es la asistencia social competencia del Estado o de las CCAA?", back: "De las CCAA (A148.20), no del Estado." },
+  { id: 21, front: "Torre de control A40 CE: ¿qué realizarán los poderes públicos de manera especial?", back: "Una política orientada al pleno empleo." }
+];
+
+// Registro en el motor genérico (anki_engine.js) — no tocar el contenido de arriba
+window.ankiDecks = window.ankiDecks || [];
+window.ankiDecks.push({ name: "B · Otros artículos CE, competencias y trampas", cards: cardsTrampas });
+
+</script>
+  <script>
+// MAZO C — La LGSS: estructura y prestaciones familiares (Tema 1)
+// RD Legislativo 8/2015, títulos, SEA vs SETA, prestaciones familiares
+// contributivas vs no contributivas. 22 tarjetas.
+
+const cardsLGSS = [
+  // --- Bloque 3: Texto refundido de la LGSS ---
+  { id: 1, front: "¿Qué tipo de norma es la LGSS actual?", back: "Un Real Decreto Legislativo (RD Legislativo 8/2015)." },
+  { id: 2, front: "¿Cuándo se aprobó el RD Legislativo 8/2015?", back: "El 30 de octubre de 2015." },
+  { id: 3, front: "¿A qué norma sustituyó el RD Legislativo 8/2015?", back: "Al RD Legislativo 1/1994." },
+  { id: 4, front: "¿Cuántos títulos tiene la LGSS?", back: "6." },
+  { id: 5, front: "¿Cuántos artículos tiene la LGSS?", back: "373." },
+  { id: 6, front: "Mnemotecnia 'Renault 8, 45 y 61': ¿a qué corresponden esos números?", back: "8 disposiciones finales, 45 transitorias, 61 adicionales." },
+  { id: 7, front: "¿Qué regula el Título II de la LGSS?", back: "El Régimen General (prestaciones contributivas)." },
+  { id: 8, front: "¿Qué regula el Título III de la LGSS?", back: "La protección por desempleo." },
+  { id: 9, front: "¿Qué regula el Título IV de la LGSS?", back: "El RETA (incluye el Sistema Especial SETA)." },
+  { id: 10, front: "¿Qué regula el Título V de la LGSS?", back: "La protección por cese de actividad." },
+  { id: 11, front: "¿Qué regula el Título VI de la LGSS?", back: "Las prestaciones no contributivas." },
+  { id: 12, front: "TRAMPA: ¿están el desempleo y el cese de actividad dentro del Título II?", back: "No, tienen títulos propios (III y V respectivamente)." },
+  { id: 13, front: "¿Qué capítulo del Título II regula los Sistemas Especiales de Hogar y Agrarios?", back: "El capítulo XVIII." },
+  { id: 14, front: "Diferencia SEA vs SETA: ¿cuál es por cuenta ajena?", back: "El SEA (Sistema Especial Agrario, dentro del Régimen General)." },
+  { id: 15, front: "Diferencia SEA vs SETA: ¿cuál es por cuenta propia?", back: "El SETA (dentro del RETA)." },
+
+  // --- Bloque 4: Prestaciones familiares ---
+  { id: 16, front: "¿Dónde se regulan las prestaciones familiares contributivas?", back: "En el Título II (A235-A237 LGSS)." },
+  { id: 17, front: "¿Dónde se regulan las prestaciones familiares no contributivas?", back: "En el Título VI (A352-A372 LGSS)." },
+  { id: 18, front: "TRAMPA: ¿es 'contributiva' sinónimo de ayuda económica en prestaciones familiares?", back: "No, contributiva = NO económica (cotización/jornada); no contributiva = SÍ económica." },
+  { id: 19, front: "¿Qué regula el A237 LGSS sobre excedencia por cuidado?", back: "Hasta 3 años cotizados al 100%, por nacimiento o cuidado de familiar hasta 2º grado." },
+  { id: 20, front: "¿Qué regula el A352-A356 LGSS?", back: "La asignación económica por hijo o menor acogido a cargo." },
+  { id: 21, front: "¿Qué regula el A363-A368 LGSS?", back: "La incapacidad no contributiva (pensión N/C)." },
+  { id: 22, front: "¿Qué regula el A369-A372 LGSS?", back: "La jubilación no contributiva (pensión N/C)." }
+];
+
+// Registro en el motor genérico (anki_engine.js) — no tocar el contenido de arriba
+window.ankiDecks = window.ankiDecks || [];
+window.ankiDecks.push({ name: "C · Estructura de la LGSS y prestaciones familiares", cards: cardsLGSS });
+
+</script>
+  <script>
+// ============================================================
+// ANKI ENGINE — motor genérico y reutilizable de flashcards
+// No depende del tema ni del orden de carga de los scripts.
+// Cada archivo de mazo simplemente hace:
+//
+//   window.ankiDecks = window.ankiDecks || [];
+//   window.ankiDecks.push({ name: "A · Fundamentos", cards: miArrayDeCartas });
+//
+// Este motor solo se carga UNA VEZ por HTML, en cualquier orden
+// respecto a los mazos (antes o después, da igual).
+// ============================================================
+
+window.ankiDecks = window.ankiDecks || [];
+
+(function () {
+  let queue = [];
+  let current = null;
+  let totalInDeck = 0;
+  let knownCount = 0;
+
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function el(id) { return document.getElementById(id); }
+
+  function populateSelect() {
+    const select = el('deckSelect');
+    if (!select) return;
+    select.innerHTML = '';
+    window.ankiDecks.forEach((deck, i) => {
+      const opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = deck.name + ' (' + deck.cards.length + ')';
+      select.appendChild(opt);
+    });
+  }
+
+  function loadDeck(index) {
+    const deck = window.ankiDecks[index];
+    if (!deck) return;
+    queue = shuffle(deck.cards);
+    totalInDeck = queue.length;
+    knownCount = 0;
+    el('done').style.display = 'none';
+    el('card').style.display = '';
+    el('flip').style.display = '';
+    el('know').style.display = 'none';
+    el('dontknow').style.display = 'none';
+    nextCard();
+  }
+
+  function nextCard() {
+    el('card').classList.remove('flipped');
+    el('know').style.display = 'none';
+    el('dontknow').style.display = 'none';
+    el('flip').style.display = '';
+
+    if (queue.length === 0) {
+      el('card').style.display = 'none';
+      el('flip').style.display = 'none';
+      el('done').style.display = '';
+      updateProgress();
+      return;
+    }
+    current = queue[0];
+    el('front').textContent = current.front;
+    el('back').textContent = current.back;
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const progress = el('progress');
+    if (!progress) return;
+    const restantes = queue.length;
+    progress.textContent = 'Sabidas: ' + knownCount + ' / ' + totalInDeck + '  ·  Quedan ' + restantes + ' por repasar';
+  }
+
+  function flipCard() {
+    if (!current) return;
+    el('card').classList.toggle('flipped');
+    const flipped = el('card').classList.contains('flipped');
+    el('know').style.display = flipped ? '' : 'none';
+    el('dontknow').style.display = flipped ? '' : 'none';
+  }
+
+  function markKnow() {
+    if (!current) return;
+    queue.shift();
+    knownCount++;
+    nextCard();
+  }
+
+  function markDontKnow() {
+    if (!current) return;
+    const card = queue.shift();
+    queue.push(card); // vuelve al final de la cola para repasarla de nuevo
+    nextCard();
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    if (!el('deckSelect')) return; // esta página no tiene bloque Anki
+    populateSelect();
+    el('deckSelect').addEventListener('change', (e) => loadDeck(parseInt(e.target.value, 10)));
+    el('flip').addEventListener('click', flipCard);
+    el('card').addEventListener('click', flipCard);
+    el('know').addEventListener('click', function (e) { e.stopPropagation(); markKnow(); });
+    el('dontknow').addEventListener('click', function (e) { e.stopPropagation(); markDontKnow(); });
+    loadDeck(0);
+  });
+})();
+
+</script>
+
+</div>
+
+<script>
+function checkAnswer(btn, isCorrect, qid){
+  const box = btn.closest('.quiz-box');
+  const opts = box.querySelectorAll('.quiz-opt');
+  opts.forEach(o=>o.disabled=true);
+  const fb = document.getElementById('fb-'+qid);
+  if(isCorrect){
+    btn.classList.add('correct');
+    fb.textContent = '✅ ¡Correcto!';
+    fb.className = 'quiz-feedback show ok';
+  } else {
+    btn.classList.add('incorrect');
+    opts.forEach(o=>{
+      if(o.getAttribute('onclick').includes(',true,')) o.classList.add('correct');
+    });
+    fb.textContent = '❌ Incorrecto. Revisa la respuesta correcta marcada en verde.';
+    fb.className = 'quiz-feedback show bad';
+  }
+}
+
+document.querySelectorAll('.click-reveal').forEach(function(el){
+  el.addEventListener('click', function(){
+    var pop = document.getElementById(el.getAttribute('data-target'));
+    if(!pop) return;
+    var wasOpen = pop.classList.contains('show');
+    pop.classList.toggle('show');
+    el.classList.toggle('active', !wasOpen);
+  });
+});
+</script>
+
+</body>
+</html>
