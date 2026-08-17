@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T07 · Anexo 2 · Resumen literal para memorización</title>
+<style>
+:root{
+  --bg:#0f1419; --card:#1a2129; --card2:#1e2730; --border:#2a3441;
+  --text:#e6edf3; --text-dim:#9aa8b5; --accent:#3ddc97;
+}
+*{box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;margin:0;padding:0;line-height:1.7;}
+.wrap{max-width:900px;margin:0 auto;padding:24px 18px 80px;}
+.back-link{display:inline-block;margin-bottom:18px;color:var(--accent);text-decoration:none;font-size:14px;border-bottom:1px dotted var(--accent);}
+h1{font-size:24px;color:#fff;margin-bottom:6px;}
+.subtitle{color:var(--text-dim);font-size:14px;margin-bottom:24px;}
+.disclaimer{background:#1a2129;border:1px solid #2a3441;border-radius:10px;padding:14px 18px;font-size:13px;color:var(--text-dim);margin-bottom:26px;}
+.disclaimer b{color:var(--text);}
+.disclaimer.warn{border-color:#8a5a1e;background:#241d12;}
+.legend{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 22px;margin-bottom:30px;}
+.legend h3{margin-top:0;font-size:14px;color:var(--accent);text-transform:uppercase;letter-spacing:0.5px;}
+.legend-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;font-size:12.5px;}
+.legend-item{display:flex;align-items:center;gap:6px;}
+.legend-swatch{padding:1px 7px;border-radius:3px;}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin-bottom:30px;}
+.toc h3{margin-top:0;font-size:14px;color:var(--accent);text-transform:uppercase;}
+.toc a{color:var(--text);text-decoration:none;display:block;padding:4px 0;border-bottom:1px dotted transparent;}
+.toc a:hover{color:var(--accent);border-color:var(--accent);}
+.bloque-anexo2{margin-bottom:40px;scroll-margin-top:16px;}
+.bloque-anexo2-title{font-size:18px;color:#fff;border-bottom:2px solid var(--accent);padding-bottom:8px;margin-bottom:16px;}
+.articulo-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:14px;scroll-margin-top:16px;}
+.articulo-card-title{display:inline-block;background:#7a1030;color:#fff;font-weight:800;font-size:13px;padding:4px 12px;border-radius:6px;margin-bottom:10px;}
+.entrada{margin:8px 0;font-size:15px;padding-left:2px;}
+.concepto-solo{display:inline-block;}
+.consecuencia{color:#7fb3e8;}
+.fecha-marca{color:#0f1419;background:#e879f9;padding:0 3px;border-radius:2px;}
+.ley-num{color:#c9184a;background:#3a0f1e;padding:0 3px;border-radius:2px;}
+.plazo{color:#fbbf24;background:#3a2f12;padding:0 3px;border-radius:2px;}
+.obligacion{color:#f87171;background:#3a1f24;padding:0 3px;border-radius:2px;}
+.facultativo{color:#fb923c;text-decoration:underline dotted #fb923c;}
+.excepcion{color:#c4b5fd;background:#2e2a46;padding:0 3px;border-radius:2px;}
+.condicion{color:#94a3b8;background:#2d3540;padding:0 3px;border-radius:2px;}
+.sujeto-pub{color:#818cf8;font-weight:700;}
+.sujeto-priv{color:#2dd4bf;font-weight:700;}
+@media (max-width:600px){
+  .wrap{padding:14px 12px 60px;}
+  h1{font-size:20px;}
+  .articulo-card{padding:12px 14px;}
+  .entrada{font-size:14px;}
+  .legend-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<a class="back-link" href="T07_COMPLETO.html">← Volver al Tema 7</a>
+<h1>Anexo 2 · Resumen literal para memorización</h1>
+<p class="subtitle">Tema 7, Acción protectora</p>
+
+<div class="disclaimer warn">
+<b>Aviso importante sobre el origen de este anexo:</b> a diferencia de los Anexos 2 de T13 y T2 (extraídos de un Word de resumen redactado aparte por el profesor), este documento lo he redactado yo mismo directamente a partir del contenido ya construido en el tema T07 (que a su vez viene del PDF fuente) — no existe todavía un resumen de memorización independiente para T7. Si más adelante generas ese Word con tu propio prompt, dímelo y lo sustituyo por la versión verificada contra esa fuente.
+</div>
+<div class="disclaimer">
+<b>Qué es este anexo:</b> concepto → consecuencia jurídica, resaltado con el mismo sistema de 3 capas del resto de Anexos 2. Úsalo para el repaso final, no como primera lectura del tema.
+</div>
+
+<div class="legend">
+<h3>Leyenda</h3>
+<div class="legend-grid">
+  <div class="legend-item"><span class="legend-swatch fecha-marca">fecha</span></div>
+  <div class="legend-item"><span class="legend-swatch ley-num">cita a otra ley</span></div>
+  <div class="legend-item"><span class="legend-swatch plazo">plazo / cuantía / %</span></div>
+  <div class="legend-item"><span class="legend-swatch obligacion">obligación / prohibición</span></div>
+  <div class="legend-item"><span class="legend-swatch facultativo">facultativo</span></div>
+  <div class="legend-item"><span class="legend-swatch excepcion">excepción</span></div>
+  <div class="legend-item"><span class="legend-swatch condicion">condición</span></div>
+  <div class="legend-item"><span class="legend-swatch sujeto-pub">sujeto público</span></div>
+  <div class="legend-item"><span class="legend-swatch sujeto-priv">sujeto privado</span></div>
+  <div class="legend-item"><span class="legend-swatch" style="color:#7fb3e8;">consecuencia / detalle</span></div>
+</div>
+</div>
+
+<div class="toc">
+<h3>Índice</h3>
+<a href="#a2t7-bloque1">1. Conceptos básicos de la acción protectora</a>
+<a href="#a2t7-bloque2">2. Riesgo protegido: contingencias comunes y profesionales</a>
+<a href="#a2t7-bloque3">3. Prestaciones: contenido, clasificación y caracteres</a>
+<a href="#a2t7-bloque4">4. Reintegro de prestaciones indebidas</a>
+<a href="#a2t7-bloque5">5. Requisitos generales del derecho a las prestaciones</a>
+<a href="#a2t7-bloque6">6. Responsabilidades en orden a las prestaciones por incumplimientos</a>
+<a href="#a2t7-bloque7">7. Automaticidad y anticipo de prestaciones</a>
+</div>
+
+<section class="bloque-anexo2" id="a2t7-bloque1">
+<h2 class="bloque-anexo2-title">1. Conceptos básicos de la acción protectora</h2>
+<div class="articulo-card" id="t7-a42accinprotectoradelsistemade">
+<div class="articulo-card-title">A42. Acción protectora del sistema de la SS</div>
+<p class="entrada"><span class="concepto-solo"><b>Acción protectora del sistema</b></span><br><span class="consecuencia">→ Comprenderá la asistencia sanitaria (AT/EP, EC/ANL y maternidad), la recuperación profesional, y las prestaciones económicas, familiares y de servicios sociales.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Naturaleza contributiva (A109)</b></span><br><span class="consecuencia">→ Financiación por cuotas, recargos-sanciones, rentas-intereses-patrimonio y otros ingresos: prestaciones económicas (<span class="excepcion">salvo</span> las N/C) y la totalidad de AT/EP.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Naturaleza no contributiva (A109)</b></span><br><span class="consecuencia">→ Financiación por aportaciones del Estado (PGE): asistencia sanitaria y servicios sociales (<span class="excepcion">salvo</span> AT/EP), pensiones N/C de incapacidad y jubilación, subsidio maternidad, complementos a mínimos, prestaciones familiares N/C, IMV.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Ámbito de extensión de la acción protectora</b></span><br><span class="consecuencia">→ Limita y establece el ámbito del RG, de los RREE y de las prestaciones no contributivas (Limi-TRES).</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Cualquier prestación de carácter público que complemente/amplíe/modifique prestaciones contributivas</b></span><br><span class="consecuencia">→ Forma parte del sistema de la SS y queda sujeta a los principios del A2 (universalidad, solidaridad, unidad e igualdad).</span></p>
+</div>
+<div class="articulo-card" id="t7-a155accinprotectoraenelrg">
+<div class="articulo-card-title">A155. Acción protectora en el RG</div>
+<p class="entrada"><span class="concepto-solo"><b>Acción protectora en el RG</b></span><br><span class="consecuencia">→ Será la del A42, <span class="excepcion">con excepción de</span> la protección por cese de actividad (exclusiva del RETA) y las prestaciones no contributivas (para toda persona, <span class="sujeto-priv">trabajador</span>a o no).</span></p>
+</div>
+<div class="articulo-card" id="t7-a314accinprotectoraenelreta">
+<div class="articulo-card-title">A314. Acción protectora en el RETA</div>
+<p class="entrada"><span class="concepto-solo"><b>Acción protectora en el RETA</b></span><br><span class="consecuencia">→ Será la del A42, <span class="excepcion">con excepción de</span> la protección por desempleo (exclusiva del RG) y las prestaciones no contributivas.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Reconocimiento y abono de prestaciones en el RETA</b></span><br><span class="consecuencia">→ Exige estar al corriente en el pago de las cotizaciones (A47).</span></p>
+</div>
+<div class="articulo-card" id="t7-a43mejorasvoluntarias">
+<div class="articulo-card-title">A43. Mejoras voluntarias</div>
+<p class="entrada"><span class="concepto-solo"><b>Modalidad contributiva de la acción protectora (A7.1)</b></span><br><span class="consecuencia">→ <span class="facultativo">Podrá</span> ser mejorada voluntariamente en la forma y condiciones de las normas reguladoras del RG y de los RREE.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>La Seguridad Social</b></span><br><span class="consecuencia">→ <span class="obligacion">No podrá</span> ser objeto de contratación colectiva, <span class="excepcion">salvo</span> el establecimiento de mejoras voluntarias.</span></p>
+</div>
+<div class="articulo-card" id="t7-a238mejorasdelaaccinprotectora">
+<div class="articulo-card-title">A238. Mejoras de la acción protectora</div>
+<p class="entrada"><span class="concepto-solo"><b>Mejora directa de las prestaciones (A239-A240)</b></span><br><span class="consecuencia">→ Las <span class="sujeto-priv">empresas</span> <span class="facultativo">podrán</span> mejorar las prestaciones del RG a su exclusivo cargo; excepcionalmente, previa aprobación del <span class="sujeto-pub">Ministerio</span>, cabe aportación económica voluntaria de los <span class="sujeto-priv">trabajadores</span>.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Establecimiento de tipos de cotización adicionales (A241)</b></span><br><span class="consecuencia">→ El <span class="sujeto-pub">Ministerio de Empleo y SS</span> <span class="facultativo">podrá</span> aprobar cotizaciones adicionales para la revalorización de pensiones u otras prestaciones periódicas ya causadas.</span></p>
+</div>
+</section>
+<section class="bloque-anexo2" id="a2t7-bloque2">
+<h2 class="bloque-anexo2-title">2. Riesgo protegido: contingencias comunes y profesionales</h2>
+<div class="articulo-card" id="t7-contingencia">
+<div class="articulo-card-title">Contingencia</div>
+<p class="entrada"><span class="concepto-solo"><b>Contingencia</b></span><br><span class="consecuencia">→ Materialización de un riesgo que provoca un estado de necesidad protegido por la SS.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Contingencias Comunes (CC)</b></span><br><span class="consecuencia">→ Enfermedad Común o Accidente No Laboral (EC/ANL).</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Contingencias Profesionales (CP)</b></span><br><span class="consecuencia">→ Accidente de Trabajo o Enfermedad Profesional (AT/EP); incluye riesgo durante el embarazo y riesgo durante la lactancia natural.</span></p>
+</div>
+<div class="articulo-card" id="t7-a156conceptodeaccidentedetraba">
+<div class="articulo-card-title">A156. Concepto de accidente de trabajo: AT</div>
+<p class="entrada"><span class="concepto-solo"><b>A156.1 Accidente de trabajo</b></span><br><span class="consecuencia">→ Toda lesión corporal que el <span class="sujeto-priv">trabajador</span> sufra con ocasión o por consecuencia del trabajo que ejecute por cuenta ajena.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>A156.2 Tendrán la consideración de AT</b></span><br><span class="consecuencia">→ El ocurrido al ir o volver del trabajo (in itinere), por cargos electivos sindicales, por órdenes del <span class="sujeto-priv">empresario</span> o en interés de la <span class="sujeto-priv">empresa</span>, en actos de salvamento con conexión al trabajo, enfermedades por causa exclusiva del trabajo, enfermedades agravadas por el accidente, y enfermedades intercurrentes.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>A156.3 Presunción</b></span><br><span class="consecuencia">→ Se presumirá, <span class="excepcion">salvo</span> prueba en contrario, que son AT las lesiones sufridas durante el tiempo y en el lugar del trabajo.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>A156.4 No tendrán la consideración de AT</b></span><br><span class="consecuencia">→ Los debidos a fuerza mayor extraña al trabajo (nunca se considera fuerza mayor extraña la insolación, el rayo u otros fenómenos análogos) ni los debidos a dolo o imprudencia temeraria del <span class="sujeto-priv">trabajador</span>.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>A156.5 No impedirán la calificación de AT</b></span><br><span class="consecuencia">→ La imprudencia profesional derivada de la confianza que inspira el trabajo habitual, ni la concurrencia de culpabilidad civil o criminal de terceros, <span class="excepcion">salvo que</span> no guarde relación con el trabajo.</span></p>
+</div>
+<div class="articulo-card" id="t7-a157conceptodeenfermedadprofes">
+<div class="articulo-card-title">A157. Concepto de enfermedad profesional: EP</div>
+<p class="entrada"><span class="concepto-solo"><b>Enfermedad profesional</b></span><br><span class="consecuencia">→ La contraída por cuenta ajena en actividades del cuadro reglamentario, provocada por la acción de elementos o sustancias (<span class="ley-num">RD 1299/2006</span>, Anexo I, 6 grupos).</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Inclusión de nuevas EP</b></span><br><span class="consecuencia">→ Propuesta del <span class="sujeto-pub">Ministerio en materia de SS</span> previo informe de Sanidad y de la <span class="sujeto-pub">Comisión Nacional de Seguridad y Salud en el Trabajo</span>, o inclusión automática si están en la lista europea de EP.</span></p>
+</div>
+<div class="articulo-card" id="t7-a158conceptodeanlyec">
+<div class="articulo-card-title">A158. Concepto de ANL y EC</div>
+<p class="entrada"><span class="concepto-solo"><b>Accidente No Laboral (ANL)</b></span><br><span class="consecuencia">→ El que no tenga el carácter de accidente de trabajo.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Enfermedad Común (EC)</b></span><br><span class="consecuencia">→ Alteraciones de la salud que no tengan condición de AT/EP.</span></p>
+</div>
+<div class="articulo-card" id="t7-a160riesgoscatastrficos">
+<div class="articulo-card-title">A160. Riesgos catastróficos</div>
+<p class="entrada"><span class="concepto-solo"><b>Riesgos declarados catastróficos</b></span><br><span class="consecuencia">→ <span class="excepcion">En ningún caso</span> serán objeto de protección por el Régimen General.</span></p>
+</div>
+</section>
+<section class="bloque-anexo2" id="a2t7-bloque3">
+<h2 class="bloque-anexo2-title">3. Prestaciones: contenido, clasificación y caracteres</h2>
+<div class="articulo-card" id="t7-a44caracteresdelasprestaciones">
+<div class="articulo-card-title">A44. Caracteres de las prestaciones</div>
+<p class="entrada"><span class="concepto-solo"><b>A44.1 Prestaciones de la SS</b></span><br><span class="consecuencia">→ <span class="obligacion">No podrán</span> ser objeto de retención, cesión, compensación o descuento, <span class="excepcion">salvo</span> obligaciones alimenticias a favor de cónyuge e hijos, u obligaciones contraídas por el <span class="sujeto-priv">beneficiario</span> dentro de la SS.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>A44.2 Percepciones derivadas de la acción protectora</b></span><br><span class="consecuencia">→ Sujetas a tributación por IRPF, <span class="excepcion">salvo</span> las exentas: IP absoluta/gran incapacidad, NYCM, prestaciones familiares N/C, orfandad, nietos/hermanos, auxilio por defunción, desempleo en pago único, terrorismo, IMV ≤1,5 IPREM, prestaciones por dependencia.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>A44.3 Informaciones o certificaciones de la SS</b></span><br><span class="consecuencia">→ <span class="obligacion">No podrá</span> exigirse ninguna tasa fiscal ni derecho de ninguna clase.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Inembargabilidad (A607 LEC)</b></span><br><span class="consecuencia">→ Sueldos y pensiones inembargables en cuantía del SMI; lo que exceda se embarga según escala progresiva.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Proporcionalidad</b></span><br><span class="consecuencia">→ Las prestaciones contributivas son proporcionales a las cotizaciones; las no contributivas son uniformes.</span></p>
+</div>
+<div class="articulo-card" id="t7-a162crditosprivilegiados">
+<div class="articulo-card-title">A162. Créditos privilegiados</div>
+<p class="entrada"><span class="concepto-solo"><b>Créditos privilegiados</b></span><br><span class="consecuencia">→ Prestaciones a cargo del <span class="sujeto-priv">empresario</span> por incumplimiento de afiliación/altas/cotización, el abono de IT por CC del día 4º al 15º, y el recargo de prestaciones del A164.</span></p>
+</div>
+<div class="articulo-card" id="t7-a164recargodeprestacionesporat">
+<div class="articulo-card-title">A164. Recargo de prestaciones por AT/EP</div>
+<p class="entrada"><span class="concepto-solo"><b>Prestaciones con causa en AT/EP por falta de medidas de seguridad</b></span><br><span class="consecuencia">→ Se aumentan de un <span class="plazo">30%</span> a un <span class="plazo">50%</span> según la gravedad de la falta.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Responsabilidad del recargo</b></span><br><span class="consecuencia">→ Recae directamente sobre el <span class="sujeto-priv">empresario</span> infractor y <span class="obligacion">no podrá</span> ser objeto de seguro alguno.</span></p>
+</div>
+<div class="articulo-card" id="t7-a58revalorizacin">
+<div class="articulo-card-title">A58. Revalorización</div>
+<p class="entrada"><span class="concepto-solo"><b>A58.1 Pensiones contributivas</b></span><br><span class="consecuencia">→ Mantendrán su poder adquisitivo.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>A58.2 Revalorización anual</b></span><br><span class="consecuencia">→ Según el valor medio de las tasas de variación interanual del IPC de los 12 meses previos a diciembre del año anterior.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>A58.3 Si el valor medio fuera negativo</b></span><br><span class="consecuencia">→ El importe no variará al comienzo del año.</span></p>
+</div>
+<div class="articulo-card" id="t7-a53prescripcin">
+<div class="articulo-card-title">A53. Prescripción</div>
+<p class="entrada"><span class="concepto-solo"><b>Derecho al reconocimiento de las prestaciones</b></span><br><span class="consecuencia">→ Prescribe a los 5 años desde el día siguiente al hecho causante, con efectos retroactivos máximos de 3 meses desde la solicitud.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Retroactividad máxima de 3 meses</b></span><br><span class="consecuencia">→ No opera en rectificación de errores materiales/de hecho/aritméticos, ni <span class="condicion">cuando</span> derive obligación de reintegro de prestaciones indebidas.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Son imprescriptibles</b></span><br><span class="consecuencia">→ La pensión de Jubilación y las prestaciones de Muerte y Supervivencia, con excepción del Auxilio por defunción.</span></p>
+</div>
+<div class="articulo-card" id="t7-a54caducidad">
+<div class="articulo-card-title">A54. Caducidad</div>
+<p class="entrada"><span class="concepto-solo"><b>Prestaciones a tanto alzado y por una sola vez</b></span><br><span class="consecuencia">→ El derecho al percibo caduca al año desde la notificación del reconocimiento.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Prestaciones periódicas</b></span><br><span class="consecuencia">→ El derecho al percibo de cada mensualidad caduca al año de su respectivo vencimiento.</span></p>
+</div>
+<div class="articulo-card" id="t7-a161cuantadelasprestaciones">
+<div class="articulo-card-title">A161. Cuantía de las prestaciones</div>
+<p class="entrada"><span class="concepto-solo"><b>Base Reguladora (BR)</b></span><br><span class="consecuencia">→ Se determina según la totalidad de las bases por las que se haya cotizado en los períodos señalados para cada prestación.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Horas extraordinarias (A149)</b></span><br><span class="consecuencia">→ Su cotización adicional no será computable para determinar la BR.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>BR de cada prestación</b></span><br><span class="consecuencia">→ <span class="obligacion">No podrá</span> rebasar el tope máximo de la BC (A148).</span></p>
+</div>
+<div class="articulo-card" id="t7-a59complementosparapensionesin">
+<div class="articulo-card-title">A59. Complementos para pensiones inferiores a la mínima</div>
+<p class="entrada"><span class="concepto-solo"><b>Beneficiarios de pensiones contributivas sin rendimientos que excedan el límite de la Ley de PGE</b></span><br><span class="consecuencia">→ Derecho a percibir complementos hasta la cuantía mínima, <span class="condicion">siempre que</span> residan en territorio español.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Importe de los complementos</b></span><br><span class="consecuencia">→ <span class="excepcion">En ningún caso</span> <span class="facultativo">podrá</span> superar la cuantía establecida para las pensiones N/C de jubilación e incapacidad.</span></p>
+</div>
+<div class="articulo-card" id="t7-a163incompatibilidaddepensione">
+<div class="articulo-card-title">A163. Incompatibilidad de pensiones</div>
+<p class="entrada"><span class="concepto-solo"><b>Pensiones del RG en un mismo <span class="sujeto-priv">beneficiario</span></b></span><br><span class="consecuencia">→ Son incompatibles entre sí, <span class="excepcion">salvo</span> disposición en contrario; la <span class="sujeto-pub">entidad gestora</span> abona la de mayor cuantía, con suspensión de la otra.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Revocación de la opción</b></span><br><span class="consecuencia">→ El interesado <span class="facultativo">puede</span> solicitar percibir la pensión suspendida, con efectos desde el día 1 del mes siguiente a la solicitud.</span></p>
+</div>
+</section>
+<section class="bloque-anexo2" id="a2t7-bloque4">
+<h2 class="bloque-anexo2-title">4. Reintegro de prestaciones indebidas</h2>
+<div class="articulo-card" id="t7-a55reintegrodeprestacionesinde">
+<div class="articulo-card-title">A55. Reintegro de prestaciones indebidas</div>
+<p class="entrada"><span class="concepto-solo"><b>Percepción indebida de prestaciones</b></span><br><span class="consecuencia">→ <span class="obligacion">Obliga</span> a reintegrar su importe al <span class="sujeto-priv">perceptor</span>.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Quienes por acción u omisión contribuyan a la percepción indebida</b></span><br><span class="consecuencia">→ Responden subsidiariamente con el <span class="sujeto-priv">perceptor</span>, <span class="excepcion">salvo</span> buena fe probada.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Obligación de reintegro</b></span><br><span class="consecuencia">→ Prescribe a los 4 años desde el cobro o desde que fue posible exigir la devolución.</span></p>
+</div>
+<div class="articulo-card" id="t7-procedimientosdereintegro">
+<div class="articulo-card-title">Procedimientos de reintegro</div>
+<p class="entrada"><span class="concepto-solo"><b>Caso I — Procedimiento especial (<span class="ley-num">RD 148/1996</span>)</b></span><br><span class="consecuencia">→ Reintegro por descuentos aplicados por la <span class="sujeto-pub">entidad gestora</span> sobre prestaciones del propio deudor.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Caso II — Procedimiento general (A80 <span class="ley-num">RD 1415/2004</span>)</b></span><br><span class="consecuencia">→ Recaudación por la <span class="sujeto-pub">TGSS</span>, aplicable <span class="condicion">cuando</span> no proceda el especial.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Caso III — Procedimiento judicial</b></span><br><span class="consecuencia">→ Exclusivamente <span class="condicion">cuando</span> no quepan los anteriores; demanda ante el <span class="sujeto-pub">Juzgado de lo Social</span>.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Límite del procedimiento especial</b></span><br><span class="consecuencia">→ Importe a reintegrar no mayor del <span class="plazo">3%</span> del IPREM mensual; en sucesión mortis causa, <span class="plazo">20%</span> del IPREM.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Plazo de resolución del procedimiento administrativo</b></span><br><span class="consecuencia">→ Máximo 3 meses desde el acuerdo de inicio.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Plazo de abono voluntario íntegro</b></span><br><span class="consecuencia">→ <span class="plazo">30 días</span> siguientes a la notificación de la resolución.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Plazo máximo de cancelación de la deuda por descuentos</b></span><br><span class="consecuencia">→ 5 años, ampliable si el importe neto resultante es inferior a las pensiones no contributivas de jubilación/incapacidad.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Plazo de la reclamación de deuda de la <span class="sujeto-pub">TGSS</span></b></span><br><span class="consecuencia">→ Desde la notificación hasta el último día hábil del mes siguiente.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Fraccionamiento del pago</b></span><br><span class="consecuencia">→ Importe mínimo de <span class="plazo">100 euros</span> mensuales, hasta un máximo de <span class="plazo">cinco años</span>.</span></p>
+</div>
+</section>
+<section class="bloque-anexo2" id="a2t7-bloque5">
+<h2 class="bloque-anexo2-title">5. Requisitos generales del derecho a las prestaciones</h2>
+<div class="articulo-card" id="t7-a165condicionesdelderechoalasp">
+<div class="articulo-card-title">A165. Condiciones del derecho a las prestaciones</div>
+<p class="entrada"><span class="concepto-solo"><b>Derecho a prestaciones del RG y RREE</b></span><br><span class="consecuencia">→ Requiere afiliación y alta (o situación asimilada) al sobrevenir la contingencia, además de los requisitos particulares de cada prestación.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Período Mínimo de Cotización (PMC)</b></span><br><span class="consecuencia">→ Cotizaciones efectivamente realizadas o expresamente asimiladas.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Cuotas de IT, maternidad, paternidad, riesgo embarazo y riesgo lactancia natural</b></span><br><span class="consecuencia">→ Son computables a efectos de los períodos previos de cotización exigidos (situaciones de alta, no de baja).</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Prestaciones derivadas de accidente (sea o no de trabajo) o enfermedad profesional</b></span><br><span class="consecuencia">→ No exigen períodos previos de cotización (no aplica PMC en AT/EP/ANL; sí aplica en EC).</span></p>
+</div>
+<div class="articulo-card" id="t7-a166situacionesasimiladasalade">
+<div class="articulo-card-title">A166. Situaciones asimiladas a la de alta</div>
+<p class="entrada"><span class="concepto-solo"><b>Situaciones asimiladas a la de alta</b></span><br><span class="consecuencia">→ Desempleo total con prestación, vacaciones anuales no disfrutadas (<span class="excepcion">salvo</span> riesgo embarazo/lactancia), excedencia forzosa, traslado fuera de territorio nacional, convenio especial con la SS, y las que señale el <span class="sujeto-pub">Ministerio</span>.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Alta de pleno derecho</b></span><br><span class="consecuencia">→ AT/EP, asistencia sanitaria por EC/ANL/maternidad y desempleo, aunque el <span class="sujeto-priv">empresario</span> hubiera incumplido sus obligaciones.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Alta especial</b></span><br><span class="consecuencia">→ Situación del <span class="sujeto-priv">trabajador</span> durante huelga y cierre patronal; se suspende la obligación de cotizar.</span></p>
+</div>
+<div class="articulo-card" id="t7-situacionescomputablesaefectos">
+<div class="articulo-card-title">Situaciones computables a efectos de PMC</div>
+<p class="entrada"><span class="concepto-solo"><b>A235 Cotizaciones por parto</b></span><br><span class="consecuencia">→ <span class="plazo">112 días</span> completos por cada parto de un solo hijo, más <span class="plazo">14 días</span> por cada hijo adicional en parto múltiple; cotización efectiva para Jubilación e IP.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>A237 Excedencias por cuidado de hijo/familiar</b></span><br><span class="consecuencia">→ Hasta 3 años; cotización efectiva para Jubilación e IP, MYS y NYCM.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>A247.2 Contrato fijo-discontinuo</b></span><br><span class="consecuencia">→ El período se multiplica por un coeficiente de 1,5 para Jub/IP/MYS, sin superar los días naturales del año.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>A249bis Contratos temporales de duración ≤<span class="plazo">5 días</span></b></span><br><span class="consecuencia">→ Cada día de trabajo se considera como 1,<span class="plazo">4 días</span> de cotización, para Jub/IP/MYS/IT/NYCM/Cáncer.</span></p>
+</div>
+<div class="articulo-card" id="t7-a92ya49cotizacionesenvariosreg">
+<div class="articulo-card-title">A9.2 y A49. Cotizaciones en varios regímenes</div>
+<p class="entrada"><span class="concepto-solo"><b>A9.2 Cotizaciones no superpuestas</b></span><br><span class="consecuencia">→ Se totalizan los períodos de permanencia en cada régimen, <span class="condicion">siempre que</span> no se superpongan.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>A49 Cotizaciones superpuestas (pluriactividad)</b></span><br><span class="consecuencia">→ Si no se causa pensión en un régimen, las bases <span class="facultativo">pueden</span> acumularse exclusivamente para determinar la BR del régimen en que sí se causa, sin exceder el límite máximo de cotización.</span></p>
+</div>
+<div class="articulo-card" id="t7-a47estaralcorrienteenelpagodel">
+<div class="articulo-card-title">A47. Estar al corriente en el pago de las cotizaciones</div>
+<p class="entrada"><span class="concepto-solo"><b>Trabajadores responsables del ingreso de sus cotizaciones</b></span><br><span class="consecuencia">→ Deben estar al corriente en el pago para el reconocimiento de prestaciones económicas, aun con cómputo recíproco de cotizaciones.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Mecanismo de invitación al pago (A28.2 <span class="ley-num">Decreto 2530/1970</span>)</b></span><br><span class="consecuencia">→ Plazo improrrogable de <span class="plazo">30 días naturales</span> para ingresar la deuda; si se hace en plazo, se considera al corriente; si es posterior, penalización (pago único/subsidios: -<span class="plazo">20%</span>; pensiones: efectos desde el mes siguiente al ingreso).</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Incumplimiento posterior de un aplazamiento ya concedido</b></span><br><span class="consecuencia">→ Suspensión inmediata de la prestación reconocida; se rehabilita solo tras saldar la deuda en su totalidad (no se aplica el procedimiento especial de descuento).</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Presunción inicial de estar al corriente</b></span><br><span class="consecuencia">→ Las cotizaciones del mes del hecho causante y los 2 meses previos se presumen ingresadas sin necesidad de acreditación.</span></p>
+</div>
+<div class="articulo-card" id="t7-a46pagodepensiones">
+<div class="articulo-card-title">A46. Pago de pensiones</div>
+<p class="entrada"><span class="concepto-solo"><b>Pensiones contributivas derivadas de CC y pensiones no contributivas</b></span><br><span class="consecuencia">→ Se satisfacen en 14 pagas (12 mensuales + 2 extraordinarias en junio y noviembre).</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Pensiones derivadas de CP</b></span><br><span class="consecuencia">→ Se satisfacen en 12 pagas, <span class="excepcion">salvo</span> revalorizaciones, complementos por mínimos y brecha de género, que se abonan en 14 pagas.</span></p>
+</div>
+</section>
+<section class="bloque-anexo2" id="a2t7-bloque6">
+<h2 class="bloque-anexo2-title">6. Responsabilidades en orden a las prestaciones por incumplimientos</h2>
+<div class="articulo-card" id="t7-a167responsabilidadenordenalas">
+<div class="articulo-card-title">A167. Responsabilidad en orden a las prestaciones</div>
+<p class="entrada"><span class="concepto-solo"><b>Prestación causada cumpliendo las condiciones del A165</b></span><br><span class="consecuencia">→ La responsabilidad se imputa a las <span class="sujeto-pub">entidades gestoras</span>, <span class="sujeto-priv">mutuas colaboradoras</span> (o <span class="sujeto-priv">empresarios</span> colaboradores) o <span class="sujeto-pub">servicios comunes</span>.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Falta de afiliación o alta</b></span><br><span class="consecuencia">→ La <span class="sujeto-priv">empresa</span> es responsable directa del pago; no supone denegar la prestación.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Falta de cotización o infracotización</b></span><br><span class="consecuencia">→ La responsabilidad <span class="sujeto-priv">empresa</span>rial es proporcional a lo dejado de cotizar.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Incumplimiento en materia de AT (A242)</b></span><br><span class="consecuencia">→ Se equipara a la falta de formalización de la protección por esa contingencia.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Incumplimiento de reconocimientos médicos obligatorios (A243/A244)</b></span><br><span class="consecuencia">→ Constituye a la <span class="sujeto-priv">empresa</span> en responsable directa de todas las prestaciones derivadas de EP.</span></p>
+</div>
+<div class="articulo-card" id="t7-responsabilidaddetercerasperso">
+<div class="articulo-card-title">Responsabilidad de terceras personas</div>
+<p class="entrada"><span class="concepto-solo"><b>Responsables solidarios</b></span><br><span class="consecuencia">→ Responden a la vez que el <span class="sujeto-priv">empresario</span>, por el principal, recargos, intereses y costas.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Responsables subsidiarios</b></span><br><span class="consecuencia">→ Responden ante inexistencia de <span class="sujeto-priv">empresario</span> o insolvencia declarada; solo por el principal de la deuda.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Responsables mortis causa</b></span><br><span class="consecuencia">→ Los sucesores heredan la responsabilidad total, <span class="excepcion">salvo que</span> acepten la herencia a beneficio de inventario.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Contrata/subcontrata en la propia actividad (A42 ET)</b></span><br><span class="consecuencia">→ Certificación negativa de la <span class="sujeto-pub">TGSS</span> en <span class="plazo">30 días</span> improrrogables exonera de responsabilidad; responsabilidad solidaria por obligaciones de SS durante 3 años tras el encargo, y por obligaciones salariales durante 1 año.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Construcción o reparación de vivienda por un particular</b></span><br><span class="consecuencia">→ No genera responsabilidad solidaria ni subsidiaria.</span></p>
+</div>
+</section>
+<section class="bloque-anexo2" id="a2t7-bloque7">
+<h2 class="bloque-anexo2-title">7. Automaticidad y anticipo de prestaciones</h2>
+<div class="articulo-card" id="t7-pagodeprestacionesanteincumpli">
+<div class="articulo-card-title">Pago de prestaciones ante incumplimiento empresarial</div>
+<p class="entrada"><span class="concepto-solo"><b>Entidades gestoras, <span class="sujeto-priv">mutuas</span> y <span class="sujeto-pub">servicios comunes</span></b></span><br><span class="consecuencia">→ Pagan las prestaciones a los <span class="sujeto-priv">beneficiarios</span> con independencia de la exigencia de responsabilidad, con subrogación en los derechos del <span class="sujeto-priv">beneficiario</span>.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Límite del anticipo de prestaciones</b></span><br><span class="consecuencia">→ <span class="obligacion">No podrá</span> exceder de dos veces y media el IPREM vigente en el momento del hecho causante, o el capital coste necesario.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Cálculo del importe anticipado</b></span><br><span class="consecuencia">→ Incluye el interés de capitalización y el recargo por falta de aseguramiento; excluye el recargo del A164 por falta de medidas de seguridad.</span></p>
+</div>
+<div class="articulo-card" id="t7-tiposdeautomaticidad">
+<div class="articulo-card-title">Tipos de automaticidad</div>
+<p class="entrada"><span class="concepto-solo"><b>Automaticidad absoluta o plena</b></span><br><span class="consecuencia">→ No se exige alta; aplica a los casos de alta de pleno derecho.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Automaticidad relativa</b></span><br><span class="consecuencia">→ Condiciona el requisito de alta por parte del <span class="sujeto-priv">empresario</span>; aplica a NYCM, IT por CC y Jubilación.</span></p>
+</div>
+<div class="articulo-card" id="t7-capitalcostea69a71rd14152004">
+<div class="articulo-card-title">Capital coste (A69-A71 RD 1415/2004)</div>
+<p class="entrada"><span class="concepto-solo"><b>La <span class="sujeto-pub">TGSS</span> recaudará de <span class="sujeto-priv">mutuas</span> y <span class="sujeto-priv">empresarios</span> responsables</b></span><br><span class="consecuencia">→ El valor actual del capital coste, los intereses de capitalización y el recargo del <span class="plazo">5%</span> por falta de aseguramiento.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Sin familiares con derecho a pensión (solo AT)</b></span><br><span class="consecuencia">→ La <span class="sujeto-pub">TGSS</span> recaudará el capital para constituir una renta cierta temporal durante 25 años del <span class="plazo">30%</span> del salario del fallecido.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Devolución por sentencia firme</b></span><br><span class="consecuencia">→ Devolución total o proporcional del capital ingresado, sin detracción de lo ya satisfecho a los <span class="sujeto-priv">beneficiarios</span>, que quedan exentos de restituir.</span></p>
+</div>
+</section>
+</div>
+</body>
+</html>
