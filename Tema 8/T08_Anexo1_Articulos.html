@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T08 · Anexo 1 — Artículos literales verificados (BOE)</title>
+<style>
+:root{
+  --bg:#0f1419; --bg-card:#1a2129; --bg-card2:#1e2730; --border:#2a3540;
+  --text:#e2e8ec; --text-dim:#93a3af;
+  --green:#4ade80; --green-dim:#1f3a2a;
+  --yellow:#facc15; --yellow-dim:#3a3320;
+  --orange:#fb923c; --orange-dim:#3a2a1a;
+  --red:#f87171; --red-dim:#3a1f24;
+  --blue:#60a5fa; --blue-dim:#1a2a3a;
+  --purple:#c084fc; --purple-dim:#2a1f3a;
+  --fucsia:#f472b6; --fucsia-dim:#3a1329;
+  --cian-num:#22d3ee; --cian-dim:#123338;
+  --lima-num:#a3e635; --magenta-fecha:#e879f9;
+  --garnet:#c9184a; --garnet-dim:#3a0f1e;
+  --indigo:#818cf8; --indigo-dim:#242a4a;
+  --teal:#2dd4bf; --teal-dim:#123332;
+  --amber:#fbbf24; --amber-dim:#3a2f12;
+  --violet:#c4b5fd; --violet-dim:#2e2a46;
+  --slate:#94a3b8; --slate-dim:#2d3540;
+  --gold:#eab308; --gold-dim:#3a2f0a;
+}
+*{box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',Roboto,Arial,sans-serif;line-height:1.6;margin:0;padding:0 0 80px;}
+.wrap{max-width:920px;margin:0 auto;padding:0 20px;}
+.top-nav{display:flex;flex-wrap:wrap;gap:10px;padding:16px 0;border-bottom:1px solid var(--border);margin-bottom:20px;}
+.top-nav a{color:var(--cian-num);text-decoration:none;font-size:0.85rem;background:var(--bg-card);border:1px solid var(--border);padding:6px 12px;border-radius:8px;}
+.top-nav a:hover{border-color:var(--cian-num);}
+.header-box{background:linear-gradient(90deg,#14532d,#276749);border-radius:12px;padding:22px 24px;margin-bottom:18px;}
+.header-box h1{margin:0 0 8px;font-size:1.5rem;color:#fff;}
+.header-box p{margin:0;color:#dcfce7;font-size:0.9rem;line-height:1.55;}
+.disclaimer{background:var(--bg-card);border:1px solid var(--border);border-left:4px solid var(--slate);border-radius:8px;padding:14px 18px;margin-bottom:18px;font-size:0.85rem;color:var(--text-dim);}
+.scope-box{background:var(--bg-card);border:1px solid var(--amber);border-left:4px solid var(--amber);border-radius:10px;padding:16px 20px;margin-bottom:18px;}
+.scope-box h3{margin:0 0 10px;color:var(--amber);font-size:1rem;}
+.scope-box p{font-size:0.87rem;color:var(--text);margin:6px 0;}
+.exclu-group{margin:12px 0;padding:10px 14px;background:var(--bg-card2);border-radius:8px;border:1px solid var(--border);}
+.exclu-group b{color:var(--text);}
+.art-chip{display:inline-block;background:var(--slate-dim);color:var(--slate);border:1px solid var(--slate);padding:1px 8px;border-radius:5px;font-size:0.8rem;font-weight:700;margin:2px 3px 2px 0;}
+.legend{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:26px;}
+.legend h3{margin:0 0 12px;font-size:1rem;color:var(--text);}
+.legend-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px 16px;}
+.legend-item{display:flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--text-dim);}
+.legend-swatch{display:inline-block;padding:1px 8px;border-radius:4px;font-size:0.78rem;font-weight:700;white-space:nowrap;}
+.legend-cat{grid-column:1/-1;color:var(--text);font-weight:700;font-size:0.82rem;margin-top:8px;text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid var(--border);padding-bottom:4px;}
+
+.titulo-head{background:linear-gradient(90deg,#14532d,#1a2129);border-radius:10px;padding:12px 18px;margin:36px 0 14px;}
+.titulo-head h2{margin:0;color:#fff;font-size:1.2rem;}
+.capitulo-head{border-left:4px solid var(--green);padding:8px 14px;margin:20px 0 12px;background:var(--bg-card);border-radius:0 8px 8px 0;}
+.capitulo-head h3{margin:0;color:var(--text);font-size:1.02rem;}
+.seccion-head{padding:4px 14px;margin:14px 0 10px;}
+.seccion-head h4{margin:0;color:var(--text-dim);font-size:0.9rem;font-weight:600;font-style:italic;}
+
+.articulo-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin:14px 0;}
+.art-card-head{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.articulo{color:#111;font-weight:700;background:var(--yellow);padding:1px 8px;border-radius:4px;font-size:0.9em;}
+.art-titulo-texto{color:var(--text);font-weight:600;font-size:0.95rem;flex:1;}
+.return-link{margin-left:auto;color:var(--cian-num);text-decoration:none;font-size:0.8rem;background:var(--cian-dim);padding:4px 10px;border-radius:6px;white-space:nowrap;}
+.return-link:hover{text-decoration:underline;}
+.articulo-card p{font-size:0.92rem;margin:0 0 10px;}
+.articulo-card p:last-child{margin-bottom:0;}
+
+.pendiente-warning{background:var(--orange-dim);border:1px solid var(--orange);border-radius:10px;padding:14px 18px;margin:28px 0 14px;}
+.pendiente-warning h3{margin:0 0 6px;color:var(--orange);font-size:1rem;}
+.pendiente-warning p{margin:0;font-size:0.87rem;color:var(--text);}
+
+/* Capa léxica automática */
+.num-marca{color:var(--lima-num);font-weight:800;}
+.pct-marca{background:var(--cian-num);color:#0f1419;padding:1px 6px;border-radius:4px;font-weight:800;}
+.fecha-marca{background:var(--magenta-fecha);color:#0f1419;padding:1px 6px;border-radius:4px;font-weight:800;}
+.epigrafe-letra{color:var(--purple);font-weight:800;margin-right:2px;}
+.epigrafe-num{color:var(--orange);font-weight:800;margin-right:2px;}
+.ley-num{background:var(--garnet-dim);color:var(--garnet);padding:1px 6px;border-radius:4px;font-weight:700;border:1px solid rgba(201,24,74,0.4);}
+.art-tag-inline{display:inline-block;background:#fff;color:#111;font-weight:700;padding:0 6px;border-radius:4px;font-size:0.88em;text-decoration:none;}
+a.art-tag-inline:hover{background:var(--yellow);}
+
+/* Capa sintáctica manual */
+.sujeto-pub{color:var(--indigo);font-weight:700;}
+.sujeto-priv{color:var(--teal);font-weight:700;}
+.verbo-rector{background:#173404;color:#97C459;padding:1px 6px;border-radius:4px;font-weight:700;}
+.verbo-directo{border-bottom:2px solid var(--green);}
+.verbo-indirecto{border-bottom:2px dotted var(--text-dim);}
+.objeto-directo{background:var(--blue-dim);color:var(--blue);padding:1px 6px;border-radius:4px;font-weight:700;}
+.objeto-destinatario{background:var(--fucsia-dim);color:var(--fucsia);padding:1px 6px;border-radius:4px;}
+.objeto-complementario{color:var(--fucsia);border:1px dashed var(--fucsia);padding:1px 6px;border-radius:4px;}
+.circunstancial{background:var(--cian-dim);color:var(--cian-num);padding:0 4px;border-radius:3px;}
+.finalidad{background:var(--gold-dim);color:var(--gold);padding:0 4px;border-radius:3px;font-style:italic;}
+.naturaleza-riesgo{background:#ffffff;color:#dc2626;padding:1px 6px;border-radius:3px;font-weight:700;}
+
+/* Capa modal híbrida */
+.obligacion{background:var(--red-dim);color:var(--red);padding:0 4px;border-radius:3px;font-weight:700;}
+.facultativo{color:var(--orange);text-decoration:underline;text-decoration-style:dotted;text-decoration-color:var(--orange);font-weight:700;}
+.excepcion{background:var(--violet-dim);color:var(--violet);padding:0 4px;border-radius:3px;font-style:italic;}
+.condicion{background:var(--slate-dim);color:var(--slate);padding:0 3px;border-radius:3px;}
+.plazo{background:var(--amber-dim);color:var(--amber);padding:0 4px;border-radius:3px;font-weight:700;}
+
+/* Coincidencia literal con el tema */
+mark.ctx-match{background:var(--yellow-dim);color:var(--yellow);padding:0 2px;border-radius:3px;text-decoration:underline;text-decoration-color:var(--yellow);}
+.ctx-match-title{text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:2px;}
+
+footer.foot-note{max-width:920px;margin:40px auto 0;padding:16px 20px;color:var(--text-dim);font-size:0.78rem;border-top:1px solid var(--border);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="top-nav">
+  <a href="../index.html">← Índice general</a>
+  <a href="T08_COMPLETO.html">↩ Volver al Tema 8</a>
+</div>
+
+<div class="header-box">
+  <h1>Anexo 1 — T08 · Incapacidad Temporal</h1>
+  <p>Artículos citados en el tema, en su literalidad, verificados contra el texto consolidado del BOE. No es explicación ni resumen — es la fuente oficial misma, para detectar cualquier trampa de examen que cambie una palabra clave del articulado real.</p>
+</div>
+
+<div class="disclaimer">
+  Apuntes de estudio personal, no material oficial. Preparación oposición Administrativo de la Seguridad Social 2026/2027.
+</div>
+
+<div class="scope-box">
+  <h3>⚠️ Aviso de alcance — estado de verificación</h3>
+  <p>Este Anexo 1 contiene, verificados palabra por palabra contra fuentes del BOE, los <b>12 artículos de la LGSS</b> que forman el núcleo del tema (A102, A165, A167, A169-176, A247, A249bis), <b>2 artículos del Estatuto de los Trabajadores</b> (A48.2, A49.1.n), <b>3 artículos del RD 625/2014</b> (A2, A5, A9), <b>1 artículo del RD 1430/2009</b> (A6) y <b>1 artículo del Decreto 1646/1972</b> (A13). En varios se confirmó una reforma reciente que ya estaba correctamente reflejada en el tema (Ley 2/2025 en A174.5/A48.2/A49.1.n, RD-ley 11/2024 en A247, Ley 6/2024 en A169/A172, RD 1060/2022 en A2 RD625/2014).</p>
+  <div class="exclu-group">
+    <b>Pendientes de verificación individual contra fuente:</b><br>
+    <span class="art-chip">A3/A4/A6/A7/A8 RD 625/2014</span><span class="art-chip">A3/A4 RD 1430/2009</span><span class="art-chip">A76 RD 1993/1995</span><span class="art-chip">A2 Orden ESS/1187/2015</span><span class="art-chip">A1 RD 53/1980</span><span class="art-chip">A178.1, A82.4, A83.1 LGSS</span>
+    <p>Estos artículos aparecen en el tema con el texto tomado del PDF del profesor, corroborado de forma indirecta en algunas búsquedas, pero <b>sin verificación individual palabra por palabra</b> todavía.</p>
+  </div>
+</div>
+
+<div class="legend">
+  <h3>Leyenda de color</h3>
+  <div class="legend-grid">
+    <div class="legend-cat">Capa léxica</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:var(--yellow);color:#111;">A169</span> Artículo</div>
+    <div class="legend-item"><span class="legend-swatch" style="color:var(--lima-num);">180</span> Número/cifra</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:var(--garnet-dim);color:var(--garnet);">RD 625/2014</span> Norma citada</div>
+    <div class="legend-cat">Capa sintáctica</div>
+    <div class="legend-item"><span class="legend-swatch" style="color:var(--indigo);">INSS</span> Sujeto público</div>
+    <div class="legend-item"><span class="legend-swatch" style="color:var(--teal);">Mutua</span> Sujeto privado</div>
+    <div class="legend-cat">Capa modal</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:var(--amber-dim);color:var(--amber);">plazo</span> Plazo/duración</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:var(--red-dim);color:var(--red);">obligación</span> Obligación</div>
+    <div class="legend-item"><span class="legend-swatch" style="color:var(--orange);text-decoration:underline dotted;">facultativo</span> Facultad</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:var(--violet-dim);color:var(--violet);">excepción</span> Excepción</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:var(--slate-dim);color:var(--slate);">condición</span> Condición</div>
+  </div>
+</div>
+
+<div class="titulo-head" id="tit-2"><h2>Título II — Régimen General de la Seguridad Social</h2></div>
+<div class="capitulo-head"><h3>Capítulo III — Aspectos comunes de la acción protectora</h3></div>
+
+<div class="articulo-card" id="a102">
+<div class="art-card-head"><span class="articulo">A102</span><span class="art-titulo-texto">Colaboración de las empresas.</span><a class="return-link" href="T08_COMPLETO.html#cap4" target="_blank">↩ Tema · Cap.4</a></div>
+<p><span class="epigrafe-num">1.</span> Las empresas, individualmente consideradas y en relación con su propio personal, <span class="facultativo">podrán colaborar</span> en la gestión de la <span class="sujeto-pub">Seguridad Social</span> exclusivamente en alguna o algunas de las formas siguientes: <span class="epigrafe-letra">a)</span> Asumiendo directamente el pago, a su cargo, de las prestaciones por incapacidad temporal derivada de accidente de trabajo y enfermedad profesional y las prestaciones de asistencia sanitaria y recuperación profesional, incluido el subsidio consiguiente que corresponda durante la indicada situación.</p>
+<p><span class="epigrafe-num">2.</span> El <span class="sujeto-pub">Ministerio de Empleo y Seguridad Social</span> <span class="facultativo">podrá establecer</span> con <span class="obligacion">carácter obligatorio</span>, para todas las empresas o para algunas de determinadas características, la colaboración en el pago de prestaciones a que se refiere el apartado c) anterior. La colaboración obligatoria consiste en el pago por la empresa a sus trabajadores, a cargo de la <span class="sujeto-pub">entidad gestora</span> o <span class="sujeto-priv">colaboradora</span>, de las prestaciones económicas, compensándose su importe en la liquidación de las cotizaciones sociales que aquella debe ingresar. La empresa <span class="obligacion">deberá comunicar</span> a la entidad gestora, a través de los medios electrónicos establecidos, los datos requeridos en el parte médico de baja, en los términos que se establezcan reglamentariamente. El Ministerio de Empleo y Seguridad Social <span class="facultativo">podrá suspender</span> o dejar sin efecto la colaboración obligatoria <span class="condicion">cuando</span> la empresa incumpla las obligaciones establecidas.</p>
+<p><span class="epigrafe-num">4.</span> La modalidad de colaboración de las empresas en la gestión de la Seguridad Social a que se refiere el apartado 1 <span class="facultativo">podrá ser autorizada</span> a agrupaciones de empresas, constituidas a este único efecto, siempre que reúnan las condiciones que determine el Ministerio de Empleo y Seguridad Social.</p>
+</div>
+
+<div class="capitulo-head"><h3>Capítulo IV — Normas generales en materia de prestaciones · Sección 2.ª Reconocimiento, determinación y mantenimiento del derecho</h3></div>
+
+<div class="articulo-card" id="a165">
+<div class="art-card-head"><span class="articulo">A165</span><span class="art-titulo-texto">Condiciones del derecho a las prestaciones.</span><a class="return-link" href="T08_COMPLETO.html#cap1" target="_blank">↩ Tema · Cap.1</a></div>
+<p><span class="epigrafe-num">1.</span> Para causar derecho a las prestaciones del <span class="sujeto-pub">Régimen General</span>, las personas incluidas en su campo de aplicación habrán de cumplir, además de los requisitos particulares exigidos para acceder a cada una de ellas, el requisito general de estar afiliadas y en alta en dicho Régimen o en situación asimilada a la de alta al sobrevenir la contingencia o situación protegida, <span class="excepcion">salvo disposición legal expresa en contrario</span>.</p>
+<p><span class="epigrafe-num">2.</span> En las prestaciones cuyo reconocimiento o cuantía esté subordinado, además, al cumplimiento de determinados períodos de cotización, solamente serán computables a tales efectos las cotizaciones efectivamente realizadas o las expresamente asimiladas a ellas en esta ley o en sus disposiciones reglamentarias.</p>
+<p><span class="epigrafe-num">3.</span> Las cuotas correspondientes a la situación de incapacidad temporal, de maternidad, de paternidad, de riesgo durante el embarazo o de riesgo durante la lactancia natural serán computables a efectos de los distintos períodos previos de cotización exigidos para el derecho a las prestaciones.</p>
+<p><span class="epigrafe-num">4.</span> <span class="obligacion">No se exigirán</span> períodos previos de cotización para el derecho a las prestaciones derivadas de accidente, sea o no de trabajo, o de enfermedad profesional, <span class="excepcion">salvo disposición legal expresa en contrario</span>.</p>
+</div>
+
+<div class="articulo-card" id="a167">
+<div class="art-card-head"><span class="articulo">A167</span><span class="art-titulo-texto">Responsabilidad en orden a las prestaciones.</span><a class="return-link" href="T08_COMPLETO.html#cap4" target="_blank">↩ Tema · Cap.4</a></div>
+<p><span class="epigrafe-num">1.</span> Cuando se haya causado derecho a una prestación por haberse cumplido las condiciones a que se refiere el <a class="art-tag-inline" href="#a165">art. 165</a>, la responsabilidad correspondiente se imputará, de acuerdo con sus respectivas competencias, a las <span class="sujeto-pub">entidades gestoras</span>, <span class="sujeto-priv">mutuas colaboradoras</span> con la Seguridad Social o empresarios que colaboren en la gestión o, en su caso, a los servicios comunes.</p>
+<p><span class="epigrafe-num">2.</span> El <span class="obligacion">incumplimiento</span> de las obligaciones en materia de afiliación, altas y bajas y de cotización determinará la exigencia de responsabilidad, en cuanto al pago de las prestaciones, previa la fijación de los supuestos de imputación y de su alcance y la regulación del procedimiento para hacerla efectiva.</p>
+<p><span class="epigrafe-num">3.</span> No obstante lo establecido en el apartado anterior, las entidades gestoras, mutuas colaboradoras con la Seguridad Social o, en su caso, los servicios comunes <span class="facultativo">procederán</span>, de acuerdo con sus respectivas competencias, al pago de las prestaciones a los beneficiarios en aquellos casos, incluidos en dicho apartado, en los que así se determine reglamentariamente, con la consiguiente subrogación en los derechos y acciones de tales beneficiarios. El indicado pago <span class="obligacion">procederá aun cuando</span> se trate de empresas desaparecidas o de aquellas que por su especial naturaleza no puedan ser objeto de procedimiento de apremio.</p>
+<p>En todo caso, el cálculo del importe de las prestaciones o del capital coste para el pago de las mismas por las mutuas o empresas declaradas responsables de aquellas incluirá el interés de capitalización y el recargo por falta de aseguramiento establecido pero con <span class="excepcion">exclusión del</span> recargo por falta de medidas de seguridad y salud en el trabajo a que se refiere el <a class="art-tag-inline" href="#a164">art. 164</a>.</p>
+</div>
+
+<div class="capitulo-head"><h3>Capítulo V — Incapacidad temporal</h3></div>
+
+<div class="articulo-card" id="a169">
+<div class="art-card-head"><span class="articulo">A169</span><span class="art-titulo-texto ctx-match-title">Concepto.</span><a class="return-link" href="T08_COMPLETO.html#cap1" target="_blank">↩ Tema · Cap.1</a></div>
+<p><span class="epigrafe-num">1.</span> Tendrán la consideración de situaciones determinantes de incapacidad temporal: <span class="epigrafe-letra">a)</span> <mark class="ctx-match">Las debidas a enfermedad común o profesional y a accidente, sea o no de trabajo, mientras el trabajador reciba asistencia sanitaria de la Seguridad Social y esté impedido para el trabajo</mark>, con una duración máxima de <span class="plazo">trescientos sesenta y cinco días</span>, prorrogables por otros <span class="plazo">ciento ochenta días</span> <span class="condicion">cuando</span> se presuma que durante ellos puede el trabajador ser dado de alta médica por curación.</p>
+<p>Tendrán la consideración de situaciones especiales de incapacidad temporal por contingencias comunes aquellas en que pueda encontrarse la mujer en caso de menstruación incapacitante secundaria, así como la debida a la interrupción del embarazo, voluntaria o no, mientras reciba asistencia sanitaria por el <span class="sujeto-pub">Servicio Público de Salud</span> y esté impedida para el trabajo, <span class="excepcion">sin perjuicio de</span> aquellos supuestos en que la interrupción del embarazo sea debida a accidente de trabajo o enfermedad profesional, en cuyo caso tendrá la consideración de situación de incapacidad temporal por contingencias profesionales.</p>
+<p>Se considerará también situación especial de incapacidad temporal por contingencias comunes la gestación de la mujer trabajadora desde el día primero de la semana trigésima novena.</p>
+<p>Se considerará situación especial de incapacidad temporal por contingencias comunes aquella en la que se encuentre la persona trabajadora donante de órganos o tejidos para su trasplante <span class="fecha-marca">(párrafo añadido por Ley 6/2024, en vigor desde el 3 de marzo de 2025)</span>. Esta situación comprenderá tanto los días discontinuos como ininterrumpidos, en los que el donante reciba asistencia sanitaria de la Seguridad Social y esté impedido para el trabajo como consecuencia de la preparación médica de la cirugía, como los transcurridos <span class="obligacion">desde el día del ingreso hospitalario</span> para la realización de esta preparación o la realización del trasplante hasta que sea dado de alta por curación.</p>
+<p><span class="epigrafe-letra">b)</span> Los períodos de observación por enfermedad profesional en los que se prescriba la baja en el trabajo durante los mismos, con una duración máxima de <span class="plazo">ciento ochenta días</span>, prorrogables por otros <span class="plazo">ciento ochenta días</span> <span class="condicion">cuando</span> se estime necesario para el estudio y diagnóstico de la enfermedad.</p>
+<p><span class="epigrafe-num">2.</span> A efectos del período máximo de duración de la situación de incapacidad temporal que se señala en la letra a) del apartado anterior, y de su posible prórroga, se computarán los períodos de recaída y de observación. Se considerará que existe recaída en un mismo proceso <span class="condicion">cuando</span> se produzca una nueva baja médica por la misma o similar patología dentro de los <span class="plazo">ciento ochenta días naturales</span> siguientes a la fecha de efectos de alta médica anterior, <span class="excepcion">salvo</span> los procesos por bajas médicas por menstruación incapacitante secundaria en los que cada proceso se considerará nuevo sin computar a los efectos del período máximo de duración de la situación de incapacidad temporal, y de su posible prórroga.</p>
+<p><span class="epigrafe-num">3.</span> La incomparecencia del beneficiario a cualquiera de las convocatorias realizadas por los médicos adscritos al <span class="sujeto-pub">Instituto Nacional de la Seguridad Social</span> y a las <span class="sujeto-priv">mutuas colaboradoras</span> con la Seguridad Social para examen y reconocimiento médico producirá la <span class="obligacion">suspensión cautelar</span> del derecho, al objeto de comprobar si aquella fue o no justificada. Reglamentariamente se regulará el procedimiento de suspensión del derecho y sus efectos.</p>
+</div>
+
+<div class="articulo-card" id="a170">
+<div class="art-card-head"><span class="articulo">A170</span><span class="art-titulo-texto">Competencias sobre los procesos de incapacidad temporal.</span><a class="return-link" href="T08_COMPLETO.html#cap3" target="_blank">↩ Tema · Cap.3</a></div>
+<p><span class="epigrafe-num">1.</span> Hasta el cumplimiento del plazo de duración de <span class="plazo">trescientos sesenta y cinco días</span> de los procesos de incapacidad temporal, el <span class="sujeto-pub">Instituto Nacional de la Seguridad Social</span> ejercerá, a través de su inspección médica, las mismas competencias que la Inspección de Servicios Sanitarios de la Seguridad Social u órgano equivalente del respectivo <span class="sujeto-pub">servicio público de salud</span> para emitir un alta médica a todos los efectos, así como para considerar que existe recaída en un mismo proceso, cuando se produzcan las circunstancias que se recogen en el último párrafo del apartado 2 del <a class="art-tag-inline" href="#a169">artículo anterior</a>.</p>
+<p>Cuando el alta haya sido expedida por el Instituto Nacional de la Seguridad Social, este será el único competente, a través de su inspección médica, para emitir una nueva baja médica producida por la misma o similar patología en los <span class="plazo">ciento ochenta días</span> siguientes a la citada alta médica.</p>
+<p>Frente al alta médica emitida por el Instituto Nacional de la Seguridad Social por curación, mejoría que permita la realización del trabajo habitual, propuesta de incapacidad permanente o por incomparecencia injustificada a los reconocimientos médicos convocados por dicho Instituto, el interesado <span class="facultativo">podrá manifestar</span> su disconformidad ante la inspección médica del servicio público de salud, en el plazo máximo de <span class="plazo">cuatro días naturales</span> desde la notificación de aquella.</p>
+<p><span class="condicion">Si</span> la inspección médica del servicio público de salud discrepara del criterio de la inspección médica del Instituto Nacional de la Seguridad Social, tendrá la facultad de proponer, en el plazo máximo de <span class="plazo">siete días naturales</span>, la reconsideración de dicha decisión, especificando las razones y fundamento de su discrepancia.</p>
+<p>La inspección médica del Instituto Nacional de la Seguridad Social se pronunciará expresamente en los <span class="plazo">siete días naturales</span> siguientes, notificando al interesado la reconsideración del alta médica o su confirmación, que será también comunicada a la inspección médica del servicio público de salud. Si reconsiderara el alta médica, se reconocerá al interesado la prórroga de su situación de incapacidad temporal a todos los efectos. Si, por el contrario, se reafirmara en su decisión, para lo cual aportará las pruebas complementarias que la fundamenten, se prorrogará la situación de incapacidad temporal hasta la fecha de la última resolución.</p>
+<p>Si la inspección médica del servicio público de salud se pronunciara confirmando la decisión de la inspección médica del Instituto Nacional de la Seguridad Social, o si no se produjera pronunciamiento alguno en los <span class="plazo">once días naturales</span> siguientes a la fecha de la resolución, el alta médica adquirirá plenos efectos. Durante el período de tiempo transcurrido entre la fecha del alta médica y aquella en la que la misma adquiera plenos efectos se considerará prorrogada la situación de incapacidad temporal.</p>
+<p><span class="epigrafe-num">2.</span> Agotado el plazo de trescientos sesenta y cinco días, la inspección médica del Instituto Nacional de la Seguridad Social será la única competente para reconocer la situación de prórroga expresa con un límite de ciento ochenta días más, para determinar el alta médica por curación o mejoría que permita la realización del trabajo habitual, por incomparecencia injustificada a los reconocimientos médicos convocados por dicho Instituto, así como para emitir el alta médica a los exclusivos efectos de las distintas prestaciones económicas, en aquellos supuestos en que la mencionada situación se extinga por el transcurso del citado plazo.</p>
+<p>Durante la prórroga de la situación de incapacidad temporal se mantendrá la colaboración obligatoria en el pago de la prestación, así como la colaboración voluntaria, en su caso. Las empresas colaboradoras en la gestión de la Seguridad Social a las que hace referencia el <a class="art-tag-inline" href="#a102">artículo 102.1.a)</a> mantendrán el pago a su cargo de la prestación hasta la fecha en que se notifique al interesado el alta médica o la resolución por la que se extinga el derecho al subsidio, incluida, en su caso, la situación de prolongación de efectos económicos de la incapacidad temporal a que se refiere el <a class="art-tag-inline" href="#a174">artículo 174.5</a>.</p>
+</div>
+
+<div class="articulo-card" id="a172">
+<div class="art-card-head"><span class="articulo">A172</span><span class="art-titulo-texto ctx-match-title">Beneficiarios.</span><a class="return-link" href="T08_COMPLETO.html#cap1" target="_blank">↩ Tema · Cap.1</a></div>
+<p><mark class="ctx-match">Serán beneficiarios del subsidio por incapacidad temporal las personas incluidas en este Régimen General que se encuentren en cualquiera de las situaciones determinadas en el artículo 169, siempre que, además de reunir la condición general exigida en el artículo 165.1, acrediten</mark> los siguientes períodos mínimos de cotización: <span class="epigrafe-letra">a)</span> En caso de enfermedad común, <span class="plazo">ciento ochenta días</span> dentro de los <span class="plazo">cinco años</span> inmediatamente anteriores al hecho causante.</p>
+<p>En las situaciones especiales previstas en los párrafos segundo y cuarto del <a class="art-tag-inline" href="#a169">artículo 169.1.a)</a>, <span class="obligacion">no se exigirán</span> periodos mínimos de cotización.</p>
+<p>En la situación especial prevista en el párrafo tercero del artículo 169.1.a) se <span class="obligacion">exigirá</span> que la interesada acredite los periodos mínimos de cotización señalados en el <a class="art-tag-inline" href="#a178">artículo 178.1</a>, según la edad que tenga cumplida en el momento de inicio del descanso.</p>
+</div>
+
+<div class="articulo-card" id="a173">
+<div class="art-card-head"><span class="articulo">A173</span><span class="art-titulo-texto ctx-match-title">Nacimiento y duración del derecho al subsidio.</span><a class="return-link" href="T08_COMPLETO.html#cap3" target="_blank">↩ Tema · Cap.3</a></div>
+<p><span class="epigrafe-num">1.</span> <mark class="ctx-match">En caso de accidente de trabajo o enfermedad profesional, el subsidio se abonará desde el día siguiente al de la baja en el trabajo, estando a cargo del empresario el salario íntegro correspondiente al día de la baja.</mark></p>
+<p><mark class="ctx-match">En caso de enfermedad común o de accidente no laboral, el subsidio se abonará a partir del cuarto día de baja en el trabajo, si bien desde el día cuarto al decimoquinto de baja, ambos inclusive, el subsidio estará a cargo del empresario.</mark></p>
+<p>En la situación especial de incapacidad temporal por menstruación incapacitante secundaria prevista en el párrafo segundo del artículo 169.1.a) el subsidio se abonará a cargo de la <span class="sujeto-pub">Seguridad Social</span> desde el día de la baja en el trabajo.</p>
+<p>En la situación especial de incapacidad temporal por interrupción del embarazo prevista en el mismo párrafo, el subsidio se abonará como en el caso de accidente de trabajo o enfermedad profesional.</p>
+<p>No obstante, en la situación especial de incapacidad temporal a partir de la semana trigésima novena de gestación, el subsidio se abonará desde que se inicie la baja laboral hasta la fecha del parto, <span class="excepcion">salvo que</span> la trabajadora hubiera iniciado anteriormente una situación de riesgo durante el embarazo, supuesto en el cual permanecerá percibiendo la prestación correspondiente a dicha situación en tanto ésta deba mantenerse.</p>
+<p><span class="epigrafe-num">3.</span> Durante las situaciones de huelga y cierre patronal el trabajador <span class="obligacion">no tendrá derecho</span> a la prestación económica por incapacidad temporal.</p>
+</div>
+
+<div class="articulo-card" id="a174">
+<div class="art-card-head"><span class="articulo">A174</span><span class="art-titulo-texto ctx-match-title">Extinción del derecho al subsidio.</span><a class="return-link" href="T08_COMPLETO.html#cap3" target="_blank">↩ Tema · Cap.3</a></div>
+<p><span class="epigrafe-num">1.</span> <mark class="ctx-match">El derecho al subsidio se extinguirá por el transcurso del plazo máximo de quinientos cuarenta y cinco días naturales desde la baja médica</mark>; por alta médica por curación o mejoría que permita al trabajador realizar su trabajo habitual; por ser dado de alta el trabajador con o sin declaración de incapacidad permanente; por el reconocimiento de la pensión de jubilación; por la incomparecencia injustificada a cualquiera de las convocatorias para los exámenes y reconocimientos establecidos por la inspección médica del Instituto Nacional de la Seguridad Social o por los médicos de la mutua colaboradora con la Seguridad Social; y por fallecimiento.</p>
+<p>Cuando, iniciado un expediente de incapacidad permanente antes de que hubieran transcurrido los <span class="plazo">quinientos cuarenta y cinco días naturales</span> de duración del subsidio de incapacidad temporal, se denegara el derecho a la prestación de incapacidad permanente, el Instituto Nacional de la Seguridad Social, a través de su inspección médica, será el único competente para emitir, dentro de los <span class="plazo">ciento ochenta días naturales</span> posteriores a la resolución denegatoria, una nueva baja médica por la misma o similar patología. En estos casos se reanudará el proceso de incapacidad temporal hasta el cumplimiento de los quinientos cuarenta y cinco días, como máximo.</p>
+<p><span class="epigrafe-num">2.</span> Cuando el derecho al subsidio se extinga por el transcurso del período de quinientos cuarenta y cinco días naturales fijado en el apartado anterior, se examinará necesariamente, en el plazo máximo de <span class="plazo">noventa días naturales</span>, el estado del incapacitado a efectos de su calificación, en el grado de incapacidad permanente que corresponda.</p>
+<p><span class="epigrafe-num">5.</span> <span class="fecha-marca">(Apartado modificado por Ley 2/2025, de 29 de abril, en vigor desde el 1 de mayo de 2025)</span> Adapta la dinámica de la prolongación de efectos económicos de la incapacidad temporal y la efectividad de las pensiones de incapacidad permanente total, absoluta o de gran incapacidad a las nuevas situaciones derivadas de la modificación del <span class="ley-num">artículo 49 ET</span>: la empresa dispondrá de un plazo máximo de <span class="plazo">tres meses</span>, contados desde la fecha en que se le notifique la resolución en la que se califique la incapacidad permanente, para realizar los ajustes razonables o el cambio de puesto de trabajo, manteniéndose durante ese período la prolongación de efectos económicos de la incapacidad temporal.</p>
+</div>
+
+<div class="articulo-card" id="a175">
+<div class="art-card-head"><span class="articulo">A175</span><span class="art-titulo-texto ctx-match-title">Pérdida o suspensión del derecho al subsidio.</span><a class="return-link" href="T08_COMPLETO.html#cap3" target="_blank">↩ Tema · Cap.3</a></div>
+<p><span class="epigrafe-num">1.</span> El derecho al subsidio por incapacidad temporal <span class="facultativo">podrá ser denegado, anulado o suspendido</span>: <span class="epigrafe-letra">a)</span> <span class="condicion">Cuando</span> el beneficiario haya actuado fraudulentamente para obtener o conservar dicha prestación. <span class="epigrafe-letra">b)</span> <span class="condicion">Cuando</span> el beneficiario trabaje por cuenta propia o ajena.</p>
+<p><span class="epigrafe-num">2.</span> También <span class="facultativo">podrá ser suspendido</span> el derecho al subsidio <span class="condicion">cuando</span>, sin causa razonable, el beneficiario rechace o abandone el tratamiento que le fuere indicado.</p>
+<p><span class="epigrafe-num">3.</span> La incomparecencia del beneficiario a cualquiera de las convocatorias realizadas por los médicos adscritos al Instituto Nacional de la Seguridad Social y a las mutuas colaboradoras con la Seguridad Social para examen y reconocimiento médico producirá la <span class="obligacion">suspensión cautelar</span> del derecho, al objeto de comprobar si aquella fue o no justificada. Reglamentariamente se regulará el procedimiento de suspensión del derecho y sus efectos.</p>
+</div>
+
+<div class="articulo-card" id="a176">
+<div class="art-card-head"><span class="articulo">A176</span><span class="art-titulo-texto">Periodos de observación y obligaciones especiales en caso de enfermedad profesional.</span><a class="return-link" href="T08_COMPLETO.html#cap3" target="_blank">↩ Tema · Cap.3</a></div>
+<p><span class="epigrafe-num">1.</span> A efectos de lo dispuesto en el <a class="art-tag-inline" href="#a169">artículo 169.1.b)</a>, se considerará como período de observación el tiempo necesario para el estudio médico de la enfermedad profesional <span class="condicion">cuando</span> haya necesidad de aplazar el diagnóstico definitivo.</p>
+</div>
+
+<div class="titulo-head" id="tit-2-xvii"><h2>Título II — Capítulo XVII: Disposiciones aplicables a determinados trabajadores del Régimen General</h2></div>
+<div class="capitulo-head"><h3>Sección 1.ª — Trabajadores contratados a tiempo parcial</h3></div>
+
+<div class="articulo-card" id="a247">
+<div class="art-card-head"><span class="articulo">A247</span><span class="art-titulo-texto ctx-match-title">Cómputo de los periodos de cotización.</span><a class="return-link" href="T08_COMPLETO.html#cap1" target="_blank">↩ Tema · Cap.1</a></div>
+<p><span class="fecha-marca">(Modificado desde el 1 de abril de 2025 por RD-ley 11/2024, de 23 de diciembre)</span></p>
+<p><span class="epigrafe-num">1.</span> <mark class="ctx-match">Para los trabajadores a tiempo parcial, a efectos de acreditar los períodos de cotización necesarios para causar derecho a las prestaciones de jubilación, incapacidad permanente, muerte y supervivencia, incapacidad temporal y nacimiento y cuidado de menor se tendrán en cuenta los distintos períodos durante los cuales el trabajador haya permanecido en alta con un contrato a tiempo parcial, cualquiera que sea la duración de la jornada realizada en cada uno de ellos.</mark></p>
+<p><span class="epigrafe-num">2.</span> En relación con los trabajadores fijos-discontinuos, a efectos de acreditar los períodos de cotización necesarios para causar derecho a las prestaciones de jubilación, incapacidad permanente y muerte y supervivencia, se computará todo el período durante el cual hayan permanecido en situación de alta con un contrato fijo-discontinuo. Dicho período se multiplicará por un <span class="plazo">coeficiente de 1,5</span>, <span class="excepcion">sin que</span> el número total de días computables como cotizados anualmente por el trabajador pueda superar el número de días naturales de cada año.</p>
+<p>Para causar derecho a las prestaciones de incapacidad temporal y por nacimiento y cuidado de menor, a efectos de acreditar los períodos de cotización necesarios, se tendrán en cuenta los distintos períodos durante los cuales el trabajador haya estado en situación de alta con un contrato fijo-discontinuo.</p>
+</div>
+
+<div class="articulo-card" id="a249bis">
+<div class="art-card-head"><span class="articulo">A249 bis</span><span class="art-titulo-texto ctx-match-title">Cómputo de los periodos de cotización en contratos de corta duración.</span><a class="return-link" href="T08_COMPLETO.html#cap1" target="_blank">↩ Tema · Cap.1</a></div>
+<p><span class="epigrafe-num">1.</span> A los exclusivos efectos de acreditar los periodos mínimos de cotización necesarios para causar derecho a las prestaciones de jubilación, incapacidad permanente, muerte y supervivencia, incapacidad temporal, maternidad y paternidad, y cuidado de menores afectados por cáncer u otra enfermedad grave, <mark class="ctx-match">en los contratos de carácter temporal cuya duración efectiva sea igual o inferior a cinco días</mark>, regulados en el <a class="art-tag-inline" href="#a151">artículo 151</a> de esta ley, <mark class="ctx-match">cada día de trabajo se considerará como 1,4 días de cotización</mark>, <span class="excepcion">sin que en ningún caso</span> pueda computarse mensualmente un número de días mayor que el que corresponda al mes respectivo.</p>
+<p><span class="epigrafe-num">2.</span> Esta previsión <span class="obligacion">no será de aplicación</span> en los supuestos de contratos a tiempo parcial, de relevo a tiempo parcial y contrato fijo-discontinuo.</p>
+</div>
+
+<div class="titulo-head" id="tit-et"><h2>Estatuto de los Trabajadores (RD Legislativo 2/2015)</h2></div>
+
+<div class="articulo-card" id="a49et">
+<div class="art-card-head"><span class="articulo">A49.1.n) ET</span><span class="art-titulo-texto ctx-match-title">Extinción del contrato de trabajo.</span><a class="return-link" href="T08_COMPLETO.html#cap3" target="_blank">↩ Tema · Cap.3</a></div>
+<p><span class="fecha-marca">(Letra añadida por Ley 2/2025, de 29 de abril, en vigor desde el 1 de mayo de 2025)</span></p>
+<p>El contrato de trabajo se extinguirá: <span class="epigrafe-letra">n)</span> <mark class="ctx-match">Por declaración de gran incapacidad, incapacidad permanente absoluta o total de la persona trabajadora</mark>, <span class="excepcion">sin perjuicio de</span> lo dispuesto en el <a class="art-tag-inline" href="#a48et">artículo 48.2</a>, <span class="condicion">cuando</span> no sea posible realizar los ajustes razonables por constituir una carga excesiva para la empresa, cuando no exista un puesto de trabajo vacante y disponible, acorde con el perfil profesional y compatible con la nueva situación de la persona trabajadora o cuando existiendo dicha posibilidad la persona trabajadora rechace el cambio de puesto de trabajo adecuadamente propuesto.</p>
+<p>No se considerará que la carga es excesiva <span class="condicion">cuando</span> pueda ser paliada mediante ayudas o subvenciones públicas.</p>
+</div>
+
+<div class="articulo-card" id="a48et">
+<div class="art-card-head"><span class="articulo">A48.2 ET</span><span class="art-titulo-texto">Suspensión del contrato con reserva de puesto.</span><a class="return-link" href="T08_COMPLETO.html#cap3" target="_blank">↩ Tema · Cap.3</a></div>
+<p><span class="fecha-marca">(Modificado por Ley 2/2025, en vigor desde el 1 de mayo de 2025)</span></p>
+<p>La persona trabajadora dispondrá de un <span class="plazo">plazo de 10 días naturales</span> desde la fecha en que se le notifique la resolución en la que se califique la incapacidad permanente para manifestar por escrito a la empresa su voluntad de mantener la relación laboral.</p>
+<p>La empresa dispondrá de un <span class="plazo">plazo máximo de 3 meses</span>, contados desde la fecha en que se le notifique la resolución en la que se califique la incapacidad permanente, para realizar los ajustes razonables o el cambio de puesto de trabajo. <span class="condicion">Cuando</span> el ajuste suponga una carga excesiva o no exista puesto de trabajo vacante, la empresa dispondrá del mismo plazo para proceder a la extinción del contrato. La decisión será motivada y <span class="obligacion">deberá comunicarse</span> por escrito a la persona trabajadora.</p>
+<p>En empresas de menos de 25 personas trabajadoras se considerará excesiva la carga <span class="condicion">cuando</span> el coste de adaptación del puesto de trabajo, sin tener en cuenta la parte que pueda ser sufragada con ayudas o subvenciones públicas, supere la cuantía mayor entre: la indemnización que correspondiera a la persona trabajadora, y seis meses de salario de la persona trabajadora que solicita la adaptación.</p>
+</div>
+
+<div class="titulo-head" id="tit-rd625"><h2>RD 625/2014 — Gestión y control de los procesos por IT en los primeros 365 días</h2></div>
+
+<div class="articulo-card" id="a2rd625">
+<div class="art-card-head"><span class="articulo">A2 RD 625/2014</span><span class="art-titulo-texto ctx-match-title">Declaraciones médicas de baja y de confirmación de la baja.</span><a class="return-link" href="T08_COMPLETO.html#cap5" target="_blank">↩ Tema · Cap.5</a></div>
+<p><span class="epigrafe-num">1.</span> La emisión del parte médico de baja es el acto que origina la iniciación de las actuaciones conducentes al reconocimiento del derecho al subsidio por incapacidad temporal. <mark class="ctx-match">La declaración de la baja médica, en los procesos de incapacidad temporal, cualquiera que sea la contingencia determinante, se formulará en el correspondiente parte médico de baja expedido por el médico del servicio público de salud</mark> que haya efectuado el reconocimiento del trabajador afectado.</p>
+<p><span class="epigrafe-num">3.</span> <span class="fecha-marca">(Redactado por RD 1060/2022)</span> Los partes de baja y de confirmación de la baja se extenderán en función del periodo de duración que estime el médico que los emite. Se establecen cuatro grupos de procesos: <span class="epigrafe-letra">a)</span> duración estimada inferior a <span class="plazo">cinco días naturales</span> — el facultativo emitirá el parte de baja y el parte de alta en el mismo acto médico; <span class="epigrafe-letra">d)</span> duración estimada de <span class="plazo">sesenta y uno o más días naturales</span> — la primera revisión no excederá en más de <span class="plazo">catorce días naturales</span> a la fecha de baja inicial, y los sucesivos partes de confirmación no podrán emitirse con una diferencia de más de <span class="plazo">treinta y cinco días naturales</span> entre sí.</p>
+</div>
+
+<div class="articulo-card" id="a5rd625">
+<div class="art-card-head"><span class="articulo">A5 RD 625/2014</span><span class="art-titulo-texto">Declaraciones médicas de alta en los procesos de incapacidad temporal.</span><a class="return-link" href="T08_COMPLETO.html#cap5" target="_blank">↩ Tema · Cap.5</a></div>
+<p><span class="epigrafe-num">1.</span> Los partes de alta médica en los procesos derivados de contingencias comunes se emitirán, tras el reconocimiento del trabajador, por el correspondiente facultativo del <span class="sujeto-pub">servicio público de salud</span>.</p>
+</div>
+
+<div class="articulo-card" id="a9rd625">
+<div class="art-card-head"><span class="articulo">A9 RD 625/2014</span><span class="art-titulo-texto">Requerimientos a los trabajadores para reconocimiento médico.</span><a class="return-link" href="T08_COMPLETO.html#cap5" target="_blank">↩ Tema · Cap.5</a></div>
+<p><span class="epigrafe-num">3.</span> El trabajador recibirá la citación con una <span class="plazo">antelación mínima de cuatro días hábiles</span>. Si el trabajador sabe que no podrá acudir, <span class="facultativo">podrá preavisar</span> su incomparecencia, en cuyo caso se fijará una nueva fecha, que será posterior a la inicial y comunicada con la misma antelación mínima.</p>
+<p><span class="epigrafe-num">4.</span> Si el trabajador no comparece, se ordena la <span class="obligacion">suspensión cautelar</span> del pago del subsidio. Esta consecuencia se prolonga durante los <span class="plazo">10 días hábiles</span> siguientes a la fecha fijada, que coincide con el plazo que tiene para justificar su incomparecencia (en relación con el <a class="art-tag-inline" href="#a175">artículo 175.3 LGSS</a>).</p>
+</div>
+
+<div class="titulo-head" id="tit-rd1430"><h2>RD 1430/2009 — Desarrollo de la Ley 40/2007 en materia de IT</h2></div>
+
+<div class="articulo-card" id="a6rd1430">
+<div class="art-card-head"><span class="articulo">A6 RD 1430/2009</span><span class="art-titulo-texto">Procedimiento de determinación de la contingencia causante.</span><a class="return-link" href="T08_COMPLETO.html#cap5" target="_blank">↩ Tema · Cap.5</a></div>
+<p>Procedimiento resumido: el <span class="sujeto-pub">INSS</span> comunica el inicio al SPS/MUTUA/empresa colaboradora, que en el plazo improrrogable de <span class="plazo">4 días hábiles</span> debe indicar la contingencia; el INSS comunica al trabajador que en <span class="plazo">10 días hábiles</span> aporte documentos y alegaciones; el EVI emite informe preceptivo y el Director Provincial resuelve en plazo máximo de <span class="plazo">15 días hábiles</span> sobre la contingencia, la existencia o no de recaída, los efectos de contingencias coincidentes y el sujeto responsable del pago.</p>
+</div>
+
+<div class="titulo-head" id="tit-d1646"><h2>Decreto 1646/1972 — Aplicación de la Ley 24/1972 en materia de prestaciones del RG</h2></div>
+
+<div class="articulo-card" id="a13d1646">
+<div class="art-card-head"><span class="articulo">A13 Decreto 1646/1972</span><span class="art-titulo-texto ctx-match-title">Cuantía del subsidio por incapacidad laboral transitoria.</span><a class="return-link" href="T08_COMPLETO.html#cap2" target="_blank">↩ Tema · Cap.2</a></div>
+<p><span class="epigrafe-num">Uno.</span> <mark class="ctx-match">La base reguladora para el cálculo de la cuantía del subsidio de incapacidad laboral transitoria será el resultado de dividir el importe de la base de cotización del trabajador</mark>, correspondiente a la contingencia de la que aquella se derive, en el <span class="plazo">mes anterior</span> al de la fecha de iniciación de la situación de incapacidad, excluidos, en su caso, los conceptos remuneratorios comprendidos en el número cuatro del presente artículo, por el número de días a que dicha cotización se refiera.</p>
+<p><span class="epigrafe-num">Dos.</span> Cuando el trabajador perciba retribución mensual y haya permanecido en alta en la empresa todo el mes natural, la base de cotización se dividirá por <span class="num-marca">treinta</span>.</p>
+<p><span class="epigrafe-num">Tres.</span> Para el trabajador que haya ingresado en la empresa en el mismo mes en el que se inicie la situación de incapacidad laboral transitoria se aplicará lo dispuesto en los números anteriores, referido al indicado mes.</p>
+</div>
+
+<div class="pendiente-warning">
+  <h3>⏳ Pendientes de verificación individual</h3>
+  <p>Quedan por contrastar directamente contra su fuente: A3, A4, A6, A7 y A8 del RD 625/2014 (aunque su contenido, ya presente en el tema, coincide con lo confirmado indirectamente en varias búsquedas), A3 y A4 del RD 1430/2009, el A76 del RD 1993/1995, el A2 de la Orden ESS/1187/2015, y el A1 del RD 53/1980. Ninguno de estos se ha marcado aquí como "verificado" — se completarán cuando se contrasten individualmente.</p>
+</div>
+
+<footer class="foot-note">
+  Anexo 1 del Tema 8 — apuntes de estudio personal, no material oficial. Artículos verificados contra fuentes derivadas del BOE (texto consolidado). Preparación oposición Administrativo de la Seguridad Social 2026/2027.
+</footer>
+
+</div>
+</body>
+</html>

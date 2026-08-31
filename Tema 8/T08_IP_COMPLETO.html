@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T08 (P2) · Incapacidad Permanente — Destino Funcionario</title>
+<style>
+  :root{
+    --bg:#0e1318;
+    --card-lgss:#1a2129;
+    --card-remar:#0a1a26;
+    --card-otras:#170f22;
+    --border-lgss:#2a333d;
+    --border-remar:#155e75;
+    --border-otras:#7e22ce;
+    --text:#e6e6e6;
+    --text-dim:#9ca3af;
+    --accent-green:#2f855a;
+    --amber:#f2c14e;
+    --fuchsia:#e879f9;
+    --garnet:#c9184a;
+    --lilac:#c4b5fd;
+    --orange:#fb923c;
+    --darkgreen:#4ade80;
+    --cyan:#38bdf8;
+    --lime:#a3e635;
+  }
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Segoe UI',Roboto,Arial,sans-serif;
+    line-height:1.55;
+    margin:0;
+    padding:0 0 80px;
+  }
+  .wrap{max-width:900px;margin:0 auto;padding:0 20px;}
+  .backlink{
+    display:block;
+    padding:14px 20px;
+    color:var(--cyan);
+    text-decoration:none;
+    font-size:0.9rem;
+    border-bottom:1px solid var(--border-lgss);
+  }
+  .backlink:hover{text-decoration:underline;}
+  header.hero{
+    padding:30px 20px 20px;
+    max-width:900px;
+    margin:0 auto;
+    border-bottom:2px solid var(--accent-green);
+  }
+  header.hero h1{font-size:1.7rem;margin:0 0 6px;color:#fff;}
+  header.hero p{color:var(--text-dim);margin:0;font-size:0.9rem;}
+  header.hero .dificultad{display:inline-block;margin-top:10px;background:var(--card-lgss);border:1px solid var(--border-lgss);color:var(--orange);font-weight:700;padding:4px 12px;border-radius:8px;font-size:0.82rem;}
+  nav.indice{
+    max-width:900px;margin:20px auto;padding:0 20px;
+  }
+  nav.indice ul{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px;}
+  nav.indice a{
+    display:block;background:var(--card-lgss);border:1px solid var(--border-lgss);
+    color:var(--text);text-decoration:none;padding:8px 12px;border-radius:8px;font-size:0.82rem;
+  }
+  nav.indice a:hover{border-color:var(--accent-green);}
+
+  section.capitulo{max-width:900px;margin:0 auto;padding:10px 20px 40px;}
+  .cap-header{
+    background:linear-gradient(90deg,var(--accent-green),#276749);
+    color:#fff;padding:14px 18px;border-radius:10px;margin:34px 0 18px;
+    font-size:1.15rem;font-weight:600;
+  }
+  h3.epigrafe{
+    color:#fff;border-left:4px solid var(--accent-green);
+    padding-left:10px;margin-top:28px;font-size:1.05rem;
+  }
+  .card{
+    background:var(--card-lgss);border:1px solid var(--border-lgss);
+    border-radius:10px;padding:16px 18px;margin:14px 0;
+  }
+
+  .articulo{
+    background:#fff;color:#111;font-weight:700;
+    padding:1px 7px;border-radius:5px;font-size:0.82rem;
+    display:inline-block;
+  }
+  .articulo.chip-lgss{color:var(--amber);background:#fff;}
+  .fecha{color:var(--fuchsia);font-weight:600;}
+  .rd{color:var(--garnet);font-weight:700;}
+  .epi-letra{color:var(--lilac);font-weight:700;}
+  .epi-num{color:var(--orange);font-weight:700;}
+  em, i.legal{color:var(--darkgreen);font-style:italic;}
+  .num{color:var(--lime);font-weight:700;}
+  .pct{color:var(--cyan);font-weight:700;}
+  .dia-num{color:#ef4444;font-weight:700;}
+  .tipo-cc{color:#4ade80;font-weight:700;}
+  .tipo-cp{color:#f472b6;font-weight:700;}
+  .tipo-otras{color:#c084fc;font-weight:700;}
+  .plazo{color:#fbbf24;font-weight:700;}
+  .obligacion{color:#fb923c;font-weight:700;}
+  .facultativo{color:#67e8f9;font-weight:600;}
+  .excepcion{color:#f87171;font-weight:700;}
+  .condicion{color:#a78bfa;font-weight:600;font-style:italic;}
+  .sujeto-pub{color:#60a5fa;font-weight:600;}
+  .sujeto-priv{color:#fcd34d;font-weight:600;}
+
+  .confusion{
+    background:#2a1414;border:1px solid #7f1d1d;border-left:4px solid #ef4444;
+    border-radius:8px;padding:12px 16px;margin:14px 0;font-size:0.92rem;
+  }
+  .confusion .tag{color:#f87171;font-weight:700;display:block;margin-bottom:4px;}
+
+  .mnemo{
+    background:#142218;border:1px solid #14532d;border-left:4px solid #22c55e;
+    border-radius:8px;padding:12px 16px;margin:14px 0;font-size:0.92rem;
+  }
+  .mnemo .tag{color:#4ade80;font-weight:700;display:block;margin-bottom:4px;}
+
+  .recordatorio{
+    background:#141b28;border:1px solid #1e3a5f;border-left:4px solid #38bdf8;
+    border-radius:8px;padding:12px 16px;margin:14px 0;font-size:0.92rem;
+  }
+  .recordatorio .tag{color:var(--cyan);font-weight:700;display:block;margin-bottom:4px;}
+
+  .voz-profe{
+    background:#1c1607;border:1px solid #78350f;border-left:4px solid var(--amber);
+    border-radius:8px;padding:12px 16px;margin:14px 0;font-size:0.9rem;
+  }
+  .voz-profe .tag{color:var(--amber);font-weight:700;display:block;margin-bottom:4px;}
+
+  .ejemplo{background:#0f1b1f;border:1px solid #164e4e;border-left:4px solid var(--cyan);border-radius:8px;padding:12px 16px;margin:14px 0;font-size:0.92rem;}
+  .ejemplo .tag{color:var(--cyan);font-weight:700;display:block;margin-bottom:4px;}
+  .actualizacion{background:#221a06;border:1px solid #78350f;border-left:4px solid var(--amber);border-radius:8px;padding:12px 16px;margin:14px 0;font-size:0.92rem;}
+  .actualizacion .tag{color:var(--amber);font-weight:700;display:block;margin-bottom:4px;}
+  .esquema-ascii{background:#0c1116;border:1px solid var(--border-lgss);border-radius:8px;padding:12px 16px;margin:14px 0;overflow-x:auto;font-size:0.8rem;color:var(--text-dim);white-space:pre-wrap;font-family:'Consolas',monospace;line-height:1.4;}
+
+  table.tabla-estudio{width:100%;border-collapse:collapse;margin:14px 0;font-size:0.85rem;}
+  table.tabla-estudio th{background:#1e2937;color:#fff;padding:8px 10px;text-align:left;border:1px solid var(--border-lgss);}
+  table.tabla-estudio td{padding:8px 10px;border:1px solid var(--border-lgss);}
+  table.tabla-estudio tr:nth-child(even){background:#161c24;}
+
+  footer.disclaimer{max-width:900px;margin:40px auto 0;padding:16px 20px;color:var(--text-dim);font-size:0.78rem;border-top:1px solid var(--border-lgss);}
+
+  /* ---- Repaso en un vistazo (outline colapsable) ---- */
+  .outline details{background:var(--card-lgss);border:1px solid var(--border-lgss);border-radius:10px;padding:10px 16px;margin:8px 0;}
+  .outline summary{cursor:pointer;font-weight:600;color:var(--text);list-style:none;}
+  .outline summary::-webkit-details-marker{display:none;}
+  .outline summary::before{content:"▸ ";color:var(--accent-green);}
+  .outline details[open] summary::before{content:"▾ ";}
+  .outline ul{list-style-type:square;padding-left:20px;color:var(--text-dim);margin:6px 0 0;}
+  .outline li{margin:5px 0;font-size:.92rem;}
+
+  /* ---- Quiz engine (idéntico a T07/T08) ---- */
+  .quiz-box{background:#12181f;border:1px solid var(--border-lgss);border-radius:10px;padding:16px 18px;margin:16px 0;}
+  .quiz-q{font-weight:600;margin-bottom:10px;font-size:0.94rem;}
+  .quiz-opt{display:block;width:100%;text-align:left;background:#1e2937;color:var(--text);border:1px solid #334155;border-radius:8px;padding:9px 12px;margin:6px 0;cursor:pointer;font-size:0.87rem;transition:background .15s;}
+  .quiz-opt:hover:not(:disabled){background:#26364a;}
+  .quiz-opt:disabled{cursor:default;opacity:0.85;}
+  .quiz-opt.correct-opt{border-color:#22c55e;background:#14291b;color:#86efac;}
+  .quiz-opt.wrong-opt{border-color:#ef4444;background:#2a1414;color:#fca5a5;}
+  .quiz-feedback{margin-top:10px;font-size:0.85rem;padding:8px 10px;border-radius:6px;display:none;}
+  .quiz-feedback.show{display:block;}
+  .quiz-feedback.ok{background:#0f2a1a;color:#4ade80;border:1px solid #16653d;}
+  .quiz-feedback.bad{background:#2a1414;color:#f87171;border:1px solid #7f1d1d;}
+
+  /* ---- Mapa conceptual — hilo conductor, visible al inicio de cada capítulo ---- */
+  .mapa-label{color:var(--accent-green);font-weight:700;font-size:.85rem;margin:-4px 0 8px;letter-spacing:.3px;}
+  .mapa-cap{background:var(--card-lgss);border:1px solid var(--border-lgss);border-radius:12px;padding:18px 16px;margin:0 0 18px;}
+  .mapa-arbol{display:flex;flex-direction:column;align-items:center;gap:2px;}
+  .mapa-nodo{background:#1e2937;border:1px solid var(--border-lgss);border-radius:8px;padding:7px 14px;text-align:center;font-size:.85rem;color:var(--text);max-width:440px;}
+  .mapa-nodo.raiz{background:var(--accent-green);color:#08130f;font-weight:800;border:none;font-size:.95rem;}
+  .mapa-nodo .art{color:var(--amber);font-weight:700;font-size:.78rem;display:block;margin-top:2px;}
+  .mapa-nodo.hoja{color:var(--text-dim);font-size:.8rem;background:#161c24;}
+  .mapa-flecha{color:var(--accent-green);font-size:.95rem;line-height:1;margin:1px 0;}
+  .mapa-rama{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:2px 0;}
+  .mapa-rama .mapa-nodo{flex:1;min-width:150px;}
+  @media(max-width:640px){.mapa-rama{flex-direction:column;align-items:center;}}
+
+  /* ---- Anki flashcards block ---- */
+  .anki-block{background:var(--card-lgss);border:1px solid var(--border-lgss);border-radius:14px;padding:20px;margin:20px 0;text-align:center;}
+  #deckSelect{width:100%;padding:8px 10px;margin-bottom:10px;background:#1e2937;color:var(--text);border:1px solid var(--border-lgss);border-radius:8px;font-size:.9rem;}
+  .flip-card{margin:0 auto;width:100%;max-width:440px;height:150px;perspective:1000px;cursor:pointer;}
+  .flip-card-inner{width:100%;height:100%;position:relative;transition:transform .5s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d;}
+  .flip-card.flipped .flip-card-inner{transform:rotateY(180deg);}
+  .flip-card-front,.flip-card-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:14px;padding:22px;display:flex;justify-content:center;align-items:center;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.25);font-size:19px;}
+  .flip-card-front{background:#1e2937;border:2px dashed var(--accent-green);color:var(--text);font-weight:600;}
+  .flip-card-back{background:var(--accent-green);color:#08130f;transform:rotateY(180deg);font-weight:700;line-height:1.5;}
+  .anki-block button{background:#1e2937;color:var(--text);border:1px solid var(--border-lgss);border-radius:8px;padding:9px 16px;font-size:.88rem;cursor:pointer;}
+  .anki-block button:hover{border-color:var(--accent-green);}
+  #progress{font-size:.82rem;color:var(--text-dim);margin-bottom:6px;}
+</style>
+</head>
+<body>
+
+<a class="backlink" href="../index.html">← Volver al índice</a>
+
+<header class="hero">
+  <h1>T08 (Parte 2) — Incapacidad Permanente (IP)</h1>
+  <p>Apuntes de estudio personal basados en el curso de Destino Funcionario (Manuel Moreno), enriquecidos con la clase magistral en audio del preparador. Preparación oposición Administrativo de la Seguridad Social 2026/2027. No es material oficial.</p>
+  <span class="dificultad">Dificultad 3/5</span>
+</header>
+
+<nav class="indice">
+  <ul>
+    <li><a href="#cap1">1. Concepto y grados</a></li>
+    <li><a href="#cap2">2. Prestaciones y cuantía</a></li>
+    <li><a href="#cap3">3. Beneficiarios</a></li>
+    <li><a href="#cap4">4. Nacimiento y extinción</a></li>
+    <li><a href="#cap5">5. LPNI</a></li>
+    <li><a href="#cap6">6. Calificación y revisión</a></li>
+    <li><a href="#legisgrafia">📚 Legis-grafía</a></li>
+    <li><a href="#anexos">📎 Anexos I y II</a></li>
+    <li><a href="#casos-practicos">📝 Casos prácticos</a></li>
+    <li><a href="#anexo3">🧮 Anexo III — Cálculo IPT/IPA/GI</a></li>
+  </ul>
+</nav>
+
+<!-- ============================================================ -->
+<!-- CAPÍTULO 1 — IP CONTRIBUTIVA: CONCEPTO Y GRADOS -->
+<!-- ============================================================ -->
+<section class="capitulo" id="cap1">
+<div class="cap-header">Capítulo 1 — IP contributiva: concepto y grados de incapacidad</div>
+<p class="mapa-label">🌳 Hilo conductor del capítulo</p>
+<div class="mapa-cap">
+  <div class="mapa-arbol">
+    <div class="mapa-nodo raiz">INCAPACIDAD PERMANENTE <span class="art">A193</span></div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">Reducciones anatómicas o funcionales graves</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">Disminución o anulación de la capacidad laboral</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">GRADOS DE INCAPACIDAD <span class="art">A194</span></div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-rama">
+      <div class="mapa-nodo">IPP</div>
+      <div class="mapa-nodo">IPT</div>
+      <div class="mapa-nodo">IPA</div>
+      <div class="mapa-nodo">Gran Incapacidad (GI)</div>
+    </div>
+  </div>
+</div>
+
+<h3 class="epigrafe"><span class="articulo chip-lgss">A193</span> Concepto</h3>
+<div class="card">
+  <p>La IP contributiva es la situación de la persona trabajadora que, después de haber estado <strong>sometida al tratamiento prescrito</strong>, presenta <strong>reducciones anatómicas o funcionales graves</strong>, susceptibles de <strong>determinación objetiva</strong> y <strong>previsiblemente definitivas</strong>, que disminuyan o anulen su capacidad laboral. <span class="epi-letra">No obstará</span> a tal calificación la <em>posibilidad de recuperación</em> de la capacidad laboral, si dicha posibilidad se estima médicamente como <strong>incierta o a largo plazo</strong>.</p>
+
+  <p>El requisito de haber estado sometida previamente al tratamiento prescrito <span class="epi-letra">podrá no ser exigible</span> en los supuestos en los que las reducciones anatómicas y funcionales queden <strong>suficientemente objetivadas</strong> y sean <strong>previsiblemente definitivas</strong> atendiendo a:</p>
+  <ul>
+    <li>Las características de la patología de la persona trabajadora.</li>
+    <li>El estadio de la enfermedad.</li>
+    <li>Su previsible evolución.</li>
+    <li>La gravedad de las reducciones anatómicas y funcionales.</li>
+  </ul>
+
+  <p>Las reducciones anatómicas o funcionales existentes <strong>en la fecha de la afiliación</strong> del interesado en la SS <span class="epi-letra">no impedirán la calificación</span> de la situación de IP, cuando se trate de <strong>personas con discapacidad</strong> y con posterioridad a la afiliación tales reducciones <strong>se hayan agravado</strong>, provocando por sí mismas o por concurrencia con nuevas lesiones o patologías una disminución o anulación de la capacidad laboral que tenía el interesado en el momento de su afiliación.</p>
+
+  <p><strong>La IP habrá de derivarse de IT</strong>, salvo:</p>
+  <ul>
+    <li>Encontrarse en una situación <strong>asimilada a la de alta</strong> que no comprenda la IT.</li>
+    <li>En los supuestos de <strong>asimilación a trabajadores por cuenta ajena</strong>, en los que se dé la misma circunstancia (no comprenda la IT).</li>
+    <li>Acceso a la IP desde la situación de <strong>no alta</strong>, a tenor de lo previsto en el <span class="articulo chip-lgss">A195.4</span> (IPA/GI).</li>
+  </ul>
+  <p>Tampoco será necesario que la IP derive de IT en los supuestos señalados con anterioridad.</p>
+
+  <div class="voz-profe">
+    <span class="tag">🎧 Voz del profesor</span>
+    El requisito de determinación objetiva y previsiblemente definitiva es de los atributos más importantes de la definición: en principio no hay marcha atrás (por eso se llama "permanente"), si no estaríamos ante una IT. Lo que realmente se mide no es el hecho causante en sí, sino la <strong>merma de la capacidad laboral</strong> — el mismo accidente puede dar lugar a distintos grados según la profesión de cada trabajador (unas manos no condicionan igual a un cocinero que a un futbolista). No confundas <strong>incapacidad</strong> (concepto laboral) con <strong>discapacidad</strong> (concepto de estructura física de la persona): una persona con discapacidad puede afiliarse y trabajar con normalidad, y si más adelante se agrava (por sí misma o por nuevas lesiones), eso no impide que se le reconozca la IP.
+  </div>
+</div>
+
+<h3 class="epigrafe"><span class="articulo chip-lgss">A194</span> Grados de incapacidad permanente</h3>
+<div class="card">
+  <p>Si bien los grados de IP se establecen en el A194, la <strong>DT26 de la LGSS</strong> establece una redacción diferente del citado artículo, y es esta última la que resulta de aplicación <strong>hasta que se realice el correspondiente desarrollo reglamentario</strong> de la LGSS en materia de IP.</p>
+
+  <p>Así pues, hay dos vertientes que no conviene confundir:</p>
+  <ul>
+    <li><span class="articulo chip-lgss">A194</span>: nombre que pretende ser definitivo cuando se desarrolle una ley específica de la IP.</li>
+    <li><span class="articulo chip-lgss">DT26</span>: actuales grados de IP que hay vigentes.</li>
+  </ul>
+
+  <table class="tabla-estudio">
+    <tr><th>A194 (nombre definitivo futuro)</th><th>DT26 (vigente hoy)</th></tr>
+    <tr><td>IPP</td><td>IP Parcial para la profesión habitual</td></tr>
+    <tr><td>IPT</td><td>IP Total para la profesión habitual</td></tr>
+    <tr><td>IPA</td><td>IP Absoluta para todo trabajo</td></tr>
+    <tr><td>GI</td><td>Gran Incapacidad <em>(antes "Gran Invalidez", modificado por Ley 2/2025)</em></td></tr>
+  </table>
+
+  <p>De acuerdo al A194, la IP, cualquiera que sea su causa determinante, se clasificará en función del <strong>porcentaje de reducción de la capacidad de trabajo</strong> del interesado, valorado de acuerdo con la lista de enfermedades que se apruebe reglamentariamente.</p>
+
+  <p>A efectos de la <strong>determinación del grado</strong> de la incapacidad, se tendrá en cuenta la incidencia de la reducción de la capacidad de trabajo en el desarrollo de la profesión que ejercía el interesado o del grupo profesional en que aquella estaba encuadrada, <strong>antes de producirse el HC</strong> de la IP.</p>
+
+  <div class="actualizacion">
+    <span class="tag">📌 A194.3 LGSS</span>
+    La lista de enfermedades, la valoración de las mismas a efectos de la reducción de la capacidad de trabajo, y la <strong>determinación de los distintos grados de incapacidad</strong>, así como el régimen de incompatibilidades de los mismos, serán objeto de <strong>desarrollo reglamentario por el Gobierno</strong>, previo informe del Consejo General del INSS.
+  </div>
+
+  <p>De acuerdo a la DT26, se entiende por <strong>profesión habitual</strong>:</p>
+  <ul>
+    <li>En caso de <strong>accidente</strong> (sea o no de trabajo): la desempeñada normalmente por el trabajador al tiempo de sufrirlo.</li>
+    <li>En caso de <strong>enfermedad</strong> (común o profesional): aquella a la que el trabajador dedicaba su actividad fundamental durante el período de tiempo anterior a la iniciación de la incapacidad, que reglamentariamente se determine.</li>
+  </ul>
+
+  <p>Definiciones de cada grado (DT26):</p>
+  <ul>
+    <li><strong>IPP para la profesión habitual</strong>: sin alcanzar el grado de total, ocasione al trabajador una <strong>disminución no inferior al 33%</strong> en su rendimiento normal para dicha profesión, sin impedirle la realización de las tareas fundamentales de la misma.</li>
+    <li><strong>IPT para la profesión habitual</strong>: inhabilita al trabajador para la realización de <strong>todas o de las fundamentales tareas</strong> de dicha profesión, siempre que <strong>pueda dedicarse a otra distinta</strong>.</li>
+    <li><strong>IPA para todo trabajo</strong>: inhabilita por completo al trabajador para <strong>toda profesión u oficio</strong>.</li>
+    <li><strong>GI</strong>: la situación del trabajador afecto de IP que, por consecuencia de pérdidas anatómicas o funcionales, necesita la <strong>asistencia de otra persona</strong> para los actos más esenciales de la vida (vestirse, desplazarse, comer o análogos).</li>
+  </ul>
+
+  <div class="mnemo">
+    <span class="tag">💡 Equiparación A194 ↔ DT26</span>
+    IPP ↔ IPP para la profesión habitual · IPT ↔ IPT para la profesión habitual · IPA ↔ IPA para todo trabajo. La <strong>GI no se menciona</strong> expresamente en la equiparación porque es el único grado que ya se llama igual en ambas normas.
+  </div>
+
+  <div class="voz-profe">
+    <span class="tag">🎧 Voz del profesor</span>
+    Estamos en un régimen transitorio: cuando el examen pregunte "de acuerdo al artículo 194" o "de acuerdo a la disposición transitoria 26", no hace falta memorizar el número exacto — hay que identificar si se pregunta por la nomenclatura que se quiere dejar como definitiva (A194) o por la que está realmente vigente hoy (DT26). Las dos primeras definiciones (IPP y IPT) hablan de "profesión habitual"; a partir de la absoluta ya no se habla de profesión concreta, sino de inhabilitación total. IPA y GI, al ser inhabilitantes por completo, si el trabajador llega a darse de alta para trabajar, la pensión se suspende.
+  </div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CAPÍTULO 2 — PRESTACIONES: DETERMINACIÓN Y CUANTÍA -->
+<!-- ============================================================ -->
+<section class="capitulo" id="cap2">
+<div class="cap-header">Capítulo 2 — Prestaciones: determinación y cuantía</div>
+<p class="mapa-label">🌳 Hilo conductor del capítulo</p>
+<div class="mapa-cap">
+  <div class="mapa-arbol">
+    <div class="mapa-nodo raiz">PRESTACIONES ECONÓMICAS <span class="art">A196</span></div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-rama">
+      <div class="mapa-nodo">IPP<br><span class="art">Indemnización a tanto alzado</span></div>
+      <div class="mapa-nodo">IPT<br><span class="art">Pensión vitalicia</span></div>
+      <div class="mapa-nodo">IPA<br><span class="art">Pensión vitalicia 100% BR</span></div>
+      <div class="mapa-nodo">GI<br><span class="art">Pensión IPT/IPA + complemento</span></div>
+    </div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">IPT CUALIFICADA <span class="art">+20%</span></div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">COMPATIBILIDADES E INCOMPATIBILIDADES <span class="art">A198</span></div>
+  </div>
+</div>
+
+<h3 class="epigrafe"><span class="articulo chip-lgss">A196</span> Prestaciones económicas</h3>
+<div class="card">
+  <p><span class="epi-num">A196.1</span> La <strong>IPP</strong> consistirá en una cantidad a <strong>tanto alzado (TA)</strong> de <strong>24 mensualidades de la BR</strong> que hubiera servido de base para determinar la prestación de IT de la que deriva la IP.</p>
+
+  <p><span class="epi-num">A196.2</span> La <strong>IPT</strong> consistirá en una <strong>pensión vitalicia</strong>, que podrá excepcionalmente ser sustituida por una <strong>indemnización a tanto alzado</strong> cuando el beneficiario sea menor de 60 años.</p>
+  <p>Los declarados afectos de IPT percibirán su pensión incrementada en un porcentaje determinado reglamentariamente cuando, por su edad, falta de preparación general o especializada y circunstancias sociales y laborales del lugar de residencia, se presuma la <strong>dificultad de obtener empleo</strong> en actividad distinta de la habitual anterior <em>(IPT cualificada)</em>.</p>
+  <p>La cuantía de la pensión de IPT derivada de EC <span class="epi-letra">no podrá resultar inferior al importe mínimo</span> fijado anualmente en la Ley de PGE para la pensión de IPT derivada de EC de titulares menores de 60 años con cónyuge no a cargo.</p>
+
+  <p><span class="epi-num">A196.3</span> La <strong>IPA</strong> consistirá en una <strong>pensión vitalicia</strong>.</p>
+
+  <p><span class="epi-num">A196.4</span> Si el trabajador fuese calificado como <strong>gran inválido</strong> (GI), tendrá derecho a una pensión vitalicia incrementándose su cuantía con un <strong>complemento</strong>, destinado a que pueda remunerar a la persona que le atienda. El importe del complemento será equivalente al resultado de sumar el <strong>45% de la base mínima de cotización</strong> vigente en el momento del hecho causante y el <strong>30% de la última base de cotización</strong> del trabajador correspondiente a la contingencia de la que derive la IP. En ningún caso el complemento podrá tener un importe inferior al 45% de la pensión percibida, sin el complemento, por el trabajador.</p>
+
+  <div class="mnemo">
+    <span class="tag">💡 Mnemotecnia — Complemento de GI</span>
+    <strong>Cuarenta y cinco%</strong> son dos palabras → <strong>H</strong>echo <strong>C</strong>ausante (dos palabras). <strong>T</strong>reinta% es una palabra → <strong>T</strong>rabajador (una palabra). Además ambas empiezan por T (treinta / trabajador), lo que ayuda a no mezclar los hitos si el examen los intercambia.
+  </div>
+
+  <p><span class="epi-num">A196.5</span> En los casos en que el trabajador, con <strong>67 o más años</strong>, acceda a la pensión de IP derivada de CC por <strong>no reunir los requisitos</strong> para el reconocimiento del derecho a pensión de jubilación, la cuantía de la pensión de IP será equivalente al resultado de aplicar a la correspondiente BR el porcentaje que corresponda, en cada momento, para el acceso a la pensión de jubilación: actualmente el <strong>50%</strong>. En el caso de que sea derivada de EC, solo aplicará el A197.1.a) — no se multiplicará la BR por el porcentaje según cotización aportada.</p>
+
+  <div class="voz-profe">
+    <span class="tag">🎧 Voz del profesor</span>
+    Este último apartado (A196.5) cubre el escenario extremo de una persona que sigue trabajando más allá de la edad legal de jubilación (67 años) pero no acumula los 15 años mínimos exigidos para jubilarse. En ese caso concreto, a la BR de la IP se le aplica directamente el 50% en vez del porcentaje habitual según cotización.
+  </div>
+</div>
+
+<h3 class="epigrafe">Cálculo de la prestación: Base Reguladora (BR) según contingencia</h3>
+<div class="card">
+  <p>La cuantía se calcula: <strong>Base Reguladora (BR)</strong> a la que se le aplica <strong>un porcentaje</strong>. La BR se calcula de manera distinta según la contingencia: EC, ANL o AT/EP.</p>
+
+  <h4 style="color:#fff;margin-top:18px;">BR en Enfermedad Común (EC)</h4>
+  <p><strong>Caso I — 8 años o más de PMC exigido</strong> (trabajador de 52 años o más):</p>
+  <p>La BR será el cociente que resulte de dividir por <strong>112</strong> las bases de cotización del interesado durante los <strong>96 meses anteriores al mes previo</strong> (2 meses atrás) al del hecho causante:</p>
+  <ul>
+    <li>Las BC de los <strong>24 meses anteriores</strong> al mes previo al HC se computarán en su <strong>valor nominal</strong>.</li>
+    <li>Las <strong>restantes BC se actualizarán</strong> de acuerdo con la evolución del IPC desde los meses a que correspondan hasta el mes inmediato anterior al que se inicie el período de bases no actualizables.</li>
+  </ul>
+  <div class="ejemplo">
+    <span class="tag">💡 Ejemplo — de dónde sale el 112</span>
+    En 96 meses hay implícitos 8 años de cotización (96/12=8). 8 años de cotización suponen 16 pagas extraordinarias. 96 + 16 = <strong>112</strong>. Se divide entre un número mayor porque, aunque se calcula la mensualidad así, luego se perciben 14 pagas al año.
+  </div>
+
+  <p><strong>Integración de lagunas de cotización</strong>: si en el período a considerar aparecieran meses sin obligación de cotizar, las <strong>primeras 48 mensualidades</strong> se integran con la <strong>base mínima</strong>, y el <strong>resto</strong> con el <strong>50% de la base mínima</strong>.</p>
+  <table class="tabla-estudio">
+    <tr><th>Primeros 48 meses de laguna</th><td>BC mínima</td></tr>
+    <tr><th>Resto de meses de laguna</th><td>50% BC mínima</td></tr>
+  </table>
+  <p>Si en algún mes la obligación de cotizar existe solo durante una parte del mismo, la integración se aplica a la parte sin cotizar, siempre que la BC del período cotizado no alcance la base mínima; en tal caso la integración llega hasta esa cuantía.</p>
+
+  <div class="voz-profe">
+    <span class="tag">🎧 Voz del profesor</span>
+    No te obsesiones en memorizar por qué se actualizan al IPC las bases o por qué existen las lagunas — entiéndelo y asimílalo. Ten en cuenta que este mismo mecanismo de integración de lagunas aplica exactamente igual cuando se estudien las cotizaciones de la Jubilación.
+  </div>
+
+  <p>[B] Al resultado obtenido se le aplica el <strong>porcentaje según los años de cotización</strong> (A210.1, aplicable también a IP), considerándose cotizados los años que le resten al interesado, en la fecha del HC, para cumplir la edad ordinaria de jubilación. Si no se alcanzan 15 años de cotización, el porcentaje será del <strong>50%</strong>.</p>
+
+  <div class="card" style="background:#161c24;">
+    <p><strong>Conexión con T10 — Jubilación (A210.1):</strong></p>
+    <ul>
+      <li>Por los <strong>primeros 15 años</strong> cotizados: <strong>50%</strong>.</li>
+      <li>A partir del año 16, por cada mes adicional de cotización: entre los meses 1 y 248, se añade <strong>0,19%</strong>; a partir del mes 248 (del 249 en adelante), se añade <strong>0,18%</strong>.</li>
+      <li>El porcentaje aplicable nunca puede superar el 100%, salvo jubilación demorada (no aplica en IP).</li>
+    </ul>
+    <div class="actualizacion">
+      <span class="tag">📌 Solo para el año 2026 — DT9</span>
+      Durante 2026 (último año del régimen transitorio) rige la <strong>DT9</strong>, no el A210: primeros 15 años = 50%; entre los meses 1 y 49 se añade <strong>0,21%</strong>; a partir del mes 49 (del 50 en adelante) se añade <strong>0,19%</strong>.
+    </div>
+  </div>
+
+  <p><strong>Caso II — menos de 8 años de PMC exigido</strong> (trabajador menor de 52 años):</p>
+  <p>La BR se obtiene de forma análoga, pero computando bases mensuales de cotización (2 meses atrás respecto al HC) en número igual al de meses del PMC exigible, <strong>sin fracciones de mes</strong>, aplicando en el denominador el coeficiente <strong>1,166</strong>.</p>
+
+  <table class="tabla-estudio">
+    <tr><th>≥ 8 años PMC</th><th>&lt; 8 años PMC</th></tr>
+    <tr><td>BR = ΣBC de 96 meses / 112</td><td>BR = ΣBC de X meses / (X × 1,166)</td></tr>
+  </table>
+
+  <div class="ejemplo">
+    <span class="tag">💡 Ejemplo</span>
+    A un trabajador al que se le exijan 7 años de PMC (84 meses): BR = ΣBC de 84 meses / (84 × 1,166) = ΣBC de 84 meses / 98.
+  </div>
+
+  <div class="voz-profe">
+    <span class="tag">🎧 Voz del profesor</span>
+    El 1,166 sale de dividir 112 entre 96. Es exactamente el mismo razonamiento que el 112 de arriba, solo que aplicado como coeficiente en vez de como suma directa, para poder ajustarlo a cualquier número de meses de PMC exigido (no solo a 96).
+  </div>
+
+  <div class="recordatorio">
+    <span class="tag">📌 Regla del "8 años = 52 años"</span>
+    Se exigen ≥8 años de PMC cuando el trabajador tiene 52 años o más. ¿De dónde sale? De la fórmula de carencia genérica para mayores de 31: (52 − 20) / 4 = 8. Por eso, si el enunciado te da directamente la edad del trabajador, no hace falta calcular el PMC exigido: ya sabes qué caso (I o II) aplica.
+  </div>
+
+  <h4 style="color:#fff;margin-top:18px;">BR en Accidente No Laboral (ANL)</h4>
+  <p>La BR será el cociente de dividir entre <strong>28</strong> la suma de las BC del trabajador durante un período <strong>ininterrumpido de 24 meses naturales</strong>, aun cuando dentro del mismo existan lapsos sin obligación de cotizar. El período será <strong>elegido por el interesado dentro de los 7 años</strong> inmediatamente anteriores al HC.</p>
+  <p><strong>No aplica</strong> integración de lagunas ni actualización de bases al IPC (al ser solo 24 meses).</p>
+
+  <p><strong>Situación especial</strong>: si el trabajador procede de una situación de alta o asimilada sin obligación de cotizar, o estando en alta y obligado a cotizar no acredita 24 meses cotizados, se aplica la fórmula más favorable entre:</p>
+  <ul>
+    <li>a) Dividir entre 28 la suma de las BC de 24 meses elegidos dentro de los 7 años, o bien</li>
+    <li>b) Dividir por 28 la suma de las BC mínimas vigentes en los 24 meses inmediatamente anteriores al HC.</li>
+  </ul>
+  <p><strong>Desde no alta</strong>: se aplica la misma fórmula que en EC — dividir por 112 las BC de los 96 meses anteriores al mes previo (2 meses atrás) al HC.</p>
+
+  <h4 style="color:#fff;margin-top:18px;">BR en Accidente de Trabajo / Enfermedad Profesional (AT/EP)</h4>
+  <p>Se calcula sobre <strong>salarios reales</strong> vigentes al sobrevenir la incapacidad (no se promedian cotizaciones pasadas), topada entre el máximo y el mínimo de cotización. Es el cociente de dividir por <strong>12</strong> la suma de:</p>
+  <ul>
+    <li><strong>[A]</strong> Sueldo y antigüedad diarios del trabajador en la fecha del accidente (AT) o de la baja por EP, por 365 días.</li>
+    <li><strong>[B]</strong> Pagas extraordinarias, beneficios o participación, por su importe total en el <strong>año anterior</strong> al accidente.</li>
+    <li><strong>[C]</strong> El cociente de dividir los pluses, retribuciones complementarias y horas extraordinarias percibidas en el año anterior al accidente, por el número de días efectivamente trabajados en dicho período, multiplicado por 273 (salvo que el nº de días laborales efectivos sea menor).</li>
+  </ul>
+  <p style="text-align:center;font-weight:700;">BR = (A + B + C) / 12</p>
+
+  <div class="voz-profe">
+    <span class="tag">🎧 Voz del profesor</span>
+    Se divide entre 12 porque las contingencias profesionales se perciben en 12 pagas, no en 14. El promedio de un año completo de pluses/extras se toma porque un solo mes no es representativo: puede que el mes del accidente no hubiera hecho ninguna hora extra, o al revés, que hubiera hecho muchísimas — el año completo da un dato más fiable.
+  </div>
+</div>
+
+<h3 class="epigrafe">Porcentajes aplicables a la BR según el grado</h3>
+<div class="card">
+  <table class="tabla-estudio">
+    <tr><th>Grado</th><th>% sobre BR</th></tr>
+    <tr><td>IPP</td><td>No aplica (es un TA de 24 mensualidades, no un %)</td></tr>
+    <tr><td>IPT</td><td><strong>55%</strong></td></tr>
+    <tr><td>IPT cualificada (+55 años, sin trabajar)</td><td><strong>75%</strong> (55% + 20%)</td></tr>
+    <tr><td>IPA</td><td><strong>100%</strong></td></tr>
+    <tr><td>GI</td><td>Pensión IPT/IPA + complemento (45% BC mín. HC + 30% última BC TRA CC/CP)</td></tr>
+  </table>
+
+  <h4 style="color:#fff;margin-top:18px;">IPT: indemnización a tanto alzado sustitutiva</h4>
+  <p>Requisitos acumulativos (opción excluyente con la IPT cualificada):</p>
+  <ul>
+    <li><strong>Edad &lt; 60 años.</strong></li>
+    <li>Que se presuma que las lesiones determinantes de la IP <span class="epi-letra">no son susceptibles de modificación</span> que dé lugar en lo sucesivo a una revisión de la IP declarada.</li>
+    <li>Que el beneficiario realice trabajos por cuenta propia o ajena, o acredite que el importe de la indemnización se invertirá en la preparación o desarrollo de nuevas fuentes de ingreso como autónomo.</li>
+    <li>Solicitud dentro de los <strong>3 años siguientes</strong> a la fecha de la resolución o sentencia firme que reconozca el derecho a la pensión (o, si es menor de 21 años en dicha fecha, dentro de los 3 años siguientes al día en que cumpla esa edad).</li>
+  </ul>
+
+  <table class="tabla-estudio">
+    <tr><th>Edad</th><th>Nº de mensualidades</th></tr>
+    <tr><td>59</td><td>12</td></tr>
+    <tr><td>58</td><td>24</td></tr>
+    <tr><td>57</td><td>36</td></tr>
+    <tr><td>56</td><td>48</td></tr>
+    <tr><td>55</td><td>60</td></tr>
+    <tr><td>54</td><td>72</td></tr>
+    <tr><td>&lt; 54</td><td>84</td></tr>
+  </table>
+
+  <p>Al cumplir 60 años, se pasa a percibir la pensión vitalicia <strong>revalorizada</strong> con los incrementos que se hayan establecido desde la fecha en que se solicitó la indemnización a TA. No se pierde el derecho a la pensión: la indemnización simplemente <strong>adelanta</strong> el cobro.</p>
+
+  <h4 style="color:#fff;margin-top:18px;">IPT cualificada (incremento del 20%)</h4>
+  <p>Aplica cuando el beneficiario cumple <strong>55 años</strong> y, por su falta de preparación general o especializada y circunstancias sociales y laborales del lugar de residencia, se presuma la <strong>dificultad de obtener empleo</strong> en actividad distinta de la habitual.</p>
+  <ul>
+    <li>Incompatible con la sustitución por indemnización a TA (son opciones excluyentes entre sí).</li>
+    <li>Se aplican las revalorizaciones que haya experimentado la pensión desde el hecho causante.</li>
+    <li>Los 55 años deben cumplirse en la fecha de la <strong>solicitud</strong>, con independencia de cuándo ocurrió el HC.</li>
+    <li><strong>Fecha de efectos</strong>: día en que se cumple la edad requerida (55 años), salvo en RETA, donde es el día 1 del mes siguiente a la solicitud.</li>
+    <li>Solicitud con retroactividad máxima de <strong>3 meses</strong>, siempre que ya se tuviera cumplida la edad.</li>
+    <li><strong>Suspensión</strong> del incremento si se trabaja o se incorpora a un trabajo (es incompatible con trabajar). Se reanuda si procede.</li>
+  </ul>
+
+  <div class="ejemplo">
+    <span class="tag">💡 Ejemplo</span>
+    Si el hecho causante de una IPT ocurrió a los 48 años, el trabajador cobra el 55% de la BR. Al llegar a los 55 años, si sigue sin trabajar, pasa a cobrar el 75% (con las revalorizaciones acumuladas desde el hecho causante hasta ese momento).
+  </div>
+
+  <p>Como ya se indicó en el A196.2, la cuantía de la IPT <span class="epi-letra">no podrá resultar inferior al importe mínimo</span> fijado anualmente en la Ley de PGE para titulares menores de 60 años con cónyuge no a cargo.</p>
+</div>
+
+<h3 class="epigrafe"><span class="articulo chip-lgss">A198</span> Compatibilidades e incompatibilidades</h3>
+<div class="card">
+  <ul>
+    <li><strong>IPP</strong>: compatible con todo trabajo. Al ser un TA, no aplica incompatibilidad.</li>
+    <li><strong>IPT</strong>: la pensión vitalicia es <strong>compatible</strong> con el salario que pueda percibir el trabajador en la misma empresa o en otra distinta, siempre que <strong>las funciones no coincidan</strong> con las que dieron lugar a la IPT. Puede determinarse la incompatibilidad con la percepción del incremento del 20% y la realización de trabajos, por cuenta propia o ajena.</li>
+    <li><strong>IPA / GI</strong>: no impedirán el ejercicio de actividades, sean o no lucrativas, <strong>compatibles con el estado del incapacitado</strong> y que no representen un cambio en su capacidad de trabajo a efectos de revisión.</li>
+  </ul>
+
+  <p>Si el pensionista realiza un trabajo o actividad que dé lugar a la <strong>inclusión en un régimen de la SS</strong>, la entidad gestora <span class="excepcion">suspenderá</span> el pago de la pensión. Se reanudará al cesar el trabajo o actividad, sin perjuicio de la eventual revisión del grado. El <strong>complemento de GI</strong> destinado a remunerar a la persona que atiende al beneficiario <span class="epi-letra">no se suspende</span> por la realización de un trabajo incompatible con la pensión.</p>
+
+  <p>El disfrute de la pensión de IPA y GI, a partir de la edad de acceso a la jubilación, será <strong>incompatible</strong> con el desempeño de un trabajo, por cuenta propia o ajena, que determine la inclusión en algún régimen de la SS, en los mismos términos que la pensión de jubilación contributiva (A213.1).</p>
+
+  <div class="confusion">
+    <span class="tag">⚠ Confusión frecuente</span>
+    No mezcles la compatibilidad de la <strong>pensión</strong> con la compatibilidad del <strong>complemento de GI</strong>. Trabajar suspende la pensión de IPA/GI, pero nunca suspende el complemento destinado a remunerar al cuidador.
+  </div>
+
+  <div class="voz-profe">
+    <span class="tag">🎧 Voz del profesor</span>
+    Recuerda: dos pensiones dentro del mismo régimen son incompatibles entre sí — no puedes ser jubilado y a la vez incapacitado permanente contributivo dentro del régimen general. Si has sido pluriempleado (RG + RETA, por ejemplo) y cumples requisitos en cada régimen por separado, sí tendrías derecho a dos pensiones. Cuando alcances la edad legal de jubilación, la IP simplemente cambia de nombre a pensión de jubilación, sin modificar sus condiciones.
+  </div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CAPÍTULO 3 — BENEFICIARIOS -->
+<!-- ============================================================ -->
+<section class="capitulo" id="cap3">
+<div class="cap-header">Capítulo 3 — Beneficiarios</div>
+<p class="mapa-label">🌳 Hilo conductor del capítulo</p>
+<div class="mapa-cap">
+  <div class="mapa-arbol">
+    <div class="mapa-nodo raiz">BENEFICIARIOS DE IP <span class="art">A195</span></div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">Afiliación y alta</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">CONTINGENCIA CAUSANTE</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-rama">
+      <div class="mapa-nodo">AT / EP / ANL<br><span class="art">Sin PMC</span></div>
+      <div class="mapa-nodo">EC<br><span class="art">Con PMC</span></div>
+    </div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-rama">
+      <div class="mapa-nodo">PMC IPP</div>
+      <div class="mapa-nodo">PMC IPT / IPA / GI</div>
+    </div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">IPA / GI desde no alta</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo hoja">15 años de cotización</div>
+  </div>
+</div>
+
+<h3 class="epigrafe"><span class="articulo chip-lgss">A195</span> Beneficiarios</h3>
+<div class="card">
+  <p>Tendrán derecho a las prestaciones por IP las personas incluidas en el RG que sean declaradas en tal situación y que, además de reunir la condición general exigida en el A165.1 (Requisitos particulares + Afiliado + Alta/Asimilada a alta), hubieran cubierto el PMC que se determine, <strong>salvo que la IP sea debida a AT/EP/ANL</strong>, en cuyo caso <span class="epi-letra">no será exigido ningún período previo de cotización</span>.</p>
+
+  <p>No obstante, los grados de <strong>IPA/GI derivadas de CC</strong> podrán causarse aunque los interesados no se encuentren en el momento del HC en alta o situación asimilada a la de alta (es decir, <strong>desde no alta</strong>). En tales supuestos, el PMC exigible será, en todo caso, de <strong>15 años</strong>.</p>
+
+  <p><span class="epi-letra">No se reconocerá el derecho</span> a las prestaciones de IP derivada de CC cuando el beneficiario, en la fecha del HC, tenga la edad prevista en el A205.1.a) y reúna los requisitos para acceder a la pensión de jubilación en el sistema de la SS (por incompatibilidad).</p>
+
+  <div class="recordatorio">
+    <span class="tag">📌 Resumen — exigencia de PMC según origen</span>
+    <strong>Desde alta o asimilada:</strong> no aplica PMC para AT/EP/ANL; sí aplica PMC para EC (variable según grado y edad).<br>
+    <strong>Desde no alta:</strong> solo IPA/GI derivadas de CC; PMC fijo de 15 años.
+  </div>
+</div>
+
+<h3 class="epigrafe">PMC en IPP</h3>
+<div class="card">
+  <p>Se exigen <strong>1.800 días</strong>, comprendidos en los <strong>10 años inmediatamente anteriores</strong> a la fecha en que se haya extinguido la IT de la que se derive la IP. El Gobierno, mediante RD, a propuesta del titular del Ministerio en materia de SS, podrá modificar este PMC.</p>
+  <p><strong>Caso especial — menores de 21 años</strong>: según el A3 Decreto 394/1974, el PMC será la <strong>mitad del tiempo transcurrido</strong> entre el cumplimiento de los 16 años y el inicio del HC de la IT, computándose además si fuera necesario el máximo de duración de la IT (545 días) se agote o no.</p>
+
+  <table class="tabla-estudio">
+    <tr><th>Edad</th><th>PMC exigido</th></tr>
+    <tr><td>≥ 21 años</td><td>1.800 días en los 10 años inmediatamente anteriores a la extinción de la IT</td></tr>
+    <tr><td>&lt; 21 años</td><td>1/2 del tiempo transcurrido desde los 16 años al HC de la IT</td></tr>
+  </table>
+
+  <div class="voz-profe">
+    <span class="tag">🎧 Voz del profesor</span>
+    Fíjate que esos 1.800 días recuerdan a los 180 días que se veían en el PMC de la IT — pero en IT eran 5 años y aquí son 10 años (180 × 10 = 1.800). Es una analogía que ayuda a memorizar: la IP, al tener más entidad, dobla los plazos de la IT.
+  </div>
+</div>
+
+<h3 class="epigrafe">PMC en IPT / IPA / GI (desde alta, EC)</h3>
+<div class="card">
+  <p>El PMC se divide en dos bloques según la edad del interesado en la fecha del hecho causante:</p>
+
+  <table class="tabla-estudio">
+    <tr><th>Edad</th><th>Carencia genérica</th><th>Carencia específica</th></tr>
+    <tr><td>&lt; 31 años</td><td>1/3 del tiempo desde los 16 años al HC</td><td>No aplica</td></tr>
+    <tr><td>≥ 31 años</td><td>1/4 del tiempo desde los 20 años al HC (mínimo, en todo caso, 5 años)</td><td>1/5 del PMC exigido, dentro de los 10 años inmediatamente anteriores al HC</td></tr>
+  </table>
+
+  <div class="confusion">
+    <span class="tag">⚠ Confusión frecuente</span>
+    El quinto de la carencia específica se calcula sobre el <strong>PMC exigido</strong> (el resultado de la carencia genérica), <strong>no</strong> sobre el total de años desde los 20 al HC. Si el PMC exigido son 9 años, la específica es 9/5 = 1,8 años — no un quinto de los 36 años usados para calcular el 9.
+  </div>
+
+  <p>Se tienen que cumplir <strong>ambas carencias</strong> a la vez — no basta con satisfacer solo una de las dos.</p>
+
+  <div class="ejemplo">
+    <span class="tag">💡 Ejemplo — menor de 31</span>
+    Rodrigo tiene 25 años en la fecha del HC. PMC exigido: 1/3 desde los 16 → (25−16)/3 = 3 años. No aplica carencia específica.
+  </div>
+
+  <div class="ejemplo">
+    <span class="tag">💡 Ejemplo — mayor de 31</span>
+    Un trabajador de 56 años: carencia genérica = 1/4 desde los 20 → (56−20)/4 = 9 años. Carencia específica = 9/5 = 1,8 años, que deben estar dentro de los últimos 10 años.
+  </div>
+</div>
+
+<h3 class="epigrafe">IPA / GI desde no alta</h3>
+<div class="card">
+  <p>Solo aplica para <strong>contingencia común</strong> (EC/ANL). Carencia genérica: <strong>15 años</strong> (fijo, con independencia de la edad). Carencia específica: <strong>1/5 de 15 años = 3 años</strong>, en los últimos 10 años inmediatamente anteriores.</p>
+
+  <p>En los supuestos en que no haya obligación de cotizar, el período de 10 años de la carencia específica se computa hacia atrás desde la fecha en que se solo obligación de cotizar (ej. durante la prolongación de efectos económicos de la IT, cuando ya no hay obligación de cotizar).</p>
+
+  <div class="recordatorio">
+    <span class="tag">📌 Conexión con Jubilación (A205) y Viudedad (A223)</span>
+    Al igual que en Jubilación y Viudedad, desde no alta, si se quiere acceder a dos pensiones de distintos regímenes, se exige que las cotizaciones acreditadas en cada uno de ellos se <strong>superpongan al menos 15 años</strong>. Si se llega en alta a los dos regímenes, no se exige esa superposición, sino las reglas normales de carencia genérica y específica por separado (sin perjuicio de la totalización del A9.2 si un régimen aisladamente no llega).
+  </div>
+
+  <div class="voz-profe">
+    <span class="tag">🎧 Voz del profesor</span>
+    En materia de reconocimiento de pensiones, siempre se intenta primero que cada régimen resuelva por separado. Solo si eso no es posible se hace uso de la totalización de los períodos (A9.2 — tema de acción protectora): sumar cotizaciones no superpuestas de distintos regímenes. Distinto es haber simultaneado regímenes a la vez (pluriactividad), donde si has cotizado en ambos y cada uno cumple requisitos por separado, tienes derecho a dos pensiones.
+  </div>
+</div>
+
+<h3 class="epigrafe">Particularidades del PMC computable</h3>
+<div class="card">
+  <ul>
+    <li><span class="articulo chip-lgss">A247.1</span> Contrato a tiempo parcial: se tienen en cuenta los distintos períodos en alta con este tipo de contrato, cualquiera que sea la duración de la jornada.</li>
+    <li><span class="articulo chip-lgss">A247.2</span> Contratos fijos-discontinuos: se multiplica el tiempo cotizado por el <strong>coeficiente 1,5</strong>, sin que el número total de días computables como cotizados pueda superar anualmente el número de días naturales del año. <strong>Solo aplica a pensiones</strong> (Jubilación, IP y MYS) — no aplica a IT ni a NYCM.</li>
+    <li><span class="articulo chip-lgss">A249bis</span> Contratos de corta duración (≤ 5 días): cada día de trabajo se considera <strong>1,4 días de cotización</strong> (7/5 = 1,4), sin que en ningún caso pueda computarse mensualmente más días que los del mes. Este coeficiente <strong>aplica a todas las prestaciones</strong> (a diferencia del 1,5 anterior, que solo aplica a pensiones).</li>
+  </ul>
+
+  <p>Cómputos adicionales a favor del PMC:</p>
+  <ul>
+    <li><span class="articulo chip-lgss">A235</span>: solo para Jubilación e IP, se computan a favor de la trabajadora solicitante <strong>112 días completos</strong> de cotización por cada parto de un solo hijo (16 semanas × 7 días), y <strong>14 días más por cada hijo</strong> a partir del segundo si el parto fuera múltiple, salvo que ya se hubiera cotizado durante la totalidad de las 16 semanas o el tiempo correspondiente.</li>
+  </ul>
+
+  <div class="voz-profe">
+    <span class="tag">🎧 Voz del profesor</span>
+    Los artículos 236 y 237 (otros cómputos a favor del PMC) se desarrollan con más profundidad en el tema de Jubilación y en el tema 12 de Prestaciones Familiares en modalidad contributiva — no hace falta memorizarlos aquí en detalle.
+  </div>
+</div>
+
+<h3 class="epigrafe">🛫 Torre de control — Beneficiarios y PMC</h3>
+
+<div class="quiz-box" data-qid="ip-c3-01">
+  <div class="quiz-q">1) Samuel ha estado en IT derivada de enfermedad, y a su extinción tiene 52 años. Ha trabajado durante 4.600 días, de ellos 1.600 en los últimos 10 años. ¿Tendrá derecho a IPP?</div>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-c3-01')">a) Sí, porque supera ampliamente los 1.800 días exigidos.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'ip-c3-01')">b) No, porque solo aporta 1.600 días en los últimos 10 años y se exigen 1.800.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-c3-01')">c) Sí, porque la IPP nunca exige PMC.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-c3-01')">d) No tiene derecho porque le faltan datos de la carencia específica.</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-box" data-qid="ip-c3-02">
+  <div class="quiz-q">2) Si la contingencia de Samuel hubiese sido profesional (AT/EP) en vez de enfermedad común, ¿tendría derecho a la IPP?</div>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'ip-c3-02')">a) Sí, porque no se exige ningún PMC para AT/EP.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-c3-02')">b) No, porque igualmente le faltarían días cotizados.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-c3-02')">c) Solo si además está al corriente de pago.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-c3-02')">d) Depende de si es AT o EP.</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-box" data-qid="ip-c3-03">
+  <div class="quiz-q">3) Rodrigo tiene 25 años cuando finaliza una IT derivada de EC. Acumula 850 días trabajados. ¿Tendrá derecho a IPT?</div>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-c3-03')">a) Sí, porque supera el mínimo exigido.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'ip-c3-03')">b) No: se le exigen 3 años (1/3 de 25−16=9) = 1.095 días, y solo aporta 850.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-c3-03')">c) No, porque no cumple la carencia específica.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-c3-03')">d) Sí, porque al ser menor de 31 no se le exige PMC.</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-box" data-qid="ip-c3-04">
+  <div class="quiz-q">4) Rosa tiene 56 años cuando finaliza una IT por EC. Lleva cotizados 5.200 días en toda su vida laboral (dato de últimos 10 años no especificado). ¿Tendrá derecho a IPA?</div>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-c3-04')">a) Sí, sin ninguna duda.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-c3-04')">b) No, porque no llega a los 9 años exigidos de carencia genérica.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'ip-c3-04')">c) Cumple la carencia genérica (14,25 años &gt; 9), pero no se puede confirmar sin saber si cumple también la específica (1,8 años en los últimos 10).</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-c3-04')">d) No tiene derecho porque falta la carencia específica.</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-box" data-qid="ip-c3-05">
+  <div class="quiz-q">5) Gustavo tiene 28 años y finaliza una IT por enfermedad profesional. Lleva 2.200 días cotizados. ¿Tendrá derecho a GI?</div>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'ip-c3-05')">a) Sí, porque al ser CP no se exige ningún PMC.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-c3-05')">b) No, porque le faltan días para el tercio exigido.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-c3-05')">c) Solo si cumple también la carencia específica.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-c3-05')">d) No, porque GI nunca se reconoce a menores de 31 años.</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-box" data-qid="ip-c3-06">
+  <div class="quiz-q">6) Marta tiene 33 años y NO está en alta cuando el EVI estudia su solicitud de IPA por CC. Tiene 4.800 días cotizados en su vida laboral, la mitad en los últimos 10 años. ¿Tendrá acceso a la IPA?</div>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-c3-06')">a) Sí, cumple ambas carencias.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'ip-c3-06')">b) No: aporta 13,15 años y se exigen 15 de carencia genérica (aunque sí cumpliría la específica de 3 años).</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-c3-06')">c) No, porque desde no alta nunca se puede acceder a IPA.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-c3-06')">d) Sí, porque desde no alta no se exige PMC.</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="card" style="margin-top:14px;">
+  <div class="recordatorio">
+    <span class="tag">📌 Días-cuota — posible ayuda a Marta</span>
+    Los <strong>días-cuota</strong> (parte proporcional de las pagas extraordinarias que se añade como PMC) aplican a todas las prestaciones y pensiones <strong>excepto Desempleo y Jubilación</strong> (regla mnemotécnica: el <strong>DJ</strong> — como el DJ que pincha música — no admite días-cuota). Si a Marta se le pudiera añadir la parte proporcional de sus pagas extras y con eso alcanzase el PMC de 15 años, sí podría acceder a la IPA solicitada.
+  </div>
+  <p style="font-size:0.85rem;color:var(--text-dim);">2 pagas extra al año = 60 días en 12 meses = 5 días por mes trabajado.</p>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CAPÍTULO 4 — NACIMIENTO, DURACIÓN Y EXTINCIÓN DEL DERECHO -->
+<!-- ============================================================ -->
+<section class="capitulo" id="cap4">
+<div class="cap-header">Capítulo 4 — Nacimiento, duración y extinción del derecho</div>
+<p class="mapa-label">🌳 Hilo conductor del capítulo</p>
+<div class="mapa-cap">
+  <div class="mapa-arbol">
+    <div class="mapa-nodo raiz">NACIMIENTO DEL DERECHO</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-rama">
+      <div class="mapa-nodo">IP tras IT</div>
+      <div class="mapa-nodo">IP sin IT</div>
+      <div class="mapa-nodo">IP desde no alta</div>
+    </div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">Hecho causante</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">Efectos económicos</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">EXTINCIÓN</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-rama">
+      <div class="mapa-nodo">Revisión</div>
+      <div class="mapa-nodo">Jubilación</div>
+      <div class="mapa-nodo">Fallecimiento</div>
+    </div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">DENEGACIÓN, ANULACIÓN O SUSPENSIÓN</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-rama">
+      <div class="mapa-nodo">Fraude</div>
+      <div class="mapa-nodo">Imprudencia temeraria</div>
+      <div class="mapa-nodo">Rechazo de tratamiento o rehabilitación</div>
+    </div>
+  </div>
+</div>
+
+<h3 class="epigrafe">Nacimiento y duración del derecho</h3>
+<div class="card">
+  <p>Es muy importante saber cuál es el <strong>Hecho Causante (HC)</strong> de una IP, porque de él dependen múltiples factores. Aunque lo habitual es que la IP surja tras la extinción de la IT (bien por agotamiento del plazo de 545 días, bien por alta médica), hay casos en los que no es así.</p>
+
+  <table class="tabla-estudio">
+    <tr><th>Situación de origen</th><th>Hecho causante de la IP</th><th>Efectos económicos de la IP</th></tr>
+    <tr><td>Caso I — Hay IT</td><td>Fecha de extinción de la IT</td><td>Resolución del Director Provincial del INSS</td></tr>
+    <tr><td>Caso II — No hay IT (o la hay pero no se ha extinguido)</td><td colspan="2" style="text-align:center;">Fecha del dictamen-propuesta del EVI</td></tr>
+    <tr><td>Caso III — Desde no alta</td><td colspan="2" style="text-align:center;">Fecha de la solicitud (solo IPA/GI derivado de CC)</td></tr>
+  </table>
+
+  <div class="voz-profe">
+    <span class="tag">🎧 Voz del profesor</span>
+    En el Caso I (lo más habitual), fíjate que el hecho causante y el efecto económico <strong>no coinciden</strong>: el hecho causante es la extinción de la IT, pero el efecto económico se produce con la resolución del Director Provincial del INSS, que puede llegar días o semanas después. Entre medias, el trabajador está en situación de <strong>prolongación de efectos económicos de la IT</strong> (A174.5). Si al final la IP reconocida tiene una cuantía mayor que la que venía percibiendo, los efectos económicos se retrotraen al día siguiente de la extinción de la IT, para que el trabajador recupere ese poder adquisitivo. En los Casos II y III, en cambio, el hecho causante y el efecto económico <strong>sí coinciden</strong> en un único hito (la fecha del dictamen-propuesta del EVI, o la fecha de solicitud).
+  </div>
+
+  <div class="recordatorio">
+    <span class="tag">📌 Conexión con T08 — Incapacidad Temporal</span>
+    <span class="articulo chip-lgss">A174.5</span> — Suspensión en los casos de extinción laboral, para los grados de IPT/IPA/GI (pensión vitalicia):
+    <ul>
+      <li>Si <strong>no hay extinción laboral</strong> (se sigue trabajando, por adaptación del puesto o cambio de puesto): <span class="excepcion">no hay derecho a IP</span> (se suspende mientras se presten servicios).</li>
+      <li>Si <strong>hay extinción laboral</strong>: <span class="epi-letra">sí hay derecho a IP</span>.</li>
+    </ul>
+  </div>
+</div>
+
+<h3 class="epigrafe">Extinción</h3>
+<div class="card">
+  <p>La IP se extingue por:</p>
+  <ul>
+    <li>Consecuencia del procedimiento de <strong>revisión</strong> de la IP.</li>
+    <li><strong>Fallecimiento.</strong></li>
+    <li>Causar derecho a <strong>pensión de jubilación</strong> (por incompatibilidad entre pensiones del mismo régimen).</li>
+  </ul>
+</div>
+
+<h3 class="epigrafe">Denegación, anulación y suspensión del derecho</h3>
+<div class="card">
+  <p>El derecho a la IP podrá ser denegado, anulado o suspendido:</p>
+  <ul>
+    <li>Cuando el beneficiario haya actuado <strong>fraudulentamente</strong> para obtener o conservar el derecho.</li>
+    <li>Cuando la IP sea debida o se haya agravado por <strong>imprudencia temeraria</strong> del beneficiario.</li>
+    <li>Cuando la IP sea debida o se haya agravado a consecuencia de haber <strong>rechazado o abandonado</strong>, sin causa razonable, el <strong>tratamiento sanitario</strong> que le hubiera sido indicado durante las situaciones de IT.</li>
+    <li>Cuando el beneficiario, sin causa razonable, <strong>rechace o abandone</strong> los <strong>tratamientos o procesos de readaptación y rehabilitación</strong> procedentes.</li>
+  </ul>
+
+  <div class="confusion">
+    <span class="tag">⚠ Confusión frecuente</span>
+    No mezcles la <strong>extinción</strong> (algo más abrupto, sin vuelta atrás: revisión, fallecimiento, jubilación) con la <strong>denegación/anulación/suspensión</strong> (motivada por conductas del propio beneficiario: fraude, imprudencia temeraria, rechazo de tratamiento).
+  </div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CAPÍTULO 5 — LESIONES PERMANENTES NO INCAPACITANTES -->
+<!-- ============================================================ -->
+<section class="capitulo" id="cap5">
+<div class="cap-header">Capítulo 5 — Lesiones permanentes no incapacitantes (LPNI)</div>
+<p class="mapa-label">🌳 Hilo conductor del capítulo</p>
+<div class="mapa-cap">
+  <div class="mapa-arbol">
+    <div class="mapa-nodo raiz">LPNI <span class="art">A201</span></div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">AT / EP <span class="art">causa exclusiva</span></div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">Lesión definitiva</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">No constituye IP</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">Baremo</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">Indemnización a tanto alzado</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">INCOMPATIBILIDAD CON IP <span class="art">A203</span></div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo hoja">Revisión solo por agravación</div>
+  </div>
+</div>
+
+<h3 class="epigrafe"><span class="articulo chip-lgss">A201</span> Indemnizaciones por baremo</h3>
+<div class="card">
+  <p>Las lesiones, mutilaciones y deformidades de <strong>carácter definitivo</strong>, causadas por <strong>AT/EP</strong> (causa exclusiva — nunca por contingencia común) que, sin llegar a constituir una IP, supongan una disminución o alteración de la integridad física del trabajador y aparezcan recogidas en el <strong>baremo</strong> anejo a las disposiciones de desarrollo de esta ley, serán <strong>indemnizadas, por una sola vez, con las cantidades alzadas</strong> que en el mismo se determinen, por la entidad obligada al pago de las prestaciones de IP, sin perjuicio del derecho del trabajador a continuar al servicio de la empresa.</p>
+
+  <p>El baremo está recogido en la <strong>Orden ISM/450/2023</strong> y, al igual que el anexo I del RD que establecía los elementos y sustancias considerados EP (tema de Acción Protectora), clasifica las lesiones en <strong>6 epígrafes</strong>:</p>
+  <ol>
+    <li>Cabeza y cara</li>
+    <li>Aparato genital</li>
+    <li>Glándulas y vísceras</li>
+    <li>Miembros superiores</li>
+    <li>Miembros inferiores</li>
+    <li>Cicatrices no incluidas en los epígrafes previos</li>
+  </ol>
+
+  <div class="mnemo">
+    <span class="tag">💡 Mnemotecnia — 6 epígrafes del baremo</span>
+    Aparato genital (epígrafe 2) → imagina "el hombre que tiene un par de ellos", así recuerdas que es el número dos. Cabeza va primero porque, si te lo estudias de arriba a abajo del cuerpo, empieza por ahí. Miembros superiores antes que inferiores, siguiendo el mismo orden descendente.
+  </div>
+
+  <p>Se ofrece a cualquier trabajador integrado en el RG que reúna los requisitos del <span class="articulo chip-lgss">A165.1</span> (requisitos particulares + afiliación + alta/asimilada a alta) y haya sido dado de <strong>alta médica</strong>.</p>
+
+  <div class="confusion">
+    <span class="tag">⚠ Confusión frecuente</span>
+    A diferencia de la IP, aquí se exige expresamente el <strong>alta médica</strong> como requisito de beneficiario. En cambio, no se exige PMC (al derivar siempre de AT/EP). La IP suele proceder de una IT, y es precisamente el alta médica de la IT con propuesta de IP la que genera el reconocimiento de la incapacidad permanente.
+  </div>
+</div>
+
+<h3 class="epigrafe"><span class="articulo chip-lgss">A203</span> Incompatibilidad con las prestaciones por IP</h3>
+<div class="card">
+  <p>Las indemnizaciones a tanto alzado que procedan por las lesiones, mutilaciones y deformidades son <strong>incompatibles</strong> con las prestaciones económicas de IP, <strong>salvo</strong> que dichas lesiones, mutilaciones y deformidades sean <strong>totalmente independientes</strong> de las que hayan sido tomadas en consideración para declarar tal IP y el grado de la misma.</p>
+
+  <p>Gestión y pago: la competencia de verificar la existencia de LPNI corresponde al INSS/ISM, pero el <strong>pago</strong> corresponde a la Entidad Gestora/Mutua con la que se tenga concertada la acción protectora de AT/EP (no aplica para CC, ya que la causa siempre es AT/EP). No participan aquí las empresas colaboradoras de la <strong>colaboración voluntaria del A102.1.a)</strong>, porque esta solo aplica para IT.</p>
+
+  <p>Las LPNI son <strong>solo revisables por agravación</strong> (a diferencia de la IP, que admite revisión tanto por agravación como por mejoría). Tiene sentido: al constituir un tanto alzado ya pagado de una sola vez, no cabría un procedimiento de revisión por mejoría.</p>
+
+  <div class="voz-profe">
+    <span class="tag">🎧 Voz del profesor</span>
+    Recuerda que la Tesorería solo entra en juego mediante el capital coste cuando participan las mutuas o un empresario declarado responsable — la Entidad Gestora nunca necesita constituir capital coste, porque el dinero ya está dentro de la propia Administración.
+  </div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CAPÍTULO 6 — CALIFICACIÓN Y REVISIÓN DE LA IP -->
+<!-- ============================================================ -->
+<section class="capitulo" id="cap6">
+<div class="cap-header">Capítulo 6 — Calificación y revisión de la IP</div>
+<p class="mapa-label">🌳 Hilo conductor del capítulo</p>
+<div class="mapa-cap">
+  <div class="mapa-arbol">
+    <div class="mapa-nodo raiz">CALIFICACIÓN DE LA IP <span class="art">A200</span></div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-rama">
+      <div class="mapa-nodo">INSS</div>
+      <div class="mapa-nodo">EVI</div>
+    </div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">Dictamen-propuesta</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">Reconocimiento del derecho</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">REVISIÓN</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-rama">
+      <div class="mapa-nodo">Agravación</div>
+      <div class="mapa-nodo">Mejoría</div>
+      <div class="mapa-nodo">Error de diagnóstico</div>
+    </div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">Resolución del Director Provincial del INSS</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">CONSECUENCIAS DE LA REVISIÓN</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-rama">
+      <div class="mapa-nodo">Cambio de grado</div>
+      <div class="mapa-nodo">Mantenimiento</div>
+      <div class="mapa-nodo">Extinción de la IP</div>
+    </div>
+  </div>
+</div>
+
+<h3 class="epigrafe"><span class="articulo chip-lgss">A200</span> Calificación y revisión</h3>
+<div class="card">
+  <p>Corresponde al <strong>INSS</strong>, a través de los órganos reglamentariamente establecidos (los <strong>EVI</strong>, Equipos de Valoración de Incapacidades) y en todas las fases del procedimiento, declarar la situación de IP.</p>
+
+  <p>Las pensiones de IP, cuando sus beneficiarios cumplan los <strong>67 años</strong>, pasarán a denominarse pensiones de <strong>jubilación</strong>. La nueva denominación no implicará modificación alguna respecto de las condiciones de la prestación que se viniese percibiendo.</p>
+
+  <div class="voz-profe">
+    <span class="tag">🎧 Voz del profesor</span>
+    Este cambio automático de denominación puede no ser siempre lo más rentable: si una persona tiene una IPT cualificada (75% de la BR) pero, por haber cotizado mucho más de lo exigido para IP, le correspondería un 100% de pensión de jubilación, la entidad gestora <strong>no actúa de oficio</strong> — es el trabajador quien tiene que acudir al CAISS (Centro de Atención e Información de la SS) a solicitar que se le reconozca la pensión de jubilación en vez de seguir con la IP, si eso le resulta más rentable.
+  </div>
+
+  <p>Toda resolución (inicial o de revisión) que reconozca el derecho a las prestaciones de IP, en cualquier grado, o que confirme el grado reconocido previamente, hará constar necesariamente el <strong>plazo</strong> a partir del cual se podrá instar la revisión por agravación o mejoría, en tanto el beneficiario no haya cumplido la edad mínima establecida en el A205.1.a) para acceder a la jubilación. Este plazo es vinculante para todos los sujetos que puedan promover la revisión.</p>
+
+  <p><strong>No obstante</strong>, la revisión podrá llevarse a cabo <strong>en cualquier momento</strong> (haya o no transcurrido el plazo señalado en la resolución) cuando:</p>
+  <ul>
+    <li>El pensionista de IP esté ejerciendo cualquier trabajo, por cuenta ajena o propia.</li>
+    <li>La revisión esté fundada en un <strong>error de diagnóstico</strong>.</li>
+  </ul>
+
+  <p>Cuando, como consecuencia de <strong>revisiones por mejoría</strong>, proceda reintegrar parcial o totalmente la parte no consumida de los capitales coste constituidos por las mutuas o por las empresas declaradas responsables, este reintegro <span class="epi-letra">no tendrá la consideración de ingreso indebido</span>.</p>
+
+  <div class="voz-profe">
+    <span class="tag">🎧 Voz del profesor</span>
+    Este último punto es importante: cuando una IP deriva de contingencia profesional protegida por una mutua (que constituyó el capital coste en la Tesorería), y luego una revisión por mejoría reduce o extingue la pensión, la mutua "pierde" esa parte del capital coste que ya no hace falta — pero no hay ingreso indebido ni devolución por parte del trabajador. En la práctica, dado que se analizan tantos factores en conjunto, la revisión suele ser simplemente una ratificación de que todo sigue igual, precisamente porque es "permanente".
+  </div>
+
+  <p><span class="articulo chip-lgss">A2</span> Competencia territorial (Orden 18/ene/1996): son competentes para <strong>iniciar, instruir y resolver</strong> los procedimientos de reconocimiento de incapacidad laboral las <strong>Direcciones Provinciales (DP) del INSS</strong> de la provincia en que tenga su domicilio el interesado. Si reside en el extranjero, la competencia es de la DP del INSS de la provincia donde acredite o alegue las últimas cotizaciones.</p>
+</div>
+
+<h3 class="epigrafe">Quién puede instar el procedimiento</h3>
+<div class="card">
+  <p><span class="articulo chip-lgss">A4, A5 y A6</span> (Orden 18/ene/1996):</p>
+
+  <p><strong>Las DP del INSS, de oficio</strong>:</p>
+  <ul>
+    <li>Por propia iniciativa, cuando consideren que el trabajador se encuentra en un estado que pueda ser constitutivo de IP, y expresamente cuando se extinga la IT por el transcurso del plazo máximo, emitiéndose en su caso alta médica por agotamiento.</li>
+    <li>Petición razonada de la <strong>ITSS</strong>.</li>
+    <li>Petición razonada del <strong>SPS</strong> competente para gestionar la asistencia sanitaria de la SS.</li>
+  </ul>
+  <p>A instancia del <strong>trabajador</strong> o su representante legal.</p>
+  <p>A instancia de las <strong>Mutuas o de las empresas colaboradoras</strong>, cuando consideren que el trabajador se encuentra en un estado constitutivo de IP: procederán a elaborar un <strong>expediente previo</strong>, poniéndolo en conocimiento del trabajador afectado el día siguiente a la iniciación de la actuación. Finalizado el expediente previo, la entidad colaboradora remitirá a la DP competente el escrito de iniciación con el informe correspondiente.</p>
+  <p><span class="articulo chip-lgss">A17</span>: también pueden instar el inicio de la <strong>revisión</strong> (atención, solo la revisión, no la calificación inicial) los <strong>empresarios responsables</strong> de las prestaciones y, en su caso, quienes de forma subsidiaria o solidaria sean también responsables derivados del incumplimiento de las obligaciones de afiliación, altas y cotización, así como falta de medidas de seguridad y salud en el trabajo.</p>
+
+  <div class="mnemo">
+    <span class="tag">💡 Mnemotecnia — quién inicia el procedimiento (MITRA)</span>
+    <strong>M</strong>utua/Empresa colaboradora · <strong>I</strong>NSS (de oficio) · <strong>TRA</strong>bajador → forman "MITRA" (+ empresa responsable, solo para revisión).
+  </div>
+
+  <div class="voz-profe">
+    <span class="tag">🎧 Voz del profesor</span>
+    Tiene todo el sentido que los empresarios declarados responsables solo puedan instar la revisión (nunca la calificación inicial): al empresario declarado responsable le interesa que se reduzca o extinga el grado reconocido, porque eso reduce su carga económica.
+  </div>
+
+  <p><span class="articulo chip-lgss">A13</span> Resolución: los DP del INSS deberán dictar <strong>resolución expresa</strong> en todos los procedimientos, <span class="epi-letra">sin estar vinculados</span> por las peticiones concretas de los interesados: pueden reconocer prestaciones superiores o inferiores a las solicitadas (ej. se pide IPA y se acaba reconociendo IPT, o viceversa).</p>
+
+  <p><span class="articulo chip-lgss">A14</span> Plazo para resolver: <strong>135 días</strong>, contados desde el acuerdo de iniciación (procedimientos de oficio) o desde la recepción de la solicitud en la DP competente. Si no se dicta resolución en plazo, la solicitud se entiende <strong>desestimada</strong> (silencio administrativo negativo).</p>
+
+  <div class="confusion">
+    <span class="tag">⚠ Confusión frecuente</span>
+    No mezcles el <strong>plazo de 135 días para resolver</strong> el procedimiento con el <strong>plazo que se indica en la resolución</strong> para poder instar la revisión del grado — son cosas distintas.
+  </div>
+
+  <p><span class="articulo chip-lgss">A18</span> Instrucción del procedimiento de revisión: promovida la revisión por agravación, mejoría o error de diagnóstico, se abre un <strong>período de prueba de 15 días</strong> para presentar alegaciones (mismo plazo para inicios de oficio por parte de la DP).</p>
+</div>
+
+<h3 class="epigrafe">Equipos de Valoración de Incapacidades (EVI) — RD 1300/1995</h3>
+<div class="card">
+  <p><span class="articulo chip-lgss">A2</span> Constitución y composición: en cada Dirección Provincial del INSS se constituirá un EVI, con encuadramiento orgánico y funcional en la misma. El Ministerio en materia de SS, a propuesta del INSS, podrá acordar la constitución de <strong>más de un EVI</strong> en aquellas DP donde el número de casos o las características de algún sector laboral así lo aconsejen (ej. Madrid, Valencia).</p>
+
+  <p>Los equipos están compuestos por un <strong>presidente y 4 vocales</strong>:</p>
+
+  <div class="mnemo">
+    <span class="tag">💡 Mnemotecnia — las 5 vocales</span>
+    Regla de las "5 vocales", donde realmente son 4 vocales + el presidente (el 5º), como las vocales A-E-I-O-U.
+  </div>
+
+  <ul>
+    <li>El <strong>Presidente</strong> será el Subdirector Provincial de Invalidez del INSS, o el funcionario que designe el <strong>Director General (DG) del INSS</strong>.</li>
+    <li>Los <strong>vocales</strong>, nombrados por el DG del INSS:
+      <ul>
+        <li>Un <strong>Médico Inspector</strong>, propuesto por el Director Provincial del INGESA u órgano competente de las CCAA.</li>
+        <li>Un <strong>Facultativo Médico</strong>, perteneciente al personal del INSS.</li>
+        <li>Un <strong>Inspector de Trabajo y Seguridad Social</strong>, propuesto por la ITSS.</li>
+        <li>Un <strong>funcionario</strong> titular de un puesto de la unidad encargada del trámite de las prestaciones de invalidez de la correspondiente DP del INSS, que ejerce de Secretario.</li>
+        <li>Cuando se valore la IP de un trabajador del mar, un vocal más: personal médico de sanidad marítima, propuesto por el Instituto Social de la Marina.</li>
+      </ul>
+    </li>
+    <li>En determinados casos, participan expertos igualmente como vocales, designados por el <strong>Director Provincial (DP) del INSS</strong>:
+      <ul>
+        <li>Un experto en <strong>recuperación y rehabilitación</strong>, propuesto por el IMSERSO u órgano competente de las CCAA, cuando del expediente se deduzcan indicios razonables de recuperación del trabajador.</li>
+        <li>Un experto en <strong>seguridad e higiene en el trabajo</strong>, propuesto por el órgano competente del Estado o las CCAA, cuando existan indicios de incumplimiento de medidas de seguridad e higiene.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <table class="tabla-estudio">
+    <tr><th>Designa</th><th>Nombra</th></tr>
+    <tr><td>Director General del INSS</td><td>Presidente + 4 vocales (Médico Inspector, Facultativo Médico, Inspector ITSS, funcionario/secretario)</td></tr>
+    <tr><td>Director Provincial del INSS</td><td>Vocales expertos (recuperación/rehabilitación y seguridad e higiene)</td></tr>
+  </table>
+</div>
+
+<h3 class="epigrafe">Funciones del EVI (A3) y competencias del INSS (A1)</h3>
+<div class="card">
+  <p>Las funciones del EVI: examinar la situación de incapacidad del trabajador y formular al Director Provincial del INSS los <strong>dictámenes-propuesta</strong>, <strong>preceptivos y no vinculantes</strong>, en materia de:</p>
+  <ul>
+    <li>Anulación o disminución de la capacidad para el trabajo por existencia de situaciones de IP, calificación de estas situaciones en sus distintos grados, revisión de las mismas por agravación, mejoría o error de diagnóstico, y contingencia determinante.</li>
+    <li>Determinación del plazo a partir del cual podrá instarse la revisión del grado por agravación o mejoría.</li>
+    <li>Procedencia o no de la revisión por previsible mejoría de la situación de incapacidad.</li>
+    <li>Disminución o alteración de la integridad física del trabajador por existencia de LPNI, causadas por AT/EP.</li>
+    <li>Determinación de la incapacidad para el trabajo exigida para ser beneficiario de las prestaciones económicas por MYS, así como de las prestaciones por invalidez del SOVI.</li>
+    <li>Determinación del carácter común o profesional de la enfermedad que origine la IT o muerte del trabajador, <strong>cuando le sea solicitado tal dictamen</strong>.</li>
+    <li>Procedencia o no de <strong>prorrogar el período de observación médica en EP</strong>.</li>
+  </ul>
+
+  <div class="confusion">
+    <span class="tag">⚠ Confusión frecuente</span>
+    Fíjate que el EVI <strong>examina y determina</strong> (anula, disminuye capacidad, dictamina), mientras que el <strong>INSS reconoce</strong> derechos, resuelve. Los dictámenes-propuesta del EVI son <strong>preceptivos pero no vinculantes</strong> — el Director Provincial no está obligado a seguirlos, aunque en la práctica lo normal es que sí lo haga.
+  </div>
+
+  <p>Competencias del INSS (A1) — más amplias y de carácter resolutorio:</p>
+  <ul>
+    <li>Evaluar, calificar y revisar la incapacidad y <strong>reconocer el derecho</strong> a las prestaciones contributivas por IP, y determinar las contingencias causantes.</li>
+    <li>Verificar la existencia de lesiones, mutilaciones y deformidades definitivas no invalidantes, causadas por AT/EP, y reconocer el derecho a las indemnizaciones correspondientes (LPNI).</li>
+    <li>Resolver sobre la prórroga del período de observación médica en EP y <strong>reconocer el derecho</strong> al subsidio correspondiente.</li>
+    <li>Determinar, en su caso, la Mutua o empresa colaboradora responsable de las prestaciones en materia de incapacidades laborales y LPNI.</li>
+    <li>Declarar la <strong>responsabilidad empresarial</strong> que proceda por falta de alta, cotización o medidas de seguridad e higiene, y determinar el porcentaje en que, en su caso, deban incrementarse las prestaciones económicas.</li>
+    <li>Evaluar la incapacidad para el trabajo a efectos del reconocimiento de la condición de beneficiario de las prestaciones económicas por MYS, así como las prestaciones por invalidez del extinguido SOVI.</li>
+    <li>Declarar la extinción de la prórroga de los efectos económicos de la IT en el momento en que recaiga la resolución por la que se reconozca o deniegue el derecho a prestación de invalidez.</li>
+  </ul>
+
+  <div class="recordatorio">
+    <span class="tag">📌 Regla general</span>
+    Todo lo que sea <strong>"reconocer el derecho"</strong> es del INSS. El EVI hace más bien tareas de <strong>examinar, determinar, anular, disminuir</strong> capacidades laborales.
+  </div>
+</div>
+
+<h3 class="epigrafe">Consecuencias de la revisión de IP</h3>
+<div class="card">
+  <p><span class="articulo chip-lgss">A40</span> (Orden de 15 de abril de 1969): cuando, como consecuencia de una revisión, se modifique la calificación de incapacidad existente con anterioridad, se aplican las siguientes normas:</p>
+
+  <p><strong>Caso I — Pensiones:</strong></p>
+  <table class="tabla-estudio">
+    <tr><th>IP inicial</th><th>IP tras revisión</th><th>¿Qué percibe?</th></tr>
+    <tr><td>Pensión</td><td>Pensión de cuantía distinta</td><td>Nueva cuantía, <strong>desde el día siguiente</strong> a la resolución definitiva</td></tr>
+    <tr><td>Pensión</td><td>TA (grado inferior)</td><td>Deja de percibir pensión y percibe el TA, deducido lo ya cobrado en pensión que exceda del importe total de la nueva prestación</td></tr>
+    <tr><td>Pensión</td><td>LPNI (TA)</td><td>Se aplica la misma regla anterior (deducción y pago si procede)</td></tr>
+    <tr><td>Pensión</td><td>No aplica IP</td><td>Deja de percibir la pensión desde el día siguiente a la resolución. <strong>No devuelve nada.</strong></td></tr>
+  </table>
+
+  <p><strong>Caso II — Tantos alzados:</strong></p>
+  <table class="tabla-estudio">
+    <tr><th>IP inicial</th><th>IP tras revisión</th><th>¿Qué percibe?</th></tr>
+    <tr><td>TA</td><td>Pensión</td><td>Se devenga desde el día siguiente a la resolución, pero <strong>no se comienza a percibir</strong> hasta deducir el importe correspondiente a las mensualidades del TA ya percibidas que excedan de las transcurridas desde su reconocimiento</td></tr>
+    <tr><td>TA</td><td>TA de cuantía distinta</td><td>Percibe la diferencia si la nueva cuantía es superior; si es inferior, <strong>no viene obligado a reintegrar</strong> la diferencia</td></tr>
+    <tr><td>TA</td><td>LPNI (TA)</td><td>Igual que el caso anterior: diferencia a favor si procede, sin obligación de reintegro si es inferior</td></tr>
+    <tr><td>TA</td><td>No aplica IP</td><td><strong>No devuelve ninguna cantidad.</strong></td></tr>
+  </table>
+
+  <div class="mnemo">
+    <span class="tag">💡 Regla resumen</span>
+    De <strong>pensión a menos</strong> (TA o nada): predomina el rojo — deducción de lo ya cobrado y, en el peor caso, cese sin devolución. De <strong>TA a más</strong> (pensión u otro TA mayor): predomina el verde — se cobra la diferencia a favor, pero nunca se devuelve si sale perjudicado.
+  </div>
+
+  <div class="voz-profe">
+    <span class="tag">🎧 Voz del profesor</span>
+    Esta tabla parece muy farragosa leída del tirón, pero interiorizada es sencilla: nunca tienes que devolver dinero de más que ya hayas cobrado (salvo la deducción lógica al pasar de pensión a TA o de TA a pensión, para no cobrar dos veces por el mismo concepto). No hace falta memorizar cada celda — comprende la lógica de "lo que ya cobraste, se descuenta si pasas a un concepto distinto; si sales perjudicado, no se te reclama nada".
+  </div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- LEGIS-GRAFÍA -->
+<!-- ============================================================ -->
+<section class="capitulo" id="legisgrafia">
+<div class="cap-header">📚 Legis-grafía</div>
+<div class="card">
+  <p><strong>Legislación de aplicación:</strong></p>
+  <ul>
+    <li><span class="rd">RD Legislativo 8/2015</span>, de 30 octubre, por el que se aprueba el texto refundido de la LGSS.</li>
+    <li><span class="rd">Decreto 3158/1966</span>, de 23 de diciembre, por el que se aprueba el Reglamento General que determina la cuantía de las prestaciones económicas del RG de la SS y condiciones para el derecho a las mismas.</li>
+    <li><span class="rd">Orden de 15 de abril de 1969</span>, por la que se establecen normas para la aplicación y desarrollo de las prestaciones por invalidez en el RG de la SS.</li>
+    <li><span class="rd">RD 2609/1982</span>, de 24 de septiembre, sobre evaluación y declaración de las situaciones de invalidez en la SS.</li>
+    <li><span class="rd">RD 1300/1995</span>, de 21 de julio, por el que se desarrolla, en materia de incapacidades laborales del sistema de la SS, la Ley 42/1994, de 30 de diciembre, de medidas fiscales, administrativas y de orden social.</li>
+    <li><span class="rd">Orden de 18 de enero de 1996</span> para la aplicación y desarrollo del RD 1300/1995, de 21 de julio, sobre incapacidades laborales del sistema de la SS.</li>
+  </ul>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ANEXOS I y II -->
+<!-- ============================================================ -->
+<section class="capitulo" id="anexos">
+<div class="cap-header">📎 Anexo I — Situaciones asimiladas a alta · Anexo II — Exigencia de alta y PMC</div>
+
+<h3 class="epigrafe">Anexo I — Situaciones asimiladas a alta (a efectos de IP)</h3>
+<div class="card">
+  <p>Son situaciones asimiladas a la de alta a efectos de IP:</p>
+  <ul>
+    <li>La situación legal de desempleo, total y subsidiado, y la de paro involuntario una vez agotada la prestación contributiva o asistencial, siempre que se mantenga la inscripción como desempleado en la oficina de empleo.</li>
+    <li>La situación del trabajador durante el período de vacaciones anuales retribuidas no disfrutadas con anterioridad a la finalización del contrato.</li>
+    <li>La excedencia forzosa.</li>
+    <li>El período en que el trabajador permanezca en excedencia por cuidado de hijo, de menor acogido o de otros familiares, que exceda del período considerado de cotización efectiva en el A237.</li>
+    <li>El traslado del trabajador por la empresa fuera del territorio nacional.</li>
+    <li>La suscripción de convenio especial, en sus diferentes tipos.</li>
+    <li>Los períodos de inactividad entre trabajos de temporada.</li>
+    <li>Los períodos de prisión sufridos como consecuencia de los supuestos contemplados en la Ley 46/1977, de Amnistía, en los términos de la Ley 18/1984.</li>
+    <li>La situación de trabajadores que no estén en alta ni en ninguna otra situación asimilada, tras haber prestado servicios en puestos con riesgo de EP, y a los solos efectos de que pueda declararse una IP debida a dicha contingencia.</li>
+    <li>Los períodos de percepción de la ayuda equivalente a jubilación anticipada y de ayuda previa a la jubilación ordinaria.</li>
+    <li>La situación de IT que subsista una vez extinguido el contrato.</li>
+    <li>La situación de maternidad o paternidad que subsista una vez extinguido el contrato o que se inicie durante la percepción de desempleo.</li>
+    <li>La situación de prórroga de los efectos de la IT.</li>
+    <li>El período de suspensión del contrato por decisión de la trabajadora obligada a abandonar su puesto por ser víctima de violencia de género.</li>
+    <li>En artistas y profesionales taurinos, los días considerados cotizados dentro de cada año natural que no se correspondan con los de prestación de servicios.</li>
+    <li>Trabajadores afectados por el síndrome tóxico que cesaron en su día en el ejercicio de su actividad sin poder reanudarla, habiendo estado en alta en algún régimen del sistema.</li>
+  </ul>
+
+  <div class="voz-profe">
+    <span class="tag">🎧 Voz del profesor</span>
+    El catálogo de situaciones asimiladas a la de alta que se ofrece para IP es más amplio que el que se ofrece para IT — por eso es posible llegar a una incapacidad permanente sin haber pasado previamente por una incapacidad temporal.
+  </div>
+</div>
+
+<h3 class="epigrafe">Anexo II — Exigencia de alta y PMC según grados y contingencias</h3>
+<div class="card">
+  <p><strong>Desde situación de alta</strong>: se puede acceder a <strong>cualquier grado</strong>.</p>
+  <ul>
+    <li>No aplica PMC para AT/EP/ANL.</li>
+    <li>Sí aplica PMC para EC.</li>
+  </ul>
+
+  <p><strong>Desde NO alta</strong>: solo se puede acceder a <strong>IPA/GI</strong>.</p>
+  <ul>
+    <li>Solo para HC derivados de CC, es decir: EC/ANL.</li>
+    <li>Aplica PMC de 15 años.</li>
+  </ul>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CASOS PRÁCTICOS -->
+<!-- ============================================================ -->
+<section class="capitulo" id="casos-practicos">
+<div class="cap-header">📝 Casos prácticos</div>
+
+<h3 class="epigrafe">Caso práctico I — Salomé</h3>
+<div class="card">
+  <p>Salomé, trabajadora de STOP SL (empresa de colocación de señales de tráfico), empezó a trabajar a los 25 años, exclusivamente en esa empresa. Recibe notificación del INSS resolviendo si tiene o no derecho a una IP en grado de total, tras agotar una IT previa derivada de enfermedad común. La IT que precedía a la IP se extinguió cuando Salomé tenía justo 36 años.</p>
+</div>
+
+<div class="quiz-box" data-qid="ip-cp1-01">
+  <div class="quiz-q">01. ¿Se le exigirá período mínimo de cotización a Salomé para acceder a la incapacidad permanente?</div>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp1-01')">a) No, porque la incapacidad permanente deriva de una incapacidad temporal.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'ip-cp1-01')">b) Sí, 1.800 días en los últimos 10 años.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp1-01')">c) Sí, porque deriva de una contingencia común.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp1-01')">d) Sí, porque deriva de una enfermedad común.</button>
+  <div class="quiz-feedback"></div>
+</div>
+<div class="card" style="background:#0f1b1f;">
+  <p style="font-size:0.85rem;color:var(--text-dim);"><strong>Explicación</strong>: Aunque deriva de EC, en la modalidad de <strong>IPT</strong> (no IPP) para mayores de 31 años, el PMC exigido es 1/4 desde los 20 al HC (mínimo 5 años), no 1.800 días fijos — esa cifra es la de la IPP. Al tener 36 años al HC: (36−20)/4 = 4 años, pero se exige un mínimo de 5. Se explica en detalle en la pregunta 02.</p>
+</div>
+
+<div class="quiz-box" data-qid="ip-cp1-02">
+  <div class="quiz-q">02. En caso de aplicar el PMC, ¿cuál sería la carencia genérica que debería cumplir Salomé?</div>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp1-02')">a) La tercera parte del tiempo transcurrido entre los 16 años y el HC.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp1-02')">b) La cuarta parte del tiempo transcurrido entre los 16 años y el HC.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp1-02')">c) Cuatro años.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'ip-cp1-02')">d) Cinco años.</button>
+  <div class="quiz-feedback"></div>
+</div>
+<div class="card" style="background:#0f1b1f;">
+  <p style="font-size:0.85rem;color:var(--text-dim);"><strong>Explicación</strong>: Salomé tiene 36 años al HC (≥31 años). Cálculo: 36 − 20 = 16 años; 16/4 = 4 años. Pero se exige un mínimo de <strong>5 años</strong>, por lo que prevalece este mínimo.</p>
+</div>
+
+<div class="quiz-box" data-qid="ip-cp1-03">
+  <div class="quiz-q">03. ¿Aplicaría algún tipo de carencia específica al período mínimo de cotización?</div>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp1-03')">a) Sí, cinco años.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'ip-cp1-03')">b) Sí, un quinto del tiempo exigido como PMC en los diez años inmediatamente anteriores.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp1-03')">c) Sí, un quinto del tiempo exigido como PMC en los cinco años inmediatamente anteriores.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp1-03')">d) No, no aplica carencia específica.</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-box" data-qid="ip-cp1-04">
+  <div class="quiz-q">04. Sara Chamizo, compañera de Salomé, solicita una IPA derivada de EC a sus 36 años, aportando exactamente 4 años cotizados (empezó a trabajar con 32 años). ¿Tendrá derecho a la pensión contributiva de incapacidad permanente?</div>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp1-04')">a) Sí, podrá acceder a la incapacidad permanente contributiva.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'ip-cp1-04')">b) No, no tendrá derecho. Podría haber accedido si hubiese aportado un año más cotizado.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp1-04')">c) No, no tendrá derecho. Podría haber accedido si hubiese aportado cuatro años más cotizados.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp1-04')">d) No, no tendrá derecho. Podría haber accedido si hubiese aportado cinco años más cotizados.</button>
+  <div class="quiz-feedback"></div>
+</div>
+<div class="card" style="background:#0f1b1f;">
+  <p style="font-size:0.85rem;color:var(--text-dim);"><strong>Explicación</strong>: 36−20=16 años; 16/4=4 años, pero se exige mínimo 5. Sara aporta 4 años, no cumple. Si añadiera un año más cotizado (5 en total), cumpliría el mínimo de 5 años exigido (y también la carencia específica). <em>Nota: en IP, a diferencia de Jubilación, la calificación se realiza según el momento del hecho causante, no exige seguir trabajando hasta cumplir con los requisitos.</em></p>
+</div>
+
+<div class="quiz-box" data-qid="ip-cp1-05">
+  <div class="quiz-q">05. Julia Menta, vecina de Salomé, a sus exactos 65 años y tras acumular 12 años cotizados íntegramente, tiene un hecho causante derivado de EC por el que se le reconoce una IPT. ¿Qué porcentaje de la base reguladora le correspondería percibir según su cotización?</div>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'ip-cp1-05')">a) 50% de la base reguladora.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp1-05')">b) 55% de la base reguladora.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp1-05')">c) 75% de la base reguladora.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp1-05')">d) 60% de la base reguladora.</button>
+  <div class="quiz-feedback"></div>
+</div>
+<div class="card" style="background:#0f1b1f;">
+  <p style="font-size:0.85rem;color:var(--text-dim);"><strong>Explicación</strong>: No hay que valorar si cumple o no el reconocimiento (el enunciado ya lo da por hecho). Se pregunta por el <strong>porcentaje según la cotización aportada</strong> (A210.1), no por el porcentaje según el grado de IP (que sería el 55% del A196.2). Con 15 años o menos, corresponde el 50%. No confundir los dos tipos de porcentaje que existen en este tema.</p>
+</div>
+
+<div class="quiz-box" data-qid="ip-cp1-bonus">
+  <div class="quiz-q">BONUS. ¿Cuántas bases de cotización se tomarían para el cálculo de la base reguladora de Julia Menta si tuviera 45 años e igualmente una cotización de 12 años?</div>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp1-bonus')">a) 144 bases de cotización.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'ip-cp1-bonus')">b) 75 bases de cotización.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp1-bonus')">c) 72 bases de cotización.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp1-bonus')">d) 96 bases de cotización.</button>
+  <div class="quiz-feedback"></div>
+</div>
+<div class="card" style="background:#0f1b1f;">
+  <p style="font-size:0.85rem;color:var(--text-dim);"><strong>Explicación</strong>: Al ser IP por EC, con 45 años el PMC exigido es &lt;8 años (Caso II): 45−20=25 años; 25/4=6,25 años; 6,25 × 12 meses = <strong>75 bases</strong> de cotización.</p>
+</div>
+
+<h3 class="epigrafe">Caso práctico II — Carlos Solano</h3>
+<div class="card">
+  <p>Carlos Solano, 44 años, compañero de Salomé en STOP SL, no estaba dado de alta por la empresa (algo que él desconocía). Trabajando, sufre un corte con un disco dentado que le corta parcialmente un dedo; del susto, se aparta y cae por unas escaleras junto a su puesto, fracturándose la columna vertebral por tres sitios. El EVI dictamina una LPNI por el dedo (amputado) y una IPT por la fractura de columna. STOP SL, auto-aseguradora a efectos de colaboración voluntaria, tiene las contingencias profesionales cubiertas con la mutua SANISIMO.</p>
+</div>
+
+<div class="quiz-box" data-qid="ip-cp2-06">
+  <div class="quiz-q">06. ¿Tiene derecho Carlos a la incapacidad permanente reconocida?</div>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp2-06')">a) Sí, porque constituye una situación de asimilada al alta.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'ip-cp2-06')">b) Sí, porque constituye una situación de alta de pleno derecho.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp2-06')">c) No, porque no estaba dado de alta.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp2-06')">d) No, porque desde no alta solo se puede acceder a IPA o GI.</button>
+  <div class="quiz-feedback"></div>
+</div>
+<div class="card" style="background:#0f1b1f;">
+  <p style="font-size:0.85rem;color:var(--text-dim);"><strong>Explicación</strong>: Aunque es cierto que a IPA/GI solo se puede acceder desde no alta, eso aplica para CC. Un trabajador por AT/EP está siempre amparado por la situación de <strong>alta de pleno derecho</strong>, pese a no estar dado de alta. Alta de pleno derecho: AT/EP · Asistencia sanitaria (maternidad + EC/ANL) · Desempleo · (según A29.2 RD 84/1996: riesgo durante el embarazo y riesgo durante la lactancia natural).</p>
+</div>
+
+<div class="quiz-box" data-qid="ip-cp2-07">
+  <div class="quiz-q">07. ¿Quién es el responsable del reconocimiento de la prestación de incapacidad permanente?</div>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp2-07')">a) La mutua colaboradora SANISIMO.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'ip-cp2-07')">b) La Entidad Gestora.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp2-07')">c) La empresa por ser una empresa auto-aseguradora.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp2-07')">d) El Equipo de Valoración de Incapacidades.</button>
+  <div class="quiz-feedback"></div>
+</div>
+<div class="card" style="background:#0f1b1f;">
+  <p style="font-size:0.85rem;color:var(--text-dim);"><strong>Explicación</strong>: El sujeto responsable de reconocer el derecho es el DP del INSS/ISM. El EVI hace la calificación del grado, pero no el reconocimiento del derecho. El dictamen-propuesta del EVI es preceptivo pero NO vinculante.</p>
+</div>
+
+<div class="quiz-box" data-qid="ip-cp2-08">
+  <div class="quiz-q">08. ¿Aplicaría recargo por falta de medidas si la ITSS dictara que el centro laboral carecía de los medios de protección reglamentarios, estuviesen inutilizados o en malas condiciones?</div>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp2-08')">a) Sí, del 30%.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'ip-cp2-08')">b) Sí, del 30% al 50%.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp2-08')">c) Sí, del 50%.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp2-08')">d) No, por no encontrarse el trabajador dado de alta.</button>
+  <div class="quiz-feedback"></div>
+</div>
+<div class="card" style="background:#0f1b1f;">
+  <p style="font-size:0.85rem;color:var(--text-dim);"><strong>Explicación</strong>: El recargo del A164 LGSS (tema de Acción Protectora) es siempre de entre el 30% y el 50%, con independencia de que el trabajador estuviera o no dado de alta.</p>
+</div>
+
+<div class="quiz-box" data-qid="ip-cp2-09">
+  <div class="quiz-q">09. Si Carlos acumula 125 meses cotizados en su vida laboral, ¿qué porcentaje de la base reguladora, de acuerdo a su cotización, le correspondería percibir?</div>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'ip-cp2-09')">a) El 100% de la base reguladora.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp2-09')">b) El 55% de la base reguladora.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp2-09')">c) El 92,97% de la base reguladora.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp2-09')">d) El 26,25% de la base reguladora.</button>
+  <div class="quiz-feedback"></div>
+</div>
+<div class="card" style="background:#0f1b1f;">
+  <p style="font-size:0.85rem;color:var(--text-dim);"><strong>Explicación (pregunta trampa)</strong>: al derivar el HC de un accidente de trabajo, <strong>no hace falta calcular ningún porcentaje según cotización</strong> a la BR — directamente se aplica el 100% de la BR calculada. El porcentaje según años cotizados (A210.1) solo aplica en enfermedad común, igual que en Jubilación (que tampoco es ni AT ni CP). Calcular 125 meses × 0,19% o similar sería incorrecto en este caso, aunque el enunciado invite a hacerlo.</p>
+</div>
+
+<div class="quiz-box" data-qid="ip-cp2-10">
+  <div class="quiz-q">10. De acuerdo al grado de incapacidad reconocido (IPT, 44 años), ¿cuál sería la cuantía de la prestación?</div>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp2-10')">a) El 100% de la base reguladora.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp2-10')">b) El 75% de la base reguladora.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'ip-cp2-10')">c) El 55% de la base reguladora.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp2-10')">d) El 60% de la base reguladora.</button>
+  <div class="quiz-feedback"></div>
+</div>
+<div class="card" style="background:#0f1b1f;">
+  <p style="font-size:0.85rem;color:var(--text-dim);"><strong>Explicación</strong>: Carlos tiene 44 años, le corresponde el 55% de la BR (100% de su cálculo de BR según AT/EP). Aún no puede acceder al incremento del 20% de la IPT cualificada (exige 55 años). Sí podría acceder, si cumple los requisitos, a la indemnización a TA en sustitución de la pensión (exige &lt;60 años).</p>
+</div>
+
+<div class="quiz-box" data-qid="ip-cp2-bonus">
+  <div class="quiz-q">BONUS. ¿Quién es el responsable del pago de la prestación?</div>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'ip-cp2-bonus')">a) El empresario.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp2-bonus')">b) La mutua colaboradora SANISIMO.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp2-bonus')">c) El Instituto Nacional de la Seguridad Social.</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'ip-cp2-bonus')">d) La Tesorería General de la Seguridad Social.</button>
+  <div class="quiz-feedback"></div>
+</div>
+<div class="card" style="background:#0f1b1f;">
+  <p style="font-size:0.85rem;color:var(--text-dim);"><strong>Explicación</strong>: como Carlos no estaba dado de alta, el <strong>empresario</strong> será declarado responsable por la Entidad Gestora, y STOP SL tendrá que constituir en la TGSS el correspondiente <strong>capital coste</strong> de pensiones o prestaciones (ver T07 — Acción Protectora). Si Carlos hubiese estado de alta, el capital coste lo constituiría la mutua SANISIMO, ya que STOP SL tiene las CP protegidas por dicha mutua colaboradora.</p>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ANEXO III — CÁLCULO IPT/IPA/GI -->
+<!-- ============================================================ -->
+<section class="capitulo" id="anexo3">
+<div class="cap-header">🧮 Anexo III — Cálculo de IPT / IPA / GI</div>
+<div class="card">
+  <p><strong>PASO 1) Calcular la Base Reguladora (BR)</strong></p>
+
+  <table class="tabla-estudio">
+    <tr><th>Contingencia</th><th>Cálculo</th></tr>
+    <tr>
+      <td><strong>Enfermedad común</strong></td>
+      <td>Calcular BR + aplicar % según cotización (tiempo cotizado + tiempo hasta la edad ordinaria de jubilación).<br>≥8 años PMC: BR = ΣBC de 96 meses / 112.<br>&lt;8 años PMC: BR = ΣBC de X meses / (X × 1,166).</td>
+    </tr>
+    <tr>
+      <td><strong>ANL</strong></td>
+      <td><em>Desde alta</em>: ΣBC de 24 meses / 28 (sin integración de lagunas ni actualización de bases). Período elegido por el interesado dentro de los 7 años inmediatamente anteriores.<br><em>Desde no alta</em>: ΣBC de 96 meses anteriores al mes previo (2m atrás) del HC / 112. (Solo se puede acceder a IPA/GI derivado de CC.)</td>
+    </tr>
+    <tr>
+      <td><strong>AT/EP</strong></td>
+      <td>Sobre salarios reales, topada entre máximo y mínimo de cotización. BR = (A + B + C) / 12.</td>
+    </tr>
+  </table>
+
+  <p style="margin-top:18px;"><strong>PASO 2) Aplicar el porcentaje a la BR según el grado</strong></p>
+  <table class="tabla-estudio">
+    <tr><th>Grado</th><th>Fórmula</th></tr>
+    <tr><td>IPT</td><td>55% BR, o 75% BR si es IPT cualificada</td></tr>
+    <tr><td>IPA</td><td>100% BR</td></tr>
+    <tr><td>GI</td><td>Pensión IPT/IPA + Complemento (45% de la BC mínima al HC + 30% de la última BC del trabajador por la contingencia CC/CP correspondiente)</td></tr>
+  </table>
+
+  <div class="recordatorio">
+    <span class="tag">📌 Nota</span>
+    El porcentaje según años cotizados (A210.1/DT9) <strong>solo</strong> aplica en el cálculo de la BR de enfermedad común. En ANL y AT/EP se aplica directamente el 100% de la BR calculada, sin ese porcentaje intermedio.
+  </div>
+</div>
+</section>
+
+<section class="capitulo" id="s-anki">
+<div class="cap-header">🗂️ Repaso rápido (flashcards)</div>
+<div class="anki-block">
+  <select id="deckSelect"></select>
+  <div id="progress"></div>
+  <div class="flip-card" id="card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front" id="front"></div>
+      <div class="flip-card-back" id="back"></div>
+    </div>
+  </div>
+  <div id="done" style="display:none;">🎉 ¡Mazo completado! Te sabes todas las tarjetas.</div>
+  <div style="display:flex;gap:12px;justify-content:center;margin-top:16px;">
+    <button id="flip">Voltear</button>
+    <button id="dontknow" style="display:none;">✗ No lo sé</button>
+    <button id="know" style="display:none;">✓ Lo sé</button>
+  </div>
+  <div style="text-align:center;margin-top:18px;">
+    <button id="exportStatsBtn">📊 Ver mis tarjetas con más fallos</button>
+    <p style="font-size:11.5px;color:var(--text-dim);margin-top:8px;">Se guarda solo en este navegador. Repasa cada tarjeta al menos 2 veces para que aparezca en el informe.</p>
+    <textarea id="statsExport" readonly style="display:none;width:100%;min-height:120px;margin-top:10px;background:#12181f;color:var(--text);border:1px solid var(--border-lgss);border-radius:8px;padding:10px;font-family:monospace;font-size:12px;"></textarea>
+  </div>
+</div>
+</section>
+
+<footer class="disclaimer">
+  Estos son apuntes de estudio personal basados en el curso de Destino Funcionario (Manuel Moreno), no material oficial. Preparación oposición Administrativo de la Seguridad Social 2026/2027.
+</footer>
+
+<script>
+function checkAnswer(btn, isCorrect, qid) {
+  const box = btn.closest('.quiz-box');
+  const feedback = box.querySelector('.quiz-feedback');
+  const opts = box.querySelectorAll('.quiz-opt');
+  opts.forEach(o => o.disabled = true);
+  if (isCorrect) {
+    btn.classList.add('correct-opt');
+    feedback.textContent = '✅ Correcto.';
+    feedback.className = 'quiz-feedback show ok';
+  } else {
+    btn.classList.add('wrong-opt');
+    feedback.textContent = '❌ Incorrecto. Revisa la opción marcada en verde.';
+    feedback.className = 'quiz-feedback show bad';
+    opts.forEach(o => {
+      if (o.getAttribute('onclick').includes(',true,')) {
+        o.classList.add('correct-opt');
+      }
+    });
+  }
+}
+</script>
+
+
+<script src="t08ip_mazoA_conceptos.js"></script>
+<script src="t08ip_mazoB_calculo.js"></script>
+<script src="t08ip_mazoC_procedimiento.js"></script>
+<script src="anki_engine.js"></script>
+
+</body>
+</html>
