@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T08 (P2) · Anexo 2 · Resumen literal para memorización</title>
+<style>
+:root{
+  --bg:#0f1419; --card:#1a2129; --card2:#1e2730; --border:#2a3441;
+  --text:#e6edf3; --text-dim:#9aa8b5; --accent:#3ddc97;
+}
+*{box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;margin:0;padding:0;line-height:1.7;}
+.wrap{max-width:900px;margin:0 auto;padding:24px 18px 80px;}
+.back-link{display:inline-block;margin-bottom:18px;color:var(--accent);text-decoration:none;font-size:14px;border-bottom:1px dotted var(--accent);}
+h1{font-size:24px;color:#fff;margin-bottom:6px;}
+.subtitle{color:var(--text-dim);font-size:14px;margin-bottom:24px;}
+.disclaimer{background:#1a2129;border:1px solid #2a3441;border-radius:10px;padding:14px 18px;font-size:13px;color:var(--text-dim);margin-bottom:26px;}
+.disclaimer b{color:var(--text);}
+.disclaimer.warn{border-color:#8a5a1e;background:#241d12;}
+.legend{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 22px;margin-bottom:30px;}
+.legend h3{margin-top:0;font-size:14px;color:var(--accent);text-transform:uppercase;letter-spacing:0.5px;}
+.legend-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;font-size:12.5px;}
+.legend-item{display:flex;align-items:center;gap:6px;}
+.legend-swatch{padding:1px 7px;border-radius:3px;}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin-bottom:30px;}
+.toc h3{margin-top:0;font-size:14px;color:var(--accent);text-transform:uppercase;}
+.toc a{color:var(--text);text-decoration:none;display:block;padding:4px 0;border-bottom:1px dotted transparent;}
+.toc a:hover{color:var(--accent);border-color:var(--accent);}
+.bloque-anexo2{margin-bottom:40px;scroll-margin-top:16px;}
+.bloque-anexo2-title{font-size:18px;color:#fff;border-bottom:2px solid var(--accent);padding-bottom:8px;margin-bottom:16px;}
+.articulo-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:14px;scroll-margin-top:16px;}
+.articulo-card-title{display:inline-block;background:#7a1030;color:#fff;font-weight:800;font-size:13px;padding:4px 12px;border-radius:6px;margin-bottom:10px;}
+.entrada{margin:8px 0;font-size:15px;padding-left:2px;}
+.concepto-solo{display:inline-block;}
+.consecuencia{color:#7fb3e8;}
+.fecha-marca{color:#0f1419;background:#e879f9;padding:0 3px;border-radius:2px;}
+.ley-num{color:#c9184a;background:#3a0f1e;padding:0 3px;border-radius:2px;}
+.plazo{color:#fbbf24;background:#3a2f12;padding:0 3px;border-radius:2px;}
+.obligacion{color:#f87171;background:#3a1f24;padding:0 3px;border-radius:2px;}
+.facultativo{color:#fb923c;text-decoration:underline dotted #fb923c;}
+.excepcion{color:#c4b5fd;background:#2e2a46;padding:0 3px;border-radius:2px;}
+.condicion{color:#94a3b8;background:#2d3540;padding:0 3px;border-radius:2px;}
+.sujeto-pub{color:#818cf8;font-weight:700;}
+.sujeto-priv{color:#2dd4bf;font-weight:700;}
+@media (max-width:600px){
+  .wrap{padding:14px 12px 60px;}
+  h1{font-size:20px;}
+  .articulo-card{padding:12px 14px;}
+  .entrada{font-size:14px;}
+  .legend-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<a class="back-link" href="T08_IP_COMPLETO.html">← Volver al Tema 8 (P2)</a>
+<h1>Anexo 2 · Resumen literal para memorización</h1>
+<p class="subtitle">Tema 8 (Parte 2), Incapacidad Permanente</p>
+
+<div class="disclaimer warn">
+<b>Aviso importante sobre el origen de este anexo:</b> este documento lo he redactado directamente a partir del contenido del PDF fuente del tema y de la clase magistral en audio del preparador (Destino Funcionario) — no existe un resumen de memorización independiente redactado aparte por el profesor para este tema. Si más adelante generas ese documento con tu propio prompt, dímelo y lo sustituyo por la versión verificada contra esa fuente.
+</div>
+<div class="disclaimer">
+<b>Qué es este anexo:</b> concepto → consecuencia jurídica, resaltado con el mismo sistema de 3 capas del resto de Anexos 2. Úsalo para el repaso final, no como primera lectura del tema.
+</div>
+
+<div class="legend">
+<h3>Leyenda</h3>
+<div class="legend-grid">
+  <div class="legend-item"><span class="legend-swatch fecha-marca">fecha</span></div>
+  <div class="legend-item"><span class="legend-swatch ley-num">cita a otra ley</span></div>
+  <div class="legend-item"><span class="legend-swatch plazo">plazo / cuantía / %</span></div>
+  <div class="legend-item"><span class="legend-swatch obligacion">obligación / prohibición</span></div>
+  <div class="legend-item"><span class="legend-swatch facultativo">facultativo</span></div>
+  <div class="legend-item"><span class="legend-swatch excepcion">excepción</span></div>
+  <div class="legend-item"><span class="legend-swatch condicion">condición</span></div>
+  <div class="legend-item"><span class="legend-swatch sujeto-pub">sujeto público</span></div>
+  <div class="legend-item"><span class="legend-swatch sujeto-priv">sujeto privado</span></div>
+  <div class="legend-item"><span class="legend-swatch" style="color:#7fb3e8;">consecuencia / detalle</span></div>
+</div>
+</div>
+
+<div class="toc">
+<h3>Índice</h3>
+<a href="#a2t8ip-bloque1">1. Concepto y grados de incapacidad</a>
+<a href="#a2t8ip-bloque2">2. Prestaciones: determinación y cuantía</a>
+<a href="#a2t8ip-bloque3">3. Beneficiarios</a>
+<a href="#a2t8ip-bloque4">4. Nacimiento, duración y extinción del derecho</a>
+<a href="#a2t8ip-bloque5">5. Lesiones permanentes no incapacitantes</a>
+<a href="#a2t8ip-bloque6">6. Calificación y revisión de la IP</a>
+</div>
+
+<section class="bloque-anexo2" id="a2t8ip-bloque1">
+<h2 class="bloque-anexo2-title">1. Concepto y grados de incapacidad</h2>
+
+<div class="articulo-card" id="t8ip-a193concepto">
+<div class="articulo-card-title">A193. Concepto</div>
+<p class="entrada"><span class="concepto-solo"><b>IP contributiva</b></span><br><span class="consecuencia">→ Situación tras tratamiento prescrito con reducciones anatómicas/funcionales graves, determinación objetiva y previsiblemente definitivas, que disminuyen o anulan la capacidad laboral.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Posibilidad de recuperación</b></span><br><span class="consecuencia">→ <span class="excepcion">No obsta</span> a la calificación si se estima médicamente incierta o a largo plazo.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Incapacidad vs discapacidad</b></span><br><span class="consecuencia">→ Incapacidad es concepto laboral (merma de capacidad de trabajo); discapacidad es concepto de estructura física de la persona. Lo que se mide siempre es la merma de la capacidad laboral, no el hecho causante en sí.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>La IP debe derivar de IT</b></span><br><span class="consecuencia">→ <span class="excepcion">Salvo</span> situación asimilada sin IT, asimilación a cuenta ajena en igual circunstancia, o acceso desde no alta (<span class="ley-num">A195.4</span>).</span></p>
+</div>
+
+<div class="articulo-card" id="t8ip-a194dt26grados">
+<div class="articulo-card-title">A194 / DT26. Grados de incapacidad</div>
+<p class="entrada"><span class="concepto-solo"><b>A194 vs DT26</b></span><br><span class="consecuencia">→ A194 es la nomenclatura definitiva futura; DT26 es la vigente hoy, hasta el desarrollo reglamentario.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Grados vigentes (DT26)</b></span><br><span class="consecuencia">→ IPP para la profesión habitual, IPT para la profesión habitual, IPA para todo trabajo, y Gran Incapacidad (GI) — único grado que ya se llama igual en ambas normas.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>IPP</b></span><br><span class="consecuencia">→ Disminución no inferior al <span class="plazo">33%</span> de rendimiento, sin impedir tareas fundamentales.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>IPT</b></span><br><span class="consecuencia">→ Inhabilita para todas o las fundamentales tareas de la profesión, pudiendo dedicarse a otra distinta.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>IPA</b></span><br><span class="consecuencia">→ Inhabilita por completo para toda profesión u oficio.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>GI</b></span><br><span class="consecuencia">→ Necesita asistencia de otra persona para los actos más esenciales de la vida.</span></p>
+</div>
+</section>
+
+<section class="bloque-anexo2" id="a2t8ip-bloque2">
+<h2 class="bloque-anexo2-title">2. Prestaciones: determinación y cuantía</h2>
+
+<div class="articulo-card" id="t8ip-a196prestaciones">
+<div class="articulo-card-title">A196. Prestaciones económicas</div>
+<p class="entrada"><span class="concepto-solo"><b>IPP</b></span><br><span class="consecuencia">→ Tanto alzado de <span class="plazo">24 mensualidades</span> de la BR que sirvió a la IT precedente.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>IPT</b></span><br><span class="consecuencia">→ Pensión vitalicia, <span class="facultativo">sustituible</span> por indemnización a TA si el beneficiario es menor de <span class="plazo">60 años</span>.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>IPA</b></span><br><span class="consecuencia">→ Pensión vitalicia, <span class="plazo">100%</span> BR.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Complemento de GI</b></span><br><span class="consecuencia">→ <span class="plazo">45%</span> de la BC mínima al hecho causante + <span class="plazo">30%</span> de la última BC del trabajador por la contingencia. Mnemotecnia: 45% (dos palabras) → Hecho Causante (dos palabras); 30% (una palabra) → Trabajador (una palabra).</span></p>
+</div>
+
+<div class="articulo-card" id="t8ip-baseregulatoria">
+<div class="articulo-card-title">Cálculo de la Base Reguladora</div>
+<p class="entrada"><span class="concepto-solo"><b>BR en EC, ≥8 años PMC (trabajador ≥52 años)</b></span><br><span class="consecuencia">→ ΣBC de <span class="plazo">96 meses</span> anteriores al mes previo (2m atrás), dividido entre <span class="plazo">112</span>.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>BR en EC, &lt;8 años PMC (trabajador &lt;52 años)</b></span><br><span class="consecuencia">→ ΣBC de X meses (PMC exigido), dividido entre (X × <span class="plazo">1,166</span>).</span></p>
+<p class="entrada"><span class="concepto-solo"><b>BR en ANL desde alta</b></span><br><span class="consecuencia">→ ΣBC de <span class="plazo">24 meses</span> ininterrumpidos (elegidos en los 7 años anteriores al HC), dividido entre <span class="plazo">28</span>. <span class="obligacion">No aplica</span> integración de lagunas ni actualización al IPC.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>BR en AT/EP</b></span><br><span class="consecuencia">→ Sobre salarios reales del momento del accidente, (A+B+C)/<span class="plazo">12</span>. <span class="obligacion">No aplica</span> el porcentaje según años cotizados.</span></p>
+</div>
+
+<div class="articulo-card" id="t8ip-porcentajesbr">
+<div class="articulo-card-title">Porcentajes según grado y cualificación</div>
+<p class="entrada"><span class="concepto-solo"><b>Porcentajes básicos</b></span><br><span class="consecuencia">→ IPT: <span class="plazo">55%</span> BR. IPT cualificada (≥55 años, sin trabajar): <span class="plazo">75%</span> BR. IPA: <span class="plazo">100%</span> BR.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Indemnización a TA sustitutiva de IPT</b></span><br><span class="consecuencia">→ Requiere &lt;60 años, lesiones no susceptibles de modificación, trabajar o invertir en autónomo, y solicitud en <span class="plazo">3 años</span> desde la resolución firme.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>IPT cualificada — suspensión</b></span><br><span class="consecuencia">→ Se suspende el incremento del 20% si el beneficiario trabaja; se reanuda al cesar.</span></p>
+</div>
+</section>
+
+<section class="bloque-anexo2" id="a2t8ip-bloque3">
+<h2 class="bloque-anexo2-title">3. Beneficiarios</h2>
+
+<div class="articulo-card" id="t8ip-a195beneficiarios">
+<div class="articulo-card-title">A195. Beneficiarios y PMC</div>
+<p class="entrada"><span class="concepto-solo"><b>AT/EP/ANL</b></span><br><span class="consecuencia">→ <span class="obligacion">No exige</span> ningún PMC.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>PMC IPP</b></span><br><span class="consecuencia">→ <span class="plazo">1.800 días</span> en los <span class="plazo">10 años</span> anteriores a la extinción de la IT. Menores de 21: mitad del tiempo desde los 16 años.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>PMC IPT/IPA/GI, menores de 31</b></span><br><span class="consecuencia">→ <span class="plazo">1/3</span> desde los 16 años al HC (sin carencia específica).</span></p>
+<p class="entrada"><span class="concepto-solo"><b>PMC IPT/IPA/GI, 31 años o más</b></span><br><span class="consecuencia">→ <span class="plazo">1/4</span> desde los 20 años al HC (mínimo <span class="plazo">5 años</span>) + carencia específica de <span class="plazo">1/5</span> del PMC exigido en los últimos 10 años.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>IPA/GI desde no alta</b></span><br><span class="consecuencia">→ Solo CC; carencia genérica fija de <span class="plazo">15 años</span>; carencia específica <span class="plazo">3 años</span> en los últimos 10.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Superposición desde no alta (conexión Jubilación A205 y Viudedad A223)</b></span><br><span class="consecuencia">→ Para dos pensiones de regímenes distintos, las cotizaciones deben superponerse al menos <span class="plazo">15 años</span>.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Días-cuota</b></span><br><span class="consecuencia">→ Aplican a todas las prestaciones <span class="excepcion">excepto</span> Desempleo y Jubilación (mnemotecnia: el <span class="sujeto-pub">DJ</span> no admite días-cuota).</span></p>
+</div>
+</section>
+
+<section class="bloque-anexo2" id="a2t8ip-bloque4">
+<h2 class="bloque-anexo2-title">4. Nacimiento, duración y extinción del derecho</h2>
+
+<div class="articulo-card" id="t8ip-nacimientoderecho">
+<div class="articulo-card-title">Hecho causante y efectos económicos</div>
+<p class="entrada"><span class="concepto-solo"><b>Caso I — Hay IT previa</b></span><br><span class="consecuencia">→ HC: fecha de extinción de la IT. Efecto económico: resolución del Director Provincial del INSS (no coinciden).</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Caso II — No hay IT (o no se ha extinguido)</b></span><br><span class="consecuencia">→ HC y efecto económico coinciden: fecha del dictamen-propuesta del EVI.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Caso III — Desde no alta</b></span><br><span class="consecuencia">→ HC y efecto económico coinciden: fecha de la solicitud (solo IPA/GI por CC).</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Declaración de IPT/IPA/GI y continuidad laboral (A49.1.n ET)</b></span><br><span class="consecuencia">→ <span class="condicion">Si hay</span> extinción laboral: derecho a IP. <span class="condicion">Si no hay</span> extinción (adaptación de puesto): la IP <span class="obligacion">se suspende</span> mientras se sigue trabajando.</span></p>
+</div>
+
+<div class="articulo-card" id="t8ip-extincionydenegacion">
+<div class="articulo-card-title">Extinción, denegación y suspensión</div>
+<p class="entrada"><span class="concepto-solo"><b>Extinción</b></span><br><span class="consecuencia">→ Revisión de la IP, fallecimiento, o causar derecho a jubilación.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Denegación/anulación/suspensión</b></span><br><span class="consecuencia">→ Fraude, imprudencia temeraria, rechazo del tratamiento sanitario durante la IT, o rechazo de tratamientos de readaptación y rehabilitación.</span></p>
+</div>
+</section>
+
+<section class="bloque-anexo2" id="a2t8ip-bloque5">
+<h2 class="bloque-anexo2-title">5. Lesiones permanentes no incapacitantes</h2>
+
+<div class="articulo-card" id="t8ip-a201lpni">
+<div class="articulo-card-title">A201-A203. LPNI</div>
+<p class="entrada"><span class="concepto-solo"><b>LPNI</b></span><br><span class="consecuencia">→ Lesiones definitivas por AT/EP (causa exclusiva), no constituyen IP, indemnizadas por baremo (<span class="ley-num">Orden ISM/450/2023</span>) en un pago único.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>6 epígrafes del baremo</b></span><br><span class="consecuencia">→ Cabeza y cara, aparato genital, glándulas y vísceras, miembros superiores, miembros inferiores, cicatrices no incluidas en epígrafes previos.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Beneficiario de LPNI</b></span><br><span class="consecuencia">→ Requiere alta médica (a diferencia de la IP, que no lo exige expresamente).</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Incompatibilidad con IP (A203)</b></span><br><span class="consecuencia">→ Incompatibles <span class="excepcion">salvo</span> que sean lesiones totalmente independientes de las tomadas en cuenta para la IP.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Revisión de LPNI</b></span><br><span class="consecuencia">→ Solo por agravación (al ser TA ya pagado, no cabe revisión por mejoría).</span></p>
+</div>
+</section>
+
+<section class="bloque-anexo2" id="a2t8ip-bloque6">
+<h2 class="bloque-anexo2-title">6. Calificación y revisión de la IP</h2>
+
+<div class="articulo-card" id="t8ip-a200calificacion">
+<div class="articulo-card-title">A200. Calificación y revisión</div>
+<p class="entrada"><span class="concepto-solo"><b>Calificación de la IP</b></span><br><span class="consecuencia">→ Corresponde al <span class="sujeto-pub">INSS</span>, a través del <span class="sujeto-pub">EVI</span>, en todas las fases del procedimiento.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Cambio de denominación a los 67 años</b></span><br><span class="consecuencia">→ La pensión de IP pasa a llamarse pensión de jubilación, sin modificar sus condiciones (el trabajador debe solicitarlo en el CAISS si le resulta más rentable).</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Revisión en cualquier momento</b></span><br><span class="consecuencia">→ Si el pensionista trabaja, o si hay error de diagnóstico, con independencia del plazo fijado en la resolución.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Reintegro tras revisión por mejoría</b></span><br><span class="consecuencia">→ <span class="obligacion">No tiene</span> la consideración de ingreso indebido.</span></p>
+</div>
+
+<div class="articulo-card" id="t8ip-evi">
+<div class="articulo-card-title">EVI — Equipos de Valoración de Incapacidades (RD 1300/1995)</div>
+<p class="entrada"><span class="concepto-solo"><b>Composición</b></span><br><span class="consecuencia">→ Presidente + <span class="plazo">4 vocales</span> (Médico Inspector, Facultativo Médico, Inspector ITSS, funcionario/secretario). Mnemotecnia: "las 5 vocales" (a-e-i-o-u).</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Designación</b></span><br><span class="consecuencia">→ El <span class="sujeto-pub">Director General</span> del INSS designa presidente y 4 vocales; el <span class="sujeto-pub">Director Provincial</span> designa a los vocales expertos.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Dictamen-propuesta del EVI</b></span><br><span class="consecuencia">→ <span class="obligacion">Preceptivo</span> pero <span class="excepcion">no vinculante</span>.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Quién puede instar el procedimiento (MITRA)</b></span><br><span class="consecuencia">→ <span class="sujeto-priv">M</span>utua/Empresa colaboradora, <span class="sujeto-pub">I</span>NSS de oficio, <span class="sujeto-priv">TRA</span>bajador. Solo para revisión, también empresarios responsables (A17).</span></p>
+<p class="entrada"><span class="concepto-solo"><b>Plazo de resolución</b></span><br><span class="consecuencia">→ <span class="plazo">135 días</span>; silencio administrativo negativo si no se resuelve en plazo.</span></p>
+</div>
+
+<div class="articulo-card" id="t8ip-consecuenciasrevision">
+<div class="articulo-card-title">A40 Orden 1969. Consecuencias de la revisión</div>
+<p class="entrada"><span class="concepto-solo"><b>De pensión a pensión distinta</b></span><br><span class="consecuencia">→ Nueva cuantía desde el día siguiente a la resolución definitiva.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>De pensión a tanto alzado o a nada</b></span><br><span class="consecuencia">→ Deducción de lo ya cobrado si procede; si sale perjudicado, <span class="obligacion">no devuelve nada</span>.</span></p>
+<p class="entrada"><span class="concepto-solo"><b>De tanto alzado a pensión o a otro TA mayor</b></span><br><span class="consecuencia">→ Percibe la diferencia a favor; si es inferior, <span class="obligacion">no viene obligado a reintegrar</span> la diferencia.</span></p>
+</div>
+</section>
+
+</div>
+</body>
+</html>

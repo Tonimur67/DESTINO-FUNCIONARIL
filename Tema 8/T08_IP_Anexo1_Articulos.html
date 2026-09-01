@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T08 (P2) · Anexo 1 — Artículos literales verificados (BOE)</title>
+<style>
+:root{
+  --bg:#0f1419; --bg-card:#1a2129; --bg-card2:#1e2730; --border:#2a3540;
+  --text:#e2e8ec; --text-dim:#93a3af;
+  --green:#4ade80; --green-dim:#1f3a2a;
+  --yellow:#facc15; --yellow-dim:#3a3320;
+  --orange:#fb923c; --orange-dim:#3a2a1a;
+  --red:#f87171; --red-dim:#3a1f24;
+  --blue:#60a5fa; --blue-dim:#1a2a3a;
+  --purple:#c084fc; --purple-dim:#2a1f3a;
+  --fucsia:#f472b6; --fucsia-dim:#3a1329;
+  --cian-num:#22d3ee; --cian-dim:#123338;
+  --lima-num:#a3e635; --magenta-fecha:#e879f9;
+  --garnet:#c9184a; --garnet-dim:#3a0f1e;
+  --indigo:#818cf8; --indigo-dim:#242a4a;
+  --teal:#2dd4bf; --teal-dim:#123332;
+  --amber:#fbbf24; --amber-dim:#3a2f12;
+  --violet:#c4b5fd; --violet-dim:#2e2a46;
+  --slate:#94a3b8; --slate-dim:#2d3540;
+  --gold:#eab308; --gold-dim:#3a2f0a;
+}
+*{box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',Roboto,Arial,sans-serif;line-height:1.6;margin:0;padding:0 0 80px;}
+.wrap{max-width:920px;margin:0 auto;padding:0 20px;}
+.top-nav{display:flex;flex-wrap:wrap;gap:10px;padding:16px 0;border-bottom:1px solid var(--border);margin-bottom:20px;}
+.top-nav a{color:var(--cian-num);text-decoration:none;font-size:0.85rem;background:var(--bg-card);border:1px solid var(--border);padding:6px 12px;border-radius:8px;}
+.top-nav a:hover{border-color:var(--cian-num);}
+.header-box{background:linear-gradient(90deg,#14532d,#276749);border-radius:12px;padding:22px 24px;margin-bottom:18px;}
+.header-box h1{margin:0 0 8px;font-size:1.5rem;color:#fff;}
+.header-box p{margin:0;color:#dcfce7;font-size:0.9rem;line-height:1.55;}
+.disclaimer{background:var(--bg-card);border:1px solid var(--border);border-left:4px solid var(--slate);border-radius:8px;padding:14px 18px;margin-bottom:18px;font-size:0.85rem;color:var(--text-dim);}
+.scope-box{background:var(--bg-card);border:1px solid var(--amber);border-left:4px solid var(--amber);border-radius:10px;padding:16px 20px;margin-bottom:18px;}
+.scope-box h3{margin:0 0 10px;color:var(--amber);font-size:1rem;}
+.scope-box p{font-size:0.87rem;color:var(--text);margin:6px 0;}
+.exclu-group{margin:12px 0;padding:10px 14px;background:var(--bg-card2);border-radius:8px;border:1px solid var(--border);}
+.exclu-group b{color:var(--text);}
+.art-chip{display:inline-block;background:var(--slate-dim);color:var(--slate);border:1px solid var(--slate);padding:1px 8px;border-radius:5px;font-size:0.8rem;font-weight:700;margin:2px 3px 2px 0;}
+.legend{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:26px;}
+.legend h3{margin:0 0 12px;font-size:1rem;color:var(--text);}
+.legend-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px 16px;}
+.legend-item{display:flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--text-dim);}
+.legend-swatch{display:inline-block;padding:1px 8px;border-radius:4px;font-size:0.78rem;font-weight:700;white-space:nowrap;}
+.legend-cat{grid-column:1/-1;color:var(--text);font-weight:700;font-size:0.82rem;margin-top:8px;text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid var(--border);padding-bottom:4px;}
+
+.titulo-head{background:linear-gradient(90deg,#14532d,#1a2129);border-radius:10px;padding:12px 18px;margin:36px 0 14px;}
+.titulo-head h2{margin:0;color:#fff;font-size:1.2rem;}
+.capitulo-head{border-left:4px solid var(--green);padding:8px 14px;margin:20px 0 12px;background:var(--bg-card);border-radius:0 8px 8px 0;}
+.capitulo-head h3{margin:0;color:var(--text);font-size:1.02rem;}
+
+.articulo-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin:14px 0;}
+.art-card-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px;}
+.articulo{color:#111;font-weight:700;background:var(--yellow);padding:1px 8px;border-radius:4px;font-size:0.9em;}
+.art-titulo-texto{color:var(--text);font-weight:600;font-size:0.95rem;flex:1;}
+.return-link{margin-left:auto;color:var(--cian-num);text-decoration:none;font-size:0.8rem;background:var(--cian-dim);padding:4px 10px;border-radius:6px;white-space:nowrap;}
+.return-link:hover{text-decoration:underline;}
+.articulo-card p{font-size:0.92rem;margin:0 0 10px;}
+.articulo-card p:last-child{margin-bottom:0;}
+
+/* Capa léxica automática */
+.num-marca{color:var(--lima-num);font-weight:800;}
+.pct-marca{background:var(--cian-num);color:#0f1419;padding:1px 6px;border-radius:4px;font-weight:800;}
+.fecha-marca{background:var(--magenta-fecha);color:#0f1419;padding:1px 6px;border-radius:4px;font-weight:800;}
+.epigrafe-letra{color:var(--purple);font-weight:800;margin-right:2px;}
+.epigrafe-num{color:var(--orange);font-weight:800;margin-right:2px;}
+.ley-num{background:var(--garnet-dim);color:var(--garnet);padding:1px 6px;border-radius:4px;font-weight:700;border:1px solid rgba(201,24,74,0.4);}
+.art-tag-inline{display:inline-block;background:#fff;color:#111;font-weight:700;padding:0 6px;border-radius:4px;font-size:0.88em;text-decoration:none;}
+a.art-tag-inline:hover{background:var(--yellow);}
+
+/* Capa sintáctica manual */
+.sujeto-pub{color:var(--indigo);font-weight:700;}
+.sujeto-priv{color:var(--teal);font-weight:700;}
+.verbo-rector{background:#173404;color:#97C459;padding:1px 6px;border-radius:4px;font-weight:700;}
+.verbo-directo{border-bottom:2px solid var(--green);}
+.verbo-indirecto{border-bottom:2px dotted var(--text-dim);}
+.objeto-directo{background:var(--blue-dim);color:var(--blue);padding:1px 6px;border-radius:4px;font-weight:700;}
+.objeto-destinatario{background:var(--fucsia-dim);color:var(--fucsia);padding:1px 6px;border-radius:4px;}
+.circunstancial{background:var(--cian-dim);color:var(--cian-num);padding:0 4px;border-radius:3px;}
+.finalidad{background:var(--gold-dim);color:var(--gold);padding:0 4px;border-radius:3px;font-style:italic;}
+.naturaleza-riesgo{background:#ffffff;color:#dc2626;padding:1px 6px;border-radius:3px;font-weight:700;}
+
+/* Capa modal híbrida */
+.obligacion{background:var(--red-dim);color:var(--red);padding:0 4px;border-radius:3px;font-weight:700;}
+.facultativo{color:var(--orange);text-decoration:underline;text-decoration-style:dotted;text-decoration-color:var(--orange);font-weight:700;}
+.excepcion{background:var(--violet-dim);color:var(--violet);padding:0 4px;border-radius:3px;font-style:italic;}
+.condicion{background:var(--slate-dim);color:var(--slate);padding:0 3px;border-radius:3px;}
+.plazo{background:var(--amber-dim);color:var(--amber);padding:0 4px;border-radius:3px;font-weight:700;}
+
+/* Coincidencia literal con el tema */
+mark.ctx-match{background:var(--yellow-dim);color:var(--yellow);padding:0 2px;border-radius:3px;text-decoration:underline;text-decoration-color:var(--yellow);}
+.ctx-match-title{text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:2px;}
+
+footer.foot-note{max-width:920px;margin:40px auto 0;padding:16px 20px;color:var(--text-dim);font-size:0.78rem;border-top:1px solid var(--border);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="top-nav">
+  <a href="../index.html">← Índice general</a>
+  <a href="T08_IP_COMPLETO.html">↩ Volver al Tema 8 (P2)</a>
+</div>
+
+<div class="header-box">
+  <h1>Anexo 1 — T08 (P2) · Incapacidad Permanente</h1>
+  <p>Artículos citados en el Tema 8 (Parte 2), transcritos en su literalidad verificada contra el texto consolidado del BOE (boe.es). No es explicación ni resumen: es la fuente oficial misma. Organizado por la estructura real de la norma (Título → Capítulo → Artículo), no por el orden de aparición en el tema.</p>
+</div>
+
+<div class="disclaimer">
+  ⚠ Material personal de estudio para preparación de oposición (Administrativo de la Seguridad Social). No es documento oficial ni sustituye la consulta directa del BOE. Última verificación de los textos: ver fecha de "última modificación" de cada norma consolidada en boe.es.
+</div>
+
+<div class="scope-box">
+  <h3>⚠️ Aviso de alcance — cierre parcial de este Anexo</h3>
+  <p>Esta entrega incluye los <strong>8 artículos LGSS con texto ya verificado contra BOE</strong>: <span class="art-chip">A193</span><span class="art-chip">A195</span><span class="art-chip">A196</span><span class="art-chip">A198</span><span class="art-chip">A200</span><span class="art-chip">A201</span><span class="art-chip">A202</span><span class="art-chip">A203</span>.</p>
+  <div class="exclu-group">
+    <b>Pendientes de próxima entrega (LGSS):</b>
+    <p><span class="art-chip">A194</span> Grados de incapacidad permanente · <span class="art-chip">DT26</span> Calificación transitoria de la incapacidad permanente · <span class="art-chip">A197</span> Base reguladora de las pensiones de IP por CC · <span class="art-chip">A199</span> Norma especial IP derivada de EP · <span class="art-chip">A210.1</span> / <span class="art-chip">DT9</span> Cuantía de la pensión (porcentaje según cotización) · <span class="art-chip">A9.2</span> / <span class="art-chip">A49</span> Cotizaciones en varios regímenes · <span class="art-chip">A235</span> Cotizaciones por parto · <span class="art-chip">A247</span> / <span class="art-chip">A249bis</span> Cómputo de PMC.</p>
+  </div>
+  <div class="exclu-group">
+    <b>Pendientes de próxima entrega (otras normas citadas por el tema):</b>
+    <p>RD 1300/1995 (arts. 1-3, EVI) · Orden de 18 de enero de 1996 (arts. 2 a 6, 13, 14, 17, 18, procedimiento) · Orden de 15 de abril de 1969 (art. 40, consecuencias de la revisión) · Decreto 394/1974 (art. 3, PMC menores de 21 años) · Decreto 3158/1966 · RD 2609/1982.</p>
+  </div>
+  <p style="margin-top:12px;">✅ <strong>Aclaración:</strong> los enlaces del tema principal a los anclajes pendientes seguirán rotos hasta que se complete esta próxima entrega.</p>
+</div>
+
+<div class="legend">
+  <h3>🎨 Leyenda de resaltado</h3>
+  <div class="legend-grid">
+    <div class="legend-cat">Capa léxica (automática)</div>
+    <div class="legend-item"><span class="legend-swatch articulo">A193</span> número de artículo citado</div>
+    <div class="legend-item"><span class="legend-swatch num-marca" style="background:var(--bg-card2);">123</span> cifra / cantidad</div>
+    <div class="legend-item"><span class="legend-swatch pct-marca">30%</span> porcentaje</div>
+    <div class="legend-item"><span class="legend-swatch fecha-marca">fecha</span> fecha</div>
+    <div class="legend-item"><span class="legend-swatch epigrafe-letra" style="background:var(--bg-card2);">a)</span> epígrafe con letra</div>
+    <div class="legend-item"><span class="legend-swatch epigrafe-num" style="background:var(--bg-card2);">1º</span> epígrafe numerado</div>
+    <div class="legend-item"><span class="legend-swatch ley-num">Ley X/AAAA</span> referencia a otra norma</div>
+    <div class="legend-item"><span class="legend-swatch art-tag-inline">art. XX</span> enlace cruzado dentro del Anexo</div>
+    <div class="legend-cat">Capa sintáctica (manual)</div>
+    <div class="legend-item"><span class="legend-swatch sujeto-pub" style="background:var(--bg-card2);">sujeto público</span> institución (Gobierno, INSS...)</div>
+    <div class="legend-item"><span class="legend-swatch sujeto-priv" style="background:var(--bg-card2);">sujeto privado</span> empresa/particular</div>
+    <div class="legend-item"><span class="legend-swatch verbo-rector">verbo rector</span> acción principal</div>
+    <div class="legend-item"><span class="legend-swatch objeto-directo">objeto directo</span> qué se otorga/exige</div>
+    <div class="legend-item"><span class="legend-swatch objeto-destinatario">destinatario</span> a quién va dirigido</div>
+    <div class="legend-item"><span class="legend-swatch circunstancial">circunstancial</span> ámbito de un objeto</div>
+    <div class="legend-item"><span class="legend-swatch finalidad">finalidad</span> "para", "a fin de"</div>
+    <div class="legend-item"><span class="legend-swatch naturaleza-riesgo">riesgo/contingencia</span> naturaleza del riesgo protegido</div>
+    <div class="legend-cat">Capa modal (híbrida)</div>
+    <div class="legend-item"><span class="legend-swatch obligacion">obligación</span> "deberá" / "no podrá"</div>
+    <div class="legend-item"><span class="legend-swatch facultativo">facultativo</span> "podrá"</div>
+    <div class="legend-item"><span class="legend-swatch excepcion">excepción</span> "salvo", "excepto"</div>
+    <div class="legend-item"><span class="legend-swatch condicion" style="background:var(--bg-card2);">condición</span> "siempre que", "cuando"</div>
+    <div class="legend-item"><span class="legend-swatch plazo">plazo</span> término temporal</div>
+    <div class="legend-cat">Coincidencia con el tema</div>
+    <div class="legend-item"><mark class="ctx-match">texto</mark> coincide literalmente con la prosa del tema</div>
+  </div>
+</div>
+
+<div class="titulo-head" id="tit-lgss-ii"><h2>LGSS (RDLeg 8/2015) — TÍTULO II. Régimen General de la Seguridad Social</h2></div>
+
+<div class="capitulo-head"><h3>Capítulo XI · Incapacidad permanente contributiva</h3></div>
+
+<div class="articulo-card" id="a193">
+  <div class="art-card-head">
+    <span class="articulo">A193</span>
+    <span class="art-titulo-texto ctx-match-title">Concepto.</span>
+    <a class="return-link" href="T08_IP_COMPLETO.html#cap1" target="_blank">↩ Tema · Cap.1</a>
+  </div>
+  <p><span class="epigrafe-num">1.</span> La <span class="objeto-directo">incapacidad permanente contributiva</span> es la situación de la persona trabajadora que, después de haber estado <span class="obligacion">sometida al tratamiento prescrito</span>, presenta <span class="naturaleza-riesgo">reducciones anatómicas o funcionales graves</span>, susceptibles de determinación objetiva y previsiblemente definitivas, que disminuyan o anulen su capacidad laboral.</p>
+  <p><span class="excepcion">No obstará</span> a tal calificación la posibilidad de recuperación de la capacidad laboral de la persona incapacitada, <span class="condicion">si dicha posibilidad se estima médicamente como incierta o a largo plazo</span>. El requisito de haber estado sometido previamente al tratamiento prescrito <span class="facultativo">podrá no ser exigible</span> en aquellos supuestos en los que, atendiendo a las características de la patología, se determine su carácter definitivo.</p>
+  <p><span class="epigrafe-num">2.</span> La incapacidad permanente <span class="obligacion">habrá de derivarse</span> de la situación de incapacidad temporal, <span class="excepcion">salvo que</span> afecte a quienes carezcan de protección en cuanto a dicha incapacidad temporal, bien por encontrarse en una <span class="objeto-directo">situación asimilada a la de alta</span>, de conformidad con lo previsto en el <a class="art-tag-inline" href="#">artículo 166</a>, que no la comprenda, bien en los supuestos de asimilación a trabajadores por cuenta ajena, en los que se dé la misma circunstancia, de acuerdo con lo previsto en el artículo 155.2, bien en los casos de <span class="objeto-directo">acceso a la incapacidad permanente desde la situación de no alta</span>, a tenor de lo previsto en el <a class="art-tag-inline" href="#a195">artículo 195.4</a>.</p>
+  <p>Tampoco será necesario que la incapacidad permanente derive de una situación de incapacidad temporal en los supuestos señalados en el segundo párrafo del apartado anterior.</p>
+</div>
+
+<div class="articulo-card" id="a195">
+  <div class="art-card-head">
+    <span class="articulo">A195</span>
+    <span class="art-titulo-texto ctx-match-title">Beneficiarios.</span>
+    <a class="return-link" href="T08_IP_COMPLETO.html#cap3" target="_blank">↩ Tema · Cap.3</a>
+  </div>
+  <p><span class="epigrafe-num">1.</span> <span class="obligacion">Tendrán derecho</span> a las prestaciones por incapacidad permanente las personas incluidas en el Régimen General que sean declaradas en tal situación y que, además de reunir la condición general exigida en el artículo 165.1, hubieran cubierto el <span class="objeto-directo">período mínimo de cotización</span> que se determina en los apartados 2 y 3 de este artículo, <span class="excepcion">salvo que</span> aquella sea debida a <span class="naturaleza-riesgo">accidente, sea o no laboral, o a enfermedad profesional</span>, en cuyo caso <span class="obligacion">no será exigido</span> ningún período previo de cotización.</p>
+  <p><span class="excepcion">No se reconocerá el derecho</span> a las prestaciones de incapacidad permanente derivada de contingencias comunes <span class="condicion">cuando</span> el beneficiario, en la fecha del hecho causante, tenga la edad prevista en el artículo 205.1.a) y reúna los requisitos para acceder a la pensión de jubilación en el sistema de la Seguridad Social.</p>
+  <p><span class="epigrafe-num">2.</span> En el caso de <span class="objeto-directo">incapacidad permanente parcial</span>, el período mínimo de cotización exigible será de <span class="plazo">mil ochocientos días</span>, que han de estar comprendidos en los <span class="plazo">diez años</span> inmediatamente anteriores a la fecha en que se haya extinguido la incapacidad temporal de la que se derive la incapacidad permanente. El <span class="sujeto-pub">Gobierno</span>, mediante real decreto, a propuesta del titular del Ministerio, <span class="facultativo">podrá modificar</span> este período.</p>
+  <p><span class="epigrafe-num">3.</span> En el caso de <span class="objeto-directo">pensiones por incapacidad permanente</span>, el período mínimo de cotización exigible será:</p>
+  <p><span class="epigrafe-letra">a)</span> Si el sujeto causante tiene menos de <span class="num-marca">treinta y un</span> años de edad, la <span class="plazo">tercera parte</span> del tiempo transcurrido entre la fecha en que cumplió los dieciséis años y la del hecho causante de la pensión.</p>
+  <p><span class="epigrafe-letra">b)</span> Si el causante tiene cumplidos treinta y un años de edad, la <span class="plazo">cuarta parte</span> del tiempo transcurrido entre la fecha en que cumplió los veinte años y la del hecho causante de la pensión, con un mínimo, en todo caso, de <span class="plazo">cinco años</span>. En este supuesto, <span class="obligacion">al menos</span> la quinta parte del período de cotización exigible deberá estar comprendida dentro de los diez años inmediatamente anteriores al hecho causante.</p>
+  <p><span class="epigrafe-num">4.</span> Las pensiones de incapacidad permanente absoluta o gran invalidez <span class="facultativo">podrán causarse</span> aunque las personas interesadas no se encuentren en el momento del hecho causante en alta o situación asimilada a la de alta, <span class="condicion">siempre que</span> deriven de contingencia común. En tales supuestos, el período mínimo de cotización exigible será, en todo caso, de <span class="plazo">quince años</span>, distribuidos en la forma prevista en el último inciso del apartado 3.b).</p>
+  <p><span class="epigrafe-num">5.</span> Para causar pensión en el Régimen General y en otro u otros del sistema de la Seguridad Social, en los casos a que se refiere el apartado anterior, será <span class="obligacion">necesario</span> que las cotizaciones acreditadas en cada uno de ellos <span class="verbo-rector">se superpongan</span>, al menos, durante <span class="plazo">quince años</span>.</p>
+</div>
+
+<div class="articulo-card" id="a196">
+  <div class="art-card-head">
+    <span class="articulo">A196</span>
+    <span class="art-titulo-texto ctx-match-title">Prestaciones económicas.</span>
+    <a class="return-link" href="T08_IP_COMPLETO.html#cap2" target="_blank">↩ Tema · Cap.2</a>
+  </div>
+  <p><span class="epigrafe-num">1.</span> La <span class="objeto-directo">prestación económica</span> correspondiente a la <span class="naturaleza-riesgo">incapacidad permanente parcial</span> consistirá en una <span class="objeto-directo">cantidad a tanto alzado</span>.</p>
+  <p><span class="epigrafe-num">2.</span> La prestación correspondiente a la <span class="naturaleza-riesgo">incapacidad permanente total</span> consistirá en una <span class="objeto-directo">pensión vitalicia</span>, que <span class="facultativo">podrá excepcionalmente ser sustituida</span> por una indemnización a tanto alzado <span class="condicion">cuando</span> el beneficiario fuese menor de <span class="num-marca">sesenta</span> años.</p>
+  <p>Los declarados afectos de incapacidad permanente total percibirán la pensión incrementada en el porcentaje que reglamentariamente se determine, <span class="condicion">cuando</span> por su edad, falta de preparación general o especializada y circunstancias sociales y laborales del lugar de residencia, se presuma la <span class="finalidad">dificultad de obtener empleo</span> en actividad distinta de la habitual anterior.</p>
+  <p>La cuantía de la pensión de incapacidad permanente total derivada de enfermedad común <span class="obligacion">no podrá resultar inferior</span> al importe mínimo fijado anualmente en la Ley de Presupuestos Generales del Estado.</p>
+  <p><span class="epigrafe-num">3.</span> La prestación correspondiente a la <span class="naturaleza-riesgo">incapacidad permanente absoluta</span> consistirá en una <span class="objeto-directo">pensión vitalicia</span>.</p>
+  <p><span class="epigrafe-num">4.</span> Si el trabajador fuese calificado como <span class="objeto-directo">gran inválido</span>, tendrá derecho a una pensión vitalicia según lo establecido en los apartados anteriores, incrementándose su cuantía con un <span class="objeto-destinatario">complemento</span>, destinado a que el inválido pueda remunerar a la persona que le atienda.</p>
+  <p>El importe de dicho complemento será equivalente al resultado de sumar el <span class="pct-marca">45</span> por ciento de la base mínima de cotización vigente en el momento del hecho causante y el <span class="pct-marca">30</span> por ciento de la última base de cotización del trabajador correspondiente a la contingencia de la que derive la situación de incapacidad permanente. <span class="excepcion">En ningún caso</span> el complemento señalado <span class="obligacion">podrá tener un importe inferior</span> al <span class="pct-marca">45</span> por ciento de la pensión percibida, sin el complemento, por el trabajador.</p>
+  <p><span class="epigrafe-num">5.</span> En los casos en que el trabajador, con <span class="num-marca">sesenta y siete</span> o más años, acceda a la pensión de incapacidad permanente derivada de contingencias comunes, <span class="condicion">por no reunir los requisitos</span> para el reconocimiento del derecho a pensión de jubilación, la cuantía será equivalente al resultado de aplicar a la correspondiente base reguladora el porcentaje que corresponda para el acceso a la pensión de jubilación.</p>
+</div>
+
+<div class="articulo-card" id="a198">
+  <div class="art-card-head">
+    <span class="articulo">A198</span>
+    <span class="art-titulo-texto ctx-match-title">Compatibilidades en el percibo de prestaciones económicas por incapacidad permanente.</span>
+    <a class="return-link" href="T08_IP_COMPLETO.html#cap2" target="_blank">↩ Tema · Cap.2</a>
+  </div>
+  <p><span class="epigrafe-num">1.</span> En caso de <span class="naturaleza-riesgo">incapacidad permanente total</span>, la pensión vitalicia correspondiente será <span class="objeto-directo">compatible</span> con el salario que pueda percibir el trabajador en la misma empresa o en otra distinta, <span class="condicion">siempre y cuando</span> las funciones no coincidan con aquellas que dieron lugar a la incapacidad permanente total.</p>
+  <p>De igual forma <span class="facultativo">podrá determinarse</span> la <span class="excepcion">incompatibilidad</span> entre la percepción del incremento previsto en el artículo 196.2, párrafo segundo, y la realización de trabajos, por cuenta propia o ajena, incluidos en el campo de aplicación del sistema de la Seguridad Social.</p>
+  <p><span class="epigrafe-num">2.</span> Las pensiones vitalicias en caso de <span class="naturaleza-riesgo">incapacidad permanente absoluta o de gran incapacidad</span> <span class="obligacion">no impedirán</span> el ejercicio de aquellas actividades, sean o no lucrativas, <span class="objeto-directo">compatibles</span> con el estado del incapacitado y que no representen un cambio en su capacidad de trabajo a efectos de revisión.</p>
+  <p>En el supuesto de que el pensionista realice un trabajo o actividad que dé lugar a la inclusión en un régimen de la Seguridad Social, la <span class="sujeto-pub">entidad gestora</span> <span class="verbo-rector">suspenderá</span> el pago de la pensión.</p>
+</div>
+
+<div class="articulo-card" id="a200">
+  <div class="art-card-head">
+    <span class="articulo">A200</span>
+    <span class="art-titulo-texto ctx-match-title">Calificación y revisión.</span>
+    <a class="return-link" href="T08_IP_COMPLETO.html#cap6" target="_blank">↩ Tema · Cap.6</a>
+  </div>
+  <p><span class="epigrafe-num">1.</span> Corresponde al <span class="sujeto-pub">Instituto Nacional de la Seguridad Social</span>, a través de los órganos que reglamentariamente se establezcan y en todas las fases del procedimiento, <span class="verbo-rector">declarar</span> la <span class="objeto-directo">situación de incapacidad permanente</span>, a los efectos de reconocimiento de las prestaciones económicas a que se refiere este capítulo.</p>
+  <p><span class="epigrafe-num">2.</span> Toda resolución, inicial o de revisión, por la que se reconozca el derecho a las prestaciones de incapacidad permanente, en cualquiera de sus grados, o se confirme el grado reconocido previamente, <span class="obligacion">hará constar necesariamente</span> el <span class="plazo">plazo</span> a partir del cual se podrá instar la revisión por agravación o mejoría del estado incapacitante profesional, en tanto que el beneficiario no haya cumplido la edad mínima establecida en el artículo 205.1.a). Este plazo será <span class="obligacion">vinculante</span> para todos los sujetos que puedan promover la revisión.</p>
+  <p><span class="excepcion">No obstante lo anterior</span>, si el pensionista de incapacidad permanente estuviera ejerciendo cualquier trabajo, por cuenta ajena o propia, el <span class="sujeto-pub">Instituto Nacional de la Seguridad Social</span> <span class="facultativo">podrá</span>, de oficio o a instancia del propio interesado, <span class="verbo-rector">promover la revisión</span>, con independencia de que haya o no transcurrido el plazo señalado en la resolución.</p>
+  <p><span class="epigrafe-num">3.</span> Las disposiciones que desarrollen la presente ley regularán el procedimiento de revisión y la modificación y transformación de las prestaciones económicas que se hubiesen reconocido al trabajador.</p>
+  <p><span class="epigrafe-num">4.</span> Las pensiones de incapacidad permanente, <span class="condicion">cuando</span> sus beneficiarios cumplan la edad de <span class="fecha-marca">sesenta y siete años</span>, <span class="verbo-rector">pasarán a denominarse</span> pensiones de jubilación. La nueva denominación <span class="obligacion">no implicará modificación alguna</span>, respecto de las condiciones de la prestación que se viniese percibiendo.</p>
+</div>
+
+<div class="capitulo-head"><h3>Capítulo XII · Lesiones permanentes no incapacitantes</h3></div>
+
+<div class="articulo-card" id="a201">
+  <div class="art-card-head">
+    <span class="articulo">A201</span>
+    <span class="art-titulo-texto ctx-match-title">Indemnizaciones por baremo.</span>
+    <a class="return-link" href="T08_IP_COMPLETO.html#cap5" target="_blank">↩ Tema · Cap.5</a>
+  </div>
+  <p>Las <span class="naturaleza-riesgo">lesiones, mutilaciones y deformidades de carácter definitivo</span>, causadas por accidentes de trabajo o enfermedades profesionales que, sin llegar a constituir una incapacidad permanente conforme a lo establecido en el capítulo anterior, supongan una disminución o alteración de la integridad física del trabajador y aparezcan recogidas en el <span class="objeto-directo">baremo anejo</span> a las disposiciones de desarrollo de esta ley, serán <span class="verbo-rector">indemnizadas</span>, <span class="plazo">por una sola vez</span>, con las cantidades alzadas que en el mismo se determinen, por la entidad que estuviera obligada al pago de las prestaciones de incapacidad permanente, todo ello <span class="excepcion">sin perjuicio</span> del derecho del trabajador a continuar al servicio de la empresa.</p>
+</div>
+
+<div class="articulo-card" id="a202">
+  <div class="art-card-head">
+    <span class="articulo">A202</span>
+    <span class="art-titulo-texto ctx-match-title">Beneficiarios.</span>
+    <a class="return-link" href="T08_IP_COMPLETO.html#cap5" target="_blank">↩ Tema · Cap.5</a>
+  </div>
+  <p><span class="sujeto-priv">Serán beneficiarios</span> de las indemnizaciones a que se refiere el artículo anterior los trabajadores integrados en este Régimen General que reúnan la <span class="obligacion">condición general exigida</span> en el <a class="art-tag-inline" href="#">artículo 165.1</a> y <span class="obligacion">hayan sido dados de alta médica</span>.</p>
+</div>
+
+<div class="articulo-card" id="a203">
+  <div class="art-card-head">
+    <span class="articulo">A203</span>
+    <span class="art-titulo-texto ctx-match-title">Incompatibilidad con las prestaciones por incapacidad permanente.</span>
+    <a class="return-link" href="T08_IP_COMPLETO.html#cap5" target="_blank">↩ Tema · Cap.5</a>
+  </div>
+  <p>El cobro de la indemnización correspondiente por lesiones permanentes no incapacitantes <span class="obligacion">no obsta</span> a que el trabajador siga prestando sus servicios en la misma empresa. Las indemnizaciones a tanto alzado que procedan por dichas lesiones son <span class="excepcion">incompatibles</span> con las prestaciones económicas establecidas para la incapacidad permanente derivadas del mismo accidente o enfermedad profesional, <span class="condicion">salvo que</span> las lesiones, mutilaciones y deformidades sean <span class="objeto-directo">totalmente independientes</span> de las que hayan sido tomadas en consideración para declarar la incapacidad permanente.</p>
+</div>
+
+<footer class="foot-note">
+  Anexo 1 elaborado como material personal de estudio (Tema 08, Parte 2 — Incapacidad Permanente). Textos verificados contra el texto consolidado del BOE (boe.es) de: RDLeg 8/2015 (LGSS), en su versión consolidada disponible en el momento de elaboración de este documento. No es documento oficial. Ante cualquier duda, consúltese directamente boe.es.
+</footer>
+
+</div>
+</body>
+</html>
