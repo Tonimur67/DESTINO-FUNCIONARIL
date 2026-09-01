@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T08 · Incapacidad Temporal — Destino Funcionario</title>
+<style>
+  :root{
+    --bg:#0e1318;
+    --card-lgss:#1a2129;
+    --card-remar:#0a1a26;
+    --card-otras:#170f22;
+    --border-lgss:#2a333d;
+    --border-remar:#155e75;
+    --border-otras:#7e22ce;
+    --text:#e6e6e6;
+    --text-dim:#9ca3af;
+    --accent-green:#2f855a;
+    --amber:#f2c14e;
+    --fuchsia:#e879f9;
+    --garnet:#c9184a;
+    --lilac:#c4b5fd;
+    --orange:#fb923c;
+    --darkgreen:#4ade80;
+    --cyan:#38bdf8;
+    --lime:#a3e635;
+  }
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Segoe UI',Roboto,Arial,sans-serif;
+    line-height:1.55;
+    margin:0;
+    padding:0 0 80px;
+  }
+  .wrap{max-width:900px;margin:0 auto;padding:0 20px;}
+  .backlink{
+    display:block;
+    padding:14px 20px;
+    color:var(--cyan);
+    text-decoration:none;
+    font-size:0.9rem;
+    border-bottom:1px solid var(--border-lgss);
+  }
+  .backlink:hover{text-decoration:underline;}
+  header.hero{
+    padding:30px 20px 20px;
+    max-width:900px;
+    margin:0 auto;
+    border-bottom:2px solid var(--accent-green);
+  }
+  header.hero h1{font-size:1.7rem;margin:0 0 6px;color:#fff;}
+  header.hero p{color:var(--text-dim);margin:0;font-size:0.9rem;}
+  header.hero .dificultad{display:inline-block;margin-top:10px;background:var(--card-lgss);border:1px solid var(--border-lgss);color:var(--orange);font-weight:700;padding:4px 12px;border-radius:8px;font-size:0.82rem;}
+  nav.indice{
+    max-width:900px;margin:20px auto;padding:0 20px;
+  }
+  nav.indice ul{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px;}
+  nav.indice a{
+    display:block;background:var(--card-lgss);border:1px solid var(--border-lgss);
+    color:var(--text);text-decoration:none;padding:8px 12px;border-radius:8px;font-size:0.82rem;
+  }
+  nav.indice a:hover{border-color:var(--accent-green);}
+
+  section.capitulo{max-width:900px;margin:0 auto;padding:10px 20px 40px;}
+  .cap-header{
+    background:linear-gradient(90deg,var(--accent-green),#276749);
+    color:#fff;padding:14px 18px;border-radius:10px;margin:34px 0 18px;
+    font-size:1.15rem;font-weight:600;
+  }
+  h3.epigrafe{
+    color:#fff;border-left:4px solid var(--accent-green);
+    padding-left:10px;margin-top:28px;font-size:1.05rem;
+  }
+  .card{
+    background:var(--card-lgss);border:1px solid var(--border-lgss);
+    border-radius:10px;padding:16px 18px;margin:14px 0;
+  }
+
+  .articulo{
+    background:#fff;color:#111;font-weight:700;
+    padding:1px 7px;border-radius:5px;font-size:0.82rem;
+    display:inline-block;
+  }
+  .articulo.chip-lgss{color:var(--amber);background:#fff;}
+  .fecha{color:var(--fuchsia);font-weight:600;}
+  .rd{color:var(--garnet);font-weight:700;}
+  .epi-letra{color:var(--lilac);font-weight:700;}
+  .epi-num{color:var(--orange);font-weight:700;}
+  em, i.legal{color:var(--darkgreen);font-style:italic;}
+  .num{color:var(--lime);font-weight:700;}
+  .pct{color:var(--cyan);font-weight:700;}
+  .dia-num{color:#ef4444;font-weight:700;}
+  .tipo-cc{color:#4ade80;font-weight:700;}
+  .tipo-cp{color:#f472b6;font-weight:700;}
+  .tipo-otras{color:#c084fc;font-weight:700;}
+  .plazo{color:#fbbf24;font-weight:700;}
+  .obligacion{color:#fb923c;font-weight:700;}
+  .facultativo{color:#67e8f9;font-weight:600;}
+  .excepcion{color:#f87171;font-weight:700;}
+  .condicion{color:#a78bfa;font-weight:600;font-style:italic;}
+  .sujeto-pub{color:#60a5fa;font-weight:600;}
+  .sujeto-priv{color:#fcd34d;font-weight:600;}
+
+  .confusion{
+    background:#2a1414;border:1px solid #7f1d1d;border-left:4px solid #ef4444;
+    border-radius:8px;padding:12px 16px;margin:14px 0;font-size:0.92rem;
+  }
+  .confusion .tag{color:#f87171;font-weight:700;display:block;margin-bottom:4px;}
+
+  .mnemo{
+    background:#142218;border:1px solid #14532d;border-left:4px solid #22c55e;
+    border-radius:8px;padding:12px 16px;margin:14px 0;font-size:0.92rem;
+  }
+  .mnemo .tag{color:#4ade80;font-weight:700;display:block;margin-bottom:4px;}
+
+  .recordatorio{
+    background:#141b28;border:1px solid #1e3a5f;border-left:4px solid #38bdf8;
+    border-radius:8px;padding:12px 16px;margin:14px 0;font-size:0.92rem;
+  }
+  .recordatorio .tag{color:var(--cyan);font-weight:700;display:block;margin-bottom:4px;}
+
+  .voz-profe{
+    background:#1c1607;border:1px solid #78350f;border-left:4px solid var(--amber);
+    border-radius:8px;padding:12px 16px;margin:14px 0;font-size:0.9rem;
+  }
+  .voz-profe .tag{color:var(--amber);font-weight:700;display:block;margin-bottom:4px;}
+
+  .ejemplo{background:#0f1b1f;border:1px solid #164e4e;border-left:4px solid var(--cyan);border-radius:8px;padding:12px 16px;margin:14px 0;font-size:0.92rem;}
+  .ejemplo .tag{color:var(--cyan);font-weight:700;display:block;margin-bottom:4px;}
+  .actualizacion{background:#221a06;border:1px solid #78350f;border-left:4px solid var(--amber);border-radius:8px;padding:12px 16px;margin:14px 0;font-size:0.92rem;}
+  .actualizacion .tag{color:var(--amber);font-weight:700;display:block;margin-bottom:4px;}
+  .esquema-ascii{background:#0c1116;border:1px solid var(--border-lgss);border-radius:8px;padding:12px 16px;margin:14px 0;overflow-x:auto;font-size:0.8rem;color:var(--text-dim);white-space:pre-wrap;font-family:'Consolas',monospace;line-height:1.4;}
+
+  /* ---- Esquemas en árbol (idéntico a T07) ---- */
+  .esquema{background:var(--card-lgss);border:1px solid var(--border-lgss);border-radius:10px;padding:24px 16px 30px;margin:18px 0;overflow-x:auto;}
+  .tree{display:flex;flex-direction:column;align-items:center;min-width:fit-content;}
+  .nodo-raiz{background:#14532d;color:#fff;text-align:center;font-weight:600;padding:10px 16px;border-radius:8px;font-size:0.88rem;white-space:nowrap;}
+  .tronco{width:2px;height:20px;background:#4a5568;}
+  .fila-ramas{display:flex;align-items:flex-start;}
+  .columna-rama{display:flex;flex-direction:column;align-items:center;padding:0 22px;border-top:2px solid #4a5568;position:relative;}
+  .columna-rama .bajante{width:2px;height:18px;background:#4a5568;}
+  .nodo{background:#0a1a26;border:1px solid #155e75;color:var(--cyan);font-weight:600;text-align:center;padding:8px 14px;border-radius:8px;font-size:0.82rem;white-space:nowrap;}
+  .bajante2{width:2px;height:16px;background:#4a5568;}
+  .fila-hijos{display:flex;align-items:flex-start;}
+  .columna-hijo{display:flex;flex-direction:column;align-items:center;padding:0 10px;border-top:2px solid #4a5568;}
+  .columna-hijo .bajante3{width:2px;height:14px;background:#4a5568;}
+  .nodo-hijo{background:var(--card-otras,#170f22);border:1px solid var(--border-otras,#7e22ce);color:#d8b4fe;text-align:center;padding:7px 10px;border-radius:8px;font-size:0.76rem;min-width:110px;}
+  .nodo-hijo small{display:block;color:#a78bfa;font-weight:400;margin-top:3px;}
+  .nodo-final{background:#14181f;border:1px dashed #6b7280;color:#cbd5e1;text-align:center;padding:5px 8px;border-radius:6px;font-size:0.72rem;margin-top:8px;}
+
+  /* ---- Flujo secuencial (cadena de cajas con flechas) ---- */
+  .flujo{display:flex;flex-wrap:wrap;align-items:center;gap:6px;justify-content:center;background:var(--card-lgss);border:1px solid var(--border-lgss);border-radius:10px;padding:18px 16px;margin:18px 0;}
+  .flujo-caja{background:#0a1a26;border:1px solid #155e75;color:var(--cyan);font-weight:600;text-align:center;padding:8px 12px;border-radius:8px;font-size:0.8rem;}
+  .flujo-caja.rama-si{border-color:#14532d;color:#4ade80;background:#0f1f14;}
+  .flujo-caja.rama-no{border-color:#7f1d1d;color:#f87171;background:#1f0f0f;}
+  .flujo-flecha{color:#4a5568;font-size:1.1rem;}
+  .flujo-salto{flex-basis:100%;height:0;}
+
+  /* ---- Tarjetas resumen de capítulo (síntesis) ---- */
+  .sintesis-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0;}
+  .sintesis-card{background:var(--card-lgss);border:1px solid var(--border-lgss);border-left:4px solid var(--accent-green);border-radius:10px;padding:14px 16px;}
+  .sintesis-card h5{color:var(--accent-green);margin:0 0 8px;font-size:0.88rem;text-transform:uppercase;letter-spacing:.3px;}
+  .sintesis-card p{color:var(--text-dim);font-size:0.82rem;margin:0;line-height:1.5;}
+
+  /* ---- Repaso en un vistazo (outline colapsable, igual que T07) ---- */
+  .outline details{background:var(--card-lgss);border:1px solid var(--border-lgss);border-radius:10px;padding:10px 16px;margin:8px 0;}
+  .outline summary{cursor:pointer;font-weight:600;color:var(--text);list-style:none;}
+  .outline summary::-webkit-details-marker{display:none;}
+  .outline summary::before{content:"▸ ";color:var(--accent-green);}
+  .outline details[open] summary::before{content:"▾ ";}
+  .outline ul{list-style-type:square;padding-left:20px;color:var(--text-dim);margin:6px 0 0;}
+  .outline li{margin:5px 0;font-size:.92rem;}
+
+  /* ---- Quiz engine (idéntico a T07) ---- */
+  .quiz-box{background:#12181f;border:1px solid var(--border-lgss);border-radius:10px;padding:16px 18px;margin:16px 0;}
+  .quiz-q{font-weight:600;margin-bottom:10px;font-size:0.94rem;}
+  .quiz-opt{display:block;width:100%;text-align:left;background:#1e2937;color:var(--text);border:1px solid #334155;border-radius:8px;padding:9px 12px;margin:6px 0;cursor:pointer;font-size:0.87rem;transition:background .15s;}
+  .quiz-opt:hover:not(:disabled){background:#26364a;}
+  .quiz-opt:disabled{cursor:default;opacity:0.85;}
+  .quiz-opt.correct-opt{border-color:#22c55e;background:#14291b;color:#86efac;}
+  .quiz-opt.wrong-opt{border-color:#ef4444;background:#2a1414;color:#fca5a5;}
+  .quiz-feedback{margin-top:10px;font-size:0.85rem;padding:8px 10px;border-radius:6px;display:none;}
+  .quiz-feedback.show{display:block;}
+  .quiz-feedback.ok{background:#0f2a1a;color:#4ade80;border:1px solid #16653d;}
+  .quiz-feedback.bad{background:#2a1414;color:#f87171;border:1px solid #7f1d1d;}
+
+  table.tabla-estudio{width:100%;border-collapse:collapse;margin:14px 0;font-size:0.85rem;}
+  table.tabla-estudio th{background:#1e2937;color:#fff;padding:8px 10px;text-align:left;border:1px solid var(--border-lgss);}
+  table.tabla-estudio td{padding:8px 10px;border:1px solid var(--border-lgss);}
+  table.tabla-estudio tr:nth-child(even){background:#161c24;}
+
+  footer.disclaimer{max-width:900px;margin:40px auto 0;padding:16px 20px;color:var(--text-dim);font-size:0.78rem;border-top:1px solid var(--border-lgss);}  .anki-block{background:var(--card-lgss);border:1px solid var(--border-lgss);border-radius:14px;padding:20px;margin:20px 0;text-align:center;}
+  #deckSelect{width:100%;padding:8px 10px;margin-bottom:10px;background:#1e2937;color:var(--text);border:1px solid var(--border-lgss);border-radius:8px;font-size:.9rem;}
+  #progress{color:var(--text-dim);font-size:.85rem;margin-bottom:10px;}
+  .flip-card{margin:0 auto;width:100%;max-width:440px;height:150px;perspective:1000px;cursor:pointer;}
+  .flip-card-inner{width:100%;height:100%;position:relative;transition:transform .5s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d;}
+  .flip-card.flipped .flip-card-inner{transform:rotateY(180deg);}
+  .flip-card-front,.flip-card-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:14px;padding:22px;display:flex;justify-content:center;align-items:center;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.25);font-size:19px;}
+  .flip-card-front{background:#1e2937;border:2px dashed var(--accent-green);color:var(--text);font-weight:600;}
+  .flip-card-back{background:var(--accent-green);color:#08130f;transform:rotateY(180deg);font-weight:700;line-height:1.5;}
+  /* ---- Mapa conceptual — hilo conductor, visible al inicio de cada capítulo ---- */
+  .mapa-label{color:var(--accent-green);font-weight:700;font-size:.85rem;margin:-4px 0 8px;letter-spacing:.3px;}
+  .mapa-cap{background:var(--card-lgss);border:1px solid var(--border-lgss);border-radius:12px;padding:18px 16px;margin:0 0 18px;}
+  .mapa-arbol{display:flex;flex-direction:column;align-items:center;gap:2px;}
+  .mapa-nodo{background:#1e2937;border:1px solid var(--border-lgss);border-radius:8px;padding:7px 14px;text-align:center;font-size:.85rem;color:var(--text);max-width:440px;}
+  .mapa-nodo.raiz{background:var(--accent-green);color:#08130f;font-weight:800;border:none;font-size:.95rem;}
+  .mapa-nodo .art{color:var(--amber);font-weight:700;font-size:.78rem;display:block;margin-top:2px;}
+  .mapa-nodo.hoja{color:var(--text-dim);font-size:.8rem;background:#161c24;}
+  .mapa-flecha{color:var(--accent-green);font-size:.95rem;line-height:1;margin:1px 0;}
+  .mapa-rama{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:2px 0;}
+  .mapa-rama .mapa-nodo{flex:1;min-width:150px;}
+  @media(max-width:640px){.mapa-rama{flex-direction:column;align-items:center;}}
+</style>
+</head>
+<body>
+
+<a class="backlink" href="../index.html">← Volver al índice</a>
+
+<header class="hero">
+  <h1>T08 — Incapacidad Temporal (IT)</h1>
+  <p>Apuntes de estudio personal basados en el curso de Destino Funcionario (Manuel Moreno), enriquecidos con la clase magistral en audio del preparador. Preparación oposición Administrativo de la Seguridad Social 2026/2027. No es material oficial.</p>
+  <span class="dificultad">Dificultad 4/5</span>
+</header>
+
+<nav class="indice">
+  <ul>
+    <li><a href="#cap1">1. Concepto y causas</a></li>
+    <li><a href="#cap2">2. Prestación económica</a></li>
+    <li><a href="#cap3">3. Nacimiento y extinción</a></li>
+    <li><a href="#cap4">4. Reconocimiento y pago</a></li>
+    <li><a href="#cap5">5. Control de la IT</a></li>
+    <li><a href="#esquema-maestro">🗺️ Esquema maestro</a></li>
+    <li><a href="#casos-practicos">📝 Casos prácticos</a></li>
+    <li><a href="#s-outline">📋 Repaso en un vistazo</a></li>
+    <li><a href="#s-anki">🗂️ Flashcards</a></li>
+    <li><a href="T08_Anexo1_Articulos.html" target="_blank">📖 Anexo 1 — Artículos literales</a></li>
+    <li><a href="T08_Anexo2_ResumenLiteral.html" target="_blank">🔖 Anexo 2 — Resumen y mnemotecnias</a></li>
+  </ul>
+</nav>
+
+<section class="capitulo" id="intro">
+<p>Este tema tiene una dificultad 4/5 — no por complejidad teórica, sino por el gran volumen de casuística y de datos concretos (plazos, porcentajes, competencias) que hay que memorizar con precisión. La clave no es memorizar sin más, sino entender la lógica interna del sistema: quién actúa, cuándo actúa y qué efecto produce cada actuación.</p>
+<div class="mnemo"><span class="tag">🧠 Mnemotecnia</span>Filosofía del tema, en palabras del propio preparador: "esta oposición se define con un verbo de la tercera conjugación: insistir". El tema se domina a base de repetición y de vueltas, no de una sola lectura.</div>
+<div class="recordatorio"><span class="tag">⚑ Recordatorio</span>Los sujetos que hay que tener siempre localizados en este tema son: la <span class="sujeto-priv">MUTUA</span>, la entidad gestora (<span class="sujeto-priv">INSS</span>/<span class="sujeto-priv">ISM</span>), el SPS (Servicio Público de Salud) y, dentro de este último, la diferencia entre el facultativo/médico (quien trata y da los partes) y la inspección médica (quien controla y resuelve discrepancias).</div>
+</section>
+
+<section class="capitulo" id="cap1">
+<div class="cap-header">Capítulo 1 — IT: concepto y causas que motivan esta situación</div>
+<p class="mapa-label">🌳 Hilo conductor del capítulo</p>
+<div class="mapa-cap">
+  <div class="mapa-arbol">
+    <div class="mapa-nodo raiz">INCAPACIDAD TEMPORAL <span class="art">A169</span></div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">CONTINGENCIAS ORDINARIAS</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-rama">
+      <div class="mapa-nodo">EC / ANL</div>
+      <div class="mapa-nodo">AT / EP</div>
+    </div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">SITUACIONES ESPECIALES DE IT</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-rama">
+      <div class="mapa-nodo">Menstruación incapacitante secundaria</div>
+      <div class="mapa-nodo">Interrupción del embarazo</div>
+      <div class="mapa-nodo">Gestación desde semana 39</div>
+      <div class="mapa-nodo">Donación de órganos o tejidos</div>
+    </div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">BENEFICIARIOS Y REQUISITOS <span class="art">A172</span></div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">PERÍODOS MÍNIMOS DE COTIZACIÓN</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo hoja">Situaciones asimiladas al alta</div>
+  </div>
+</div>
+<a class="mnemo-link" href="T08_Anexo2_ResumenLiteral.html#a2t8-bloque1" target="_blank" style="display:inline-block;margin:6px 0 10px;font-size:0.82rem;color:var(--accent-green,#3ddc97);text-decoration:none;border:1px solid var(--border-lgss,#2a3441);padding:4px 10px;border-radius:6px;">🔖 Ver mnemotecnias y resumen (Anexo 2)</a>
+<h3 class="epigrafe"><a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a169" target="_blank">A169</a>. Concepto de IT</h3>
+<p>a) Tendrán la consideración de situaciones determinantes de IT las debidas a enfermedad común o profesional y a accidente, sea o no de trabajo, mientras el trabajador reciba asistencia sanitaria de la Seguridad Social y esté impedido para el trabajo, con una duración máxima de <span class="plazo">365 días</span>, prorrogables por otros <span class="plazo">180 días</span> <span class="condicion">cuando</span> se presuma que durante ellos el trabajador puede ser dado de alta médica por curación.</p>
+<p>La consideración de IT <span class="obligacion">exige</span> tres condiciones acumulativas: (1) que se dé una contingencia (común o profesional); (2) que se necesite asistencia sanitaria de la Seguridad Social; y (3) que exista impedimento para trabajar. Si falta cualquiera de las tres, no nace la prestación — piensa en alguien que sufre un accidente leve en la calle sin necesitar asistencia ni dejar de trabajar: ahí no hay IT.</p>
+<div class="recordatorio"><span class="tag">⚑ Recordatorio</span>Cuando se causa baja médica, el trabajador deja de trabajar (causa baja médica) pero se mantiene en situación de alta en la Seguridad Social. No confundas "baja médica" con "baja en la Seguridad Social": son conceptos distintos.</div>
+<div class="esquema"><div class="tree">
+  <div class="nodo-raiz">IT causa ordinaria: <span class="tipo-cc">EC</span>/<span class="tipo-cc">AT</span>/<span class="tipo-cc">EP</span>/<span class="tipo-cc">ANL</span></div>
+  <div class="tronco"></div>
+  <div class="fila-ramas">
+    <div class="columna-rama"><div class="bajante"></div><div class="nodo">Asistencia sanitaria SS</div></div>
+    <div class="columna-rama"><div class="bajante"></div><div class="nodo">Impedido para el trabajo</div><div class="nodo-final">365d + 180d prórroga = máx. 545d</div></div>
+  </div>
+</div></div>
+<p>La prórroga de <span class="plazo">180 días</span> no se concede automáticamente: se prorroga porque se entiende que, durante ese plazo adicional, el trabajador va a poder ser dado de alta médica por curación. Si la patología es muy grave, es probable que derive antes en un expediente de Incapacidad Permanente dentro de los primeros <span class="plazo">365 días</span>; si es leve, se curará antes de necesitar siquiera la prórroga.</p>
+<div class="confusion"><span class="tag">⚠ Confusión frecuente</span>El examen suele mezclar el plazo 365+180=<span class="plazo">545 días</span> de la causa ordinaria (letra a) con los 180+<span class="plazo">180 días</span> de los períodos de observación por <span class="tipo-cc">EP</span> (letra b, ver más abajo). Son plazos distintos y de naturaleza distinta.</div>
+<div class="mnemo"><span class="tag">🧠 Mnemotecnia</span>"365 se cura, 180 se observa" → 365+180 = enfermedad/accidente ya de baja médica; 180+180 = período de observación de una <span class="tipo-cc">EP</span> (aún sin diagnóstico cerrado).</div>
+<h3 class="epigrafe">Situaciones especiales de IT por Contingencias Comunes</h3>
+<p>Reguladas en el mismo <a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a169" target="_blank">A169</a>. Las tres primeras son exclusivas de mujeres, por su propia naturaleza; la cuarta protege a cualquier donante.</p>
+<p>Acrónimos que se usan en todo el tema: <span class="tipo-otras">MIS</span> (menstruación incapacitante secundaria) · <span class="tipo-cp">IE</span> (interrupción del embarazo) · <span class="tipo-cp">S39.1</span> (gestación desde el día 1 de la semana 39ª) · <span class="tipo-otras">DOT</span> (donación de órganos o tejidos).</p>
+<ul>
+<li>Menstruación incapacitante secundaria (<span class="tipo-otras">MIS</span>).</li>
+<li>Interrupción del embarazo (<span class="tipo-cp">IE</span>), voluntaria o no, mientras reciba asistencia sanitaria del SPS y esté impedida, sin perjuicio de aquellos supuestos en que la interrupción del embarazo sea debida a <span class="tipo-cc">AT</span>/<span class="tipo-cc">EP</span>, en cuyo caso tendrá la consideración de situación de IT por <span class="tipo-cp">CP</span>.</li>
+<li>Gestación de la mujer trabajadora desde el día primero de la semana trigésimo novena (<span class="tipo-cp">S39.1</span>).</li>
+<li>Donante de órganos o tejidos para su trasplante (en vigor desde el 3/mar/2025 — es una incorporación reciente a la norma): comprende tanto los días discontinuos como ininterrumpidos en que el donante reciba asistencia sanitaria y esté impedido por la preparación médica de la cirugía, como los días desde el ingreso hospitalario hasta el alta por curación.</li>
+</ul>
+<div class="confusion"><span class="tag">⚠ Confusión frecuente</span>Si la interrupción del embarazo se debe a <span class="tipo-cc">AT</span>/<span class="tipo-cc">EP</span>, no se aplica esta situación especial: se convierte en contingencia profesional pura (que prevalece, por tener mejores condiciones). Esto no es un matiz menor: condiciona la cuantía, el momento de nacimiento del derecho y, sobre todo, quién es el sujeto responsable del pago — puede ser la <span class="sujeto-priv">mutua</span> (si cubre <span class="tipo-cp">CP</span>) o la entidad gestora (si cubre <span class="tipo-cc">CC</span>), y ambas pueden ser distintas dentro de la misma empresa.</div>
+<div class="recordatorio"><span class="tag">⚑ Recordatorio</span>En la donación de órganos, el receptor del órgano se trata, a todos los efectos, como una enfermedad común (<span class="excepcion">salvo</span> que necesite el órgano por una contingencia profesional). El donante, en cambio, recibe protección reforzada: cobrará el 100% desde el primer día (lo verás en el capítulo 2).</div>
+<h4 style="color:var(--text-dim);margin-top:20px;font-size:0.95rem;"><a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a169" target="_blank">A169</a>.b) Períodos de observación por enfermedad profesional</h4>
+<p>Tendrán también la consideración de IT los períodos de observación por enfermedad profesional en los que se prescriba la baja en el trabajo durante los mismos, con una duración máxima de <span class="plazo">180 días</span>, prorrogables por otros <span class="plazo">180 días</span> <span class="condicion">cuando</span> se estime necesario para el estudio y diagnóstico de la enfermedad.</p>
+<p>Estos períodos de observación sirven para determinar si el hecho causante es realmente constitutivo de enfermedad profesional o no.</p>
+<h3 class="epigrafe">Cómputo del plazo máximo: recaídas y observación</h3>
+<p>A efectos del período máximo de duración de la situación de IT que se señala en la letra a), y de su posible prórroga, se computarán los períodos de recaída y de observación.</p>
+<p>Recaída = nueva baja médica por la misma o similar patología dentro de los <span class="plazo">180 días naturales</span> siguientes a la fecha de efectos de alta médica anterior.</p>
+<div class="confusion"><span class="tag">⚠ Confusión frecuente</span>El cómputo de los <span class="plazo">180 días</span> de la recaída empieza desde la fecha del ALTA MÉDICA, no desde el hecho causante de la enfermedad original. El alta médica es lo que supone, jurídicamente, que el trabajador se ha curado — por tanto, es lógico que "recaer" empiece a contar a partir de ahí.</div>
+<div class="ejemplo"><span class="tag">📌 Ejemplo</span>Enfermedad con inicio el 10 de septiembre, alta médica el 15 de octubre. Los <span class="plazo">180 días</span> para valorar si una futura baja es "recaída" empiezan a contar el 15 de octubre, no el 10 de septiembre. En los supuestos prácticos suelen jugar con estas dos fechas para confundir — presta mucha atención a cuál es la fecha de referencia que te dan.</div>
+<p>Excepción: la menstruación incapacitante secundaria nunca tiene la consideración de recaída — al darse potencialmente todos los meses, cada proceso se considera nuevo e independiente, sin computar el período anterior.</p>
+<div class="flujo">
+  <div class="flujo-caja">Alta médica</div><div class="flujo-flecha">→</div>
+  <div class="flujo-caja">¿Nueva baja misma/similar patología en 180d siguientes?</div>
+  <div class="flujo-salto"></div>
+  <div class="flujo-flecha">↳ SI →</div><div class="flujo-caja rama-si">RECAÍDA (suma al mismo proceso)</div>
+  <div class="flujo-salto"></div>
+  <div class="flujo-flecha">↳ NO →</div><div class="flujo-caja rama-no">Nuevo proceso IT (desde 0, <span class="excepcion">salvo</span> <span class="tipo-otras">MIS</span>: siempre nuevo)</div>
+</div>
+<div class="confusion"><span class="tag">⚠ Confusión frecuente</span>Cuando una IT se reanuda por recaída, la numeración de días no se reinicia: se retoma exactamente donde se quedó. Ejemplo: <span class="plazo">18 días</span> de baja + <span class="plazo">10 días</span> más por recaída → el día 1 de esa recaída es en realidad el día 19 del proceso total, con lo que corresponde el 60% (no el 0%) y pago delegado (no responsabilidad directa del empresario, porque el pago delegado ya había empezado en el día 16). El examen suele mezclar deliberadamente el porcentaje aplicable con el responsable del pago en este tipo de preguntas.</div>
+<h3 class="epigrafe"><a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a172" target="_blank">A172</a>. Beneficiarios</h3>
+<p>Serán beneficiarios del subsidio por IT las personas incluidas en el Régimen General que se encuentren en cualquiera de las situaciones determinadas en el <a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a169" target="_blank">A169</a> y que, además, reúnan la condición general exigida en el <a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a165" target="_blank">A165.1</a>.</p>
+<div class="flujo">
+  <div class="flujo-caja">Requisitos particulares</div><div class="flujo-flecha">+</div>
+  <div class="flujo-caja">Afiliado</div><div class="flujo-flecha">+</div>
+  <div class="flujo-caja">Alta / Asimilado a alta</div><div class="flujo-flecha">=</div>
+  <div class="flujo-caja rama-si">Derecho a prestación</div>
+</div>
+<p>Este esquema (requisitos particulares + afiliación + alta o asimilado) es el mismo requisito general del derecho a las prestaciones que ya viste en el T07 — aquí simplemente se aplica a la IT. La acción protectora compensa la pérdida de salario: por eso quien no trabaja no puede tener derecho a IT (distinto es no trabajar por estar en situación legal de desempleo, que sí es una situación asimilada al alta).</p>
+<h4 style="color:var(--text-dim);margin-top:20px;font-size:0.95rem;">Períodos Mínimos de Cotización (PMC)</h4>
+@@TABLE0@@
+<table class="tabla-estudio">
+<tr><th>Contingencia / situación</th><th>PMC exigido</th></tr>
+<tr><td>Enfermedad Común (<span class="tipo-cc">EC</span>)</td><td><span class="plazo">180 días</span> dentro de los <span class="plazo">5 años</span> inmediatamente anteriores al HC</td></tr>
+<tr><td>Accidente (sea o no de trabajo) y <span class="tipo-cc">EP</span> (<span class="tipo-cc">AT</span>/<span class="tipo-cc">EP</span> y <span class="tipo-cc">ANL</span>)</td><td>No <span class="obligacion">exige</span> PMC</td></tr>
+<tr><td><span class="tipo-otras">MIS</span></td><td>No <span class="obligacion">exige</span> PMC</td></tr>
+<tr><td>Interrupción del embarazo (<span class="tipo-cp">IE</span>)</td><td>No <span class="obligacion">exige</span> PMC</td></tr>
+<tr><td>Gestación desde <span class="tipo-cp">S39.1</span></td><td>Exige el PMC de NYCM (remisión <span class="articulo chip-lgss">A178.1</span>) — ver tabla siguiente</td></tr>
+<tr><td>Donante de órganos o tejidos (<span class="tipo-otras">DOT</span>)</td><td>No <span class="obligacion">exige</span> PMC</td></tr>
+</table>
+<div class="mnemo"><span class="tag">🧠 Mnemotecnia</span>"Solo la <span class="tipo-cc">EC</span> pide carné de cotización" — todo lo demás (accidentes, <span class="tipo-cc">EP</span>, <span class="tipo-cc">ANL</span>, <span class="tipo-otras">MIS</span>, <span class="tipo-cp">IE</span>, donación) entra sin PMC propio; la única "colada" es la gestación <span class="tipo-cp">S39.1</span>, que pide prestado el PMC de NYCM.</div>
+<div class="confusion"><span class="tag">⚠ Confusión frecuente</span>El <span class="tipo-cc">ANL</span> (accidente no laboral) es, a todos los efectos, una contingencia común — comparte con la enfermedad común el mismo cálculo de base reguladora y porcentajes de <span class="tipo-cc">CC</span>. La única particularidad es que no <span class="obligacion">exige</span> PMC, a diferencia de la enfermedad común, que sí <span class="obligacion">exige</span> <span class="plazo">180 días</span> en los <span class="plazo">5 años</span> anteriores. No confundas "no <span class="obligacion">exige</span> PMC" con "se calcula como una contingencia profesional": son dos cuestiones independientes.</div>
+<h4 style="color:var(--text-dim);margin-top:20px;font-size:0.95rem;">PMC de la gestación <span class="tipo-cp">S39.1</span> (remisión al PMC de NYCM)</h4>
+@@TABLE1@@
+<table class="tabla-estudio">
+<tr><th>Edad de la trabajadora</th><th>PMC exigido</th></tr>
+<tr><td>Menor de <span class="plazo">21 años</span> (no incluidos los 21)</td><td>No se <span class="obligacion">exige</span> PMC (pero <span class="obligacion">debe</span> seguir siendo trabajadora en alta o asimilada)</td></tr>
+<tr><td>Entre 21 y <span class="plazo">25 años</span> (26 no incluidos)</td><td><span class="plazo">90 días</span> en los últimos <span class="plazo">7 años</span>, o <span class="plazo">180 días</span> a lo largo de la vida laboral (alternativos)</td></tr>
+<tr><td><span class="plazo">26 años</span> en adelante (incluidos)</td><td><span class="plazo">180 días</span> en los últimos <span class="plazo">7 años</span>, o <span class="plazo">360 días</span> a lo largo de la vida laboral (alternativos)</td></tr>
+</table>
+<div class="mnemo"><span class="tag">🧠 Mnemotecnia</span>Para la edad "menor de 21": la LGSS pone el año siguiente a la decena (21) como salto de umbral, pero en tu cabeza "reine que es hasta 20". Es el mismo patrón que verás con el salto a los <span class="plazo">31 años</span> en el tema de Incapacidad Permanente.</div>
+<p>Estos requisitos son alternativos, no acumulativos: basta con cumplir uno de los dos (días en los últimos <span class="plazo">7 años</span>, o días a lo largo de toda la vida laboral) para satisfacer el PMC.</p>
+<div class="confusion"><span class="tag">⚠ Confusión frecuente</span>Pregunta tipo test habitual: "¿cuál de las cuatro situaciones especiales es la única que <span class="obligacion">exige</span> PMC?" → la gestación desde la semana 39ª. Las otras tres (<span class="tipo-otras">MIS</span>, <span class="tipo-cp">IE</span>, <span class="tipo-otras">DOT</span>) no <span class="obligacion">exigen</span> ningún período de cotización.</div>
+<h4 style="color:var(--text-dim);margin-top:20px;font-size:0.95rem;">Cómputo del PMC en contratos a tiempo parcial y de corta duración</h4>
+<p><a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a247" target="_blank">A247</a> — Contratos a tiempo parcial: se tendrán en cuenta los distintos períodos durante los cuales el trabajador haya permanecido en alta con un contrato a tiempo parcial, cualquiera que sea la duración de la jornada realizada en cada uno de ellos.</p>
+<p>Desde hace unos años ya no se aplican coeficientes de proporcionalidad por horas: se computa el 100% del día cotizado con independencia de que la jornada sea de 3, 6 u 8 horas. Ojo: esto no implica que el importe de la prestación vaya a ser igual — el importe depende de la base de cotización real, que sí es más baja cuanto menor sea la jornada (lo verás en el capítulo 2).</p>
+<p><a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a249bis" target="_blank">A249bis</a> — Contratos de corta duración (igual o inferior a <span class="plazo">5 días</span>): cada día de trabajo se considerará como 1,<span class="plazo">4 días</span> de cotización, sin que en ningún caso pueda computarse mensualmente un número de días mayor que el que corresponda al mes.</p>
+<p>El origen del coeficiente 1,4 es una simple división: <span class="plazo">7 días</span> de la semana ÷ <span class="plazo">5 días</span> de duración máxima del contrato = 1,4. La idea es equiparar a que, si trabajas <span class="plazo">5 días</span> bajo esta modalidad, se te reconozcan los <span class="plazo">7 días</span> de la semana a efectos de cotización. Este coeficiente solo se aplica a los días trabajados bajo esta modalidad — si el mismo trabajador tiene además un contrato normal a jornada completa, ese otro contrato no se multiplica por 1,4.</p>
+<div class="ejemplo"><span class="tag">📌 Ejemplo</span><span class="plazo">20 días</span> trabajados en contratos de corta duración → 20 × 1,4 = <span class="plazo">28 días</span> de cotización computables (nunca más de los días naturales del mes en que se trabajen).</div>
+<h3 class="epigrafe">Situaciones asimiladas al alta para IT</h3>
+<ul>
+<li>La percepción de la prestación por desempleo de nivel contributivo.</li>
+<li>El período correspondiente a vacaciones anuales retribuidas no disfrutadas antes de la finalización del contrato.</li>
+<li>Traslado por la empresa fuera del territorio nacional.</li>
+<li>Convenio especial de Diputados y Senadores de las Cortes Generales y del Parlamento Europeo, y de miembros de los Parlamentos y de los Gobiernos de las CCAA.</li>
+<li>Trabajadora por cuenta propia que es víctima de violencia de género (no en el caso de la suspensión del contrato de una trabajadora por cuenta ajena).</li>
+</ul>
+<div class="recordatorio"><span class="tag">⚑ Recordatorio</span>El catálogo detallado de situaciones asimiladas al alta específico de cada prestación no merece un estudio exhaustivo en primeras vueltas de estudio — los exámenes oficiales no suelen obsesionarse con ese detalle. Lo importante es dominar el concepto general de asimilada al alta (<a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a165" target="_blank">A165</a>, ya visto en Acción Protectora). Reserva el catálogo detallado para un repaso de ampliación, con la base ya consolidada.</div>
+<h3 class="epigrafe">📋 Esquema-resumen del capítulo 1</h3>
+<div class="sintesis-grid">
+  <div class="sintesis-card"><h5><a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a169" target="_blank">A169</a> Concepto de IT</h5><p>a) <span class="tipo-cc">EC</span>/<span class="tipo-cc">AT</span>/<span class="tipo-cc">EP</span>/<span class="tipo-cc">ANL</span>: 365d + 180d prórroga.<br>b) Observación <span class="tipo-cc">EP</span>: 180d + 180d prórroga.<br>+ Situaciones especiales <span class="tipo-cc">CC</span>: <span class="tipo-otras">MIS</span> · <span class="tipo-cp">IE</span> · Gestación <span class="tipo-cp">S39.1</span> · <span class="tipo-otras">DOT</span>.</p></div>
+  <div class="sintesis-card"><h5>Recaída</h5><p>Misma/similar patología, 180d desde el <strong>ALTA MÉDICA</strong> (no desde el HC). Excepción: <span class="tipo-otras">MIS</span> siempre es proceso nuevo.</p></div>
+  <div class="sintesis-card"><h5><a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a172" target="_blank">A172</a> Beneficiarios</h5><p>Req. particulares + Afiliado + Alta/Asimilado. PMC: <span class="tipo-cc">EC</span> → 180d/<span class="plazo">5años</span> · <span class="tipo-cc">AT</span>/<span class="tipo-cc">EP</span>/<span class="tipo-cc">ANL</span>/<span class="tipo-otras">MIS</span>/<span class="tipo-cp">IE</span>/<span class="tipo-otras">DOT</span> → NO PMC · Gestación <span class="tipo-cp">S39.1</span> → PMC de NYCM.</p></div>
+</div>
+
+<div class="quiz-box">
+  <p class="quiz-q">¿Desde qué fecha empieza a contar el plazo de <span class="plazo">180 días</span> para valorar si una nueva baja es una recaída?</p>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'t8q1')">Desde el hecho causante (HC) de la enfermedad original</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'t8q1')">Desde la fecha del alta médica anterior</button>
+  <div class="quiz-feedback" id="fb-t8q1"></div>
+</div>
+<div class="quiz-box">
+  <p class="quiz-q">¿Qué situación especial de IT por contingencia común nunca tiene la consideración de recaída?</p>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'t8q2')">La interrupción del embarazo (<span class="tipo-cp">IE</span>)</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'t8q2')">La menstruación incapacitante secundaria (<span class="tipo-otras">MIS</span>)</button>
+  <div class="quiz-feedback" id="fb-t8q2"></div>
+</div>
+</section>
+
+<section class="capitulo" id="cap2">
+<div class="cap-header">Capítulo 2 — Prestación económica: determinación y cuantía</div>
+<p class="mapa-label">🌳 Hilo conductor del capítulo</p>
+<div class="mapa-cap">
+  <div class="mapa-arbol">
+    <div class="mapa-nodo raiz">SUBSIDIO DE IT</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">BASE REGULADORA</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-rama">
+      <div class="mapa-nodo">BR contingencias comunes</div>
+      <div class="mapa-nodo">BR contingencias profesionales</div>
+      <div class="mapa-nodo">BR en pluriempleo</div>
+      <div class="mapa-nodo">BR en tiempo parcial y fijos discontinuos</div>
+    </div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">PORCENTAJE APLICABLE</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-rama">
+      <div class="mapa-nodo">EC / ANL <span class="art">60% → 75%</span></div>
+      <div class="mapa-nodo">AT / EP <span class="art">75%</span></div>
+    </div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">SITUACIONES ESPECIALES</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo hoja">Cuantía del subsidio</div>
+  </div>
+</div>
+<a class="mnemo-link" href="T08_Anexo2_ResumenLiteral.html#a2t8-bloque2" target="_blank" style="display:inline-block;margin:6px 0 10px;font-size:0.82rem;color:var(--accent-green,#3ddc97);text-decoration:none;border:1px solid var(--border-lgss,#2a3441);padding:4px 10px;border-radius:6px;">🔖 Ver mnemotecnias y resumen (Anexo 2)</a>
+<p>(<span class="articulo chip-lgss">A13</span> Decreto 1646/1972)</p>
+<p>El subsidio se calcula como una cuantía diaria resultante de aplicar un porcentaje (%) a la Base Reguladora (BR).</p>
+<p>Subsidio diario = BR x % (según contingencia/día del proceso)</p>
+<div class="recordatorio"><span class="tag">⚑ Recordatorio</span>Regla de oro: la IT es la única prestación de la Seguridad Social que se calcula con la base de cotización del mes anterior al hecho causante. El resto de prestaciones (jubilación, IP, etc.) suelen mirar más atrás en el tiempo — no traslades este criterio de "un solo mes atrás" a otras prestaciones.</div>
+<h3 class="epigrafe">Base Reguladora de Contingencias Comunes (<span class="tipo-cc">EC</span>/<span class="tipo-cc">ANL</span>)</h3>
+<p>Es el resultado de dividir el importe de la BC por <span class="tipo-cc">CC</span> del trabajador del mes anterior al de la fecha de inicio de la IT, excluidas las horas extraordinarias, entre el número de días a que dicha cotización se refiere.</p>
+@@TABLE2@@
+<table class="tabla-estudio">
+<tr><th>Modalidad salarial</th><th>Grupos de cotización</th><th>Divisor</th></tr>
+<tr><td>Salario mensual</td><td>Grupos 1 al 7</td><td>Siempre entre 30, con independencia de que el mes real tenga 28, 29, 30 o <span class="plazo">31 días</span></td></tr>
+<tr><td>Salario diario</td><td>Grupos 8 al 11</td><td>Entre los días reales del mes (28, 29, 30 o 31)</td></tr>
+</table>
+<div class="recordatorio"><span class="tag">⚑ Recordatorio</span>En los supuestos prácticos, si te dan el grupo de cotización del trabajador, ahí tienes la pista de cómo dividir: grupos 1-7 → entre 30 siempre; grupos 8-11 → entre los días reales del mes.</div>
+<p>Particularidades: si el trabajador ingresa en la empresa en el mismo mes en que se inicia la IT (no hay mes anterior completo), se toma la BC de ese mismo mes entre los días efectivamente cotizados — desde el día de alta hasta el día inmediatamente anterior al hecho causante (nunca se cuenta el día del hecho causante, porque ese día ya no se trabaja: la prestación sustituye al salario y ambos no pueden "pisarse"). Lo mismo si el mes anterior no se cotizó íntegramente.</p>
+<div class="confusion"><span class="tag">⚠ Confusión frecuente</span>Error típico del opositor: al contar los días entre dos fechas (p. ej. del día 5 al día 19), hay que contar todos los días, ambos inclusive — usa los dedos si hace falta. Restar directamente las cifras (19-5=14) da el número de "huecos" entre fechas, no el número de días naturales cotizados, que en este ejemplo serían 15.</div>
+<div class="ejemplo"><span class="tag">📌 Ejemplo</span>IT iniciada en abril, salario mensual, BC de marzo = 1.500 €. Se mira el mes de marzo (el mes anterior, no el mes del HC). División entre 30 (aunque marzo tenga 31): 1.500 / 30 = 50 €/día.</div>
+<h3 class="epigrafe">Base Reguladora de Contingencias Profesionales (<span class="tipo-cc">AT</span>/<span class="tipo-cc">EP</span>)</h3>
+<p>Es la suma de la BC por <span class="tipo-cp">CP</span> del trabajador del mes anterior a la fecha de iniciación de la IT (excluidas horas extraordinarias), dividida entre el número de días a que corresponda esa cotización, más la cotización por horas extraordinarias del año natural anterior, dividida entre <span class="plazo">365 días</span>.</p>
+<div class="flujo">
+  <div class="flujo-caja">BC_CP mes anterior / nº días</div><div class="flujo-flecha">+</div>
+  <div class="flujo-caja">BC horas extra año natural anterior / 365</div><div class="flujo-flecha">=</div>
+  <div class="flujo-caja rama-si">BR (contingencia profesional)</div>
+</div>
+<div class="mnemo"><span class="tag">🧠 Mnemotecnia</span>"<span class="tipo-cc">CC</span> no lleva extras, <span class="tipo-cp">CP</span> las reparte en 365" — en <span class="tipo-cc">CC</span> las horas extraordinarias quedan excluidas de la BR; en <span class="tipo-cp">CP</span> no se excluyen, sino que se prorratean a lo largo de todo el año natural anterior.</div>
+<h3 class="epigrafe">BR en pluriempleo</h3>
+<p>Se computan todas las BC en las distintas empresas, con aplicación del tope máximo vigente a efectos de cotización. Un directivo con un salario muy alto en pluriempleo no cotiza (ni cobra la prestación) por encima de ese tope máximo, aunque la suma real de sus salarios lo supere.</p>
+<h3 class="epigrafe">BR en contratos a tiempo parcial o fijos-discontinuos</h3>
+<div class="actualizacion"><span class="tag">🆕 Actualización normativa</span>Desde 2025 el cálculo cambió: antes se tomaba, igual que en el caso general, el mes anterior al hecho causante. Desde 2025, se toma un máximo de tres meses inmediatamente anteriores al mes previo al hecho causante (es decir, se "salta" un mes extra respecto al esquema estándar). Muchos manuales y apuntes pueden estar desactualizados en este punto concreto — comprueba siempre la versión vigente.</div>
+<p>Se divide la suma de las BC a tiempo parcial acreditadas desde la última alta, con un máximo de tres meses inmediatamente anteriores al mes previo al del hecho causante, entre el número de días naturales comprendidos en el período.</p>
+<p>Importante: la prestación se abona durante todos los días naturales en que la persona esté en IT; sin embargo, por la modalidad de contrato, el importe será de menor cuantía al tener una BR más baja.</p>
+<div class="ejemplo"><span class="tag">📌 Ejemplo</span>IT iniciada el 13 de mayo. Se excluye el mes del HC (mayo) y también abril (el mes previo), tomando enero, febrero y marzo. BC = 1.800 €/mes en los tres meses. Cálculo: 1.800 € × 3 / (31+28+31) días = 5.400 € / <span class="plazo">90 días</span> = 60 €/día.</div>
+<div class="recordatorio"><span class="tag">⚑ Recordatorio</span>"La IT suple el salario" — si el trabajador cambia de empresa, solo se computa la cotización de la empresa actual/vigente, aunque tenga cotización de la empresa anterior en alguno de esos meses. En fijos-discontinuos, se usa el último llamamiento vigente, no las cotizaciones de llamamientos anteriores, aunque sean de la misma empresa.</div>
+<h3 class="epigrafe">Porcentajes aplicables</h3>
+@@TABLE3@@
+<table class="tabla-estudio">
+<tr><th>Contingencia / situación</th><th>Tramo</th><th>% sobre BR</th></tr>
+<tr><td><span class="tipo-cc">CC</span> (<span class="tipo-cc">EC</span>/<span class="tipo-cc">ANL</span>)</td><td>días <span class="dia-num">1-3</span></td><td>0% (sin subsidio)</td></tr>
+<tr><td><span class="tipo-cc">CC</span> (<span class="tipo-cc">EC</span>/<span class="tipo-cc">ANL</span>)</td><td>día <span class="dia-num">4</span> al <span class="dia-num">20</span>, ambos inclusive</td><td>60%</td></tr>
+<tr><td><span class="tipo-cc">CC</span> (<span class="tipo-cc">EC</span>/<span class="tipo-cc">ANL</span>)</td><td>día <span class="dia-num">21</span> en adelante</td><td>75%</td></tr>
+<tr><td><span class="tipo-cp">CP</span> (<span class="tipo-cc">AT</span>/<span class="tipo-cc">EP</span>)</td><td>día <span class="dia-num">1</span></td><td>a cargo del empresario (salario íntegro, no es subsidio)</td></tr>
+<tr><td><span class="tipo-cp">CP</span> (<span class="tipo-cc">AT</span>/<span class="tipo-cc">EP</span>)</td><td>desde el día siguiente al HC</td><td>75%</td></tr>
+<tr><td><span class="tipo-otras">MIS</span></td><td>día <span class="dia-num">1</span> al <span class="dia-num">20</span>, ambos inclusive</td><td>60%</td></tr>
+<tr><td><span class="tipo-otras">MIS</span></td><td>día <span class="dia-num">21</span> en adelante</td><td>75%</td></tr>
+<tr><td><span class="tipo-cp">IE</span> / Gestación <span class="tipo-cp">S39.1</span></td><td>día <span class="dia-num">1</span></td><td>a cargo del empresario (como en <span class="tipo-cp">CP</span>)</td></tr>
+<tr><td><span class="tipo-cp">IE</span> / Gestación <span class="tipo-cp">S39.1</span></td><td>día <span class="dia-num">2</span> al <span class="dia-num">20</span>, ambos inclusive</td><td>60%</td></tr>
+<tr><td><span class="tipo-cp">IE</span> / Gestación <span class="tipo-cp">S39.1</span></td><td>día <span class="dia-num">21</span> en adelante</td><td>75%</td></tr>
+<tr><td><span class="tipo-otras">DOT</span> (donación de órganos)</td><td>desde el día <span class="dia-num">1</span></td><td>100%</td></tr>
+</table>
+<table class="tabla-estudio">
+<tr><th>Contingencia</th><th>Días 1-3</th><th>Días 4-20</th><th>Día 21+</th></tr>
+<tr><td><span class="tipo-cc">CC</span></td><td><span class="pct">0%</span></td><td><span class="pct">60%</span></td><td><span class="pct">75%</span></td></tr>
+<tr><td><span class="tipo-cp">CP</span></td><td colspan="1"><span class="pct">empresa (día 1)</span></td><td colspan="2"><span class="pct">75%</span> (desde día 2)</td></tr>
+<tr><td><span class="tipo-otras">MIS</span></td><td colspan="2"><span class="pct">60%</span> (días 1-20)</td><td><span class="pct">75%</span></td></tr>
+<tr><td><span class="tipo-cp">IE</span> / <span class="tipo-cp">S39.1</span></td><td><span class="pct">empresa (día 1)</span></td><td><span class="pct">60%</span> (días 2-20)</td><td><span class="pct">75%</span></td></tr>
+<tr><td><span class="tipo-otras">DOT</span></td><td colspan="3"><span class="pct">100%</span> desde el día 1</td></tr>
+</table>
+<div class="confusion"><span class="tag">⚠ Confusión frecuente</span>En <span class="tipo-cc">CC</span> los 3 primeros días no generan subsidio en absoluto (0%); en <span class="tipo-cp">CP</span>, <span class="tipo-otras">MIS</span>, <span class="tipo-cp">IE</span>, <span class="tipo-cp">S39.1</span> y <span class="tipo-otras">DOT</span> hay cobertura desde el primer día (aunque en <span class="tipo-cp">CP</span>/<span class="tipo-cp">IE</span>/<span class="tipo-cp">S39.1</span> ese primer día lo paga el empresario como salario, no como subsidio de la SS). El vacío de los 3 primeros días de <span class="tipo-cc">CC</span> existe, según explica el propio preparador, para desincentivar el abuso de la baja médica por contingencia común.</div>
+<div class="mnemo"><span class="tag">🧠 Mnemotecnia</span>"La común calla <span class="plazo">3 días</span>; la profesional no calla nunca" — <span class="tipo-cc">CC</span> tiene un hueco de carencia de <span class="plazo">3 días</span> sin nada; el resto de contingencias/situaciones especiales cubren desde el día 1.</div>
+<div class="recordatorio"><span class="tag">⚑ Recordatorio</span>Gestación <span class="tipo-cp">S39.1</span> — particularidad: se abona desde que se inicia la baja hasta la fecha del parto, <span class="excepcion">salvo</span> que la trabajadora hubiera iniciado antes una situación de riesgo durante el embarazo (prestación más beneficiosa, al 100%), en cuyo caso esta prestación "pisa" y desplaza a la IT por <span class="tipo-cp">S39.1</span> — son incompatibles entre sí, no se perciben ambas a la vez.</div>
+<div class="confusion"><span class="tag">⚠ Confusión frecuente</span><a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a173" target="_blank">A173.3</a> — Huelga y cierre patronal: durante estas situaciones el trabajador no tiene derecho a la prestación económica por IT. Si la IT es anterior a la huelga, continúa; si surge durante la huelga, se percibe <span class="condicion">cuando</span> esta finaliza; en huelga ilegal no hay derecho; en huelga parcial, reducción proporcional de la jornada.</div>
+<div class="confusion"><span class="tag">⚠ Confusión frecuente</span>Sistema Especial de Empleados de Hogar — la ley dice literalmente que el subsidio por <span class="tipo-cc">CC</span> se abona a partir del noveno día (no del cuarto), estando a cargo del empleador el abono entre el día 4 y el 8, ambos inclusive. Es una redacción llamativa (muchos entienden por lógica que el nacimiento sigue siendo el día 4, como en el Régimen General), pero hay preguntas de examen que siguen la literalidad del día 9 — memorízala tal cual. Además: no se aplica pago delegado en los días 4-8 (los paga directamente la unidad familiar empleadora) y no se aplica el régimen de responsabilidades del <a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a167" target="_blank">A167</a> a la unidad familiar por incumplimientos de alta.</div>
+<h3 class="epigrafe">Ejemplo resuelto completo</h3>
+<div class="ejemplo"><span class="tag">📌 Ejemplo</span>Martín, grupo 5 de cotización, <span class="plazo">3 años</span> consecutivos trabajando. Causa baja por neumonía severa (<span class="tipo-cc">CC</span>) el 10 de noviembre y permanece en IT hasta el 5 de diciembre. BC: septiembre 1.500 € · octubre 1.800 € · noviembre 1.600 € (las otras cifras son distractores típicos de examen — el mes correcto a mirar es siempre el anterior al HC).</div>
+<p>1. Confirmar PMC (<span class="plazo">180 días</span> en <span class="plazo">5 años</span>). 2. BR/día = mes anterior a la baja (octubre) = 1.800 / 30 = 60 €/día. 3. Aplicar %: 60% de 60 = 36 €/día; 75% de 60 = 45 €/día. 4. Multiplicar por días: días 10-12 nov. (días 1º-3º) sin subsidio; del 13 al 29 nov. (días 4º-20º, <span class="plazo">17 días</span>) × 36 € = 612 €; del 30 nov. al 5 dic. (día 21º+, <span class="plazo">6 días</span>) × 45 € = 270 €. Total: 882 €.</p>
+<div class="confusion"><span class="tag">⚠ Confusión frecuente</span>Distingue siempre "día X de la baja" de "día X del mes calendario" — pueden coincidir o no según cuándo empezó la baja. En el ejemplo de Martín, "el día 21 de noviembre" (36 €, aún en el tramo del 60%) es distinto de "el día 21 de la baja" (que cae el 30 de noviembre, ya en el tramo del 75% = 45 €).</div>
+<div class="recordatorio"><span class="tag">⚑ Recordatorio</span>Estrategia de examen: si la baja dura pocos días (p. ej. <span class="plazo">17 días</span>), no pierdas tiempo calculando el tramo del 75% si no se llega a alcanzar el día 21 — calcula solo el tramo que realmente aplica.</div>
+<h3 class="epigrafe">📋 Esquema-resumen del capítulo 2</h3>
+<div class="sintesis-grid">
+  <div class="sintesis-card"><h5>BR Contingencia Común</h5><p>BC mes anterior / nº días (÷30 si mensual).</p></div>
+  <div class="sintesis-card" style="border-left-color:#f472b6;"><h5 style="color:#f472b6;">BR Contingencia Profesional</h5><p>BC <span class="tipo-cp">CP</span> mes anterior/nº días + BC hh.extra año anterior/365.</p></div>
+  <div class="sintesis-card"><h5>BR Pluriempleo</h5><p>Suma de BC en todas las empresas (tope máx. de cotización).</p></div>
+  <div class="sintesis-card"><h5>BR t. parcial/fijo-discontinuo <small>(desde 2025)</small></h5><p>Suma BC de <span class="plazo">3 meses</span> (<span class="plazo">2 meses</span> atrás del HC) / días naturales.</p></div>
+</div>
+<table class="tabla-estudio">
+<tr><th>Contingencia</th><th>Días 1-3</th><th>Días 4-20</th><th>Día 21+</th></tr>
+<tr><td><span class="tipo-cc">CC</span></td><td><span class="pct">0%</span></td><td><span class="pct">60%</span></td><td><span class="pct">75%</span></td></tr>
+<tr><td><span class="tipo-cp">CP</span></td><td><span class="pct">empresa</span> (día <span class="dia-num">1</span>)</td><td colspan="2"><span class="pct">75%</span> (desde día <span class="dia-num">2</span>)</td></tr>
+<tr><td><span class="tipo-otras">MIS</span></td><td colspan="2"><span class="pct">60%</span> (días 1-20)</td><td><span class="pct">75%</span></td></tr>
+<tr><td><span class="tipo-cp">IE</span> / <span class="tipo-cp">S39.1</span></td><td><span class="pct">empresa</span> (día <span class="dia-num">1</span>)</td><td><span class="pct">60%</span> (días 2-20)</td><td><span class="pct">75%</span></td></tr>
+<tr><td><span class="tipo-otras">DOT</span></td><td colspan="3"><span class="pct">100%</span> desde el día <span class="dia-num">1</span></td></tr>
+</table>
+
+<div class="quiz-box">
+  <p class="quiz-q">En contingencia común (<span class="tipo-cc">CC</span>), ¿qué porcentaje de subsidio corresponde a los 3 primeros días de baja?</p>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'t8q3')">0% — no genera subsidio</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'t8q3')">60%, igual que del día 4 al 20</button>
+  <div class="quiz-feedback" id="fb-t8q3"></div>
+</div>
+<div class="quiz-box">
+  <p class="quiz-q">Para la BR de contingencia profesional (<span class="tipo-cp">CP</span>), ¿sobre qué periodo se calculan las horas extraordinarias?</p>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'t8q4')">El mes anterior al hecho causante, igual que la BC de <span class="tipo-cp">CP</span></button>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'t8q4')">El año natural anterior, dividido entre 365</button>
+  <div class="quiz-feedback" id="fb-t8q4"></div>
+</div>
+</section>
+
+<section class="capitulo" id="cap3">
+<div class="cap-header">Capítulo 3 — Nacimiento, duración y extinción del derecho al subsidio</div>
+<p class="mapa-label">🌳 Hilo conductor del capítulo</p>
+<div class="mapa-cap">
+  <div class="mapa-arbol">
+    <div class="mapa-nodo raiz">NACIMIENTO DEL DERECHO <span class="art">A173</span></div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-rama">
+      <div class="mapa-nodo">EC / ANL</div>
+      <div class="mapa-nodo">AT / EP</div>
+      <div class="mapa-nodo">Situaciones especiales</div>
+    </div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">COMPETENCIAS SOBRE LA IT <span class="art">A170</span></div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo hoja">Control hasta 365 días → Prórroga de 180 días → Impugnación de altas médicas → Procedimiento de disconformidad</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">EXTINCIÓN DEL SUBSIDIO <span class="art">A174</span></div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo hoja">Límite máximo 545 días → Examen de IP → Prolongación de efectos económicos → Límite absoluto 730 días</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">PÉRDIDA O SUSPENSIÓN DEL DERECHO <span class="art">A175</span></div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo hoja">Períodos de observación por EP <span class="art">A176</span></div>
+  </div>
+</div>
+<a class="mnemo-link" href="T08_Anexo2_ResumenLiteral.html#a2t8-bloque3" target="_blank" style="display:inline-block;margin:6px 0 10px;font-size:0.82rem;color:var(--accent-green,#3ddc97);text-decoration:none;border:1px solid var(--border-lgss,#2a3441);padding:4px 10px;border-radius:6px;">🔖 Ver mnemotecnias y resumen (Anexo 2)</a>
+<h3 class="epigrafe"><a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a173" target="_blank">A173</a>. Nacimiento y duración del derecho al subsidio</h3>
+<p>El subsidio se abonará mientras el beneficiario se encuentre en alguna situación de IT conforme al <a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a169" target="_blank">A169</a>: asistencia sanitaria + impedimento para el trabajo.</p>
+@@TABLE4@@
+<table class="tabla-estudio">
+<tr><th>Contingencia / situación</th><th>Nace</th><th>Responsable del pago</th></tr>
+<tr><td><span class="tipo-cc">CC</span> (<span class="tipo-cc">EC</span>/<span class="tipo-cc">ANL</span>)</td><td>4º día de la baja</td><td>Del 4º al 15º: empresario. Desde el 16º: <span class="sujeto-priv">INSS</span>/<span class="sujeto-priv">MUTUA</span></td></tr>
+<tr><td><span class="tipo-cp">CP</span> (<span class="tipo-cc">AT</span>/<span class="tipo-cc">EP</span>)</td><td>Día siguiente a la baja (día <span class="dia-num">2</span>)</td><td>Empresario el día de la baja (salario íntegro); resto entidad gestora/<span class="sujeto-priv">mutua</span></td></tr>
+<tr><td><span class="tipo-otras">MIS</span></td><td>Mismo día de la baja (día <span class="dia-num">1</span>)</td><td>Entidad gestora/colaboradora que cubra la IT por <span class="tipo-cc">CC</span></td></tr>
+<tr><td><span class="tipo-cp">IE</span></td><td>Día siguiente a la baja (día <span class="dia-num">2</span>)</td><td>Empresario el día de la baja; resto entidad gestora/colaboradora de <span class="tipo-cc">CC</span></td></tr>
+<tr><td>Gestación <span class="tipo-cp">S39.1</span></td><td>Día siguiente a la baja (día <span class="dia-num">2</span>)</td><td>Igual que <span class="tipo-cp">IE</span> — hasta la fecha del parto</td></tr>
+<tr><td><span class="tipo-otras">DOT</span></td><td>Mismo día de la baja (día <span class="dia-num">1</span>)</td><td>Entidad gestora/colaboradora que cubra la IT por <span class="tipo-cc">CC</span></td></tr>
+</table>
+<div class="mnemo"><span class="tag">🧠 Mnemotecnia</span>"<span class="tipo-otras">MIS</span> y <span class="tipo-otras">DOT</span> nacen ya" (día <span class="dia-num">1</span>); "<span class="tipo-cp">CP</span>, <span class="tipo-cp">IE</span> y <span class="tipo-cp">S39.1</span> nacen mañana" (día <span class="dia-num">2</span>, tras el día de la baja pagado íntegro por la empresa); "solo <span class="tipo-cc">CC</span> tarda <span class="plazo">4 días</span>".</div>
+<h3 class="epigrafe"><a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a170" target="_blank">A170</a>. Competencias sobre los procesos de incapacidad temporal</h3>
+<div class="flujo">
+  <div class="flujo-caja">Hasta el día 365<br><small><span class="sujeto-priv">INSS</span> (insp. médica) + SPS comparten altas y recaídas</small></div>
+  <div class="flujo-flecha">→</div>
+  <div class="flujo-caja rama-si">Desde el día 366<br><small><span class="sujeto-priv">INSS</span> en EXCLUSIVA (altas, recaídas)</small></div>
+</div>
+<p>Hasta el día 365, el <span class="sujeto-priv">INSS</span> ejercerá, a través de su inspección médica, las mismas competencias que la inspección del SPS para emitir un alta médica y para considerar que existe recaída. Cuando el alta haya sido expedida por el <span class="sujeto-priv">INSS</span>, este será el único competente para emitir una nueva baja médica por la misma o similar patología en los <span class="plazo">180 días</span> siguientes (recaída).</p>
+<div class="confusion"><span class="tag">⚠ Confusión frecuente</span>Si el <span class="sujeto-priv">INSS</span> "se inmiscuye" y da un alta médica dentro del período de los <span class="plazo">365 días</span>, el <span class="sujeto-priv">INSS</span> pasa a ser el único competente para reconocer una recaída posterior de esa misma IT — desplaza al SPS, aunque sigamos dentro del umbral de los <span class="plazo">365 días</span>.</div>
+<p>Desde el día 366, la inspección médica del <span class="sujeto-priv">INSS</span> será la única competente para emitir el alta médica por curación, mejoría, propuesta de IP o incomparecencia injustificada, y también para emitir una nueva baja por la misma o similar patología en los <span class="plazo">180 días naturales</span> posteriores.</p>
+<p>La falta de alta médica, agotado el plazo de <span class="plazo">365 días</span>, <span class="obligacion">supone que</span> el trabajador entra automáticamente en situación de prórroga de IT — no se requiere declaración expresa.</p>
+<div class="confusion"><span class="tag">⚠ Confusión frecuente</span>Trampa de fechas: si el examen da fechas de un año a otro (p. ej. de "<span class="fecha">10 de noviembre de 2026</span>" a "<span class="fecha">5 de diciembre de 2027</span>"), fíjate en el año, no solo en el mes — puede tratarse de "un año y un mes" en lugar de "un mes", lo que cambia la competencia de compartida (SPS/<span class="sujeto-priv">INSS</span>) a exclusiva (<span class="sujeto-priv">INSS</span>). Mira siempre los meses y el año.</div>
+<h3 class="epigrafe">Impugnación de altas médicas</h3>
+@@TABLE5@@
+<table class="tabla-estudio">
+<tr><th>Momento del alta</th><th>Vía de impugnación</th><th>Plazos</th></tr>
+<tr><td>Hasta el día 365 (y durante la prórroga)</td><td>Reclamación previa (RP), plazo excepcional IT</td><td>Interponer <span class="plazo">11 días hábiles</span> / Resolver <span class="plazo">7 días hábiles</span></td></tr>
+<tr><td>Día 366 o hábil posterior (agotados los 365 sin prórroga)</td><td>Procedimiento de disconformidad (<a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a170" target="_blank">A170</a>)</td><td>4d naturales (trabajador) + 7d naturales (SPS) + 7d naturales (<span class="sujeto-priv">INSS</span>) / 11d naturales (silencio)</td></tr>
+</table>
+<div class="confusion"><span class="tag">⚠ Confusión frecuente</span>La reclamación previa estándar de cualquier otra prestación usa plazos de <span class="plazo">30 días hábiles</span> para interponer y 45 para resolver; en IT se acortan a 11 y <span class="plazo">7 días hábiles</span> porque afecta a la salud y requiere mayor celeridad. Además, el procedimiento de disconformidad usa plazos naturales, mientras que la reclamación previa usa plazos hábiles — este contraste (hábiles vs. naturales) es fuente habitual de confusión en examen.</div>
+<p>Procedimiento de disconformidad: el trabajador manifiesta su disconformidad ante la inspección médica del SPS en <span class="plazo">4 días naturales</span>. Si el SPS discrepa del <span class="sujeto-priv">INSS</span>, se lo propone en <span class="plazo">7 días naturales</span>; el <span class="sujeto-priv">INSS</span> responde en otros <span class="plazo">7 días naturales</span> — si reconsidera, se reconoce la prórroga de la IT a todos los efectos; si se reafirma, se prorroga igualmente pero solo hasta la fecha de esa última resolución (para no dejar al trabajador sin IT ni salario). Si el SPS confirma al <span class="sujeto-priv">INSS</span>, o hay silencio administrativo en <span class="plazo">11 días naturales</span>, el alta adquiere plenos efectos (con el período intermedio considerado prorrogado).</p>
+<div class="esquema"><div class="tree">
+  <div class="nodo-raiz">Trabajador reclama a Insp. SPS (4d nat.)</div>
+  <div class="tronco"></div>
+  <div class="fila-ramas">
+    <div class="columna-rama">
+      <div class="bajante"></div><div class="nodo">SPS discrepa → Insp. SPS 7d + <span class="sujeto-priv">INSS</span> 7d</div>
+      <div class="bajante2"></div>
+      <div class="fila-hijos">
+        <div class="columna-hijo"><div class="bajante3"></div><div class="nodo-hijo"><span class="sujeto-priv">INSS</span> reconsidera<small>prórroga IT</small></div></div>
+        <div class="columna-hijo"><div class="bajante3"></div><div class="nodo-hijo"><span class="sujeto-priv">INSS</span> se reafirma<small>prórroga hasta resolución</small></div></div>
+      </div>
+    </div>
+    <div class="columna-rama"><div class="bajante"></div><div class="nodo">SPS confirma / silencio 11d</div><div class="nodo-final">Alta plenos efectos (prorrogada mientras tanto)</div></div>
+  </div>
+</div></div>
+<div class="mnemo"><span class="tag">🧠 Mnemotecnia</span>En cualquiera de los tres escenarios, se prorroga: tanto si el SPS discrepa y el <span class="sujeto-priv">INSS</span> reconsidera, como si discrepa y el <span class="sujeto-priv">INSS</span> se reafirma, como si el SPS confirma — en los tres casos hay un período intermedio que se considera prorrogado.</div>
+<h3 class="epigrafe"><a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a174" target="_blank">A174</a>. Extinción del derecho al subsidio</h3>
+<p>El derecho al subsidio se <span class="obligacion">extinguirá</span> por: el transcurso del plazo máximo de <span class="plazo">545 días naturales</span> desde la baja médica; alta médica por curación o mejoría; ser dado de alta el trabajador con o sin declaración de IP; el reconocimiento de la pensión de jubilación; la incomparecencia injustificada a los reconocimientos médicos convocados; y por fallecimiento.</p>
+<p>A efectos de la duración, se computan los períodos de recaída en un mismo proceso: <span class="plazo">25 días</span> + <span class="plazo">10 días</span> de recaída = <span class="plazo">35 días</span> consumidos del máximo de 545.</p>
+<div class="confusion"><span class="tag">⚠ Confusión frecuente</span>No vale tener una IT de <span class="plazo">300 días</span> y luego, dentro de los <span class="plazo">180 días</span> siguientes al alta, otra recaída de otros <span class="plazo">300 días</span>, porque 300+300 = 600 excede el tope de 545. El tope de <span class="plazo">545 días</span> es absoluto para la duración total del proceso (sumando todas las recaídas).</div>
+<h4 style="color:var(--text-dim);margin-top:20px;font-size:0.95rem;">Agotamiento de los <span class="plazo">545 días</span>: examen de IP y prolongación de efectos</h4>
+<p>Agotados los <span class="plazo">545 días</span>, se examina necesariamente, en el plazo máximo de <span class="plazo">90 días naturales</span>, el estado del incapacitado a efectos de su calificación en el grado de IP que corresponda. Si conviene demorar la calificación por expectativa de recuperación, podrá retrasarse el tiempo preciso, sin que en ningún caso puedan rebasarse los <span class="plazo">730 días naturales</span> (sumando IT + prolongación de efectos). Durante estos <span class="plazo">90 días</span> (y su eventual demora) no subsiste la <span class="obligacion">obligación de</span> cotizar.</p>
+<div class="mnemo"><span class="tag">🧠 Mnemotecnia</span>El propio preparador lo compara con el fútbol: los <span class="plazo">90 días</span> son "como el tiempo de descuento que da el árbitro", y el margen adicional hasta 730 es el que se cede porque, en medio, "han pasado cosas del partido" (necesidad real de seguir tratamiento antes de calificar la IP).</div>
+<div class="flujo">
+  <div class="flujo-caja">365d normal + 180d prórroga = 545d IT</div><div class="flujo-flecha">↓</div>
+  <div class="flujo-salto"></div>
+  <div class="flujo-caja">Examen IP: 90d máx. + demora <small>(prolongación de efectos hasta notif. resolución IP)</small></div><div class="flujo-flecha">↓</div>
+  <div class="flujo-salto"></div>
+  <div class="flujo-caja">IT extinguida · no cotización · pasa a pago directo</div><div class="flujo-flecha">↓</div>
+  <div class="flujo-salto"></div>
+  <div class="flujo-caja rama-no">TOPE MÁXIMO ABSOLUTO: <span class="plazo">730 días naturales</span></div>
+</div>
+<h4 style="color:var(--text-dim);margin-top:20px;font-size:0.95rem;">¿Se puede reabrir un proceso de IT tras agotar los <span class="plazo">545 días</span>?</h4>
+<p>Solo podrá generarse un nuevo derecho a IT por la misma o similar patología si media un período superior a <span class="plazo">180 días naturales</span> desde la resolución de la IP. Para acreditar el PMC de <span class="tipo-cc">EC</span> se computan exclusivamente las cotizaciones efectuadas a partir de la resolución de la IP — es decir, se reinician desde cero.</p>
+<div class="recordatorio"><span class="tag">⚑ Recordatorio</span>Excepción "por una sola vez": aunque no hayan transcurrido los <span class="plazo">180 días</span> desde la denegación de la IP, podrá iniciarse un nuevo proceso de IT, por una sola vez, <span class="condicion">cuando</span> el EVI (Equipo de Valoración de Incapacidades) considere que el trabajador puede recuperar su capacidad laboral. El <span class="sujeto-priv">INSS</span> acordará la baja a los exclusivos efectos de la prestación económica por IT (no es una IT "completa").</div>
+<p>El alta médica con propuesta de IP, cualquiera que sea el momento en que se expida, <span class="obligacion">extingue</span> la situación de IT. En ese caso, y <span class="condicion">cuando</span> la extinción se produce por el transcurso de los <span class="plazo">545 días</span>, el trabajador entra en situación de prolongación de efectos económicos hasta que se notifique la resolución que califique la IP.</p>
+<div class="recordatorio"><span class="tag">⚑ Recordatorio</span>Si la IP finalmente reconocida es de cuantía superior a lo que el trabajador venía percibiendo en prolongación de efectos, los efectos de la IP se retrotraen al día siguiente al de extinción de la IT — de modo que el trabajador cobra la diferencia y no "pierde" ese período.</div>
+<h4 style="color:var(--text-dim);margin-top:20px;font-size:0.95rem;">Conexión con el Estatuto de los Trabajadores (<a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a49et" target="_blank">A49.1</a>.n y <a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a48et" target="_blank">A48.2</a> ET)</h4>
+<p>Contenido más de derecho laboral que de Seguridad Social — menos preguntable, pero útil para cerrar el círculo: el contrato se <span class="obligacion">extingue</span> por declaración de IPT/IPA/GI, <span class="excepcion">salvo</span> que la empresa realice los ajustes razonables del puesto o destine al trabajador a otro puesto compatible. Si el ajuste supone una carga excesiva o el trabajador rechaza el cambio propuesto, entonces sí se <span class="obligacion">extingue</span> el contrato.</p>
+<ul>
+<li>El trabajador tiene <span class="plazo">10 días naturales</span> desde la notificación de la resolución de IP para manifestar su voluntad de mantener la relación laboral.</li>
+<li>La empresa dispone de <span class="plazo">3 meses</span> para realizar los ajustes/cambio de puesto, o para extinguir el contrato si no es viable.</li>
+<li>En empresas de menos de 25 trabajadores, la carga se considera excesiva si el coste de adaptación supera la mayor cuantía entre la indemnización correspondiente o <span class="plazo">6 meses</span> de salario.</li>
+<li>Si se prevé revisión de la IP por mejoría, subsiste la suspensión de la relación laboral con reserva del puesto durante <span class="plazo">2 años</span> desde la resolución que declare la IP — mientras el trabajador esté con adaptaciones u otro puesto, la pensión de IP queda suspendida (no extinguida); si cesa el trabajo, recupera la pensión.</li>
+</ul>
+<h3 class="epigrafe"><a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a175" target="_blank">A175</a>. Pérdida o suspensión del derecho al subsidio</h3>
+<p>El derecho podrá ser denegado, anulado o suspendido <span class="condicion">cuando</span> el beneficiario haya actuado fraudulentamente, o <span class="condicion">cuando</span> trabaje por cuenta propia o ajena. También podrá suspenderse <span class="condicion">cuando</span>, sin causa razonable, rechace o abandone el tratamiento indicado, o por incomparecencia a convocatorias de reconocimiento médico (lo que produce la suspensión cautelar, y si no se justifica, la extinción).</p>
+<div class="mnemo"><span class="tag">🧠 Mnemotecnia</span>Como en el fútbol: incomparecencia injustificada a un reconocimiento médico = "tarjeta amarilla" (suspensión cautelar); si además no se justifica en plazo = "segunda amarilla, roja" (expulsión = extinción).</div>
+<h3 class="epigrafe"><a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a176" target="_blank">A176</a>. Períodos de observación y obligaciones especiales en caso de <span class="tipo-cc">EP</span></h3>
+<p>Se considera período de observación el tiempo necesario para el estudio médico de la <span class="tipo-cc">EP</span> <span class="condicion">cuando</span> haya necesidad de aplazar el diagnóstico definitivo (enlaza con el capítulo 1: máximo 180+<span class="plazo">180 días</span>).</p>
+<h3 class="epigrafe">📋 Esquema-resumen del capítulo 3</h3>
+<div class="sintesis-grid">
+  <div class="sintesis-card"><h5><a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a173" target="_blank">A173</a> Nacimiento</h5><p><span class="tipo-cc">CC</span> día <span class="dia-num">4</span> · <span class="tipo-cp">CP</span>/<span class="tipo-cp">IE</span>/<span class="tipo-cp">S39.1</span> día <span class="dia-num">2</span> · <span class="tipo-otras">MIS</span>/<span class="tipo-otras">DOT</span> día <span class="dia-num">1</span>.</p></div>
+  <div class="sintesis-card"><h5><a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a170" target="_blank">A170</a> Competencia e impugnación</h5><p>Hasta 365d: <span class="sujeto-priv">INSS</span>=SPS, RP (11d/7d hábiles). Desde 366d: <span class="sujeto-priv">INSS</span> excl., Proc. disconformidad (4d+7d+7d/11d nat.).</p></div>
+  <div class="sintesis-card"><h5><a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a174" target="_blank">A174</a> Extinción</h5><p>545d · alta · IP · jubilación · incomparecencia · fallecimiento. Agotados 545d → examen IP en 90d (+demora) → tope 730d. Reapertura misma patología: solo si &gt;180d desde resolución IP (o 1 vez vía EVI).</p></div>
+  <div class="sintesis-card"><h5><a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a175" target="_blank">A175</a> Suspensión/pérdida</h5><p>Fraude · trabajo cuenta propia/ajena · rechazo tratamiento · incomparecencia.</p></div>
+</div>
+
+<div class="quiz-box">
+  <p class="quiz-q">A partir del día 366 de un proceso de IT, ¿quién tiene la competencia exclusiva para emitir el alta médica?</p>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'t8q5')">El SPS, igual que hasta el día 365</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'t8q5')">El <span class="sujeto-priv">INSS</span> en exclusiva</button>
+  <div class="quiz-feedback" id="fb-t8q5"></div>
+</div>
+<div class="quiz-box">
+  <p class="quiz-q">¿Cuál es el tope máximo absoluto de duración de un proceso de IT, contando la prórroga y el examen de IP?</p>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'t8q6')"><span class="plazo">545 días naturales</span></button>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'t8q6')"><span class="plazo">730 días naturales</span></button>
+  <div class="quiz-feedback" id="fb-t8q6"></div>
+</div>
+</section>
+
+<section class="capitulo" id="cap4">
+<div class="cap-header">Capítulo 4 — Reconocimiento y pago</div>
+<p class="mapa-label">🌳 Hilo conductor del capítulo</p>
+<div class="mapa-cap">
+  <div class="mapa-arbol">
+    <div class="mapa-nodo raiz">RECONOCIMIENTO DEL DERECHO A IT</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-rama">
+      <div class="mapa-nodo">INSS / ISM</div>
+      <div class="mapa-nodo">Mutua</div>
+      <div class="mapa-nodo">Empresa colaboradora</div>
+    </div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">MODALIDADES DE PAGO</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-rama">
+      <div class="mapa-nodo">Pago delegado</div>
+      <div class="mapa-nodo">Pago directo</div>
+    </div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-rama">
+      <div class="mapa-nodo">Colaboración voluntaria <span class="art">A102.1.a</span></div>
+      <div class="mapa-nodo">Colaboración obligatoria <span class="art">A102.1.b</span></div>
+    </div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo hoja">Pago delegado hasta 545 días</div>
+  </div>
+</div>
+<a class="mnemo-link" href="T08_Anexo2_ResumenLiteral.html#a2t8-bloque4" target="_blank" style="display:inline-block;margin:6px 0 10px;font-size:0.82rem;color:var(--accent-green,#3ddc97);text-decoration:none;border:1px solid var(--border-lgss,#2a3441);padding:4px 10px;border-radius:6px;">🔖 Ver mnemotecnias y resumen (Anexo 2)</a>
+<h3 class="epigrafe">Reconocimiento del derecho</h3>
+<p>(+ <span class="articulo chip-lgss">A76</span> <span class="rd">RD 1993/1995</span>)</p>
+<ul>
+<li><span class="sujeto-priv">INSS</span> + <span class="sujeto-priv">ISM</span> (Instituto Social de la Marina, trabajadores del REMAR).</li>
+<li><span class="sujeto-priv">MUTUA</span>, por <span class="tipo-cc">CC</span> y/o <span class="tipo-cp">CP</span>: los empresarios pueden optar por una <span class="sujeto-priv">mutua</span> para la protección de <span class="tipo-cc">AT</span>/<span class="tipo-cc">EP</span> (<span class="articulo chip-lgss">A83.1</span>.a LGSS), y también podrán optar por la protección de IT por <span class="tipo-cc">CC</span> con esa misma <span class="sujeto-priv">mutua</span>.</li>
+<li>Empresas auto-aseguradoras que colaboran voluntariamente en la gestión del Régimen General, por <span class="tipo-cp">CP</span>.</li>
+</ul>
+<div class="confusion"><span class="tag">⚠ Confusión frecuente</span>No confundas el acto de la baja médica (lo otorga el servicio médico: SPS/<span class="sujeto-priv">mutua</span>/empresa colaboradora) con el acto de reconocer el derecho a IT (corresponde a <span class="sujeto-priv">INSS</span>/<span class="sujeto-priv">ISM</span>/<span class="sujeto-priv">MUTUA</span>). El servicio médico no sabe si has cotizado el tiempo necesario para tener derecho al subsidio — eso lo valora quien reconoce el derecho.</div>
+<div class="recordatorio"><span class="tag">⚑ Recordatorio</span>La <span class="sujeto-priv">mutua</span> nunca puede pagar prestaciones que no deriven de contingencias (nacimiento y cuidado del menor, jubilación, etc.) — esas siempre las paga la entidad gestora. La <span class="sujeto-priv">mutua</span> solo puede cubrir IT por <span class="tipo-cp">CP</span> y/o IT por <span class="tipo-cc">CC</span>. Además, la empresa puede elegir la misma <span class="sujeto-priv">mutua</span> para <span class="tipo-cp">CP</span> y para IT por <span class="tipo-cc">CC</span>, pero no puede tener dos <span class="sujeto-priv">mutuas</span> distintas para cada cosa (sí puede combinar <span class="sujeto-priv">mutua</span> + entidad gestora).</div>
+<h3 class="epigrafe">Modalidad del pago: pago delegado vs. pago directo</h3>
+<p>Con carácter general, el pago de la IT es en forma de pago delegado: con independencia de a cargo de quién se asuma el coste, el abono lo satisface la empresa. En ciertos casos, el pago es directo por la entidad gestora o colaboradora (<span class="sujeto-priv">mutua</span>).</p>
+@@TABLE6@@
+<table class="tabla-estudio">
+<tr><th>Contingencia</th><th>Inicio del pago delegado</th></tr>
+<tr><td><span class="tipo-cc">CC</span></td><td>A partir del día 16 (del 4 al 15 paga la empresa, pero no por delegación, sino porque así está regulado directamente)</td></tr>
+<tr><td><span class="tipo-cp">CP</span></td><td>Desde el día 2 (el día 1 corre a cuenta del empresario como salario íntegro del día de la baja)</td></tr>
+</table>
+<p>La analogía del propio preparador para entender la compensación del pago delegado: "es como <span class="condicion">cuando</span> le debes 10 € a un amigo y él te <span class="obligacion">debe</span> 2 €; haces la diferencia y le das 8 €" — así funciona la compensación de lo pagado en pago delegado contra las cotizaciones a la Seguridad Social.</p>
+<div class="confusion"><span class="tag">⚠ Confusión frecuente</span>Para poder compensar el pago delegado en la liquidación de cuotas, el empresario <span class="obligacion">debe</span> haber cumplido con sus obligaciones de cotización (presentar la liquidación, con independencia de si efectivamente paga o no). Si no cumple, no puede compensar — pero tampoco asume el coste de la IT fuera del tramo que le corresponde por ley (4-15 en <span class="tipo-cc">CC</span>): <span class="obligacion">deberá</span> solicitar la devolución al <span class="sujeto-priv">INSS</span>/<span class="sujeto-priv">ISM</span>/<span class="sujeto-priv">mutua</span> por otra vía.</div>
+<h4 style="color:var(--text-dim);margin-top:20px;font-size:0.95rem;">Casos de pago directo (excepción al pago delegado)</h4>
+<ul>
+<li>SE Hogar y SE Agrario, excluidos del pago delegado.</li>
+<li>Autónomos (RETA): paga directamente la <span class="sujeto-priv">mutua</span> — el autónomo es su propio empresario, no tiene sentido delegar el pago en él mismo.</li>
+<li>Empresas de menos de 10 trabajadores <span class="condicion">cuando</span> llevan satisfaciendo el subsidio <span class="plazo">6 meses</span> — se busca darles un "balón de oxígeno" económico.</li>
+<li>IT durante jubilación parcial.</li>
+<li>Período de hasta <span class="plazo">90 días</span> para calificar IP, más el período de demora hasta los <span class="plazo">730 días</span>.</li>
+<li>Empresas que incumplan la obligación del pago delegado — la Entidad Gestora/<span class="sujeto-priv">MUTUA</span> lo comunicará a la ITSS.</li>
+<li>Desde el primer día del mes siguiente al alta médica con propuesta de IP.</li>
+<li>Extinción de la relación laboral en IT (ya no hay empresario que pague delegado).</li>
+<li>Continuación en IT tras cese voluntario en la empresa, o tras extinguirse la percepción de desempleo.</li>
+<li>Grupos II y III de REMAR Cuenta Ajena.</li>
+</ul>
+<div class="mnemo"><span class="tag">🧠 Mnemotecnia</span>"Sin empresa, pago directo" — en casi todos estos supuestos, o bien no hay empresa (extinción, autónomos, cese), o bien la empresa ha fallado en su papel (incumplimiento), o bien la gestión ya ha pasado a fase exclusiva del <span class="sujeto-priv">INSS</span> (examen de IP).</div>
+<h3 class="epigrafe"><a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a102" target="_blank">A102</a>. Colaboración de las empresas</h3>
+<div class="confusion"><span class="tag">⚠ Confusión frecuente</span>No mezcles estos dos conceptos: colaboración voluntaria (<a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a102" target="_blank">A102.1</a>.a) frente a colaboración obligatoria (<a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a102" target="_blank">A102.1</a>.b).</div>
+<h4 style="color:var(--text-dim);margin-top:20px;font-size:0.95rem;">a) Colaboración voluntaria</h4>
+<p>Asumiendo directamente el pago, a su cargo, de las prestaciones por IT derivada de <span class="tipo-cc">AT</span>/<span class="tipo-cc">EP</span> y las prestaciones de asistencia sanitaria y recuperación profesional, incluido el subsidio consiguiente durante dicha situación.</p>
+<p>Colaboración voluntaria = Asumir IT x <span class="tipo-cp">CP</span> + Asistencia</p>
+<p>Son las llamadas empresas auto-aseguradoras (grandes empresas que asumen ellas mismas el coste de la protección por <span class="tipo-cc">AT</span>/<span class="tipo-cc">EP</span>). Estas empresas mantienen el pago a su cargo hasta la fecha en que se notifique al interesado el alta médica o la resolución de extinción, incluida la situación de prolongación de efectos económicos.</p>
+<h4 style="color:var(--text-dim);margin-top:20px;font-size:0.95rem;">b) Colaboración obligatoria</h4>
+<p>Pagando a sus trabajadores, a cargo de la entidad gestora o <span class="sujeto-priv">mutua</span> obligada, las prestaciones económicas por IT, compensándose su importe en la liquidación de las cotizaciones.</p>
+<p>Colaboración obligatoria = Pago delegado de IT x <span class="tipo-cc">CC</span>/<span class="tipo-cp">CP</span></p>
+<p>Es aplicable a todas las empresas, cubre tanto <span class="tipo-cc">CC</span> como <span class="tipo-cp">CP</span>, y es simplemente el mecanismo del pago delegado. El Ministerio en materia de SS podrá suspender o dejar sin efecto la colaboración obligatoria <span class="condicion">cuando</span> la empresa incumpla las obligaciones establecidas.</p>
+<div class="recordatorio"><span class="tag">⚑ Recordatorio</span>Duración de la colaboración obligatoria (<a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a170" target="_blank">A170</a>): se mantiene hasta que se notifique el alta médica (curación/mejoría/incomparecencia), o hasta el último día del mes en que el <span class="sujeto-priv">INSS</span> haya expedido el alta con propuesta de IP, o hasta que se cumpla el período máximo de <span class="plazo">545 días</span> — lo primero que ocurra. Incluye la prórroga: no se detiene a los <span class="plazo">365 días</span>, sino que llega hasta el 545. Lo que cambia al día 365 es la competencia médica (capítulo 3), no quién paga.</div>
+<h3 class="epigrafe">📋 Esquema-resumen del capítulo 4</h3>
+<div class="sintesis-grid">
+  <div class="sintesis-card"><h5>Reconocimiento</h5><p><span class="sujeto-priv">INSS</span>/<span class="sujeto-priv">ISM</span> · <span class="sujeto-priv">MUTUA</span> (<span class="tipo-cc">CC</span> y/o <span class="tipo-cp">CP</span>) · Empresas autoaseguradoras (<span class="tipo-cp">CP</span>).</p></div>
+  <div class="sintesis-card"><h5>Pago delegado <small>(regla general)</small></h5><p><span class="tipo-cc">CC</span>: desde día 16 · <span class="tipo-cp">CP</span>: desde día 2. La empresa paga, <span class="sujeto-priv">INSS</span>/<span class="sujeto-priv">MUTUA</span> asume la responsabilidad.</p></div>
+  <div class="sintesis-card"><h5>Pago directo <small>(excepciones)</small></h5><p>SE Hogar/Agrario · Autónomos · Empresas &lt;10 trab. tras <span class="plazo">6 meses</span> · Jubilación parcial · Examen IP (90d+demora) · Incumplimiento · Propuesta IP · Extinción relación laboral.</p></div>
+  <div class="sintesis-card"><h5><a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a102" target="_blank">A102</a> Colaboración empresas</h5><p>a) Voluntaria = asumir IT x <span class="tipo-cp">CP</span> + asistencia. b) Obligatoria = pago delegado IT x <span class="tipo-cc">CC</span>/<span class="tipo-cp">CP</span>, compensable.</p></div>
+</div>
+
+<div class="quiz-box">
+  <p class="quiz-q">En un proceso de contingencia común (<span class="tipo-cc">CC</span>), ¿desde qué día empieza el pago delegado?</p>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'t8q7')">Desde el día 4, <span class="condicion">cuando</span> empieza a devengarse el subsidio</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'t8q7')">Desde el día 16</button>
+  <div class="quiz-feedback" id="fb-t8q7"></div>
+</div>
+<div class="quiz-box">
+  <p class="quiz-q">¿Qué diferencia hay entre colaboración voluntaria y obligatoria de las empresas (A102)?</p>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'t8q8')">Voluntaria: asumir directamente IT por <span class="tipo-cp">CP</span> + asistencia. Obligatoria: pago delegado de IT por <span class="tipo-cc">CC</span>/<span class="tipo-cp">CP</span>, compensable</button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'t8q8')">Son lo mismo, solo cambia el nombre según el tamaño de la empresa</button>
+  <div class="quiz-feedback" id="fb-t8q8"></div>
+</div>
+</section>
+
+<section class="capitulo" id="cap5">
+<div class="cap-header">Capítulo 5 — Control de la incapacidad</div>
+<p class="mapa-label">🌳 Hilo conductor del capítulo</p>
+<div class="mapa-cap">
+  <div class="mapa-arbol">
+    <div class="mapa-nodo raiz">BAJA MÉDICA</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">PARTES DE CONFIRMACIÓN</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">DURACIÓN ESTIMADA DEL PROCESO</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-rama">
+      <div class="mapa-nodo">Muy corta</div>
+      <div class="mapa-nodo">Corta</div>
+      <div class="mapa-nodo">Media</div>
+      <div class="mapa-nodo">Larga</div>
+    </div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo hoja">Alta médica → Tramitación de partes → Control y seguimiento</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo hoja">Reconocimientos médicos → Suspensión cautelar → Extinción por incomparecencia</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">PROPUESTAS DE ALTA DE LAS MUTUAS</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo">DETERMINACIÓN DE LA CONTINGENCIA</div>
+    <div class="mapa-flecha">↓</div>
+    <div class="mapa-nodo hoja">Revisión de altas y resolución del INSS</div>
+  </div>
+</div>
+<a class="mnemo-link" href="T08_Anexo2_ResumenLiteral.html#a2t8-bloque5" target="_blank" style="display:inline-block;margin:6px 0 10px;font-size:0.82rem;color:var(--accent-green,#3ddc97);text-decoration:none;border:1px solid var(--border-lgss,#2a3441);padding:4px 10px;border-radius:6px;">🔖 Ver mnemotecnias y resumen (Anexo 2)</a>
+<p>(Para este epígrafe abandonamos la LGSS: se regula en el <span class="rd">RD 625/2014</span> —10 artículos— y en el <span class="rd">RD 1060/2022</span>, que lo modifica)</p>
+<h3 class="epigrafe"><span class="articulo chip-lgss">A2</span>. Declaraciones médicas de baja y de confirmación</h3>
+<p>La emisión del parte médico de baja origina las actuaciones conducentes al reconocimiento del derecho. Se formula, cualquiera que sea la contingencia, por el médico del SPS. Excepción: si la causa es <span class="tipo-cc">AT</span>/<span class="tipo-cc">EP</span> y el trabajador está protegido por una <span class="sujeto-priv">mutua</span> o empresa colaboradora, los partes los expiden los servicios médicos de la <span class="sujeto-priv">mutua</span> o de la empresa colaboradora. Todo parte de baja va precedido de un reconocimiento médico.</p>
+@@TABLE7@@
+<table class="tabla-estudio">
+<tr><th>Duración estimada</th><th>1ª revisión médica (máx. desde la baja inicial)</th><th>Diferencia máx. entre confirmaciones sucesivas</th></tr>
+<tr><td>Muy corta (XS, &lt; <span class="plazo">5 días</span>)</td><td>Parte de baja y de alta en el mismo acto médico</td><td>—</td></tr>
+<tr><td>Corta (S, 5-<span class="plazo">30 días</span>)</td><td><span class="plazo">7 días naturales</span></td><td><span class="plazo">14 días naturales</span></td></tr>
+<tr><td>Media (M, 31-<span class="plazo">60 días</span>)</td><td><span class="plazo">7 días naturales</span></td><td><span class="plazo">28 días naturales</span></td></tr>
+<tr><td>Larga (L, ≥ <span class="plazo">61 días</span>)</td><td><span class="plazo">14 días naturales</span></td><td><span class="plazo">35 días naturales</span></td></tr>
+</table>
+<div class="mnemo"><span class="tag">🧠 Mnemotecnia</span>Tallas de camiseta: XS (muy corta, &lt;<span class="plazo">5 días</span>) → S (7d/14d) → M (7d/28d) → L (14d/35d). La primera revisión es a los <span class="plazo">7 días</span> <span class="excepcion">salvo</span> en la L, que ya es a los 14 desde el principio; y la diferencia entre confirmaciones se va doblando: 14 → 28 → 35.</div>
+<div class="recordatorio"><span class="tag">⚑ Recordatorio</span>Consejo de estudio del propio preparador: si faltan varios meses para el examen, no merece la pena fijar estos plazos concretos con precisión milimétrica porque "se te van a olvidar" — conviene reforzarlos con especial intensidad en el repaso final, un par de meses antes del examen.</div>
+<p>En cualquier proceso, el facultativo podrá fijar una revisión en un período inferior al indicado. Ante modificación o actualización del diagnóstico, se emite un nuevo parte de confirmación con la nueva duración estimada. El facultativo expedirá el alta <span class="condicion">cuando</span> considere que el trabajador ha recuperado su capacidad laboral.</p>
+<h3 class="epigrafe"><span class="articulo chip-lgss">A5</span>. Declaraciones médicas de alta</h3>
+<p>En procesos de <span class="tipo-cc">CC</span>, el alta la expide el facultativo del SPS (también inspectores del SPS, <span class="sujeto-priv">INSS</span> o <span class="sujeto-priv">ISM</span>). En procesos de <span class="tipo-cp">CP</span>, el facultativo o inspector del SPS, el inspector del <span class="sujeto-priv">INSS</span>/<span class="sujeto-priv">ISM</span>, o el médico de la empresa colaboradora o <span class="sujeto-priv">mutua</span>.</p>
+<p>El alta médica <span class="obligacion">extinguirá</span> el proceso de IT con efectos laborales del día siguiente al de su emisión, determinando la <span class="obligacion">obligación de</span> reincorporarse al puesto el mismo día en que se produzcan sus efectos.</p>
+<div class="ejemplo"><span class="tag">📌 Ejemplo</span>Alta médica emitida el martes → efecto laboral el miércoles (día siguiente) → reincorporación el miércoles (mismo día del efecto).</div>
+<div class="confusion"><span class="tag">⚠ Confusión frecuente</span>No confundas el "día de emisión del alta" con el "día del efecto": el efecto laboral y la <span class="obligacion">obligación de</span> reincorporarse van un día después de la emisión, no coinciden con ella.</div>
+<div class="recordatorio"><span class="tag">⚑ Recordatorio</span>Cuando el médico del SPS/empresa colaboradora/<span class="sujeto-priv">mutua</span> expida el último parte de confirmación antes de agotar los <span class="plazo">365 días</span>, <span class="obligacion">debe</span> comunicar al interesado que, agotado ese plazo, el control pasa a competencia del <span class="sujeto-priv">INSS</span>/<span class="sujeto-priv">ISM</span> (conecta con el <a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a170" target="_blank">A170</a> del capítulo 3).</div>
+<h3 class="epigrafe"><span class="articulo chip-lgss">A7</span>-<span class="articulo chip-lgss">A8</span>. Tramitación de los partes médicos y seguimiento</h3>
+<div class="flujo">
+  <div class="flujo-caja">Médico (SPS/<span class="sujeto-priv">Mutua</span>/Emp.colab.)</div><div class="flujo-flecha">→</div><div class="flujo-caja rama-si"><span class="sujeto-priv">INSS</span></div><div class="flujo-flecha"><small>inmediato/1er día hábil</small></div>
+  <div class="flujo-salto"></div>
+  <div class="flujo-caja rama-si"><span class="sujeto-priv">INSS</span></div><div class="flujo-flecha">→</div><div class="flujo-caja">Empresa</div><div class="flujo-flecha"><small>1er día hábil siguiente</small></div>
+  <div class="flujo-salto"></div>
+  <div class="flujo-caja rama-si"><span class="sujeto-priv">INSS</span></div><div class="flujo-flecha">→</div><div class="flujo-caja"><span class="sujeto-priv">ISM</span> / <span class="sujeto-priv">MUTUA</span></div><div class="flujo-flecha"><small>inmediato/1er día hábil</small></div>
+  <div class="flujo-salto"></div>
+  <div class="flujo-caja">Empresa</div><div class="flujo-flecha">→</div><div class="flujo-caja rama-si"><span class="sujeto-priv">INSS</span> (sistema RED)</div><div class="flujo-flecha"><small>máx. 3d hábiles</small></div>
+</div>
+<p>Colectivos exentos de incorporarse al sistema RED: grupos II y III del REMAR, taurinos, representantes de comercio, SE de la resina y SE de empleados de hogar.</p>
+<p>El <span class="sujeto-priv">INSS</span>, el <span class="sujeto-priv">ISM</span> y las <span class="sujeto-priv">mutuas</span> ejercen el control y seguimiento de la prestación (<span class="articulo chip-lgss">A8</span>). Los datos solo pueden usarse para el control de la incapacidad, nunca con fines discriminatorios ni en perjuicio del trabajador.</p>
+<h3 class="epigrafe"><span class="articulo chip-lgss">A9</span>. Requerimientos a los trabajadores para reconocimiento médico</h3>
+<p>La citación se comunica con una antelación mínima de <span class="plazo">4 días hábiles</span>. Si el trabajador no acude, se produce la suspensión cautelar del subsidio desde el día siguiente al fijado, disponiendo de <span class="plazo">10 días hábiles</span> para justificar.</p>
+<div class="esquema"><div class="tree">
+  <div class="nodo-raiz">Trabajador NO acude al reconocimiento</div>
+  <div class="tronco"></div>
+  <div class="nodo">Suspensión cautelar (desde el día siguiente al fijado) · <span class="plazo">10 días hábiles</span> para justificar</div>
+  <div class="bajante2"></div>
+  <div class="fila-hijos">
+    <div class="columna-hijo"><div class="bajante3"></div><div class="nodo-hijo">JUSTIFICA<small>se deja sin efecto — rehabilitación, pago del período suspendido en <span class="plazo">15 días</span></small></div></div>
+    <div class="columna-hijo"><div class="bajante3"></div><div class="nodo-hijo">NO JUSTIFICA<small>EXTINCIÓN del derecho — efectos desde el día en que fue efectiva la suspensión</small></div></div>
+  </div>
+</div></div>
+<p>Se entenderá justificada la incomparecencia <span class="condicion">cuando</span>: el trabajador aporte informe del SPS señalando que la personación era desaconsejable; la cita se hizo con antelación inferior a <span class="plazo">4 días hábiles</span>; o se acredite la imposibilidad por otra causa suficiente.</p>
+<div class="mnemo"><span class="tag">🧠 Mnemotecnia</span>"<span class="plazo">4 días</span> para citar, <span class="plazo">10 días</span> para justificar" — no confundas ambos plazos: uno es la antelación mínima de la cita y el otro el plazo para justificar la ausencia.</div>
+<h3 class="epigrafe"><span class="articulo chip-lgss">A6</span>. Propuestas de alta médica formuladas por las <span class="sujeto-priv">mutuas</span> (procesos de <span class="tipo-cc">CC</span>)</h3>
+<p>Cuando la <span class="sujeto-priv">mutua</span> considere que el trabajador puede no estar impedido para el trabajo, podrá formular una propuesta motivada de alta médica ante la inspección médica del SPS, comunicándolo al trabajador.</p>
+<p><span class="sujeto-priv">MUTUA</span> --(propuesta de alta)--&gt; Inspección médica SPS --&gt; Facultativo</p>
+<p>El facultativo <span class="obligacion">debe</span> pronunciarse en un plazo (admite la propuesta y expide el alta, o confirma la baja justificando la discrepancia). Si no hay contestación, o la inspección discrepa, podrá acordar el alta médica efectiva e inmediata.</p>
+<div class="actualizacion"><span class="tag">🆕 Actualización normativa</span>Actualización importante: en versiones antiguas de la norma (<span class="rd">RD 625/2014</span>) el plazo era de <span class="plazo">4 días</span>; el <span class="rd">RD-ley 2/2023</span> lo actualizó a <span class="plazo">5 días</span> — tanto para el plazo de respuesta de la inspección del SPS a la propuesta de la <span class="sujeto-priv">mutua</span>, como para el plazo de resolución de la solicitud de alta ante el <span class="sujeto-priv">INSS</span>/<span class="sujeto-priv">ISM</span> <span class="condicion">cuando</span> la propuesta no se resuelve a tiempo. Hay temarios desactualizados que aún citan <span class="plazo">4 días</span>: memoriza <span class="plazo">5 días</span> en ambos casos.</div>
+<div class="confusion"><span class="tag">⚠ Confusión frecuente</span>Vocabulario clave del procedimiento: a la inspección del SPS no llegan "solicitudes" de alta, sino propuestas de alta. Al <span class="sujeto-priv">INSS</span>/<span class="sujeto-priv">ISM</span>, <span class="condicion">cuando</span> la propuesta no se resuelve a tiempo, sí cabe enviar una solicitud de alta.</div>
+<div class="mnemo"><span class="tag">🧠 Mnemotecnia</span>"5 y 5" — la inspección del SPS tiene <span class="plazo">5 días</span> para responder a la <span class="sujeto-priv">mutua</span>; si no lo hace, el <span class="sujeto-priv">INSS</span>/<span class="sujeto-priv">ISM</span> tiene otros <span class="plazo">5 días</span> para resolver la solicitud.</div>
+<h3 class="epigrafe"><span class="articulo chip-lgss">A4</span>. Informes complementarios y de control</h3>
+<p>En procesos gestionados por el SPS con duración prevista superior a <span class="plazo">30 días naturales</span>, el segundo parte de confirmación va acompañado de un informe médico complementario, que se actualiza cada dos partes de confirmación posteriores. Trimestralmente, la inspección médica del SPS (o el médico de atención primaria bajo su supervisión) expide un informe de control pronunciándose sobre la necesidad de mantener el proceso.</p>
+<h3 class="epigrafe"><span class="articulo chip-lgss">A3</span>. Determinación de la contingencia causante de la IT</h3>
+<p>El SPS, <span class="sujeto-priv">ISM</span>, <span class="sujeto-priv">mutuas</span> o empresas colaboradoras que hayan emitido el parte de baja podrán instar, motivadamente, ante el <span class="sujeto-priv">INSS</span> la revisión de la consideración inicial de la contingencia, mediante el procedimiento del <span class="articulo chip-lgss">A6</span> <span class="rd">RD 1430/2009</span>.</p>
+<div class="mnemo"><span class="tag">🧠 Mnemotecnia</span>M + I + TRA = MITRA (como el gorro del Papa) — quiénes pueden solicitar la determinación/revisión de la contingencia: <span class="sujeto-priv">Mutua</span>/empresa colaboradora, <span class="sujeto-priv">INSS</span> (de oficio, a petición motivada de la ITSS o del SPS, o a propuesta del <span class="sujeto-priv">ISM</span>) y el TRAbajador.</div>
+<p>Procedimiento resumido (<span class="articulo chip-lgss">A6</span> <span class="rd">RD 1430/2009</span>): (1) el <span class="sujeto-priv">INSS</span> comunica el inicio al SPS/<span class="sujeto-priv">MUTUA</span>/empresa colaboradora, que en <span class="plazo">4 días hábiles</span> improrrogables <span class="obligacion">debe</span> indicar la contingencia; (2) el <span class="sujeto-priv">INSS</span> comunica al trabajador que en <span class="plazo">10 días hábiles</span> aporte documentos y alegaciones; (3) el EVI emite informe preceptivo y el Director Provincial (DP) resuelve en plazo máximo de <span class="plazo">15 días hábiles</span> sobre la contingencia (y si hay o no recaída), los efectos si hay contingencias coincidentes en el tiempo, y el sujeto responsable del pago.</p>
+<div class="esquema"><div class="tree">
+  <div class="nodo-raiz">La contingencia determina...</div>
+  <div class="tronco"></div>
+  <div class="fila-ramas">
+    <div class="columna-rama"><div class="bajante"></div><div class="nodo">QUIÉN</div><div class="nodo-final">asume el coste: Entidad Gestora o <span class="sujeto-priv">MUTUA</span></div></div>
+    <div class="columna-rama"><div class="bajante"></div><div class="nodo">CUÁNDO</div><div class="nodo-final">se inicia: 4º día <span class="tipo-cc">CC</span> / día siguiente al HC en <span class="tipo-cp">CP</span></div></div>
+    <div class="columna-rama"><div class="bajante"></div><div class="nodo">CUÁNTO</div><div class="nodo-final">es el subsidio: 60%/75% <span class="tipo-cc">CC</span> · 75% <span class="tipo-cp">CP</span></div></div>
+  </div>
+</div></div>
+<div class="recordatorio"><span class="tag">⚑ Recordatorio</span>Este mismo mecanismo MITRA reaparece, con matices, en el tema de calificación y revisión de la Incapacidad Permanente. Allí se añade un cuarto actor: las empresas declaradas responsables (por ejemplo, por no dar de alta a un trabajador) sí pueden instar la revisión de grado de una IP ya reconocida —les interesa que baje el grado, porque el coste corre a su cargo—, pero no pueden instar la determinación de contingencia ni la calificación inicial de la IP.</div>
+<h4 style="color:var(--text-dim);margin-top:20px;font-size:0.95rem;">Ampliación — <span class="articulo chip-lgss">A4</span> <span class="rd">RD 1430/2009</span>: revisión de altas médicas de <span class="sujeto-priv">mutuas</span>/empresas colaboradoras en <span class="tipo-cc">AT</span>/<span class="tipo-cc">EP</span></h4>
+<p>Procedimiento distinto del anterior: se activa <span class="condicion">cuando</span> una <span class="sujeto-priv">mutua</span> da el alta a un trabajador en un proceso de <span class="tipo-cc">AT</span>/<span class="tipo-cc">EP</span> y este no está de acuerdo. El trabajador <span class="obligacion">debe</span> dirigirse al <span class="sujeto-priv">INSS</span> (no al SPS) en un plazo de <span class="plazo">10 días hábiles</span> desde la notificación. La <span class="sujeto-priv">mutua</span> dispone de un plazo improrrogable de <span class="plazo">4 días hábiles</span> para justificar ante el <span class="sujeto-priv">INSS</span> el alta otorgada. El Director Provincial resuelve en <span class="plazo">15 días hábiles</span>, previo informe preceptivo del EVI, pudiendo fijar los efectos y fecha del alta médica o mantener la baja médica del trabajador.</p>
+<h3 class="epigrafe">📋 Esquema-resumen del capítulo 5</h3>
+<div class="sintesis-grid">
+  <div class="sintesis-card"><h5><span class="articulo chip-lgss">A2</span> Baja/Confirmación</h5><p>XS/S/M/L → plazos de revisión (7/7/14d 1ª revisión · 14/28/35d entre confirmaciones).</p></div>
+  <div class="sintesis-card"><h5><span class="articulo chip-lgss">A5</span> Alta</h5><p>Efecto laboral = día siguiente a la emisión. Reincorporación = mismo día del efecto.</p></div>
+  <div class="sintesis-card"><h5>Flujo de partes</h5><p>Médico→<span class="sujeto-priv">INSS</span>→Empresa / <span class="sujeto-priv">INSS</span>→<span class="sujeto-priv">ISM</span>-<span class="sujeto-priv">MUTUA</span> / Empresa→<span class="sujeto-priv">INSS</span> (RED, 3d hábiles).</p></div>
+  <div class="sintesis-card"><h5><span class="articulo chip-lgss">A8</span>-<span class="articulo chip-lgss">A9</span> Control</h5><p>Citación 4d hábiles de antelación. Incomparecencia → suspensión cautelar → 10d hábiles para justificar.</p></div>
+  <div class="sintesis-card"><h5><span class="articulo chip-lgss">A6</span> Propuestas alta <span class="sujeto-priv">mutuas</span> <small>(solo <span class="tipo-cc">CC</span>)</small></h5><p><span class="sujeto-priv">MUTUA</span>→Insp. SPS (5d) → si no resuelto → <span class="sujeto-priv">INSS</span>/<span class="sujeto-priv">ISM</span> (5d) [RD-ley 2/2023: 5d].</p></div>
+  <div class="sintesis-card"><h5><span class="articulo chip-lgss">A3</span> Determinación contingencia <small>(MITRA)</small></h5><p><span class="sujeto-priv">INSS</span>: 4d (SPS/<span class="sujeto-priv">Mutua</span>) + 10d (TRA) + 15d (DP con informe EVI).</p></div>
+  <div class="sintesis-card"><h5>Revisión altas <span class="sujeto-priv">mutuas</span> <span class="tipo-cc">AT</span>/<span class="tipo-cc">EP</span> <small>(A4 RD 1430/2009)</small></h5><p>10d (TRA) + 4d improrrogable (<span class="sujeto-priv">MUTUA</span>) + 15d (DP con informe EVI).</p></div>
+</div>
+<h3 class="epigrafe">Legis-grafía — normativa de aplicación</h3>
+<ul>
+<li>RD Legislativo 8/2015, de 30 de octubre, texto refundido de la LGSS.</li>
+<li><span class="rd">RD 625/2014</span>, de 18 de julio, gestión y control de los procesos por IT en los primeros <span class="plazo">365 días</span>.</li>
+<li><span class="rd">RD 1060/2022</span>, de 27 de diciembre, modifica el <span class="rd">RD 625/2014</span>.</li>
+<li><span class="rd">RD 1430/2009</span>, de 11 de septiembre, desarrolla la <span class="rd">Ley 40/2007</span> en relación con la prestación de IT.</li>
+<li><span class="rd">Orden ESS/1187/2015</span>, de 15 de junio, desarrolla el <span class="rd">RD 625/2014</span>.</li>
+<li><span class="rd">RD-ley 2/2023</span> — actualiza plazos del <span class="rd">RD 625/2014</span> y del <span class="articulo chip-lgss">A82.4</span>.b) LGSS (<span class="plazo">4 días</span> → <span class="plazo">5 días</span> en propuestas/solicitudes de alta de <span class="sujeto-priv">mutuas</span>).</li>
+</ul>
+
+<div class="quiz-box">
+  <p class="quiz-q">¿Con cuánta antelación mínima <span class="obligacion">debe</span> comunicarse al trabajador la citación a un reconocimiento médico de control?</p>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'t8q9')"><span class="plazo">4 días hábiles</span></button>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'t8q9')"><span class="plazo">10 días hábiles</span></button>
+  <div class="quiz-feedback" id="fb-t8q9"></div>
+</div>
+<div class="quiz-box">
+  <p class="quiz-q">Cuando una <span class="sujeto-priv">mutua</span> formula una propuesta de alta médica en un proceso de <span class="tipo-cc">CC</span>, ¿cuántos días tiene la inspección médica del SPS para pronunciarse antes de que pase al <span class="sujeto-priv">INSS</span>/<span class="sujeto-priv">ISM</span>?</p>
+  <button class="quiz-opt" onclick="checkAnswer(this,false,'t8q10')"><span class="plazo">10 días</span></button>
+  <button class="quiz-opt" onclick="checkAnswer(this,true,'t8q10')"><span class="plazo">5 días</span></button>
+  <div class="quiz-feedback" id="fb-t8q10"></div>
+</div>
+</section>
+
+<section class="capitulo" id="esquema-maestro">
+<div class="cap-header">Esquema maestro del tema (una sola página)</div>
+<div class="sintesis-grid">
+  <div class="sintesis-card"><h5>1. Concepto <a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a169" target="_blank">A169</a></h5><p><span class="tipo-cc">EC</span>/<span class="tipo-cc">AT</span>/<span class="tipo-cc">EP</span>/<span class="tipo-cc">ANL</span>: <span class="num">365</span>+<span class="num">180</span>d. Observación <span class="tipo-cc">EP</span>: <span class="num">180</span>+<span class="num">180</span>d. Sit. especiales <span class="tipo-cc">CC</span>: <span class="tipo-otras">MIS</span>·<span class="tipo-cp">IE</span>·<span class="tipo-cp">S39.1</span>·<span class="tipo-otras">DOT</span>. Recaída = misma patología, <span class="num">180</span>d desde el ALTA (no HC, <span class="excepcion">salvo</span> <span class="tipo-otras">MIS</span>). PMC: <span class="tipo-cc">EC</span> <span class="num">180</span>d/<span class="num">5</span>años · resto NO PMC (<span class="tipo-cp">S39.1</span>→NYCM).</p></div>
+  <div class="sintesis-card"><h5>2. Prestación económica</h5><p>BR <span class="tipo-cc">CC</span> = BC mes ant./<span class="num">30</span>(ó28-31). BR <span class="tipo-cp">CP</span> = BC <span class="tipo-cp">CP</span> mes ant./días + hh.extra/<span class="num">365</span>. %: <span class="tipo-cc">CC</span> <span class="pct">0</span>-<span class="pct">60</span>-<span class="pct">75</span> · <span class="tipo-cp">CP</span> <span class="pct">75</span>(día1 emp.) · <span class="tipo-otras">MIS</span> <span class="pct">60</span>-<span class="pct">75</span> · <span class="tipo-cp">IE</span>/<span class="tipo-cp">S39.1</span> <span class="pct">100</span>-<span class="pct">60</span>-<span class="pct">75</span> · <span class="tipo-otras">DOT</span> <span class="pct">100</span>. T.parcial (2025): <span class="num">3</span> meses, desde <span class="num">2</span> meses atrás del HC.</p></div>
+  <div class="sintesis-card"><h5>3. Nacimiento/Duración/Extinción</h5><p>Nace: <span class="tipo-cc">CC</span> día<span class="dia-num">4</span> · <span class="tipo-cp">CP</span>/<span class="tipo-cp">IE</span>/<span class="tipo-cp">S39.1</span> día<span class="dia-num">2</span> · <span class="tipo-otras">MIS</span>/<span class="tipo-otras">DOT</span> día<span class="dia-num">1</span>. Competencia (<a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a170" target="_blank">A170</a>): &lt;365d <span class="sujeto-priv">INSS</span>=SPS · &gt;365d <span class="sujeto-priv">INSS</span> excl. Impugnación: &lt;365d RP(11/7d háb.) · &gt;365d Proc. disconformidad (4d+7d+7d nat./11d silencio). Extinción (<a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a174" target="_blank">A174</a>): <span class="num">545</span>d · alta · IP · jubilación · incompar. · fallecimiento → examen IP <span class="num">90</span>d(+demora), tope absoluto <span class="num">730</span>d.</p></div>
+  <div class="sintesis-card"><h5>4. Reconocimiento y pago</h5><p><span class="sujeto-priv">INSS</span>/<span class="sujeto-priv">ISM</span> · <span class="sujeto-priv">MUTUA</span> (<span class="tipo-cc">CC</span>/<span class="tipo-cp">CP</span>) · Emp.autoaseg (<span class="tipo-cp">CP</span>). Pago delegado: <span class="tipo-cc">CC</span> día<span class="num">16</span> · <span class="tipo-cp">CP</span> día<span class="num">2</span>. Pago directo: SEH/SEA, autónomos, &lt;10 trab... <a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a102" target="_blank">A102</a>: Colab. voluntaria (a) vs obligatoria (b).</p></div>
+  <div class="sintesis-card"><h5>5. Control <small><span class="rd">RD 625/2014</span></small></h5><p>Duración → XS/S/M/L → plazos revisión. Alta: efecto = día siguiente. Incomparecencia: susp. cautelar, <span class="num">10</span>d justificar. Propuestas alta <span class="sujeto-priv">MUTUAS</span>: <span class="num">5</span>d+<span class="num">5</span>d. Determinación contingencia (MITRA): <span class="num">4</span>+<span class="num">10</span>+<span class="num">15</span>d.</p></div>
+</div>
+</section>
+
+<section class="capitulo" id="casos-practicos">
+<div class="cap-header">Casos prácticos resueltos</div>
+<p>Ejemplos trabajados en clase por el preparador, útiles para entrenar el tipo de pregunta que suele aparecer en el examen.</p>
+<h3 class="epigrafe">Caso 1 — Andrés Tresado</h3>
+<p>Andrés trabaja en AR SL (empresa de semáforos), con la <span class="sujeto-priv">mutua</span> "Tu Salud". Un sábado (día de descanso), cocinando en casa, se quema la mano — al ocurrir fuera del trabajo y sin conexión con él, es un accidente no laboral (<span class="tipo-cc">ANL</span>), es decir, contingencia común. La IT dura <span class="plazo">30 días</span>.</p>
+<ul>
+<li>¿Quién emite el parte de baja? El médico del SPS — no el inspector, no la <span class="sujeto-priv">mutua</span> (la <span class="sujeto-priv">mutua</span> solo interviene en la gestión económica de la IT por <span class="tipo-cc">CC</span> si la empresa la tiene contratada para ello, pero el parte médico de <span class="tipo-cc">CC</span> lo expide el SPS).</li>
+<li>¿Hace falta reconocimiento médico previo al parte de baja? Sí, siempre — no confundir este reconocimiento previo obligatorio con los reconocimientos de control posteriores de la <span class="sujeto-priv">mutua</span>/entidad gestora.</li>
+<li>Duración del proceso: <span class="plazo">30 días</span> → tramo corto (S).</li>
+<li>Día de inicio del pago delegado: el día que corresponde al 16º día de la baja (no el día en que cambia el porcentaje al 75%, que sería un distractor habitual, ni el día que correspondería si fuese contingencia profesional).</li>
+<li>Importe del día 29 de baja: 75% de la BR (ya en tramo de días 21+), en pago delegado (día 29 supera ampliamente el día 16 en que empieza el pago delegado).</li>
+</ul>
+<h3 class="epigrafe">Caso 2 — Manuela Velasco</h3>
+<p>Manuela, compañera de Andrés desde 2022, sufre un accidente de tráfico en día de descanso (contingencia común). A 15 de agosto lleva acumulados <span class="plazo">120 días</span> de IT, con fracturas de vértebras.</p>
+<ul>
+<li>Antelación mínima de citación a reconocimiento médico: <span class="plazo">4 días hábiles</span>.</li>
+<li>Si justifica su incomparecencia con certificado del SPS dentro del plazo de <span class="plazo">10 días hábiles</span>: se rehabilita el pago, con efectos desde el día siguiente al reconocimiento médico que quedó suspendido.</li>
+<li>Base de cotización a emplear: trampa típica — no es la de julio ni la de agosto. Hay que restar los <span class="plazo">120 días</span> acumulados desde el 15 de agosto para localizar la fecha real del hecho causante (que resulta caer en abril), y tomar el mes anterior a ese hecho causante — es decir, marzo. Quien conteste "julio" se ha dejado llevar por el mes en que está calculando, no por el mes del hecho causante real.</li>
+<li>Cálculo del importe mensual con una BR de 100 €/día en un mes de <span class="plazo">31 días</span>, en tramo del 75%: 75% × 100 € = 75 €/día × <span class="plazo">31 días</span> = 2.325 €. La trampa habitual es olvidar aplicar el porcentaje antes de multiplicar por los días (lo que daría cifras erróneas de 3.000 € o 3.100 €).</li>
+<li>Tras el alta médica del <span class="sujeto-priv">INSS</span> (28 de septiembre) y una recaída 3 semanas después por las mismas lesiones de espalda: ¿quién puede emitir la nueva baja? Solo el <span class="sujeto-priv">INSS</span>, nunca el SPS — porque el <span class="sujeto-priv">INSS</span> ya "se había inmiscuido" dando el alta anterior dentro de los primeros <span class="plazo">365 días</span>, lo que lo convierte en el único competente para reconocer la recaída (<a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a170" target="_blank">A170</a>, ver capítulo 3).</li>
+</ul>
+<div class="confusion"><span class="tag">⚠ Confusión frecuente</span>La trampa más citada en todo el temario, y la más repetida en preguntas de examen sobre IT, es la confusión entre "día del mes calendario" y "día del proceso de baja" a la hora de calcular fechas y de aplicar porcentajes. Repasa siempre con calma qué día del proceso corresponde a cada fecha antes de aplicar el porcentaje.</div>
+</section>
+
+<section class="capitulo outline" id="s-outline">
+<div class="cap-header">📋 Repaso en un vistazo</div>
+<details>
+  <summary>Capítulo 1 · Concepto y causas de la IT</summary>
+  <ul>
+    <li><a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a169" target="_blank">A169</a>: IT por <span class="tipo-cc">EC</span>/<span class="tipo-cc">AT</span>/<span class="tipo-cc">EP</span>/<span class="tipo-cc">ANL</span> (365+180d) u observación <span class="tipo-cc">EP</span> (180+180d), más situaciones especiales <span class="tipo-cc">CC</span> (<span class="tipo-otras">MIS</span>·<span class="tipo-cp">IE</span>·<span class="tipo-cp">S39.1</span>·<span class="tipo-otras">DOT</span>).</li>
+    <li>Recaída = misma patología en 180d desde el ALTA (no desde el HC); excepción <span class="tipo-otras">MIS</span>.</li>
+    <li><a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a172" target="_blank">A172</a>: beneficiarios con PMC solo en <span class="tipo-cc">EC</span> (180d/<span class="plazo">5años</span>); el resto no <span class="obligacion">exige</span> PMC.</li>
+  </ul>
+</details>
+<details>
+  <summary>Capítulo 2 · Prestación económica</summary>
+  <ul>
+    <li>BR <span class="tipo-cc">CC</span> = BC mes anterior/nº días. BR <span class="tipo-cp">CP</span> suma las horas extra del año anterior/365.</li>
+    <li>Porcentajes: <span class="tipo-cc">CC</span> 0-60-75%, <span class="tipo-cp">CP</span> 75% desde día 2, <span class="tipo-otras">MIS</span> 60-75%, <span class="tipo-cp">IE</span>/<span class="tipo-cp">S39.1</span> 100-60-75%, <span class="tipo-otras">DOT</span> 100%.</li>
+    <li>Desde 2025, la BR de tiempo parcial/fijo-discontinuo cambia a un promedio de <span class="plazo">3 meses</span>.</li>
+  </ul>
+</details>
+<details>
+  <summary>Capítulo 3 · Nacimiento, duración y extinción</summary>
+  <ul>
+    <li>Competencia (<a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a170" target="_blank">A170</a>): hasta 365d compartida <span class="sujeto-priv">INSS</span>/SPS; desde 366d, <span class="sujeto-priv">INSS</span> en exclusiva.</li>
+    <li>Extinción (<a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a174" target="_blank">A174</a>) a los 545d, con examen de IP en 90d y tope absoluto de 730d.</li>
+    <li>Reapertura por misma patología solo si pasan &gt;180d desde la resolución de IP (o una vez, vía EVI).</li>
+  </ul>
+</details>
+<details>
+  <summary>Capítulo 4 · Reconocimiento y pago</summary>
+  <ul>
+    <li>Pago delegado (regla general): <span class="tipo-cc">CC</span> desde día 16, <span class="tipo-cp">CP</span> desde día 2.</li>
+    <li>Pago directo en excepciones: SE Hogar/Agrario, autónomos, empresas &lt;10 trabajadores tras <span class="plazo">6 meses</span>, jubilación parcial...</li>
+    <li><a class="articulo chip-lgss art-link" href="T08_Anexo1_Articulos.html#a102" target="_blank">A102</a>: colaboración voluntaria (asumir el coste) vs. obligatoria (pago delegado, compensable).</li>
+  </ul>
+</details>
+<details>
+  <summary>Capítulo 5 · Control de la incapacidad</summary>
+  <ul>
+    <li>Duración estimada XS/S/M/L determina los plazos de revisión médica (RD 625/2014).</li>
+    <li>Citación a reconocimiento: <span class="plazo">4 días hábiles</span> de antelación; incomparecencia injustificada → extinción.</li>
+    <li>Determinación de contingencia (MITRA): plazos 4+10+<span class="plazo">15 días</span>.</li>
+  </ul>
+</details>
+</section>
+
+<section class="capitulo" id="s-anki">
+<div class="cap-header">🗂️ Repaso rápido (flashcards)</div>
+<div class="anki-block">
+  <select id="deckSelect"></select>
+  <div id="progress"></div>
+  <div class="flip-card" id="card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front" id="front"></div>
+      <div class="flip-card-back" id="back"></div>
+    </div>
+  </div>
+  <div id="done" style="display:none;">🎉 ¡Mazo completado! Te sabes todas las tarjetas.</div>
+  <div style="display:flex;gap:12px;justify-content:center;margin-top:16px;">
+    <button id="flip" style="padding:10px 24px;font-size:15px;font-weight:700;border-radius:8px;background:var(--cyan);color:#08130f;border:none;cursor:pointer;">Voltear</button>
+    <button id="dontknow" style="display:none;padding:10px 24px;font-size:15px;font-weight:700;border-radius:8px;background:var(--garnet);color:#fff;border:none;cursor:pointer;">✗ No lo sé</button>
+    <button id="know" style="display:none;padding:10px 24px;font-size:15px;font-weight:700;border-radius:8px;background:var(--accent-green);color:#08130f;border:none;cursor:pointer;">✓ Lo sé</button>
+  </div>
+  <div style="text-align:center;margin-top:18px;">
+    <button id="exportStatsBtn" style="padding:8px 16px;font-size:13px;font-weight:600;border-radius:8px;background:var(--card2,#1e2730);color:var(--accent-green,#3ddc97);border:1px solid var(--border-lgss,#2a3441);cursor:pointer;">📊 Ver mis tarjetas con más fallos</button>
+    <p style="font-size:11.5px;color:var(--text-dim,#93a3af);margin-top:8px;">Se guarda solo en este navegador. Repasa cada tarjeta al menos 2 veces para que aparezca en el informe.</p>
+    <textarea id="statsExport" readonly style="display:none;width:100%;max-width:600px;min-height:160px;margin:10px auto 0;background:var(--bg-card2,#1e2730);color:var(--text,#e2e8ec);border:1px solid var(--border-lgss,#2a3441);border-radius:8px;padding:12px;font-family:monospace;font-size:12.5px;"></textarea>
+  </div>
+</div>
+</section>
+
+<footer class="disclaimer">
+  Estos son apuntes de estudio personal basados en el curso de Destino Funcionario (Manuel Moreno), no material oficial. Preparación oposición Administrativo de la Seguridad Social 2026/2027.
+</footer>
+
+<script src="t08_mazoA_conceptos.js"></script>
+<script src="t08_mazoB_plazos.js"></script>
+<script src="t08_mazoC_trampas.js"></script>
+<script src="anki_engine.js"></script>
+
+<script>
+function checkAnswer(btn, isCorrect, qid) {
+  const box = btn.closest('.quiz-box');
+  const opts = box.querySelectorAll('.quiz-opt');
+  opts.forEach(o => { o.disabled = true; });
+  opts.forEach(o => {
+    const oc = o.getAttribute('onclick');
+    if (oc.includes(',true,')) o.classList.add('correct-opt');
+  });
+  if (!isCorrect) btn.classList.add('wrong-opt');
+  const fb = document.getElementById('fb-' + qid);
+  fb.textContent = isCorrect ? '✓ Correcto.' : '✗ Incorrecto — revisa la opción marcada en verde.';
+  fb.className = 'quiz-feedback show ' + (isCorrect ? 'ok' : 'bad');
+}
+</script>
+
+</body>
+</html>
